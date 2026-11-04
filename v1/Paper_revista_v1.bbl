@@ -1,0 +1,119 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Allen1992}
+L.~Allen, M.~W. Beijersbergen, R.~J.~C. Spreeuw, and J.~P. Woerdman,
+  \enquote{Orbital angular momentum of light and the transformation of
+  {Laguerre-Gaussian} laser modes,} {\protect\JournalTitle{Phys. Rev. A}}
+  \textbf{45}, 8185--8189 (1992).
+
+\bibitem{Gbur2016}
+G.~Gbur, \emph{Singular Optics} (CRC Press, Boca Raton, 2016).
+
+\bibitem{Mair2001}
+A.~Mair, A.~Vaziri, G.~Weihs, and A.~Zeilinger, \enquote{Entanglement of the
+  orbital angular momentum states of photons,} {\protect\JournalTitle{Nature}}
+  \textbf{412}, 313--316 (2001).
+
+\bibitem{Villalba2023}
+N.~Villalba, C.~Melo, S.~Ayala, \emph{et~al.}, \enquote{Transmission of optical
+  communication signals through ring core fiber using perfect vortex beams,}
+  {\protect\JournalTitle{Opt. Express}} \textbf{31}, 40113--40123 (2023).
+
+\bibitem{Ostrovsky2013}
+A.~S. Ostrovsky, C.~Rickenstorff-Parrao, and V.~Arriz{\'o}n,
+  \enquote{Generation of the perfect optical vortex using a liquid-crystal
+  spatial light modulator,} {\protect\JournalTitle{Opt. Lett.}} \textbf{38},
+  534--536 (2013).
+
+\bibitem{Vaity2015}
+P.~Vaity and L.~Rusch, \enquote{Perfect vortex beam: {Fourier} transformation
+  of a {Bessel} beam,} {\protect\JournalTitle{Opt. Lett.}} \textbf{40},
+  597--600 (2015).
+
+\bibitem{Arrizon2007}
+V.~Arriz{\'o}n, U.~Ruiz, R.~Carrada, and L.~A. Gonz{\'a}lez, \enquote{Pixelated
+  phase computer holograms for the synthesis of arbitrary complex fields,}
+  {\protect\JournalTitle{J. Opt. Soc. Am. A}} \textbf{24}, 3500--3507 (2007).
+
+\bibitem{Chen2013}
+Y.~Chen, Z.-X. Fang, Y.-X. Ren, \emph{et~al.}, \enquote{Observation of
+  fractional orbital angular momentum in perfect vortex beams,}
+  {\protect\JournalTitle{Phys. Rev. Lett.}} \textbf{111}, 033901 (2013).
+
+\bibitem{Reddy2016}
+S.~G. Reddy, C.~Permangatt, S.~Prabhakar, \emph{et~al.}, \enquote{Divergence of
+  {Gaussian} vortex beams,} {\protect\JournalTitle{J. Opt.}} \textbf{18},
+  055602 (2016).
+
+\bibitem{GarciaEscartin2008}
+J.~C. Garcia-Escartin and P.~Chamorro-Posada, \enquote{Quantum multiplexing
+  with orbital angular momentum,} {\protect\JournalTitle{Phys. Rev. A}}
+  \textbf{78}, 062320 (2008).
+
+\bibitem{Ferreira2026}
+T.~Ferreira, G.~Santos, S.~Ayala, \emph{et~al.}, \enquote{Second-order moment
+  equivalence of twisted {Gaussian Schell} model beams and orbital angular
+  momentum eigenmodes,} {\protect\JournalTitle{J. Opt.}} \textbf{28}, 095601
+  (2026).
+
+\bibitem{Duffin1952}
+R.~J. Duffin and A.~C. Schaeffer, \enquote{A class of nonharmonic {Fourier}
+  series,} {\protect\JournalTitle{Trans. Am. Math. Soc.}} \textbf{72}, 341--366
+  (1952).
+
+\bibitem{Ali1993}
+S.~T. Ali, J.-P. Antoine, and J.-P. Gazeau, \enquote{Continuous frames in
+  {Hilbert} space,} {\protect\JournalTitle{Ann. Phys.}} \textbf{222}, 1--37
+  (1993).
+
+\bibitem{Cerf2002}
+N.~J. Cerf, M.~Bourennane, A.~Karlsson, and N.~Gisin, \enquote{Security of
+  quantum key distribution using $d$-level systems,}
+  {\protect\JournalTitle{Phys. Rev. Lett.}} \textbf{88}, 127902 (2002).
+
+\bibitem{Mirhosseini2015}
+M.~Mirhosseini, O.~S. Maga{\~n}a-Loaiza, M.~N. O'Sullivan, \emph{et~al.},
+  \enquote{High-dimensional quantum cryptography with structured light,}
+  {\protect\JournalTitle{New J. Phys.}} \textbf{17}, 033033 (2015).
+
+\bibitem{Clauser1969}
+J.~F. Clauser, M.~A. Horne, A.~Shimony, and R.~A. Holt, \enquote{Proposed
+  experiment to test local hidden-variable theories,}
+  {\protect\JournalTitle{Phys. Rev. Lett.}} \textbf{23}, 880--884 (1969).
+
+\bibitem{Gradshteyn2014}
+I.~S. Gradshteyn and I.~M. Ryzhik, \emph{Table of Integrals, Series, and
+  Products} (Academic Press, Amsterdam, 2014), 8th ed.
+
+\bibitem{ISO11146}
+{International Organization for Standardization}, \enquote{Lasers and
+  laser-related equipment -- {Test} methods for laser beam widths, divergence
+  angles and beam propagation ratios -- {Part} 1: {Stigmatic} and simple
+  astigmatic beams,} ISO Standard 11146-1:2021 (2021).
+
+\bibitem{Siegman1986}
+A.~E. Siegman, \emph{Lasers} (University Science Books, Mill Valley, CA, 1986).
+
+\bibitem{Daubechies1990}
+I.~Daubechies, \enquote{The wavelet transform, time-frequency localization and
+  frame analysis,} {\protect\JournalTitle{IEEE Trans. Inf. Theory}}
+  \textbf{36}, 961--1005 (1990).
+
+\bibitem{Gelfand1964}
+I.~M. Gel'fand and N.~Y. Vilenkin, \emph{Generalized Functions, Vol. 4:
+  Applications of Harmonic Analysis} (Academic Press, New York, 1964).
+
+\bibitem{Bohm1989}
+A.~Bohm and M.~Gadella, \emph{Dirac Kets, Gamow Vectors and {Gel'fand}
+  Triplets} (Springer-Verlag, Berlin, 1989).
+
+\bibitem{Christensen2016}
+O.~Christensen, \emph{An Introduction to Frames and {Riesz} Bases}
+  (Birkh{\"a}user, Boston, MA, 2016), 2nd ed.
+
+\bibitem{Gazeau2009}
+J.-P. Gazeau, \emph{Coherent States in Quantum Physics} (Wiley-VCH, Weinheim,
+  2009).
+
+\end{thebibliography}

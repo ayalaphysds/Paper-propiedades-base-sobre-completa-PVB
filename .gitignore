@@ -1,0 +1,10 @@
+# Local reference library (contains >100 MB files; excluded from GitHub)
+Codex Máxima/
+
+# Python bytecode and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Stray TeX fallback log
+texput.log
