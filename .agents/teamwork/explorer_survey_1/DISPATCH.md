@@ -1,30 +1,17 @@
-## 2026-11-04T15:17:02Z
-You are an Explorer subagent in a Project Orchestration hierarchy.
-Your working directory is: c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\explorer_survey_1
-Your parent is the Project Orchestrator (Conversation ID: 13cbe3c5-df6c-41a9-8cfd-c1094a82e1c5).
+## 2026-11-05T15:01:20Z
+You are explorer_survey_1, a Codebase Survey Explorer.
+Your working directory is: c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\explorer_survey_1\
+Your parent orchestrator is: 0e3cebcb-1a99-4033-8616-01b2ec6f9ad7
 
-MANDATORY FIRST STEP:
-Read ORIGINAL_REQUEST.md at:
+CRITICAL: Read the authoritative user request at:
 c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\ORIGINAL_REQUEST.md
 
-YOUR MISSION:
-Examine the authoritative sources of truth in `Codex Máxima/` within the repository root `c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\Codex Máxima\`, especially:
-- `Codex Máxima/2026-Second-order moment equivalence of twisted Gaussian Schell model beams and orbital angular momentum eigenmodes.pdf`
-- Any other PDF or document files in `Codex Máxima/` or repository root.
-
-Extract and analyze:
-1. What theoretical framework and mathematical notation is used in the author's prior work (Second-order moment equivalence of TGSM beams and OAM eigenmodes)?
-2. How are OAM modes, Laguerre-Gauss, Bessel-Gauss, and Perfect Vortex Beams defined, connected, and transformed?
-3. What key equations, propagation models (paraxial Helmholtz, Collins formula, cross-spectral density, Wigner distribution function), and citation standards should be integrated into the new manuscript?
-4. How can the new paper cite and organically extend the results of `Codex Máxima/` to establish continuity in Sebastián Ayala's research program?
-
-DELIVERABLE:
-Write your full findings and structured report to:
-`c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\explorer_survey_1\handoff.md`
-Keep `progress.md` updated in your directory.
-When finished, send a message to the orchestrator summarizing that your handoff report is ready at that path.
-
-## 2026-11-04T15:26:26Z
-**Context**: Survey of Codex Máxima and scientific literature continuity
-**Content**: Checking in on your progress. Have you completed the analysis of the Codex Máxima literature and the prior paper (Ferreira, Santos, Ayala et al. 2026)?
-**Action**: Please provide a status update or finalize your handoff.md report.
+Task Objectives:
+1. Initialize your BRIEFING.md and progress.md in your working directory.
+2. Explore the codebase in the project root:
+   - Examine `v1/` and `v2/` directories, specifically `Paper_arxiv_v1.tex`, `Paper_arxiv_v2.tex`, `Paper_revista_v1.tex`, `Paper_revista_v2.tex`, associated scripts (`v2/scripts/`), figures (`v2/figures/`), and templates (`latex-universal-template/`, `latex-length-check/`, `latex-supplemental-document/`).
+   - Identify the trajectory of changes between v1 and v2, and identify exactly what needs to be upgraded for v3 to satisfy all requirements in ORIGINAL_REQUEST.md (arXiv and Q1 Journal standalone versions, figures, scripts, Overleaf bundle, <= 100 pages, pedagogical appendices).
+3. Map all structural sections, figure generation scripts, LaTeX package requirements, compilation commands (pdflatex/xelatex/bibtex), and delivery structure for `v3/`.
+4. Write a comprehensive, self-contained handoff report to:
+   c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\explorer_survey_1\handoff.md
+5. When finished, send a brief message to your parent orchestrator (0e3cebcb-1a99-4033-8616-01b2ec6f9ad7) using send_message with the path to your handoff.md.

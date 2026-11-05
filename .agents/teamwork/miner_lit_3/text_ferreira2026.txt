@@ -1,0 +1,2871 @@
+=== 2026-Second-order moment equivalence of twisted Gaussian Schell model beams and orbital angular momentum eigenmodes.pdf ===
+
+
+--- PAGE 1 ---
+Journal of Optics
+     
+PAPER • OPEN ACCESS
+Second-order moment equivalence of twisted
+Gaussian Schell model beams and orbital angular
+momentum eigenmodes
+To cite this article: T Ferreira et al 2026 J. Opt. 28 095601
+ 
+View the article online for updates and enhancements.
+You may also like
+Representation of total angular momentum
+states of beams through a four-parameter
+notation
+Shiyao Fu, Lan Hai, Rui Song et al.
+-
+Interplay of helical and linear phase
+correlations in the orbital angular
+momentum flux dynamics
+Yongtao Zhang, Yangjian Cai and Olga
+Korotkova
+-
+The R-index: a universal metric for
+evaluating OAM content and mode purity
+in optical fields
+Monika Bahl, Georgios M Koutentakis,
+Mikhail Maslov et al.
+-
+This content was downloaded from IP address 191.115.213.206 on 01/09/2026 at 16:31
+
+--- PAGE 2 ---
+J. Opt. 28 (2026) 095601
+https://doi.org/10.1088/2040-8986/ae9b1d
+OPEN ACCESS
+RECEIVED
+13 May 2026
+REVISED
+29 July 2026
+ACCEPTED FOR PUBLICATION
+17 August 2026
+PUBLISHED
+1 September 2026
+Original content from
+this work may be used
+under the terms of the
+Creative Commons
+Attribution 4.0 licence.
+Any further distribution
+of this work must
+maintain attribution to
+the author(s) and the title
+of the work, journal
+citation and DOI.
+PAPER
+Second-order moment equivalence of twisted Gaussian Schell
+model beams and orbital angular momentum eigenmodes
+T Ferreira1,2,3, G Santos2,4, S Ayala2,4, Lucas Hutter1,5, E S Gómez2, G Lima2,4, G Cañas3
+and S P Walborn2,4,∗
+1 Instituto de Física, Universidade Federal Fluminense, Niterói, RJ, Brazil
+2 Departamento de Física, Universidad de Concepción, 160-C Concepción, Chile
+3 Departamento de Física, Universidad del Bío-Bío, Collao 1202, Concepción, Chile
+4 ANID-Millennium Science Initiative Program–Millennium Institute for Research in Optics, Universidad de Concepción, 160-C
+Concepción, Chile
+5 Instituto de Física, Universidade Federal do Rio de Janeiro, Rio de Janeiro, RJ, Brazil
+∗Author to whom any correspondence should be addressed.
+E-mail: swalborn@udec.cl
+Keywords: orbital angular momentum, twisted gaussian schell model, paraxial optics
+Abstract
+We show that the covariance matrix of any cylindrically symmetric coherent orbital angular
+momentum (OAM) eigenmode with quantum number ℓtakes a universal form depending only on
+⟨r2⟩, ⟨k2
+r⟩, and ℓ, independently of the radial profile, and that this form is identical to the covari-
+ance matrix of a twisted Gaussian Schell-model (TGSM) beam. More specifically, both matri-
+ces share the same pattern of zero and nonzero entries, with the off-diagonal blocks proportional
+to ℓand the TGSM twist parameter u, respectively. This result holds for an arbitrary radial pro-
+file and provides direct term-by-term identification of parameters between the two sets of beams.
+We work out the correspondence in detail for three important families: Laguerre–Gaussian (LG),
+Bessel–Gaussian (BG), and perfect vortex beams (PVBs), and derive the conditions under which
+each coherent OAM mode maps onto a physically realizable TGSM beam. Because the covariance
+matrix governs second-moment evolution under arbitrary ABCD (symplectic) transformations,
+any two beams sharing the same covariance matrix are second-order indistinguishable at every
+propagation plane. In particular, the matched TGSM and coherent OAM beams share identical
+beam-width evolution, far-field divergence, and M2 beam-quality factor. In particular, the well-
+developed TGSM propagation toolbox applies directly to the second-order moment evolution of
+the three coherent families. We further show that within each beam family the covariance matrix
+uniquely determines the beam parameters. Additional results include cross-family second-moment
+equivalence conditions and a proof that the PVB modes span the full space of transverse fields for
+any finite ring width, and form an orthonormal (delta-normalized) basis in the narrow-ring limit
+w →0.
+1. Introduction
+The early 1990 s witnessed two major and largely independent developments in the study of structured
+optical fields. The first was the renewed recognition that paraxial optical beams may carry quantized
+orbital angular momentum (OAM) given by ℓper photon, following the landmark work of Allen et al
+[1], which identified the Laguerre–Gaussian (LG) modes as eigenfunctions of the OAM operator Lz.
+Closely related families such as Bessel–Gaussian (BG) beams and other vortex-type solutions were shown
+to carry similar azimuthal structure [2, 3]. These beams became tools of central importance in classical
+optics, with applications in optical manipulation, holography, microscopy, and classical multiplexing in
+high-dimensional OAM spaces, and the study of topological defects and singular optics [4–8]. In quan-
+tum optics, OAM modes have been used for quantum information encoding in high-dimensional Hilbert
+spaces [9], quantum state engineering [10], metrology [11].
+© 2026 The Author(s). Published by IOP Publishing Ltd
+
+--- PAGE 3 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+The second was the generalization of classical coherence theory to include twisted Gaussian Schell-
+model (TGSM) beams, introduced as an extension of the well-known Gaussian Schell-model formulation
+of partially coherent fields [12–14]. Classical Gaussian Schell-model beams are defined by a Gaussian
+intensity profile and a Gaussian spatial coherence function. TGSM beams extend this formulation by
+incorporating a nontrivial twist produced by a phase term coupling the transverse coordinates in the
+mutual coherence function. TGSM beams represent the first class of partially coherent fields whose
+second-order statistics naturally encode nonzero OAM, even in the absence of a coherent wavefront vor-
+tex. They provided a pathway for generalizing concepts such as optical vorticity, phase-space rotation,
+and coherence-induced beam shaping to the partially coherent regime [15, 16]. Applications of TGSM
+beams include more robust free-space optical propagation in turbulent media [17, 18], sub-Rayleigh
+imaging [19], suppression of scintillation [20] and optical trapping [21]. More recently, TGSM beams
+have been generated experimentally and their twist phase measured and controlled [22–26]. Their role as
+input beams in non-linear optical processes has been studied both theoretically and experimentally [27–
+31], where it has been shown that the twist phase is transferred to the correlations of down-converted
+photon pairs [27–29, 31]. More recently, the Gaussian–Schell model has also been formulated in the
+quantum domain: Dawkins et al introduced a quantum Gaussian–Schell model that directly links
+Gaussian coherence theory to the quantum statistical properties of light [32], You et al extended these
+ideas to multiphoton systems carrying OAM, isolating the classical and quantum contributions to the
+coherence and analyzing correlation properties in OAM space [33], and Toscano et al introduced a quan-
+tum Twisted Gaussian Schell state defined in two bosonic modes [34].
+Despite their parallel development, TGSM beams and OAM-eigenstate beams originate from con-
+ceptually distinct frameworks. TGSM beams arise from second-order coherence theory and are charac-
+terized through their mutual coherence function. A central object in the description of partially coher-
+ent Gaussian beams (such as TGSMs) is the second-order moment (covariance) matrix, which can be
+calculated from their Wigner distribution or from their mutual intensity. For Gaussian beams such as
+the TGSM, this matrix completely characterizes the field: its elements encode beam widths, curvatures,
+coherence lengths, and correlations between spatial and angular degrees of freedom.
+On the other hand, OAM eigenstates, given by
+ψ(⃗r) = U (r)eiℓϕ,
+(1)
+are characterized as fully-coherent solutions of the paraxial wave equation with well-defined OAM pro-
+portional to ℓ. The quantum number ℓis also known as the topological charge, and we use these two
+terms interchangeably. In general these are not gaussian beams, and thus in principle they cannot be
+characterized only by considering their first and second-order moments. For a fully coherent OAM
+eigenstate of the form (1), the CM is computed from the intensity distribution |ψ|2 and its phase gra-
+dients; it therefore depends on the radial profile U(r) through the moments ⟨r2⟩and ⟨k2
+r⟩.
+The connection between second-order moments and OAM has been explored in several contexts.
+Gao, Wei and Weber showed that the OAM of an arbitrary beam is encoded in the cross-moments
+⟨xky⟩−⟨ykx⟩[35], and Serna et al performed a complete second-order moment characterization of
+a doughnut-type beam, confirming agreement with LG theory [36]. The second-order properties of
+individual cylindrically symmetric beam families have been extensively investigated. In particular, M2-
+factor and second-moment width calculations have been reported for LG and BG beams [37–39], while
+the second-moment radius of perfect vortex beams (PVBs) has also been studied [40]. Simon and
+Mukunda’s original analysis of TGSM beams identified their normal-mode decomposition in terms of
+LG functions [28, 41], thus demonstrating that the TGSM is a statistical mixture of LG modes.
+The present work operates at a different level, showing that each individual coherent OAM eigen-
+state already has a CM with the same structure as a TGSM beam, without any decomposition. By ‘same
+structure’ we mean that both matrices share the same pattern of zero and nonzero entries, so that a
+direct term-by-term identification of beam parameters is possible. Moreover, the xky and ykx off-diagonal
+blocks relevant to angular momentum are proportional to the OAM quantum number ℓand twist phase
+u, respectively. We derive explicit parameter identifications for three canonical beam families. Specifically,
+this structural equivalence does not appear to have been stated explicitly in the literature, and provides a
+direct bridge between the coherent structured-beam and partially coherent communities.
+The rest of this paper is organized as follows. In section 2 we review the TGSM covariance matrix
+formalism. Section 3 derives the CM of a general cylindrically symmetric OAM eigenstate and identi-
+fies it with the TGSM form, then works out the explicit parameter identifications for LG, PVB, and BG
+modes, derives the physical realizability conditions, examines cross-family parameter relations, and shows
+2
+
+--- PAGE 4 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+that the CM uniquely determines beam parameters within each family. Section 4 discusses the conse-
+quences for beam propagation and the M2 factor, showing that any TGSM beam propagation result
+through an ABCD system transfers directly to the matched coherent OAM beam. Section 5 provides
+concluding remarks.
+2. Twisted Gaussian Schell-model beams
+The TGSM describes gaussian beams with cross spectral density
+Γ(r1,r2) ∝exp
+"
+−(r1 + r2)2
+4σ2
+−(r1 −r2)2
+2δ2
++ iku (r1 × r2)z
+#
+.
+(2)
+Here σ is the beam waist, δ is the transverse coherence length, and the real parameter u, known as
+the ‘twist phase’, controls the amount of correlation-induced rotation.
+In a transverse plane located at longitudinal position z, we can define the vector of cartesian coor-
+dinates of the transverse position (x,y) and wave vector (kx,ky) as ξ = (x,kx,y,ky). In this coordinate
+system, the TGSM describes a gaussian beam with a covariance matrix given by [14, 42]
+T =
+
+
+
+
+
+σ2
+−kσ2
+Rc
+0
+kuσ2
+−kσ2
+Rc
+τ 2
+−kuσ2
+0
+0
+−kuσ2
+σ2
+−kσ2
+Rc
+kuσ2
+0
+−kσ2
+Rc
+τ 2
+
+
+
+
+,
+(3)
+where τ 2 = 1
+δ2 +
+1
+4σ2 + k2 
+σ2
+R2c + u2σ2
+is the variance of the wave vector distribution, with Rc repre-
+senting the radius of curvature. For the CM above to represent a bonafide TGSM beam, the twist phase
+must satisfy [42]
+|u| ⩽1
+kδ2 .
+(4)
+By calculating ⟨Lz⟩= ⟨xky⟩−⟨ykx⟩, using units in which ¯h = 1 so that pj = kj, we see that TGSM beams
+carry an average OAM of 2kuσ2 per photon.
+The propagation of the beams” second moments through ABCD systems can be calculated from their
+covariance matrices in a single transverse plane. For simplicity, we take this plane to be z = 0, where the
+radius of curvature Rc tends to infinity, causing the terms proportional to
+1
+Rc to vanish.
+3. Covariance matrix of cylindrically symmetric eigenmodes
+Let us now consider a paraxial optical beam with cylindrical symmetry, such that it be written in the
+form (1). We consider beams propagating along the z-axis, such that ⟨x⟩= ⟨y⟩= ⟨kx⟩= ⟨ky⟩= 0 for all
+cases discussed here. Our first main result is that eigenmodes of the form (1) have covariance matrix of
+the form
+C =
+
+
+
+
+
+
+⟨r2⟩
+2
+0
+0
+ℓ
+2
+0
+⟨k2
+r ⟩
+2
+−ℓ
+2
+0
+0
+−ℓ
+2
+⟨r2⟩
+2
+0
+ℓ
+2
+0
+0
+⟨k2
+r ⟩
+2
+
+
+
+
+
+
+.
+(5)
+All calculations are shown in appendix A. Here
+⟨r2⟩= 2π
+ˆ ∞
+0
+r3|U (r)|2dr
+(6)
+and
+⟨k2
+r⟩= 2π
+ˆ ∞
+0
+"
+r
+dU
+dr
+2
++ ℓ2
+r U2
+#
+dr ,
+(7)
+3
+
+--- PAGE 5 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+where in general the beam divergence depends on ℓ[43]. We see by inspection that the covari-
+ance matrix C has the same structure as the covariance matrix T of the TGSM (3): both have identical
+zero–nonzero entry patterns, which allows a direct term-by-term parameter identification without any
+approximation.
+Comparing the elements of these two covariance matrices, we see that we can identify the beam
+parameters of the TGSM with those of the OAM eigenmodes. We can associate the beam widths as
+σ2 = ⟨r2⟩/2,
+(8)
+τ 2 = ⟨k2
+r⟩/2,
+(9)
+the twist phase with the OAM number
+u =
+ℓ
+2kσ2 =
+ℓ
+k⟨r2⟩,
+(10)
+and the inverse square of the coherence length as
+1
+δ2 = τ 2 −
+ 1 + ℓ2
+4σ2
+= ⟨k2
+r⟩
+2
+−
+ 1 + ℓ2
+2⟨r2⟩.
+(11)
+With the above parameter identification, we can now analyze the TGSM realizability condition,
+equation (4). This allows us to determine whether a TGSM beam exists whose covariance matrix
+matches that of a given OAM eigenmode. Using equations (10) and (11), we obtain
+|ℓ|
+⟨r2⟩⩽⟨k2
+r⟩
+2
+−1 + ℓ2
+2⟨r2⟩,
+(12)
+which, after some straightforward algebraic manipulations, leads to
+⟨r2⟩⟨k2
+r⟩⩾(1 + |ℓ|)2 .
+(13)
+Interestingly, this inequality coincides with the generalized uncertainty relation for paraxial OAM
+beams [43]. Since this relation is always satisfied, any cylindrically symmetric OAM eigenmode can be
+associated with a physically realizable TGSM beam having the same second-order moments.
+To make further identifications, the radial function U(r) must be specified. In the following subsec-
+tions, we do this for three important types of cylindrically symmetric beams.
+3.1. Second-order equivalence classes
+Equation (5) establishes a universal covariance form: regardless of the specific radial profile U(r), the
+entire second-order structure of any cylindrically symmetric OAM eigenmode is captured by just three
+quantities, ⟨r2⟩, ⟨k2
+r⟩, and ℓ, as derived in appendix A. This motivates defining a second-order equiv-
+alence relation: two beams ψ1 and ψ2 are second-order equivalent, written ψ1 ∼ψ2, if and only if
+C1 = C2. Under symplectic (ABCD) propagation, the covariance matrix transforms as C 7→SCST, so the
+equivalence relation is preserved at every propagation plane: if ψ1 ∼ψ2 at z = 0, then ψ1 ∼ψ2 for all
+z. Consequently, all second-order observables, that is the beam width, far-field divergence, M2 factor,
+and OAM content, are identical for any two members of the same equivalence class, independently of
+the detailed radial structure. The specific beam families considered below (LG, PVB, BG) represent dis-
+tinct equivalence classes, each parametrized by their respective values of (⟨r2⟩,⟨k2
+r⟩,ℓ). The TGSM beam
+matched to each class is identified by the correspondence of equations (10) and (11). We stress that this
+is strictly a second-order (covariance-matrix) equivalence, and not a complete physical equivalence: two
+fields sharing the same covariance matrix agree on all observables determined by second-order moments,
+but may differ in their higher-order statistics, mutual coherence functions, modal decompositions, and
+detailed field distributions. In particular, the matched TGSM beam is partially coherent while the OAM
+eigenmode is fully coherent, so the two fields remain physically distinct despite sharing the same covari-
+ance matrix.
+3.2. Laguerre-Gaussian beams
+An important set of optical beams with OAM and of the form (1) are the LG modes. They are labeled
+by their radial and azimuthal indices p and ℓ, where the latter corresponds to the OAM value of the
+mode. The normalized radial function in cylindrical coordinates is given by:
+Up,ℓ(r) = Cp,ℓ
+2
+ℓ
+2 r|ℓ|
+w|ℓ|+1
+0
+L|ℓ|
+p
+2r2
+w2
+0
+
+e−r2/w2
+0,
+(14)
+4
+
+--- PAGE 6 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+where: L|ℓ|
+p (x) is the associated Laguerre polynomial of order p and parameter |ℓ|, w0 is the beam waist
+and Cp,ℓ=
+q
+2p!
+π(p+|ℓ|)! is a normalization constant. The mode order is given by N = 2p + |ℓ|. The Fourier
+Transform of an LG beam is also an LG mode, with a beam waist given by wk = 2
+w0 .
+In appendix B, we show that the CM of the LG beam is given by equation (5), with
+⟨r2⟩= w2
+0
+2 (2p + |ℓ| + 1), and
+(15)
+and
+⟨k2
+r⟩= 2
+w2
+0
+(2p + |ℓ| + 1) .
+(16)
+Substituting these results in equations (10) and (11), we find that the twist phase and the inverse of the
+transverse coherence length of the corresponding TGSM beam are given by:
+u =
+2ℓ
+kw2
+0 (N + 1), and
+(17)
+1
+δ2 = 4p2 + 4p(|ℓ| + 1) + 2|ℓ|
+w2
+0 (2p + |ℓ| + 1)
+= N(N + 2) −ℓ2
+w2
+0 (N + 1)
+.
+(18)
+As shown in section 3, any covariance matrix arising from an OAM eigenmode can be reproduced by
+a TGSM beam. However, the converse is not generally true. To illustrate this point, we consider the case
+of LG modes. To understand this, consider the following second moments product for an LG beam:
+⟨x2⟩⟨k2
+x⟩= (N + 1)2
+4
+.
+(19)
+Since the order N is an integer, this product can assume only a discrete set of values. In contrast, the
+product σ2τ 2 can vary continuously, so an arbitrary TGSM covariance matrix will not always satisfy
+the constraint imposed by an LG mode. The CM correspondence therefore does not exhaust all TGSM
+beams, it identifies a discrete subset matched to integer-order LG modes.
+It is also worth noting that an LG mode with p = 0 saturates the equality in equation (13).
+Consequently, the corresponding TGSM beam with the same covariance matrix has the maximal twist
+allowed by the realizability condition.
+3.3. Perfect vortex beams
+PVBs are optical fields whose ring radius remains almost independent of the topological charge ℓ, which
+is valuable for applications requiring consistent mode geometry, such as OAM-multiplexed communica-
+tions in structured fibers [44, 45].They are given by:
+Uℓ,R (r) = Ae−r2+R2
+w2 Iℓ
+2Rr
+w2
+
+,
+(20)
+where: Iℓ(x) is the modified Bessel function of the first kind of order ℓ, R is the ring radius, w is the
+ring width parameter and A is a normalization constant. For R ≫w and |ℓ| ≪R
+w, the modified Bessel
+function can be approximated by its leading asymptotic term Iℓ
+  2Rr
+w2
+
+≈
+w
+2
+√
+π Rre
+2Rr
+w2 , so that:
+Uℓ,R (r) = UR (r) = A
+√re−(r−R)2
+w2
+.
+(21)
+This corresponds to the regime of interest, in which the intensity profile of the PVBs becomes effectively
+independent of ℓ[40]. Unlike LG or BG beams, in this regime their transverse intensity profile does not
+widen significantly as OAM increases, only the azimuthal phase changes. Another difference from LG
+beams is that, at finite w, the PVB modes are complete but non-orthogonal and redundant: they still
+span the full space of transverse fields, but only in the narrow-ring limit w →0 do they become a true
+orthonormal (delta-normalized) basis. This is demonstrated explicitly in appendix D.
+In appendix C, we show that, for a PVB with R ≫w and |ℓ| ≪R
+w, we have:
+⟨r2⟩= R2 + w2
+4 , and
+(22)
+5
+
+--- PAGE 7 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+⟨k2
+r⟩= 1
+w2 + ℓ2 −1
+4
+R2
+.
+(23)
+In the intermediate regime where the topological charge |ℓ| becomes comparable to the ring aspect
+ratio R/w, corrections to the ideal vortex behavior become increasingly relevant. In particular, although
+PVBs are commonly assumed to be independent of the OAM order, the second-moment width exhibits
+a residual
+√
+ℓdependence, with a proportionality factor determined by the ring aspect ratio [40, 43].
+Therefore, this correction can remain small for sufficiently large values of R/w, while becoming increas-
+ingly relevant when |ℓ| becomes comparable to this scale. As shown in tables 2 and 3, the analytical
+expressions remain reasonably close to the numerical evaluation of the complete PVB expressions over
+a broad range of parameters, including cases beyond the strict asymptotic regime.
+Substituting the results for the second moments given in equations (28) and (23) into equations (10)
+and (11), the twist phase is given by
+u =
+ℓ
+k
+ R2 + w2
+4
+ ≈
+ℓ
+kR2 ,
+(24)
+and the inverse transverse coherence length is given by
+1
+δ2 = 1
+2
+ 1
+w2 + ℓ2 −1
+4
+R2
+
+−
+1 + ℓ2
+2
+ R2 + w2
+4
+ ≈
+1
+2w2 −5
+8R2 .
+(25)
+In both expressions, the last approximation corresponds to the leading-order approximation ⟨r2⟩≈R2.
+The use of this approximation is justified since it remains accurate over a broad range of parameters, as
+verified in table 2. This differs from the corresponding leading-order approximation for ⟨k2
+x⟩, for which
+neglecting the ℓdependence leads to significant errors, as shown in table 3.
+In the asymptotic regime of PVBs, characterized by R/w ≫1, the second moments satisfy ⟨x2⟩⟨k2
+x⟩≈
+R2
+4w2 ≫1. Imposing this condition on the TGSM beams parameters leads to σ2τ 2 ≫1. Because the twist
+parameter u is limited by the requirement given in (4), the dominant contribution to τ 2 comes from the
+term
+1
+δ2 . Consequently,
+σ2
+δ2 ≫1 ,
+(26)
+showing that PVBs in the regime of large R/w correspond to low-coherence TGSMs.
+3.4. Bessel-Gaussian beams
+BG beams are optical fields formed by modulating an ideal (non-diffracting) Bessel beam with a
+Gaussian envelope, yielding a physically realizable beam that maintains a narrow central core and
+exhibits extended propagation invariance. The combination of their quasi-non-diffracting propagation,
+self-healing behavior and well-defined OAM makes these beams attractive for free-space optical commu-
+nication systems [46].
+They are of the form (1), with a radial function given by:
+Uℓ(r) = BℓJℓ(rkb)e
+−r2
+w2
+b ,
+(27)
+where: Jℓ(x) is the Bessel function of the first kind of order ℓ, Bℓis a normalization constant and wb is
+the Gaussian beam waist. In appendix E, we show that, for a BG beam with wb ≫1
+kb , and |ℓ| ≪wbkb
+2 ,
+corresponding to the regime in which many oscillations of the Bessel function occur within the gaussian
+envelope, we have:
+⟨r2⟩=
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+
+, and
+(28)
+⟨k2
+r⟩=
+
+k2
+b + 1
+w2
+b
+
+.
+(29)
+The BG second moments follow from the PVB moments through the exact Fourier transform rela-
+tion discussed in appendix E. Therefore, the accuracy of the analytical expressions above is inherited
+from the approximations used for the PVB moments, with the Fourier-space parameter correspondence
+R →kb and w →2/wb.
+6
+
+--- PAGE 8 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+Table 1. Correspondence between covariance matrix parameters for TGSM beams, LG beams,
+PVBs and BG beams.
+TGSM
+LG
+PVB
+BG
+σ2
+w2
+0
+4 (N + 1)
+1
+2
+(
+R2 + 1
+4w2
+)
+1
+2
+(
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+)
+τ 2
+1
+w2
+0
+(N + 1)
+1
+2
+(
+1
+w2 + ℓ2 −1
+4
+R2
+)
+1
+2
+(
+k2
+b + 1
+w2
+b
+)
+u
+2ℓ
+kw2
+0(N + 1)
+ℓ
+kR2
+u =
+ℓ
+k
+(
+w2
+b
+4 +
+ℓ2−1
+4
+k2
+b
+)
+1
+δ2
+N(N + 2) −ℓ2
+w2
+0(N + 1)
+1
+2w2 −
+5
+8R2
+1
+2
+
+k2
+b −
+1 + ℓ2
+(
+w2
+b
+4 +
+ℓ2−1
+4
+k2
+b
+)
+
+
+Table 2. Relative errors (%) of the analytical approximation given by equation (112) and of the leading-order approximation (R2/2) for
+⟨x2⟩, both with respect to the numerical evaluation of the complete PVB expression, for different values of ℓ.
+ℓ= 0
+ℓ= 5
+ℓ= 10
+R/w
+equation (112)
+R2
+2
+equation (112)
+R2
+2
+equation (112)
+R2
+2
+2.5
+1.89 × 10−1
+3.66
+13.1
+16.4
+31.3
+33.9
+5
+1.03 × 10−2
+9.80 × 10−1
+1.00
+1.98
+3.80
+4.75
+10
+6.30 × 10−4
+2.49 × 10−1
+6.23 × 10−2
+3.11 × 10−1
+2.50 × 10−1
+4.99 × 10−1
+20
+3.91 × 10−5
+6.24 × 10−2
+3.87 × 10−3
+6.63 × 10−2
+1.56 × 10−2
+7.81 × 10−2
+40
+2.44 × 10−6
+1.56 × 10−2
+2.42 × 10−4
+1.59 × 10−2
+9.75 × 10−4
+1.66 × 10−2
+Using the results for the second moments in equations (28) and (29), the twist phase is given by
+u =
+ℓ
+k
+ w2
+b
+4 + ℓ2−1
+4
+k2
+b
+ .
+(30)
+The inverse transverse coherence length is given by
+1
+δ2 = 1
+2
+
+k2
+b + 1
+w2
+b
+
+−
+1 + ℓ2
+2
+ w2
+b
+4 + ℓ2−1
+4
+k2
+b
+
+≈1
+2
+
+k2
+b −
+1 + ℓ2
+ w2
+b
+4 + ℓ2−1
+4
+k2
+b
+
+
+.
+(31)
+In the last approximation, we have used the leading-order expression ⟨k2
+x⟩≈k2
+b/2. This choice is anal-
+ogous to the PVB case, but with the roles of the spatial and spatial-frequency moments exchanged
+through the Fourier transform correspondence. While the leading-order approximation is accurate for
+⟨x2⟩in PVB beams, the corresponding approximation for BG beams applies to ⟨k2
+x⟩. Conversely, neglect-
+ing the ℓdependence in ⟨x2⟩may introduce significant errors when the OAM contribution becomes
+relevant.
+Similarly to the PVBs, the condition in (26) must be fulfilled in the asymptotic regime discussed
+above. This means that to describe a BG beam via the covariance matrix formalism in in this regime,
+one should employ the parameter identifications given in table 1, which correspond to a low-coherence
+TGSM beam. In other words, under these conditions, the matched TGSM for a BG beam or PVB neces-
+sarily exhibits low coherence, and the full TGSM propagation toolbox applies under that identification.
+3.5. Comparison and summary
+Before comparing the families, we emphasize an important distinction: the LG identifications
+(equations (15)–(19)) are exact and hold for arbitrary mode indices p and ℓ, whereas the PVB and
+BG identifications (equations (22)–(25) and (28)–(31) are obtained from asymptotic approximations.
+Nevertheless, as shown by the numerical comparisons discussed above, these expressions can remain
+accurate beyond their formal asymptotic regimes, with deviations becoming more significant as the cor-
+responding parameters depart from these regimes.
+7
+
+--- PAGE 9 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+Table 3. Relative errors (%) of the analytical approximation given by equation (131) and of the leading-order approximation (1/(2w2))
+for ⟨k2
+x⟩, both with respect to the numerical evaluation of the complete PVB expression, for different values of ℓ.
+ℓ= 0
+ℓ= 5
+ℓ= 10
+R/w
+equation (131)
+1
+2w2
+equation (131)
+1
+2w2
+equation (131)
+1
+2w2
+2.5
+9.50 × 10−1
+5.16
+8.21 × 10−1
+79.7
+32.3
+92.2
+5
+4.32 × 10−2
+1.05
+1.53
+50.5
+5.57 × 10−2
+79.9
+10
+2.55 × 10−3
+2.53 × 10−1
+1.88 × 10−1
+20.0
+3.77 × 10−1
+50.1
+20
+1.57 × 10−4
+6.27 × 10−2
+1.44 × 10−2
+5.84
+4.69 × 10−2
+20.0
+40
+9.78 × 10−6
+1.56 × 10−2
+9.49 × 10−4
+1.52
+3.61 × 10−3
+5.87
+The three families represent three qualitatively different regimes of the coherence–OAM relationship,
+with parameter correspondence summarized in table 1. For LG modes, δ and u are coupled through
+the mode indices. Changing ℓat fixed p changes both simultaneously, and only at p = 0 is the coher-
+ence length infinite. For PVBs, the leading-order approximation ⟨r2⟩≈R2 makes the effective coherence
+length independent of ℓ, allowing the OAM and the effective coherence length to be treated as indepen-
+dent parameters of the matched TGSM. For BG beams, the analytical expressions retained here preserve
+the ℓdependence of the coherence length, so this decoupling does not occur.
+3.6. Parameter determination from the covariance matrix within a mode family
+Although a single covariance matrix may represent both a TGSM beam and a coherent OAM beam, as
+shown above, it uniquely determines the TGSM beam through the parameters σ, u, and δ [14]. Thus,
+two distinct TGSM beams cannot share the same CM. The LG, PVB and BG beams are non-gaussian
+functions, in general, and thus it is to be expected that they cannot be determined by the elements of
+the CM alone. However, somewhat surprisingly, we note here that the CM is indeed sufficient in some
+cases. First, for all beams of the form (1), the parameter ℓfollows directly from the anti-diagonal ele-
+ments of equation (5), so that only the remaining parameters need to be assessed: w0 and p for LG
+modes, w and R for PVBs, and wb and kb for BG beams.
+For an LG beam, the radial parameter p can be determined from the product ⟨x2⟩⟨k2
+x⟩, as shown in
+equation (19). Since ℓis already fixed and p⩾0, this relation specifies p unambiguously. Substituting this
+value into equation (15) or equation (16) then determines w0. Therefore, the covariance matrix uniquely
+determines the LG mode parameters.
+For PVB and BG beams, the diagonal elements of the covariance matrix provide two equations for
+the two beam parameters. Although these equations are nonlinear, we can verify that they admit no
+additional solutions within the regime of validity of the asymptotic moments.
+For PVB beams, suppose two different parameter sets (R1,w1) and (R2,w2) with the same topological
+charge ℓproduce the same covariance matrix. Using equations (22) and (23), we obtain two equations
+relating the corresponding beam parameters. Combining these equations for a nontrivial solution yields
+ℓ2 −1
+4 = 4
+R1
+w1
+2 R2
+w2
+2
+.
+(32)
+For the uniqueness proof, it is sufficient to assume the weaker condition |ℓ| < R/w, implied by the
+asymptotic regime used in the derivation of the second moments. Combining this inequality with the
+previous result gives w2 > 2R2. Therefore, any second solution necessarily lies outside the parameter
+regime of interest for PVBs. Within this regime, the covariance matrix uniquely determines the PVB
+parameters.
+The proof for BG beams is analogous. Assuming two different parameter sets (kb1,wb1) and (kb2,wb2)
+with the same covariance matrix, and combining equations (28) and (29), one finds
+ℓ2 −1
+4 = 1
+4 (kb1wb1)2 (kb2wb2)2 .
+(33)
+For the uniqueness proof, it is sufficient to assume the weaker condition |ℓ| < kbwb/2, implied by the
+asymptotic regime used in the derivation of the second moments. Combining this inequality with the
+previous result gives kb2wb2 < 1. Therefore, any second solution necessarily lies outside the parameter
+regime of interest for BG beams, where several Bessel oscillations are contained within the Gaussian
+envelope.
+8
+
+--- PAGE 10 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+3.7. Cross-family parameter correspondences
+Table 1 summarizes the correspondence between the covariance matrix parameters of the TGSM beam
+and those of the cylindrically symmetric beams analyzed in this work. The same comparison of matrix
+elements, when applied to the coherent beam families, provides the parameter relations under which
+their CMs coincide.
+A comparison of the LG mode and PVB covariance matrices using equations (15), (16), (22),
+and (23) leads to
+(N + 1)2 =
+
+R2 + w2
+4
+ 1
+w2 + ℓ2 −1
+4
+R2
+
+,
+(34)
+and
+w2
+0 = 2
+v
+u
+u
+u
+u
+u
+t
+R2 + w2
+4
+1
+w2 + ℓ2 −1
+4
+R2
+.
+(35)
+Similarly, comparing the LG and BG covariance matrices using equations (15), (16), (28), and (29)
+yields
+(N + 1)2 =
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+
+k2
+b + 1
+w2
+b
+
+,
+(36)
+and
+w2
+0 = 2
+v
+u
+u
+u
+u
+u
+t
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+k2
+b + 1
+w2
+b
+.
+(37)
+Conversely, expressing the PVB or BG parameters in terms of the LG parameters requires inverting
+the corresponding relations, which leads to a nonlinear system. Since ⟨x2⟩⟨k2
+x⟩≫1 for both PVBs and
+BG beams in the asymptotic regimes considered, equation (19) shows that the corresponding LG mode
+necessarily lies in the large-N regime.
+Finally, comparing the covariance matrices of the PVB and BG beams also leads to a nonlinear sys-
+tem. The corresponding relation for R2 can be written as
+R2 = w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+−w2
+4 .
+(38)
+Substituting this expression into the second covariance-matrix relation gives
+1
+w2 +
+ℓ2 −1
+4
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+−w2
+4
+= k2
+b + 1
+w2
+b
+.
+(39)
+Since the w2/4 contribution appears as a correction to the remaining terms in the denominator, it can
+be neglected to obtain the simplified expression
+w2 ≈
+
+k2
+b + 1
+w2
+b
+−
+ℓ2 −1
+4
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+
+
+−1
+.
+(40)
+9
+
+--- PAGE 11 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+4. Beam propagation and M2 factor equivalence
+A direct consequence of the CM equivalence is that the full TGSM propagation toolbox applies to any
+matched coherent OAM beam. Once the parameter identifications of section 3 are made, all TGSM
+results for beam-width evolution, Rayleigh range, and far-field divergence under arbitrary ABCD sys-
+tems carry over without further calculation. For a beam propagating in free space, the covariance matrix
+evolves as C(z) = S(z)C(0)S(z)T, where S(z) is the symplectic transfer matrix for free-space propagation
+a distance z [47]. Because two beams with the same C(0) are mapped by the same S(z), they have the
+same C(z) at every plane. In particular, they share the same beam-width evolution, the same Rayleigh
+range, and the same far-field divergence angle. We emphasize, however, that this propagation equiv-
+alence is restricted to observables that are fully determined by the second-order moments and evolve
+under symplectic (ABCD) transformations. Quantities that depend on the phase-singularity structure,
+the detailed modal content, higher-order coherence functions, or other non-Gaussian features of the field
+are not captured by the covariance matrix, and therefore cannot be inferred from the correspondence.
+At the reference plane z = 0, chosen such that the position–momentum correlation vanishes, a com-
+pact measure of this propagation equivalence is the beam-quality parameter
+M2 = πσw (0)θ∞
+λ
+,
+(41)
+where σw(z) =
+p
+2⟨r2⟩(z) is the second-moment beam radius and θ∞=
+p
+2⟨k2r⟩(0)/k2 is the far-field
+divergence half-angle, with both definitions holding for cylindrically symmetric beams. Substituting these
+expressions into equation (41) and using k = 2π
+λ , we obtain
+M2 =
+p
+⟨r2⟩(0) ⟨k2r⟩(0),
+(42)
+which is invariant under symplectic transformations. This definition follows the second-moment con-
+vention of [14, 42], where M2 = 1 for a fundamental Gaussian beam. The second-moment convention
+adopted here coincides with the ISO 11 146 standard definition of the beam-propagation ratio, which
+is based on the second moments of the intensity distribution. We note that equation (42) is the beam-
+quality factor for radially (cylindrically) symmetric beams, for which a single scalar M2 suffices; in the
+general anisotropic (astigmatic) case, the beam quality is instead characterized by separate factors M2
+x
+and M2
+y or, more generally, by the full second-moment matrix. Since all beams considered in this work
+are cylindrically symmetric, the scalar definition applies throughout.
+5. Conclusion
+In this work we established a correspondence between the covariance matrices of TGSM beams and
+those of coherent OAM-carrying beams, including LG, BG, and PVBs, showing that these matrices share
+the same structural form. As a consequence, the covariance matrix alone may not uniquely identify the
+family to which an OAM beam belongs. More broadly, equation (5) defines a second-order equivalence
+relation on cylindrically symmetric OAM beams: two such beams are second-order equivalent if and
+only if they share the same values of ⟨r2⟩, ⟨k2
+r⟩, and ℓ, and this equivalence is preserved under all sym-
+plectic propagation. The coherent beam families studied here and the matched TGSM beams belong
+to the same equivalence classes in this sense. In particular, within the regimes considered here, a sin-
+gle covariance matrix can represent BG and PVBs, as well as high-order LG modes. We also examined
+the conditions under which the same covariance matrix can describe both a TGSM beam and a coher-
+ent OAM beam. Because two beams sharing a covariance matrix are mapped identically by any sym-
+plectic (ABCD) transformation, they exhibit the same beam-width evolution, Rayleigh range, far-field
+divergence, and M2 beam-quality factor. This expands the experimental flexibility in situations where
+only the beam’s OAM and spreading are relevant, and the detailed radial structure of the field is not
+important. Conversely, the correspondence provides a prescription for designing a partially coherent
+TGSM beam that mimics the propagation and OAM content of any specified coherent OAM eigen-
+state, without reproducing its full field structure. It is important to emphasize that the correspondence
+is restricted to second-order statistics: it does not imply equality of higher-order statistics, coherence
+functions, modal content, or the detailed field distributions. We further examined the invertibility of
+the covariance matrix within each beam family. Surprisingly, for LG modes, the beam parameters are
+uniquely and exactly determined by the second-order moments. For PVB and BG beams, the CM deter-
+mines the beam parameters to leading order in the relevant approximation regime, though a proof of
+10
+
+--- PAGE 12 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+exact uniqueness from the full moment equations remains an open question. We also showed in the
+appendix that the PVB modes span the full space of transverse fields for every ring width w > 0, so that
+any field can be expanded in them. At finite w the family is non-orthogonal and redundant, and the
+expansion returns the field low-pass filtered on the scale w; only in the narrow-ring limit w →0 do the
+modes become a genuine orthonormal (delta-normalized) basis with exact reconstruction. The practi-
+cal condition for the PVB expansion to faithfully represent a given field is w ≪λmin, where λmin is the
+shortest transverse length scale of the field, with the OAM spectrum being reproduced exactly for any
+w. Finally, we note that structured light fields such as those studied here are finding a growing range of
+applications, for example in optical communications [48], superoscillation phenomena [49], quasilattice
+vortex fields [50], and vector-field mapping [51]. In such contexts, where the robustness of second-order
+observables under propagation is often the relevant figure of merit, the second-order equivalence estab-
+lished here, which allows the propagation and OAM content of a coherent OAM beam to be reproduced
+by a partially coherent TGSM beam, may prove particularly useful.
+Acknowledgments
+This research was funded by ANID FONDECYT-Regular Grants Nos. (1240746, 1230796, 1231940,
+1260111), ANID Millennium Science Initiative Program ICN17−012, ANID Anillo Project ATE250003,
+and ANID Doctoral Fellowship Grant No. 21241835.
+Data availability statement
+All data that support the findings of this study are included within the article (and any supplementary
+files).
+Ethics statement
+This article does not contain any studies involving human participants or animals performed by any of
+the authors.
+Author contributions
+T Ferreira 0009-0003-3106-1930
+Investigation (lead), Writing – original draft (equal), Writing – review & editing (equal)
+G Santos 0000-0002-0389-1430
+Investigation (equal), Methodology (equal), Writing – review & editing (equal)
+S Ayala 0009-0003-7348-3883
+Formal analysis (equal), Investigation (equal), Writing – review & editing (equal)
+Lucas Hutter 0000-0003-2078-2743
+Investigation (equal)
+E S Gómez 0000-0003-3227-9432
+Investigation (equal), Writing – review & editing (equal)
+G Lima 0000-0001-7670-6032
+Investigation (equal), Writing – review & editing (equal)
+G Cañas 0000-0002-9357-8025
+Conceptualization (equal), Investigation (equal), Project administration (equal), Writing – original
+draft (equal), Writing – review & editing (equal)
+S P Walborn 0000-0002-3346-8625
+Conceptualization (lead), Project administration (lead), Writing – original draft (equal), Writing –
+review & editing (equal)
+11
+
+--- PAGE 13 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+Appendix A. Calculations for cylindrically symmetric beams
+Let us consider a cylindrically symmetric optical beam described by the wavefunction:
+ψ(r,ϕ) = U (r)eiℓϕ .
+(43)
+For simplicity, we assume U(r) is real, as is the case at z = 0 for the Laguerre–Gaussian (LG) modes,
+Bessel–Gaussian (BG) beams and PVBs. The following results remain valid under the multiplication of
+the radial profile by a constant phase factor.
+For ψ(r,ϕ) to be normalized, we must have
+ˆ ∞
+0
+|U (r)|2 rdr = 1
+2π .
+(44)
+The transverse momentum operators in the x and y directions, expressed in polar coordinates (x =
+rcosϕ , y = rsinϕ), are
+kx = −i ∂
+∂x = −i
+
+cosϕ ∂
+∂r −sinϕ
+r
+∂
+∂ϕ
+
+,
+(45)
+ky = −i ∂
+∂y = −i
+
+sinϕ ∂
+∂r + cosϕ
+r
+∂
+∂ϕ
+
+.
+(46)
+Evaluating the derivatives of equation (43) using equations (45) and (46), we obtain
+∂ψ
+∂x = eiℓϕ
+
+cosϕ dU
+dr −iℓsinϕ
+r
+U
+
+,
+(47)
+∂ψ
+∂y = eiℓϕ
+
+sinϕ dU
+dr + iℓcosϕ
+r
+U
+
+.
+(48)
+The second derivatives are
+∂2ψ
+∂x2 = eiℓϕ
+
+cos2 ϕ d2U
+dr2 + sin2 ϕ
+1
+r
+dU
+dr −ℓ2
+r2 U
+
+−2iℓsinϕcosϕ
+1
+r
+dU
+dr −1
+r2 U
+
+,
+(49)
+∂2ψ
+∂y2 = eiℓϕ
+
+sin2 ϕ d2U
+dr2 + cos2 ϕ
+1
+r
+dU
+dr −ℓ2
+r2 U
+
++ 2iℓsinϕcosϕ
+1
+r
+dU
+dr −1
+r2 U
+
+,
+(50)
+∂2ψ
+∂y∂x = eiℓϕ
+
+sinϕcosϕ
+d2U
+dr2 −1
+r
+dU
+dr + ℓ2
+r2 U
+
+−iℓ
+ sin2 ϕ −cos2 ϕ
+1
+r
+dU
+dr −1
+r2 U
+
+.
+(51)
+A.1. Expectation value of xkx
+Using the derivative (47), the expectation value becomes
+⟨xkx⟩= −i
+ˆ ∞
+0
+r2 U (r)
+ˆ 2π
+0
+
+cos2 ϕ dU (r)
+dr
++ iℓ
+r sinϕcosϕ U (r)
+
+dϕ
+
+dr .
+(52)
+Using well known integrals of trigonometric functions, the integral becomes
+⟨xkx⟩= −iπ
+ˆ ∞
+0
+r2 U (r) dU (r)
+dr
+dr ,
+(53)
+This gives:
+⟨xkx⟩= −iπ
+2
+h
+r2 |U (r)|2i∞
+0 −2
+ˆ ∞
+0
+rU2 (r)dr
+
+.
+(54)
+For physically admissible beams, U(r) does not diverge for r = 0 and decays sufficiently fast as r →∞, so
+that the boundary term vanishes. Using the normalization condition in equation (44), we obtain:
+⟨xkx⟩= i
+2 .
+(55)
+Since xkx is not Hermitian, the physically meaningful second moment is defined using the sym-
+metrized operator 1
+2(xkx + kxx). Using the commutation relation [x,kx] = i, we see that its expectation
+value vanishes.
+12
+
+--- PAGE 14 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+A.2. Expectation value of xky
+Using equation (48), we have, in polar coordinates
+⟨xky⟩= −i
+ˆ ∞
+0
+ˆ 2π
+0
+U (r) r2 sinϕcosϕ ∂U (r)
+∂r
+dϕ dr
+−i
+ˆ ∞
+0
+ˆ 2π
+0
+|U (r)|2 r (iℓ)cos2 ϕ dϕ dr.
+(56)
+Using well-known integrals of trigonometric functions, the first term vanished and the remaining contri-
+bution reduces to
+⟨xky⟩= −i (iℓ) π
+ˆ ∞
+0
+|U (r)|2 rdr.
+(57)
+Finally, since the function is normalized, as seen in equation (44), we obtain:
+⟨xky⟩= ℓ
+2 .
+(58)
+The calculation for ⟨ykx⟩is analogous and yields
+⟨ykx⟩= −ℓ
+2 .
+(59)
+A.3. Expectation value of x2
+Using the wavefunction equation (43) and working in polar coordinates, we obtain:
+⟨x2⟩=
+ˆ ∞
+0
+ˆ 2π
+0
+r2 cos2 ϕ |U (r)|2 rdϕ dr .
+(60)
+After integration in ϕ we have
+⟨x2⟩= π
+ˆ ∞
+0
+r3|U (r)|2 dr .
+(61)
+By symmetry, ⟨x2⟩= ⟨y2⟩= ⟨r2⟩/2, where we define:
+⟨r2⟩= 2π
+ˆ ∞
+0
+r3|U (r)|2 dr .
+(62)
+A.4. Expectation value of xy
+In polar coordinates, the expectation value of xy can be written as:
+⟨xy⟩=
+ˆ ∞
+0
+ˆ 2π
+0
+r3 sinϕ cosϕ |U (r)|2 dϕdr .
+(63)
+The angular integral vanishes, resulting in
+⟨xy⟩= 0 .
+(64)
+A.5. Expectation value of k2
+x
+Using the derivative in equation (49), we obtain
+⟨k2
+x⟩= −
+ˆ ∞
+0
+ˆ 2π
+0
+rU (r)
+
+cos2 ϕ d2U (r)
+dr2
++ sin2 ϕ
+1
+r
+dU (r)
+dr
+−ℓ2
+r2 U (r)
+
+−2iℓsinϕcosϕ
+1
+r
+dU (r)
+dr
+−1
+r2 U (r)
+
+drdϕ .
+(65)
+Noting that the last term vanishes and performing straightforward integration, this reduces to
+⟨k2
+x⟩= π
+ˆ ∞
+0
+"
+r
+dU (r)
+dr
+2
++ ℓ2
+r U2 (r)
+#
+dr .
+(66)
+By symmetry, we have ⟨k2
+x⟩= ⟨k2
+y⟩= ⟨k2
+r⟩/2, where we define:
+⟨k2
+r⟩= 2π
+ˆ ∞
+0
+"
+r
+dU (r)
+dr
+2
++ ℓ2
+r U2 (r)
+#
+dr .
+(67)
+13
+
+--- PAGE 15 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+A.6. Expectation value of kykx
+Using the derivative from equation (51), the expectation value of kykx reads:
+⟨kykx⟩= −
+ˆ ∞
+0
+ˆ 2π
+0
+rU (r)
+
+sinϕcosϕ
+d2U (r)
+dr2
+−1
+r
+dU (r)
+dr
++ ℓ2
+r2 U (r)
+
++iℓ
+ sin2 ϕ −cos2 ϕ
+1
+r
+dU (r)
+dr
+−1
+r2 U (r)
+
+dϕ dr .
+(68)
+The angular integrals vanish, so ⟨kykx⟩= 0.
+A.7. Fourier transform
+The two-dimensional Fourier transform of a function f(x,y) in cartesian coordinates is given by:
+F
+ kx,ky
+
+= 1
+2π
+ˆ ˆ
+f(x,y)e−i(kxx+kyy) dxdy.
+(69)
+In polar coordinates, with:
+x = rcosϕ,
+y = rsinϕ,
+kx = kr cosθ,
+ky = kr sinθ,
+(70)
+the Fourier transform of a function of the form given in equation (43) becomes:
+F(kr,θ) = 1
+2π
+ˆ ∞
+0
+ˆ 2π
+0
+U (r)eiℓϕe−ikrrcos(ϕ−θ)rdϕ dr.
+(71)
+Using the Jacobi–Anger expansion:
+e−ikrrcos(ϕ−θ) =
+∞
+X
+m=−∞
+(−i)m Jm (krr)eim(ϕ−θ),
+(72)
+where Jm(krr) is the Bessel function of the first kind of order m, we can write the angular integral as:
+I =
+ˆ 2π
+0
+eiℓϕ
+∞
+X
+m=−∞
+(−i)m Jm (krr)eim(ϕ−θ)dϕ.
+(73)
+Interchanging summation and integration, we have
+I =
+∞
+X
+m=−∞
+(−i)m Jm (krr)
+ˆ 2π
+0
+ei(ℓ+m)ϕe−imθdϕ.
+(74)
+Using the orthogonality condition:
+ˆ 2π
+0
+ei(ℓ+m)ϕdϕ = 2πδℓ,−m,
+(75)
+this simplifies to:
+I = 2π (−i)−ℓJ−ℓ(krr)eiℓθ.
+(76)
+Noting J−n(x) = (−1)nJn(x) for n ∈Z, we obtain:
+I = 2π (−i)ℓJℓ(krr)eiℓθ.
+(77)
+Substituting this result back into the Fourier transform gives
+F(kr,θ) =
+ˆ ∞
+0
+U (r) · (−i)ℓJℓ(krr)eiℓθrdr .
+(78)
+Defining the Hankel transform of order ℓ:
+Hℓ(kr) =
+ˆ ∞
+0
+U (r)Jℓ(krr) rdr ,
+(79)
+14
+
+--- PAGE 16 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+we arrive at the final result:
+F(kr,θ) = (−i)ℓeiℓθUℓ(kr).
+(80)
+This shows that the Fourier transform preserves the azimuthal phase structure eiℓθ and the radial depen-
+dence follows a Hankel transform.
+Appendix B. Laguerre-Gaussian beams
+The normalized LG mode at z = 0 is given by (14).
+B.1. Fourier transform of an LG beam
+Substituting the LG mode Up,ℓinto (79) gives:
+Hℓ(kr) = C 2
+|ℓ|
+2
+w|ℓ|+1
+0
+ˆ ∞
+0
+r|ℓ|+1Jℓ(krr) L|ℓ|
+p
+2r2
+w2
+0
+
+e
+−r2
+w2
+0 .
+(81)
+For ℓ< 0, the relation J−m(x) = (−1)mJm(x) can be used to express the integral in terms of |ℓ| only.
+Applying identity 7.421.4 of [52] then yields
+Hℓ(kr) = C2
+|ℓ|
+2
+w0
+2
+|ℓ|+1
+k|ℓ|
+r L|ℓ|
+p
+k2
+rw2
+0
+2
+
+e−
+k2
+r w2
+0
+4
+,
+(ℓ> 0) ,
+Hℓ(kr) = (−1)|ℓ| C2
+|ℓ|
+2
+w0
+2
+|ℓ|+1
+k|ℓ|
+r L|ℓ|
+p
+k2
+rw2
+0
+2
+
+e−
+k2
+r w2
+0
+4
+,
+(ℓ< 0) .
+(82)
+Substituting this result into equation (80) and noting that
+(−1)|ℓ| (−i)−|ℓ| = (−1)|ℓ| i|ℓ| = (−i)|ℓ| ,
+(83)
+the Fourier transform of an LG mode becomes
+Fℓ,p (kr,θ) =(−i)|ℓ| C2
+|ℓ|
+2
+w0
+2
+|ℓ|+1
+k|ℓ|
+r L|ℓ|
+p
+k2
+rw2
+0
+2
+
+e−
+k2
+r w2
+0
+4 eiℓθ.
+(84)
+This shows that the Fourier transform of an LG beam is itself a LG mode with the same indices p and ℓ,
+and with a beam waist given by wk = 2
+w0 .
+B.2. Expectation value of x2
+Substituting the LG mode Up,ℓinto equation (61), we obtain:
+⟨x2⟩= C2 2|ℓ|π
+w2|ℓ|+2
+0
+ˆ ∞
+0
+r2|ℓ|+3
+
+L|ℓ|
+p
+2r2
+w2
+0
+2
+e
+−2r2
+w2
+0 dr .
+(85)
+Introducing the change of variable a = 2r2
+w2
+0 , with da = 4r
+w2
+0 dr, the integral becomes:
+⟨x2⟩= C2w2
+0π
+8
+ˆ ∞
+0
+a|ℓ|+1 h
+L|ℓ|
+p (a)
+i2
+e−a da .
+(86)
+Using the recurrence relation for the associated Laguerre polynomials (reference [52], equation
+8.971.4),
+aL|ℓ|
+p (a) =(2p + |ℓ| + 1)L|ℓ|
+p (a) −(p + 1)L|ℓ|
+p+1 (a) −(p + |ℓ|)L|ℓ|
+p−1 (a) ,
+(87)
+15
+
+--- PAGE 17 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+the integral can be rewritten as
+⟨x2⟩= C2w2
+0π
+8
+(
+(2p + |ℓ| + 1)
+ˆ ∞
+0
+a|ℓ| h
+L|ℓ|
+p (a)
+i2
+e−a da
+−(p + 1)
+ˆ ∞
+0
+a|ℓ|L|ℓ|
+p (a)L|ℓ|
+p+1 (a)e−a da
+−(p + |ℓ|)
+ˆ ∞
+0
+a|ℓ|L|ℓ|
+p (a)L|ℓ|
+p−1 (a)e−a da
+)
+.
+(88)
+The remaining integrals are evaluated using the orthogonality relation for associated Laguerre poly-
+nomials (reference [52], equation 7.414.3),
+ˆ ∞
+0
+a|ℓ|L|ℓ|
+p (a)L|ℓ|
+q (a)e−a da = (p + |ℓ|)!
+p!
+δpq ,
+(89)
+where δpq is the Kronecker delta. Therefore, only the first term survives, yielding
+⟨x2⟩= C2w2
+0π
+8
+(2p + |ℓ| + 1) (p + |ℓ|)!
+p!
+.
+(90)
+Substituting the normalization constant C2 =
+2p!
+π(p+|ℓ|)!, we finally obtain:
+⟨x2⟩= w2
+0
+4 (2p + |ℓ| + 1) .
+(91)
+B.3. Expectation value of k2
+x
+Considering that the integral defining ⟨k2
+x⟩in the Fourier space is analogous to that of ⟨x2⟩in the real
+space, from equations (84) and (91), we find:
+⟨k2
+x⟩= 1
+w2
+0
+(2p + |ℓ| + 1) .
+(92)
+Appendix C. Perfect vortex beams
+For a realistic PVB at z = 0, the radial profile is given by equation (20).
+For a sufficiently large argument x ∈R+, the asymptotic expansion of the modified Bessel function is
+approximated by (see equation 8.451.5 of [52]):
+Im (x) ≈
+ex
+√
+2πx
+
+1 −4m2 −1
+8x
++ ...
+
+,
+(93)
+Retaining only the leading term and setting x = 2Rr
+w2 , we obtain
+Iℓ
+2Rr
+w2
+
+≈
+w
+2
+√
+πRre
+2Rr
+w2 .
+(94)
+Substituting this approximation into equation (20) yields
+Uℓ(r) ≈A
+w
+2
+√
+πRre−r2+R2
+w2 e
+2Rr
+w2 = A
+w
+2
+√
+πRre−(r−R)2
+w2
+.
+(95)
+Redefining the constant A to include all constant prefactors, the PVB radial profile can be written as
+U (r,ϕ) = A
+√re−(r−R)2
+w2
+.
+(96)
+The following calculations rely on standard Gaussian integrals. Defining the error function:
+erf(x) =
+2
+√π
+ˆ x
+0
+e−t2 dt ,
+(97)
+16
+
+--- PAGE 18 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+the relevant integrals, valid for q > 0, are
+ˆ ∞
+0
+e−q2x2 dx =
+√π
+2q ,
+(98)
+ˆ u
+0
+e−q2x2 dx =
+√π
+2q erf(qu) ,
+(99)
+ˆ ∞
+0
+xe−q2x2 dx = 1
+2q2 ,
+(100)
+ˆ u
+0
+xe−q2x2 dx = 1
+2q2
+h
+1 −e−q2u2i
+,
+(101)
+ˆ ∞
+0
+x2 e−q2x2 dx =
+√π
+4q3 ,
+(102)
+ˆ u
+0
+x2 e−q2x2 dx = 1
+2q3
+√π
+2 erf(qu) −que−q2u2
+,
+(103)
+C.1. Normalization constant
+From the normalization condition of ψ(r,ϕ) [equation (44)], and using the approximate form of the
+PVB given in equation (96), we obtain:
+1
+A2 = 2π
+ˆ ∞
+0
+e−2 (r−R)2
+w2
+dr .
+(104)
+Introducing the change of variable v = r −R, the integral becomes
+1
+A2 = 2π
+ˆ ∞
+−R
+e−2 v2
+w2 dv .
+(105)
+Using equations (98) and (99), we obtain
+1
+A2 = 2π
+√πw
+2
+√
+2
+
+1 + erf
+√
+2R
+w
+
+.
+(106)
+Since R
+w ≫1, we may approximate erf
+ √
+2R
+w
+
+≈1, which results in
+1
+A2 ≈2π
+√πw
+√
+2 .
+(107)
+C.2. Expectation value of x2
+Substituting the approximate PVB expression of equation (96) into equation (61), we obtain
+⟨x2⟩= πA2
+ˆ ∞
+0
+r2e−2 (r−R)2
+w2
+dr .
+(108)
+Introducing the change of variable v = r −R, the integral becomes
+⟨x2⟩= πA2
+ˆ ∞
+−R
+ v2 + 2Rv + R2
+e−2v2/w2dv .
+(109)
+Using equations (98)–(103), we obtain
+⟨x2⟩= πA2
+√πw
+8
+√
+2
+ 4R2 + w2
+1 + erf
+√
+2R
+w
+
++ Rw2
+4 e−2R2/w2
+.
+(110)
+Since R/w ≫1, we may approximate erf
+ √
+2R
+w
+
+≈1 and e−2R2/w2 ≈0, resulting in
+⟨x2⟩≈πA2
+√πw
+4
+√
+2
+ 4R2 + w2
+.
+(111)
+Substituting equation (107), we obtain
+⟨x2⟩≈1
+2
+
+R2 + w2
+4
+
+.
+(112)
+17
+
+--- PAGE 19 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+To evaluate the accuracy of the approximations discussed above, we present in table 2 the relative
+error of ⟨x2⟩for different values of ℓand R/w. The numerical values are obtained from the complete
+PVB expression given by equation (21), which is used as the reference. The approximations considered
+are the analytical expression for ⟨x2⟩given by equation (112), as well as the leading-order approximation
+R2/2 discussed above. The relative error is defined as
+ϵ =
+
+⟨x2⟩approx −⟨x2⟩PVB
+⟨x2⟩PVB
+ ,
+(113)
+and is presented in percentage form in table 2.
+The table shows that the analytical approximation remains accurate even beyond the parameter
+regimes implied by the asymptotic assumptions (R ≫w and |ℓ| ≪R/w). For instance, for ℓ= 0, the
+relative error is approximately 0.2% even for R/w = 2.5. Similarly, for ℓ= 5 and ℓ= 10, the analytical
+approximation yields relative errors ≲1% even when R/w = ℓ, where the condition |ℓ| ≪R/w is not sat-
+isfied. The leading-order approximation R2/2 also provides reasonable agreement for moderate and large
+values of R/w, although it generally presents larger errors than the full analytical expression.
+C.3. Expectation value of r
+Using the modified asymptotic PVB expression, equation (96), the expectation value of r becomes
+⟨r⟩= 2πA2
+ˆ ∞
+0
+re−2 (r−R)2
+w2
+dr .
+(114)
+Introducing the change of variable v = r −R, the integral becomes
+⟨r⟩= 2πA2
+ˆ ∞
+−R
+(v + R)e−2v2/w2dv .
+(115)
+Using equations (98)–(101), we obtain
+⟨r⟩= 2πA2
+√πRw
+2
+√
+2
+
+1 + erf
+√
+2R
+w
+
++ w2
+4 e−2R2/w2
+.
+(116)
+Since R/w ≫1, we may approximate erf
+ √
+2R
+w
+
+≈1 and e−2R2/w2 ≈0, which results in
+⟨r⟩≈2πA2
+√πRw
+√
+2
+.
+(117)
+Substituting equation (107), we obtain
+⟨r⟩≈R .
+(118)
+C.4. Expectation value of k2
+x
+Inserting the approximate PVB expression from equation (96) into equation (66) and using
+dU (r)
+dr
+= −A
+√r
+ 1
+2r + 2(r −R)
+w2
+
+e−(r−R)2
+w2
+,
+(119)
+we obtain
+⟨k2
+x⟩= πA2
+ˆ ∞
+0
+" 1
+2r + 2(r −R)
+w2
+2
++ ℓ2
+r2
+#
+e−2 (r−R)2
+w2
+dr .
+(120)
+A comparison of this integral with those corresponding to the previously calculated expectation val-
+ues, together with
+1
+r
+
+= 2πA2
+ˆ ∞
+0
+1
+r e−2 (r−R)2
+w2
+dr ,
+(121)
+and
+ 1
+r2
+
+= 2πA2
+ˆ ∞
+0
+1
+r2 e−2 (r−R)2
+w2
+dr ,
+(122)
+18
+
+--- PAGE 20 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+allows us to express ⟨k2
+x⟩in terms of other expectation values:
+⟨k2
+x⟩= 4
+w4
+
+⟨x2⟩−R⟨r⟩+ R2
+2
+
++ 1
+w2
+
+1 −R
+1
+r
+
++
+1
+8 + ℓ2
+2
+ 1
+r2
+
+.
+(123)
+Using equations (112) and (118), this becomes:
+⟨k2
+x⟩=
+1
+2w2 + 1
+w2
+
+1 −R
+1
+r
+
++
+1
+8 + ℓ2
+2
+ 1
+r2
+
+.
+(124)
+Introducing the parameter δ = R−r
+R , we write
+1
+r = 1
+R
+1
+1 −δ .
+(125)
+The Maclaurin expansion of
+1
+1−δ reads
+1
+1 −δ =
+∞
+X
+n=0
+δn = 1 + δ + δ2 + ··· .
+(126)
+Because R ≫w, the dominant contributions to the integral arise from values of r close to R, implying
+δ ≪1. Keeping terms up to second order, we obtain
+1
+r ≈1
+R
+"
+1 + R −r
+R
++
+R −r
+R
+2#
+.
+(127)
+After expanding the terms in brackets and taking the expectation value, this becomes
+1
+r
+
+≈3
+R −3
+R2 ⟨r⟩+ 2
+R3 ⟨x2⟩.
+(128)
+Using equations (118) and (112), this becomes
+1
+r
+
+≈1
+R + w2
+4R3 .
+(129)
+For
+
+ 1
+r2
+
+, higher-order corrections in δ contribute only beyond the accuracy considered here.
+Therefore, keeping only the leading-order term yields
+ 1
+r2
+
+≈1
+R2 .
+(130)
+Substituting these results into the expression for ⟨k2
+x⟩and collecting terms, we obtain
+⟨k2
+x⟩≈1
+2
+ 1
+w2 + ℓ2 −1
+4
+R2
+
+.
+(131)
+To evaluate the accuracy of the approximations discussed above, we present in table 3 the relative
+error of ⟨k2
+x⟩for different values of ℓand R/w. The reference values are obtained from the numerical
+evaluation of the corresponding second moment using the complete PVB expression (20). The relative
+error is defined analogously to equation (113) and is presented in percentage form in table 3.
+The behavior of the analytical approximation is similar to that observed for ⟨x2⟩, remaining accurate
+even beyond the parameter range suggested by the asymptotic assumptions. The leading-order approx-
+imation 1/(2w2), however, rapidly loses accuracy for ℓ̸ = 0, as it neglects the dependence on ℓ. By con-
+trast, for ⟨x2⟩the analytical approximation is itself independent of ℓ, making the leading-order approxi-
+mation much closer to the analytical result.
+19
+
+--- PAGE 21 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+Appendix D. On PVBs as a mode basis
+The family behaves in an unusual way, which we make precise below: at any finite ring width w the PVB
+modes span the whole space of transverse fields, so any field can be built from them, but reconstructing
+a field from its PVB coefficients returns a version smoothed on the scale w rather than the field itself.
+Only in the narrow-ring limit w →0 do they reduce to a true orthonormal (delta-normalized) basis with
+exact reconstruction. We make these statements more precise below.
+For convenience, we recall from (20) that the PVB modes are defined as
+Φℓ,R (r,ϕ) = C0 eiℓϕ e−r2+R2
+w2
+Iℓ
+2Rr
+w2
+
+,
+(132)
+The modes Φℓ,R defined in equation (132) with prefactor C0 are not individually normalized. Their
+norm, obtained by applying equation (137) with β = γ = 2R/w2 and α = 2/w2, is
+∥Φℓ,R∥2 = 1
+w2 e−R2/w2Iℓ
+R2
+w2
+
+,
+(133)
+which depends on both R and ℓ. The value of C0 is therefore not the per-mode normalization constant
+A of appendix C; instead it is fixed by the resolution-of-identity condition (see below), yielding C0 =
+p
+2/π/w2.
+We use the same ℓ-independent prefactor C0 for every mode because the completeness calculation
+below requires it. That calculation hinges on summing P
+ℓeiℓ(ϕ−ϕ ′)Iℓ(rr′/w2) in closed form through
+the Bessel generating function P
+ℓeiℓφIℓ(z) = ezcosφ, which is possible only when the coefficient multi-
+plying each Iℓis the same for all ℓ. The exact per-mode normalization constant
+Nℓ=
+s
+2
+πw2 e−R2/w2Iℓ(R2/w2)
+(134)
+carries an ℓdependence through Iℓ(R2/w2) and would make the sum intractable. The constant A of
+appendix C is the large-R/w approximation to Nℓ: in that regime Iℓ(R2/w2) ≈eR2/w2/
+p
+2πR2/w2 is ℓ-
+independent to leading order, and one recovers A2 ≈1/(
+√
+2ππRw).
+Orthogonality and overlaps
+The inner product of two PVB modes is
+⟨Φℓ,R |Φℓ′,R ′⟩=
+ˆ 2π
+0
+dϕ
+ˆ ∞
+0
+rdr Φ∗
+ℓ,R (r,ϕ) Φℓ′,R ′ (r,ϕ).
+(135)
+Substituting equation (132) and separating angular and radial parts, the angular integral gives 2πδℓℓ′, so
+modes with different azimuthal index are exactly orthogonal. The radial integral is then
+|C0|2 e−R2+R ′2
+w2
+ˆ ∞
+0
+re−2r2
+w2 Iℓ
+2Rr
+w2
+
+Iℓ
+2R′r
+w2
+
+dr,
+(136)
+which can be evaluated using the formula [52]
+ˆ ∞
+0
+re−αr2Iℓ(βr) Iℓ(γr) dr = 1
+2α e
+β2+γ2
+4α
+Iℓ
+βγ
+2α
+
+,
+(137)
+with Re(α) > 0, ℓ> −1. The constraint ℓ> −1 is resolved by the reflection identity I−n(x) = In(x),
+valid for all integer n, so the integrand for order −|ℓ| equals that for order +|ℓ|. Setting α = 2/w2,
+β = 2R/w2, γ = 2R′/w2 gives (β2 + γ2)/4α = (R2 + R′2)/2w2 and βγ/2α = RR′/w2. Inserting this and
+fixing C0 =
+p
+2/π/w2 (see below), we obtain the overlap
+⟨Φℓ,R |Φℓ,R ′⟩= 1
+w2 e−R2+R ′2
+2w2
+Iℓ
+RR′
+w2
+
+.
+(138)
+This is a smooth, positive function of R and R′ for all R,R′⩾0: modes of the same ℓbut different R are
+not orthogonal in general. In the limit w →0, using Iℓ(x) ∼ex/
+√
+2πx for x = RR′/w2 →∞,
+⟨Φℓ,R |Φℓ,R ′⟩
+w→0
+−−−−→δ(R −R′)
+R
+,
+(139)
+20
+
+--- PAGE 22 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+so that the modes become orthonormal, in the delta sense and with respect to the measure RdR, only in
+this limit.
+Completeness
+The overlaps above show that the PVB modes are non-orthogonal in general. On its own this does not
+stop them from serving as an expansion set: even a non-orthogonal family can be rich enough that every
+field is some superposition of its members. The questions we address here are whether that is indeed
+the case for the PVBs, and, if so, whether a field can be recovered from its PVB content. Concretely, we
+expand an arbitrary field ψ(r) in the PVBs and ask when reconstructing it from its coefficients returns ψ
+itself. The coefficient of ψ on the mode Φℓ,R is its overlap with that mode,
+cℓ,R =
+ˆ
+Φ∗
+ℓ,R (r′) ψ(r′) d2r′,
+(140)
+and reconstructing ψ from all of its coefficients gives
+(Swψ)(r) ≡
+∞
+X
+ℓ=−∞
+ˆ ∞
+0
+RdR cℓ,R Φℓ,R (r)
+=
+ˆ
+K(r,r′) ψ(r′) d2r′,
+(141)
+which defines the linear reconstruction map Sw. The second equality follows on inserting (140), and
+identifies its kernel as the outer-product sum
+K(r,r′) =
+∞
+X
+ℓ=−∞
+ˆ ∞
+0
+RdR Φℓ,R (r) Φ∗
+ℓ,R (r′).
+(142)
+The reconstruction returns the original field for every ψ, so that the PVBs act as a faithful expansion set,
+exactly when this kernel is a delta function,
+K(r,r′) = δ(2) (r −r′).
+(143)
+We now evaluate K in closed form. Writing r = (r,ϕ) and r′ = (r′,ϕ′) and separating the R-
+dependence:
+K =|C0|2 e−r2+r ′2
+w2
+X
+ℓ
+eiℓ(ϕ−ϕ ′) ×
+ˆ ∞
+0
+Re−2R2
+w2 Iℓ
+2Rr
+w2
+
+Iℓ
+2Rr′
+w2
+
+dR.
+(144)
+The R-integral has exactly the same form as the r-integral in the overlap calculation, with r ↔R, R ↔r,
+and R′ ↔r′. Applying equation (137) with α = 2/w2, β = 2r/w2, γ = 2r′/w2 gives
+w2
+4 e
+r2+r ′2
+2w2 Iℓ
+rr′
+w2
+
+.
+(145)
+Substituting this into equation (144),
+K = |C0|2w2
+4
+e−r2+r ′2
+2w2 X
+ℓ
+eiℓ(ϕ−ϕ ′) Iℓ
+rr′
+w2
+
+.
+(146)
+The remaining sum over ℓis done with the modified Bessel generating function P
+ℓeiℓφ Iℓ(z) = ezcosφ
+[52], with z = rr′/w2 and φ = ϕ −ϕ′:
+X
+ℓ
+eiℓ(ϕ−ϕ ′) Iℓ
+rr′
+w2
+
+= exp
+rr′ cos(ϕ −ϕ′)
+w2
+
+.
+(147)
+Using r2 + r′2 −2rr′ cos(ϕ −ϕ′) = |r −r′|2, we arrive at
+K = |C0|2w2
+4
+e−|r−r ′|2
+2w2
+= Gw (r −r′),
+(148)
+where the last equality fixes the normalization via |C0|2w2/4 = 1/(2πw2), i.e. C0 =
+p
+2/π/w2, and
+Gw (r −r′) ≡
+1
+2πw2 e−|r−r ′|2
+2w2
+(149)
+21
+
+--- PAGE 23 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+is a normalized 2D Gaussian.
+Equation (148) is the central result: the outer-product sum is not a delta function but a Gaussian
+of width w. Equivalently, Sw acts by convolution with Gw, so in Fourier space it simply multiplies every
+spatial-frequency component by
+eGw(k) = e−w2k2
+2
+∈(0,1].
+(150)
+In other words, Sw is a Gaussian low-pass filter of width w. Three physically transparent consequences
+follow.
+(i)
+The modes span the whole space at any finite w. Suppose a field ψ were orthogonal to every PVB mode,
+so that all its coefficients vanish, cℓ,R = 0. Then
+0 =
+X
+ℓ
+ˆ ∞
+0
+RdR
+cℓ,R
+2 =
+ˆ
+e−w2k2
+2  eψ(k)
+2 d2k,
+(151)
+where the middle step uses the kernel (142) and the last uses K = Gw from (148) together with the
+convolution theorem. Because the filter e−w2k2/2 is strictly positive at every k, this can vanish only if
+eψ ≡0, i.e. ψ = 0. No nonzero field is orthogonal to all the PVB modes, so their closed span is the
+whole space of transverse fields, at every ring width w > 0 and not only in the limit w →0.
+(ii) The expansion returns a smoothed field, exact only as w →0. Reconstructing a field from its PVB coeffi-
+cients applies Sw to it, and therefore yields Gw ∗ψ rather than ψ itself. The error is precisely the part
+of ψ removed by the filter,
+Swψ −ψ
+2 =
+ˆ 
+1 −e−w2k2
+2
+2  eψ(k)
+2 d2k
+w→0
+−−−−→0,
+(152)
+which vanishes as w →0 for any field: sharper rings pass higher spatial frequencies, and in the limit
+the filter becomes transparent and the reconstruction becomes exact. For a field whose finest fea-
+ture has scale λmin, the filter is already effectively transparent once w ≪λmin, the practical condition
+discussed in the next subsection.
+(iii) At finite w the family is redundant. The filter never exceeds unity and falls to zero at large k, so the
+fine-scale content it suppresses (structure below w) cannot be recovered by any stable inversion. The
+family therefore carries more modes than a minimal orthonormal basis would, and is not itself an
+orthonormal basis at any finite w.
+The Gaussian Gw is a standard Dirac delta sequence [53]: as w →0 it collapses to δ(2)(r −r′),
+the reconstruction condition (143) is satisfied, and the modes become an exact orthonormal (delta-
+normalized) basis. Physically, sharper rings resolve finer radial detail. In short, the PVB modes span the
+whole space at every finite ring width, but reconstruct an arbitrary field exactly only in the narrow-ring
+limit w →0.
+Practical validity of the PVB expansion
+The results above have a transparent physical reading. The PVB expansion of any field ψ(r) is
+∞
+X
+ℓ=−∞
+ˆ ∞
+0
+RdR cℓ,R Φℓ,R (r) =
+ˆ
+Gw (r −r′) ψ(r′) d2r′.
+(153)
+This is not ψ itself but its convolution with the Gaussian kernel Gw, which acts as a spatial filter:
+in Fourier space each spatial-frequency component is multiplied by the transfer function e−w2k2/2 of
+equation (150), suppressing transverse wavenumbers k ≳1/w. The PVB expansion is therefore a faith-
+ful representation of ψ provided ψ contains no significant structure on transverse scales smaller than w,
+i.e. provided
+w ≪λmin (ψ),
+(154)
+where λmin(ψ) denotes the shortest transverse length scale present in ψ. This is the practical, finite-w
+counterpart of the exact convergence statement (152).
+We note from equation (153) that the orbital angular momentum (OAM) content of ψ is always
+faithfully represented. This follows from the fact that the kernel Gw(r −r′) is isotropic: the filter e−w2k2/2
+22
+
+--- PAGE 24 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+commutes with rotations and does not mix azimuthal harmonics, so Sw preserves each OAM sector
+Hℓ= {f(r)eiℓϕ} separately. Therefore the OAM spectrum of ψ is reproduced exactly by the PVB expan-
+sion for any w > 0: the angular part of the resolution of the identity is exact (it follows from Fourier
+completeness on the circle, not from the w →0 limit), and only the radial profile is affected by the
+finite-w smoothing.
+Let us illustrate the discussion above by considering the PVB expansion of an LG mode. Consider
+ψ = LGp,ℓ0 with beam waist wψ. Its OAM index ℓ0 is preserved exactly as noted above. Its radial profile
+is governed by the associated Laguerre polynomial L|ℓ0|
+p
+(2r2/w2
+ψ), which has p radial nodes. For large p,
+the nodes are approximately separated by ∆r ∼wψ/√2p, following the asymptotic spacing of Laguerre
+polynomial zeros, so the finest radial scale is λmin = wψ/√2p. The convolution (Gw ∗LGp,ℓ0) smooths
+over these nodes and the reconstruction degrades once w ≳wψ/√2p. The condition for a faithful expan-
+sion is therefore
+w ≪wψ
+√2p,
+(155)
+which reduces to w ≪wψ for the pure-vortex case p = 0, in which no radial nodes are present and only
+the overall beam scale must be resolved. Equation (155) shows that higher radial order demands propor-
+tionally sharper PVB rings. In the opposite limit w ≫wψ/√2p the reconstructed field retains the correct
+OAM but its radial structure is washed out, leaving only the envelope e−r2/w2
+ψ modulated by eiℓ0θ.
+Analytic expansion coefficients for p = 0 LG modes
+For the pure-vortex case p = 0, the expansion coefficients (140) with ψ = LG0,ℓ0 can be evaluated in
+closed form. Restricting to ℓ= ℓ0 (the only non-vanishing azimuthal sector, by the angular orthogonality
+established above), we insert the LG mode
+U0,ℓ0 (r) =
+s
+2
+π|ℓ0|!
+1
+wψ
+√
+2r
+wψ
+|ℓ0|
+e−r2/w2
+ψ
+(156)
+into the overlap integral and perform the radial integration using equation 6.631-1 of [52],
+ˆ ∞
+0
+xν+1e−αx2Iν (βx) dx =
+βν
+(2α)ν+1 exp
+ β2
+4α
+
+,
+(157)
+valid for Re(α) > 0, Re(ν) > −1. Setting ν = |ℓ0|, α = (w−2
+ψ + w−2), and β = 2R/w2, and collecting all
+prefactors, one obtains
+cℓ0,R = Nℓ0
+2|ℓ0|/2
+p
+π|ℓ0|!
+R|ℓ0| w|ℓ0|+1
+ψ
+w2
+
+w2
+ψ + w2
+|ℓ0|+1 exp
+ 
+−
+R2
+w2
+ψ + w2
+!
+,
+(158)
+where the per-mode normalization constant Nℓ0 is given by equation (134). In the regime R ≫w
+the factor Nℓ0 ≈(
+√
+2πRw)1/2/w (from the asymptotic form of Iℓ0) becomes ℓ0-independent, and
+equation (158) simplifies accordingly.
+A few features of equation (158) are worth noting. First, the coefficient is maximized at R⋆=
+q
+(|ℓ0| + 1)(w2
+ψ + w2)/2, showing that the PVB ring radius that captures most of the LG mode’s radial
+weight grows with OAM order as R⋆∝
+p
+|ℓ0|, consistent with the known scaling of the LG peak radius.
+Second, the Gaussian factor exp(−R2/(w2
+ψ + w2)) provides exponential suppression for rings much larger
+than
+q
+w2
+ψ + w2, confirming that only a finite band of ring radii contributes significantly to the expan-
+sion. Third, equation (158) applies only to the p = 0 case; for p⩾1, the associated Laguerre polynomial
+introduces additional radial structure and the integral does not reduce to a single closed-form expression
+of this type.
+Appendix E. Bessel-Gaussian beams
+The radial component of a BG beam is given by equation (27).
+23
+
+--- PAGE 25 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+E.1. Fourier-transform of a BG beam
+Substituting the expression for the BG mode given in (27) into equation (79) gives
+Hℓ(kr) = B
+ˆ ∞
+0
+Jℓ(kbr) Jℓ(krr) e−r2/w2
+b rdr .
+(159)
+For ℓ< 0, we use the relation J−m(x) = (−1)mJm(x) to write the integral as
+Hℓ(kr) = B
+ˆ ∞
+0
+J|ℓ| (rkb) J|ℓ| (krr) e−r2/w2
+b rdr .
+(160)
+This integral can be evaluated using equation 6.633.2 of [52], yielding
+Hℓ(kr) = Bw2
+b
+2 e−(k2
+r +k2
+b)w2
+b
+4
+I|ℓ|
+krkbw2
+b
+2
+
+.
+(161)
+Finally, inserting this expression into equation (80), we find that the Fourier transform of a BG beam is
+Fℓ(kr,θ) = (−i)ℓBeiℓθ w2
+b
+2 e−(k2
+r +k2
+b)w2
+b
+4
+Iℓ
+krkbw2
+b
+2
+
+.
+(162)
+Comparing this result with the PVB expression in equation (21), we see that the Fourier transform of a
+BG beam corresponds to a PVB with parameters R = kb and w = 2
+wb . Therefore, there is a direct corre-
+spondence between their second moments. The results for BG beams can be obtained from those of the
+PVBs by applying the substitution x ↔kx with the appropriate change of variables. The regime R ≫w
+and |ℓ| ≪R
+w, used in the PVB calculations, corresponds here to wb ≫1
+kb and |ℓ| ≪kbwb
+2 .
+E.2. Expectation value of x2
+The expectation value of x2 can be obtained from the correspondence ⟨k2
+x⟩PVB ↔⟨x2⟩BG. Using
+equation (131) and making the substitutions R →kb and w →2
+wb , we obtain
+⟨x2⟩= 1
+2
+w2
+b
+4 + ℓ2 −1
+4
+k2
+b
+
+.
+(163)
+E.3. Expectation value of k2
+x
+Similarly to ⟨x2⟩, the expectation value of k2
+x follows from the correspondence ⟨x2⟩PVB ↔⟨k2
+x⟩BG.
+Applying the substitutions R →kb and w →2
+wb to equation (112) leads to
+⟨k2
+x⟩= 1
+2
+
+k2
+b + 1
+w2
+b
+
+.
+(164)
+Owing to the exact Fourier-transform correspondence between PVBs and BGs, the relative errors of
+the BG approximations are identical to those obtained for the corresponding PVB moments after the
+substitutions R →kb and w →2/wb. Repeating the numerical comparison for BGs would therefore be
+redundant.
+References
+[1] Allen L, Beijersbergen M W, Spreeuw R J C and Woerdman J P 1992 Phys. Rev. A 45 8185
+[2] Bagini V, Frezza F, Santarsiero M, Schettini G and Spagnolo G S 1996 J. Mod. Opt. 43 1155
+[3] McGloin D and Dholakia K 2005 Contemp. Phys. 46 15
+[4] Molina-Terriza G, Torres J P and Torner L 2007 Nat. Phys. 3 305
+[5] Willner A E et al 2015 Adv. Opt. Photon. 7 66
+[6] Padgett M J 2017 Opt. Express 25 11265
+[7] Rubinsztein-Dunlop H et al 2017 J. Opt. 19 013001
+[8] Yao A M and Padgett M J 2011 Adv. Opt. Photonics 3 161
+[9] Malik M et al 2026 High-dimensional quantum photonics: roadmap (arXiv:2604.06528)
+[10] Walborn S P, de Oliveira A N, Thebaldi R S and Monken C H 2004 Phys. Rev. A 69 023811
+[11] D’Ambrosio V, Spagnolo N, Re L D, Slussarenko S, Li Y, Kwek L C, Marrucci L, Walborn S P, Aolita L and Sciarrino F 2013 Nat.
+Commun. 4 2432
+[12] Gori F 1983 Opt. Commun. 46 149
+[13] Starikov A and Wolf E 1982 J. Opt. Soc. Am. 72 923
+[14] Simon R and Mukunda N 1993 J. Opt. Soc. Am. A 10 95–109
+[15] Gori F, Santarsiero M, Borghi R and Vicalvi S 1998 J. Mod. Opt. 45 539
+24
+
+--- PAGE 26 ---
+J. Opt. 28 (2026) 095601
+T Ferreira et al
+[16] Gori F and Santarsiero M 2015 Opt. Lett. 40 1587
+[17] Wang F and Cai Y 2010 Opt. Express 18 24661
+[18] Liu Y, Liu X, Liu L, Wang F, Zhang Y and Cai Y 2019 Appl. Sci. 9 3023
+[19] Tong Z and Korotkova O 2012 Opt. Lett. 37 2595
+[20] Wang F, Cai Y, Eyyubo˘glu H T and Baykal Y 2012 Opt. Lett. 37 184
+[21] Zhao C, Cai Y and Korotkova O 2009 Opt. Express 17 21472
+[22] Friberg A T, Tervonen E and Turunen J 1994 J. Opt. Soc. Am. A 11 1818
+[23] Wang H, Peng X, Liu L, Wang F, Cai Y and Ponomarenko S A 2019 Opt. Lett. 44 3709
+[24] Tian C, Zhu S, Huang H, Cai Y and Li Z 2020 Opt. Lett. 45 5880
+[25] Wang H, Peng X, Zhang H, Liu L, Chen Y, Wang F and Cai Y 2021 Nanophotonics 11 689–96
+[26] Cañas G, Gómez E S, dos Santos G H, de Oliveira A G, da Silva N R, Joshi S, Ismail Y, Ribeiro P H S and Walborn S P 2022 J. Opt.
+24 094004
+[27] Hutter L, Lima G and Walborn S P 2020 Phys. Rev. Lett. 125 193602
+[28] Hutter L, Gomez E S, Lima G and Walborn S P 2021 AVS Quantum Sci. 3 031401
+[29] dos Santos G H, de Oliveira A G, da Silva N R, Cañas G, Gómez E S, Joshi S, Ismail Y, Ribeiro P H S and Walborn S P 2022
+Nanophotonics 11 763
+[30] de Oliveira M G, Santos A, Barbosa A, da Silva B P, dos Santos G, Cañas G, Ribeiro P S, Walborn S and Khoury A 2024 Opt. Laser
+Technol. 176 110983
+[31] d. Santos G, Junior A S, de Oliveira M G, Barbosa A, da Silvada Silva B P, Rubiano da Silva N, Cañas G, Walborn S, Khoury A and
+Ribeiro P S 2025 Phys. Rev. Appl. 24 034075
+[32] Dawkins R B, Hong M, You C and Magaña-Loaiza O S 2024 Opt. Lett. 49 4242
+[33] You C, Hong M, Mostafavi F, Ferdous J, León-Montiel R de J, Dawkins R B and Magaña-Loaiza O S 2024 PhotoniX 5 39
+[34] Toscano F, Cañas G, Khoury A Z, Ribeiro P H S and Walborn S P 2026 Twisted gaussian schell states in quantum optics: twist-
+assisted nonclassicality and entanglement (arXiv:2607.00837)
+[35] Gao C, Wei G and Weber H 2000 Sci. China (Series A) 43 1306–11
+[36] Serna J, Encinas-Sanz F and Nemes G 2001 J. Opt. Soc. Am. A 18 1726
+[37] Saghafi S and Sheppard C 1998 Opt. Commun. 153 207–10
+[38] Borghi R and Santarsiero M 1997 Opt. Lett. 22 262–4
+[39] Sheppard C J R and Porras M A 2023 Photonics 10 1011
+[40] Pinnell J, Rodríguez-Fajardo V and Forbes A 2019 Opt. Lett. 44 5614
+[41] Simon R, Sundar K and Mukunda N 1993 J. Opt. Soc. Am. A 10 2008
+[42] Simon R and Mukunda N 1998 J. Opt. Soc. Am. A 15 2373
+[43] Vallone G, Parisi G, Spinello F, Mari E, Tamburini F and Villoresi P 2016 Phys. Rev. A 94 023802
+[44] Rojas-Rojas S, nas G C, Saavedra G, Gómez E S, Walborn S P and Lima G 2021 Opt. Express 29 23381
+[45] Villalba N, Melo C, Ayala S, Mancilla C, Valenzuela W, Figueroa M, Baradit E, Lin R, Tang M and Walborn S P et al 2023 Opt.
+Express 31 40113
+[46] Ahmed N et al 2016 Sci. Rep. 6 22082
+[47] Deng D, Guo H, Han D and Li C 2004 Opt. Commun. 238 205
+[48] Balasubramaniam G M, Kumar R and Arnon S 2024 J. Lightwave Technol. 42 3631
+[49] Shen Y et al 2026 Adv. Photonics 8 026008
+[50] Li C, Qin X, Liu K, Zhang H, Zhou Y, Tai Y and Li X 2025 Opt. Lett. 50 3373
+[51] Wang R, Zhang H, Liu K, Li X and Tai Y 2025 Appl. Phys. Lett. 127 061101
+[52] Gradshteyn I S and Ryzhik I M 2007 table of Integrals, Series and Products 7th edn (Elsevier)
+[53] Arfken G B, Weber H J and Harris F E 2013 Mathematical Methods for Physicists: A Comprehensive Guide 7th edn (Academic)
+25

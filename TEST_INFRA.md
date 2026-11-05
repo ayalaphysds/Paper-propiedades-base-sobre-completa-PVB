@@ -1,176 +1,139 @@
-# Test Infrastructure Specification: Overcomplete Perfect Vortex Beams (PVB)
+# Test Infrastructure Specification: Version 3 (v3) Overcomplete Perfect Vortex Beams (PVB)
 
-**Author:** E2E Test Writer Subagent (`e2e_tester_1`)  
-**Project:** Overcomplete Perfect Vortex Beams (PVB) — Theory, Simulation & Publication  
-**Lead Author & Principal Investigator:** Sebastián Ayala (Independent Researcher, Cauquenes, Región del Maule, Chile; `ayala.phys.ds@gmail.com`; ORCID: `https://orcid.org/0009-0003-7348-3883`)  
-**Date:** 2026-11-04  
-**Status:** ACTIVE / OPERATIONAL  
+**Project:** Propiedades Clásicas y Cuánticas de la Sobrecompletitud de los Haces de Vórtice Perfecto (PVB) — Versión 3 (v3)  
+**Lead Author & Principal Investigator:** Sebastián Ayala (Investigador Independiente, Cauquenes, Región del Maule, Chile; `ayala.phys.ds@gmail.com`; ORCID: `https://orcid.org/0009-0003-7348-3883`)  
+**E2E Test Architecture:** `writer_test_e2e`  
+**Master Test Suite:** `tests/test_v3_suite.py`  
+**Status:** ACTIVE / OPERATIONAL (0 Failures, 0 Errors, Progressive Milestone Gating Active)  
 
 ---
 
-## 1. Test Philosophy & Principles
+## 1. Test Architecture & Verification Philosophy
 
-The E2E Test Infrastructure for the PVB research project is built upon rigorous mathematical verification, physical constraint enforcement, and opaque-box validation against the formal requirements stated in `ORIGINAL_REQUEST.md` and `PROJECT.md`.
+The E2E Test Infrastructure for Version 3 (v3) provides opaque-box, requirement-driven verification derived directly from `ORIGINAL_REQUEST.md` and `PROJECT.md § Feature Inventory`. It enforces mathematical rigor, physical consistency, and publication standards for arXiv and Q1 scientific journals (Optics Express / Phys. Rev. A).
 
 ### 1.1 Core Principles
-1. **Opaque-Box Requirement-Driven Testing:** Tests validate functional and physical behaviors against requirements rather than matching internal implementation shortcuts.
-2. **Mathematical & Physical Rigor:** Equations, integrals, Bessel identities, frame bounds, and asymptotic behaviors are verified with analytical proofs, symbolic algebraic verification (`sympy`), and high-precision numerical quadrature (`scipy.integrate.quad`).
-3. **Progressive Testability:** The test suite evaluates foundational mathematics, physical proofs, and structural assets immediately, while providing clear, structured progress tracking ("PENDING DELIVERABLE") for milestones currently undergoing active authoring by worker subagents (e.g., M2 simulation scripts, M3 LaTeX manuscripts, M4 compiled PDFs).
-4. **Zero Tolerance for Facade Tests:** Every test performs non-trivial assertions. Cheating, dummy assertions (`assert True`), or fabricated data are strictly prohibited and subject to independent audit.
-5. **Portability and Zero External Friction:** The test suite operates using the native Python 3.12 standard library (`unittest`, `math`, `re`, `pathlib`, `zipfile`) combined with standard scientific libraries (`numpy`, `scipy`, `sympy`).
+1. **Opaque-Box Requirement Derivation:** All test assertions evaluate observables and physical behavior directly against specifications rather than matching internal implementation shortcuts.
+2. **First-Principles Mathematical Oracles:** Closed-form Bessel integrals (Gradshteyn-Ryzhik 6.633.2), reproducing kernel Gram matrices, continuous frame spectral bounds, and the theoretical 8.6 dB decomposition in Ring-Core Fibers (RCF) serve as authoritative oracles.
+3. **Progressive Testability:** Foundational mathematics, simulation runners, and physical scaling laws are verified immediately, while deliverables belonging to active/planned implementation milestones (e.g., M2 arXiv manuscript, M3 Journal manuscript, M4 Overleaf bundle) are gated via `require_path(...)`. They skip cleanly during early phases and strictly fail when `FAIL_ON_PENDING=1` is asserted during the final audit gate.
+4. **Zero Tolerance for Facade Tests:** Dummy passes (`assert True`) or simulated outputs are strictly forbidden. All mathematical properties, file headers, and cross-feature references are evaluated dynamically.
+5. **Universal Portability:** Built on standard Python 3.12 (`unittest`, `math`, `re`, `pathlib`, `zipfile`, `subprocess`) and core scientific packages (`numpy`, `scipy`).
 
 ---
 
 ## 2. Four-Tier Testing Methodology
 
-The test suite is structured across four distinct verification tiers:
+The v3 test suite is organized into four complementary verification tiers:
 
 ```
-           +-----------------------------------------------------------+
-           | Tier 4: Real-World Workloads & E2E Packaging             |
-           | (Overleaf ZIP, Readability Flow, Resource Verification)   |
-           +-----------------------------------------------------------+
-                                        ^
-                                        |
-           +-----------------------------------------------------------+
-           | Tier 3: Cross-Feature Pairwise Consistency               |
-           | (LaTeX Formulas == Python Code, Figures, BibTeX Keys)     |
-           +-----------------------------------------------------------+
-                                        ^
-                                        |
-           +-----------------------------------------------------------+
-           | Tier 2: Boundary, Corner & Limit Stress Cases             |
-           | (w0 -> 0, r0 >> w0, l >> 1, Malformed/Corrupted Inputs)   |
-           +-----------------------------------------------------------+
-                                        ^
-                                        |
-           +-----------------------------------------------------------+
-           | Tier 1: Core Feature Coverage (>=5 tests per feature)    |
-           | (Author, Ethics, Appendices, Math, Bounds, Scripts, etc.) |
-           +-----------------------------------------------------------+
-```
-
-### 2.1 Tier 1: Feature Coverage (>= 5 Test Cases per Feature Group)
-Validates primary requirements across 9 key functional domains:
-- **Group 1: Author Metadata Verification:** Verifies Sebastián Ayala as first author, independent researcher affiliation, Cauquenes, Maule, Chile, contact email `ayala.phys.ds@gmail.com`, and ORCID link `https://orcid.org/0009-0003-7348-3883`.
-- **Group 2: AI Ethics Declaration Compliance:** Verifies formal disclosure of AI collaborative assistance under author supervision, COPE/Optica/APS compliance, full author responsibility clause, and explicit description of assistance scope.
-- **Group 3: Educational Appendices (A, B, C, D):** Verifies dedicated educational appendices: Appendix A (PVB Primer), Appendix B (Complete Hilbert Bases & Gel'fand Triplets), Appendix C (Overcomplete Frames & RKHS), and Appendix D (Mathematical Integrals & Asymptotics).
-- **Group 4: Exact Closed-Form Inner Product & Bessel Identities:** Verifies Gradshteyn-Ryzhik formula 6.633.2, modified Bessel ratio $\gamma_l(r_1, r_2; w_0) = \frac{I_l(r_1 r_2 / w_0^2)}{\sqrt{I_l(r_1^2/w_0^2) I_l(r_2^2/w_0^2)}}$, numerical quadrature equivalence to machine precision ($< 10^{-12}$), and asymptotic Gaussian match.
-- **Group 5: Continuous Frame Bounds on Paraxial Subspace:** Verifies Duffin-Schaeffer continuous frame condition $0 < A \le B < \infty$, strictly positive spectrum $\sigma(k_r) = e^{-\frac{1}{2} k_r^2 w_0^2}$, condition number $\kappa = B/A \approx 3$, and frame operator invertibility on $\mathcal{H}_{\text{band}}$.
-- **Group 6: Physical Unfeasibility Proofs ($w_0 \to 0$ Divergence):** Verifies proof of divergence of peak intensity $I_{\max} \propto 1/w_0$, vanishing transmitted power under material breakdown field clamping, non-$L^2$ Dirac delta distribution, and diffraction lower bound $w_0 \ge \lambda f / (\pi D)$.
-- **Group 7: Simulation Scripts Execution & Figure Generation:** Verifies presence and execution of `generate_fig1` to `generate_fig5` and `run_all_simulations.py`, validating output figures `fig1_...pdf` to `fig5_...pdf`.
-- **Group 8: Compilation & Overleaf Asset Packaging:** Verifies LaTeX package integrity, class files (`optica-article.cls`), bibliography style (`opticajnl.bst`), journal style package (`styles/opticajournal.sty`), abbreviation databases (`jabbrv*.ldf`), absence of duplicate packages, and compilation tests.
-- **Group 9: Page Count & Layout Enforcement:** Verifies that both arXiv and journal papers adhere to the strict limit of $\le 100$ pages (target ~26–34 pages) and maintain required structural document environments.
-
-### 2.2 Tier 2: Boundary, Corner & Limit Stress Cases (>= 5 Tests per Feature Category)
-Stress-tests extreme regimes and failure conditions:
-- **Category 1: Singular Limit $w_0 \to 0$:** Evaluates asymptotic divergence behavior of intensity, exponential expansion of spatial bandwidth $K_{\max}$, overlap vanishing for $r_1 \neq r_2$, and numerical stability of modified Bessel quotients as $w_0 \to 0$.
-- **Category 2: Thin-Ring / Large Radius Limit $r_0 \gg w_0$:** Tests asymptotic Gaussian annular approximation fidelity, quadratic error scaling $\mathcal{O}(w_0^2 / r_0^2)$, and topological radial shift $\Delta r_l \approx \frac{(4l^2-1)w_0^2}{32 r_0}$.
-- **Category 3: High Topological Charge $l \gg 1$:** Tests stability of Bessel evaluations for high charges ($l = 10, 50, 100$), invariance of geometric ring radius $r_0$ across charge $l$, azimuthal phase periodicity $e^{i l (\phi + 2\pi)} = e^{i l \phi}$, and modal orthogonality $\langle \psi_{l_1} | \psi_{l_2} \rangle = 0$ for $l_1 \neq l_2$.
-- **Category 4: Malformed, Missing & Negative Inputs:** Asserts that mathematical functions and simulation scripts reject non-physical inputs (negative ring width $w_0 \le 0$, negative radius $r_0 < 0$, non-positive wavelength $\lambda \le 0$, and invalid numerical apertures $\text{NA} > 1.0$).
-- **Category 5: File Corruption & Structural Resilience:** Tests detection of corrupted LaTeX environments, unclosed math blocks, broken BibTeX syntax, missing figure dependencies, and incomplete packaging.
-
-### 2.3 Tier 3: Cross-Feature Pairwise Consistency
-Validates seamless synchronization between distinct project artifacts:
-- **LaTeX Math $\leftrightarrow$ Python Simulations:** Ensures that mathematical expressions written in LaTeX in `Paper_arxiv_v1.tex` and `Paper_revista_v1.tex` strictly match the numerical expressions implemented in `v1/scripts/`.
-- **LaTeX Figures $\leftrightarrow$ Script Output Files:** Verifies that every `\includegraphics` target in LaTeX exists and matches the exact filenames generated by `generate_figX_...py`.
-- **Bibliography $\leftrightarrow$ In-Text Citations:** Verifies that every `\cite{...}` in both manuscripts has a corresponding `@article`/`@book` key in `v1/references.bib` with complete metadata (author, title, journal, volume, year, DOI), and flags orphaned references.
-- **Metadata Consistency:** Verifies that author names, affiliations, emails, and ORCIDs are 100% identical across arXiv, journal, and project documentation.
-- **Appendices $\leftrightarrow$ Main Text Referencing:** Validates that all appendices (A through D) are cross-referenced in the main body text.
-
-### 2.4 Tier 4: Real-World Application Workloads
-Simulates real-world academic publication and user deployment:
-- **Standalone Overleaf ZIP Readiness:** Assembles and validates an in-memory or physical ZIP archive containing the complete paper package, ensuring relative file paths are self-contained without referencing parent directories or external tools.
-- **Full Paper Readability & Flow:** Verifies the logical document hierarchy from title, abstract, introduction, physical theory, numerical simulations, classical/quantum advantages, conclusions, AI ethics declaration, appendices, to bibliography.
-- **Verification Resources Continuity:** Verifies that historical literature citations (`Codex Máxima/`) are cited and integrated into the manuscript bibliography and derivations.
-
----
-
-## 3. Comprehensive Feature Inventory Test Mapping
-
-Every feature defined in `PROJECT.md` is mapped directly to corresponding test implementations:
-
-| Feature # | Feature Name | Milestone | Test Module | Test Class & Methods | Pass Criteria |
-|---|---|---|---|---|---|
-| **F1** | Editorial Viability & Journal Selection | M1 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f01_journal_selection_scope` | Explicit justification of Optics Express (Q1) and Physical Review A (Q1/Q2) documented |
-| **F2** | Exact Analytical PVB Inner Product | M1 | `test_tier1_feature_coverage.py`, `test_tier2_boundary_corner_cases.py` | `TestFeatureCoverage.test_f02_exact_inner_product_formula`, `test_f02_numerical_quadrature_equivalence` | Analytical formula matches Gradshteyn-Ryzhik 6.633.2 within machine precision ($< 10^{-12}$) |
-| **F3** | Impossibility of Strict Orthonormal Basis | M1 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f03_strictly_positive_overlap` | Overlap $\gamma_l(r_1, r_2; w_0) > 0$ strictly for all finite $r_1, r_2 \in (0, \infty)$ |
-| **F4** | Physical Unfeasibility of Singular Limit $w_0 \to 0$ | M1 | `test_tier1_feature_coverage.py`, `test_tier2_boundary_corner_cases.py` | `TestFeatureCoverage.test_f04_divergence_peak_intensity`, `test_f04_power_vanishing_field_clamping`, `test_f04_diffraction_lower_bound` | Proof demonstrated: $I_{\max} \propto 1/w_0 \to \infty$, $P \propto w_0 \to 0$, $w_0 \ge \frac{2\lambda f}{\pi D}$ |
-| **F5** | Continuous Frame Formalism on Paraxial Subspace | M1 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f05_continuous_frame_bounds_positive`, `test_f05_condition_number_well_behaved` | Bounds $0 < A \le B < \infty$ with condition number $\kappa \approx 3$ on $\mathcal{H}_{\text{band}}$ |
-| **F6** | Classical Advantages of Overcompleteness | M1 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f06_classical_advantages_presence` | Multi-ring SDM, RKHS noise projection, and clipping self-healing documented and proved |
-| **F7** | Quantum Advantages of Overcompleteness | M1 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f07_quantum_advantages_presence` | POVM quantum tomography, aperture preservation in HD-QKD, and SPDC entanglement robustness proved |
-| **F8** | Literature Continuity with Codex Máxima | M1 | `test_tier4_real_world_scenarios.py` | `TestRealWorldScenarios.test_f08_codex_maxima_citations` | Citation and mathematical unification with Ferreira et al. (2026) and Vaity & Rusch (2015) |
-| **F9** | Python Simulation Fig 1: Profiles & Divergence | M2 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f09_fig1_script_and_output` | `generate_fig1_profiles.py` exists, executes, and outputs vector PDF `fig1_...pdf` |
-| **F10** | Python Simulation Fig 2: Radial Overlap Matrix | M2 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f10_fig2_script_and_output` | `generate_fig2_overlap.py` exists, executes, and outputs vector PDF `fig2_...pdf` |
-| **F11** | Python Simulation Fig 3: Frame Bounds | M2 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f11_fig3_script_and_output` | `generate_fig3_frame_bounds.py` exists, executes, and outputs vector PDF `fig3_...pdf` |
-| **F12** | Python Simulation Fig 4: Turbulence & RKHS Recovery | M2 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f12_fig4_script_and_output` | `generate_fig4_turbulence.py` exists, executes, and outputs vector PDF `fig4_...pdf` |
-| **F13** | Python Simulation Fig 5: Quantum POVM & Entanglement | M2 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f13_fig5_script_and_output` | `generate_fig5_quantum.py` exists, executes, and outputs vector PDF `fig5_...pdf` |
-| **F14** | Master Simulation Runner | M2 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f14_master_runner_execution` | `run_all_simulations.py` executes all five figure generations sequentially without errors |
-| **F15** | Primary Journal Manuscript (`Paper_revista_v1.tex`) | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f15_journal_manuscript_structure` | `v1/Paper_revista_v1.tex` exists, uses `optica-article.cls`, contains complete scientific sections |
-| **F16** | arXiv Preprint Manuscript (`Paper_arxiv_v1.tex`) | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f16_arxiv_manuscript_structure` | `v1/Paper_arxiv_v1.tex` exists, contains self-contained preamble and bbl compatibility |
-| **F17** | Author Information & Affiliation | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f17_author_metadata_complete` (5 sub-checks) | Sebastián Ayala, Cauquenes, Chile, email, and ORCID present across both manuscripts |
-| **F18** | Formal AI Ethics Declaration | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f18_ai_ethics_declaration_compliance` (5 sub-checks) | Formal COPE/Optica/APS compliant AI declaration present with author responsibility clause |
-| **F19** | Appendix A: Pedagogical Primer on PVBs | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f19_appendix_a_pvb_primer` | Comprehensive tutorial explaining Helmholtz equation, axicon, SPP, and Fourier transformation |
-| **F20** | Appendix B: Complete Bases in Hilbert Spaces | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f20_appendix_b_hilbert_bases` | Rigorous exposition of Schauder bases, Parseval identity, and Gel'fand triplets ($\Phi \subset \mathcal{H} \subset \Phi^\times$) |
-| **F21** | Appendix C: Overcomplete Bases & Frame Theory | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f21_appendix_c_frame_theory` | Complete exposition of Duffin-Schaeffer frames, continuous frames, dual frames, and RKHS |
-| **F22** | Appendix D: Mathematical Derivations | M3 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f22_appendix_d_derivations` | Step-by-step derivations of Gradshteyn-Ryzhik integral and asymptotic expansions |
-| **F23** | Comprehensive Bibliography Database | M3 | `test_tier1_feature_coverage.py`, `test_tier3_cross_feature_combinations.py` | `TestFeatureCoverage.test_f23_bib_database_integrity`, `TestCrossFeatureConsistency.test_f23_all_citations_defined` | Complete `references.bib` with zero missing citations and valid BibTeX syntax |
-| **F24** | Overleaf & Directory Asset Packaging | M4 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f24_overleaf_asset_packaging` | Class, style, and BST files present in `v1/` (`optica-article.cls`, `styles/`, etc.) |
-| **F25** | LaTeX & PDF Compilation | M4 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f25_compilation_readiness` | Clean compilation to `Paper_arxiv_v1.pdf` and `Paper_revista_v1.pdf` without fatal errors |
-| **F26** | Length Verification (<= 100 pages) | M4 | `test_tier1_feature_coverage.py` | `TestFeatureCoverage.test_f26_page_count_enforcement` | Both PDFs verified strictly $\le 100$ pages (target ~26–34 pages) |
-| **F27** | E2E Test Suite Creation | E2E Track | `test_e2e_runner.py` | `test_e2e_runner.py` self-execution | All 4 test tiers execute cleanly with unified reporting and metrics |
-| **F28** | 100% E2E Test Pass & Hardening (Tier 5) | M5 | `test_e2e_runner.py` | Runner terminal execution | 100% pass on completed features, zero regressions |
-| **F29** | Forensic Integrity Audit | M5 | `teamwork_auditor` | Audit report | Zero fabrications, zero mock passes, zero integrity violations |
-
----
-
-## 4. Test Directory Architecture
-
-```
-tests/
-├── __init__.py                                 # Test package initialization
-├── test_e2e_runner.py                          # Master test runner and aggregator
-├── test_tier1_feature_coverage.py              # Tier 1: Functional feature coverage
-├── test_tier2_boundary_corner_cases.py         # Tier 2: Boundary, corner & limit stress cases
-├── test_tier3_cross_feature_combinations.py    # Tier 3: Pairwise cross-feature consistency
-└── test_tier4_real_world_scenarios.py          # Tier 4: Real-world workloads & packaging
++-------------------------------------------------------------------------+
+| Tier 4: Real-World Scenarios & Mathematical Proof Oracles               |
+| - Simulation pipeline execution (run_all_simulations.py -> 5 PDFs)      |
+| - Overleaf standalone bundle unzipping & pdflatex dry-run compilation   |
+| - Theoretical 8.6 dB decomposition: 6.83 dB coupling + 1.77 dB ISI     |
+| - Exact overlap subunitarity (0 < gamma < 1) & normalization            |
+| - Continuous frame bounds (0 < A <= S <= B) & kappa ~ 3.08             |
+| - Reproducing kernel Gram matrix positive semi-definiteness             |
+| - Theorem 2 physical unfeasibility divergence scaling laws             |
+| - High-dimensional IC-POVM Cramér-Rao advantage (2.71x lower MSE)      |
+| - Modified Bessel ODE Wronskian linear independence                     |
++-------------------------------------------------------------------------+
+                                    ^
+                                    |
++-------------------------------------------------------------------------+
+| Tier 3: Cross-Feature Pairwise Consistency                              |
+| - All \includegraphics targets exist in v3/figures/                     |
+| - All 5 figures actively cited/referenced in both manuscripts           |
+| - 100% citation completeness: all \cite keys exist in v3/references.bib |
+| - Continuous algebraic bridges connecting numbered equations (>=5)     |
+| - Complete analytical coverage of Seven Pillars of Theorem 2            |
+| - Modified Bessel ODE linear independence proof coverage                |
++-------------------------------------------------------------------------+
+                                    ^
+                                    |
++-------------------------------------------------------------------------+
+| Tier 2: Boundary, Corner & Publication Quality Cases                    |
+| - Zero empty (0-byte) files anywhere in v3/                             |
+| - Page count enforcement: <= 100 pages for both compiled PDFs           |
+| - Exact author metadata string: "Sebastián Ayala", "Cauquenes",         |
+|   "Región del Maule, Chile", email, and ORCID in both manuscripts       |
+| - Zero unresolved citations or '?' in LaTeX logs and TeX source         |
+| - Q1 Abstract cleanliness (no raw equations, no Eq. (N), no brackets)   |
+| - Technical English spelling: Latin plural 'radii' strictly enforced    |
+| - Adversarial negative test cases for validators                        |
++-------------------------------------------------------------------------+
+                                    ^
+                                    |
++-------------------------------------------------------------------------+
+| Tier 1: Feature Coverage (Core Deliverables)                            |
+| - Complete v3/ directory layout (v3/scripts/, v3/figures/, styles)      |
+| - Validated 70-entry BibTeX database (v3/references.bib)                |
+| - Standalone Paper_arxiv_v3.tex (>300 lines, Sections 1 to 8)           |
+| - Standalone Paper_revista_v3.tex (optica-article, linenumbers, macros) |
+| - Complete Pedagogical Appendices A, B, C, D, and E                     |
+| - Standalone Section 8: Human-AI Scientific Co-Creation Framework       |
+| - Standalone Section 6.2: 8.6 dB Power Advantage in RCF                 |
+| - Compiled PDFs existence with valid %PDF- magic bytes                  |
+| - 6 reproducible scripts in v3/scripts/ (size > 0)                      |
+| - 5 publication vector PDFs in v3/figures/ (magic bytes %PDF-)          |
+| - Complete standalone v3/overleaf_bundle_v3.zip package                 |
++-------------------------------------------------------------------------+
 ```
 
 ---
 
-## 5. Execution Instructions & CLI Specification
+## 3. Feature Inventory & Test Coverage Matrix
 
-### 5.1 Primary Test Runner (Recommended)
-To execute the complete E2E test suite with formatted console reporting, progress tracking, and tier aggregation:
+Every feature defined in `PROJECT.md § Feature Inventory` is mapped directly to tests in `tests/test_v3_suite.py`:
 
+| Feature # | Feature Name | Milestone | Test Class & Method | Pass Criteria |
+|---|---|---|---|---|
+| **F1** | Directory & Infrastructure Setup | M1 | `TestTier1FeatureCoverage.test_01_v3_directory_and_layout` | `v3/` root, `scripts/`, `figures/`, styles, and classes present |
+| **F2** | Python Simulation Suite & Vector Figures | M1 | `TestTier1FeatureCoverage.test_09_simulation_scripts_presence`, `test_10_vector_figures_presence_and_magic_bytes` | 6 scripts and 5 vector PDF figures present with `%PDF-` headers |
+| **F3** | Validated 70-entry BibTeX Database | M1 | `TestTier1FeatureCoverage.test_02_references_bib_seventy_entries_and_citations` | $\ge 70$ valid BibTeX entries with author/title/year and key authors |
+| **F4** | First-Principles Derivation of 8.6 dB Advantage | M2 | `TestTier1FeatureCoverage.test_07_first_principles_rcf_eight_point_six_db_section`, `TestTier4RealWorldApplicationScenarios.test_03_mathematical_rcf_eight_point_six_db_decomposition` | 6.83 dB coupling ratio + 1.77 dB ISI mitigation derived and validated |
+| **F5** | Elimination of Speedruns & Algebraic Bridges | M2 | `TestTier3CrossFeatureCombinations.test_04_eight_point_six_db_equation_labels_and_algebraic_bridges` | Explicit textual bridges between numbered equations across text |
+| **F6** | Airtight ODE Proof of Theorem 1 | M2 | `TestTier3CrossFeatureCombinations.test_06_ode_proof_theorem_one_linear_independence_in_tex`, `TestTier4RealWorldApplicationScenarios.test_09_mathematical_bessel_ode_wronskian_independence` | Modified Bessel ODE and non-vanishing Wronskian proof of linear independence |
+| **F7** | Complete Seven Pillars Derivations (Theorem 2) | M2 | `TestTier3CrossFeatureCombinations.test_05_seven_pillars_theorem_two_coverage_in_tex`, `TestTier4RealWorldApplicationScenarios.test_07_mathematical_seven_pillars_scaling_laws` | All 7 physical divergence pillars derived and verified numerically |
+| **F8** | Continuous Frame Bounds & Dual Inversion | M2 | `TestTier4RealWorldApplicationScenarios.test_05_mathematical_continuous_frame_bounds_and_condition_number` | $0 < A \approx 0.325 \le S \le B = 1.0$, condition number $\kappa \approx 3.08$ |
+| **F9** | RKHS Filtering & Classical Assets | M2 | `TestTier4RealWorldApplicationScenarios.test_06_mathematical_reproducing_kernel_positive_semidefinite` | Reproducing kernel Gram matrix is symmetric positive semi-definite |
+| **F10** | High-Dimensional Quantum Assets | M2 | `TestTier4RealWorldApplicationScenarios.test_08_mathematical_quantum_ic_povm_cramer_rao_advantage` | IC-POVM Cramér-Rao lower bound MSE is $2.71\times$ lower than projective |
+| **F11** | Human-AI Scientific Co-Creation Section | M2 | `TestTier1FeatureCoverage.test_06_human_ai_cocreation_section_eight` | Dedicated Section 8 covering Ayala + Antigravity + Gemini + Teamwork |
+| **F12** | Comprehensive Pedagogical Appendices A–E | M2 | `TestTier1FeatureCoverage.test_05_pedagogical_appendices_a_to_e` | Full primers on PVB optics, Hilbert bases, RKHS, Weber integral, and RCF waveguides |
+| **F13** | arXiv Manuscript Authoring (`Paper_arxiv_v3.tex`) | M2 | `TestTier1FeatureCoverage.test_03_arxiv_tex_structure_and_scope` | Full standalone arXiv manuscript (>300 lines) with complete math |
+| **F14** | Q1 Journal Manuscript Authoring (`Paper_revista_v3.tex`) | M3 | `TestTier1FeatureCoverage.test_04_revista_tex_structure_and_scope` | Standalone Optica Journal manuscript with macro clash protections & linenumbers |
+| **F15** | Automated 4-Pass Compilation Pipeline | M4 | `TestTier1FeatureCoverage.test_08_compiled_pdfs_headers_and_existence` | Clean compilation to `Paper_arxiv_v3.pdf` and `Paper_revista_v3.pdf` |
+| **F16** | Zero Broken References & Page Budget ($\le 100$ pages) | M4 | `TestTier2BoundaryAndCornerCases.test_02_pdf_page_count_under_one_hundred_pages`, `test_04_absence_of_unresolved_references_or_question_marks` | 0 fatal errors, 0 undefined citations (`?`), page count $\le 100$ |
+| **F17** | Overleaf Bundle Creation | M4 | `TestTier1FeatureCoverage.test_11_overleaf_bundle_zip_presence_and_structure`, `TestTier4RealWorldApplicationScenarios.test_02_overleaf_bundle_unzipping_and_draft_compilation` | Standalone `v3/overleaf_bundle_v3.zip` containing all assets for unzipping & compilation |
+| **F18** | Opaque-Box E2E Test Suite (Tiers 1–4) | E2E Track | `tests/test_v3_suite.py` | Complete 33-test suite executing with 0 failures and 0 errors |
+| **F19** | Adversarial Referee Review (Severe Árbitro) | M5 | `teamwork_auditor` review | Rigorous review of mathematical derivations across Sections 1 to 8 |
+| **F20** | Forensic Integrity Audit | M5 | `teamwork_auditor` | 100% genuine code verification with zero mock passes |
+
+---
+
+## 4. Execution Commands & CLI Specifications
+
+### 4.1 Primary Runner (Detailed Verbose Output)
 ```bash
-python tests/test_e2e_runner.py
+python tests/test_v3_suite.py
 ```
 
-### 5.2 Standard Unittest Runner
-To run via Python's built-in `unittest` runner:
-
+### 4.2 Standard Python Unittest Runner
 ```bash
-python -m unittest discover -s tests -p "test_*.py" -v
+python -m unittest tests/test_v3_suite.py
 ```
 
-### 5.3 Individual Tier Execution
-To execute individual tiers independently:
-
-```bash
-# Tier 1: Feature Coverage
-python -m unittest tests/test_tier1_feature_coverage.py -v
-
-# Tier 2: Boundary & Corner Cases
-python -m unittest tests/test_tier2_boundary_corner_cases.py -v
-
-# Tier 3: Cross-Feature Combinations
-python -m unittest tests/test_tier3_cross_feature_combinations.py -v
-
-# Tier 4: Real-World Scenarios
-python -m unittest tests/test_tier4_real_world_scenarios.py -v
+### 4.3 Strict Milestone Gating Mode (Auditor Final Verification)
+To fail immediately on any pending deliverable (useful during M4/M5 verification):
+```powershell
+$env:FAIL_ON_PENDING="1"
+python tests/test_v3_suite.py
 ```
 
-### 5.4 Exit Codes & Interpretation
-- **Exit Code 0:** All active tests passed cleanly. Any pending deliverables are reported with transparent milestone dependencies.
-- **Exit Code 1:** One or more regression test failures or integrity violations detected.
+### 4.4 Expected Baseline Results
+- **Tests Run:** 33
+- **Passed:** 15 (Active deliverables & mathematical oracles)
+- **Skipped:** 18 (Gated pending implementation milestones M2–M4)
+- **Failures:** 0
+- **Errors:** 0
+- **Execution Time:** ~5.5 seconds

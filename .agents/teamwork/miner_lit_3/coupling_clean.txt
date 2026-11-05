@@ -1,0 +1,663 @@
+=== 2021-Evaluating the coupling efficiency of OAM beams into ring-core optical fibers.pdf ===
+
+
+--- PAGE 1 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23381
+Evaluating the coupling efficiency of OAM
+beams into ring-core optical fibers
+SANTIAGO ROJAS-ROJAS,1,2 GUSTAVO CAÑAS,3 GABRIEL
+SAAVEDRA,4,*
+ESTEBAN S. GÓMEZ,1,2
+STEPHEN P.
+WALBORN,1,2 AND GUSTAVO LIMA1,2
+1Departamento de Física, Universidad de Concepción, 160-C Concepción, Chile
+2Millennium Institute for Research in Optics, Universidad de Concepción, 160-C Concepción, Chile
+3Departamento de Física, Universidad del Bío-Bío, Collao 1202, 5-C Concepción, Chile
+4Departamento de Ingeniería Eléctrica, Universidad de Concepción, 160-C Concepción, Chile
+*gasaavedra@udec.cl
+Abstract: In optical communications, space-division multiplexing is a promising strategy to
+augment the fiber network capacity. It relies on modern fiber designs that support the propagation
+of multiple spatial modes. One of these fibers, the ring-core fiber (RCF), is able to propagate
+modes that carry orbital angular momentum (OAM), and has been shown to enhance not only
+classical but also quantum communication systems. Typically, the RCF spatial modes are used as
+orthogonal transmission channels for data streams that are coupled into the fiber using different
+free space beams. Free space beams commonly used are Laguerre-Gaussian (LG) and perfect
+vortex (PV) beams. Here, we study the optimal conditions to multiplex information into ring-core
+fibers in this scheme. We study the beam coupling efficiency using the overlap between free
+space beams and RCF bound beams and determine which are the most relevant LG beams to
+be considered and how their coupling efficiency can be maximized by properly adjusting the
+beam width with respect to the fiber parameters. Our results show that the coupling efficiency
+depends upon the OAM value and that this can limit the achievable transmission rates in SDM
+systems. In this regard, we find optimal coupling configurations for LG beams based on the
+RCF fiber and beam parameters. Further, we study the PV beam that allows for nearly perfect
+coupling efficiencies for all spatial modes supported by these fibers. PV beams present higher
+coupling efficiencies than LG beams and negligible dependence on the OAM value, thus offering
+an attractive solution to multiplex high counts of OAM channels from free space into a ring-core
+fiber using a single coupling configuration.
+© 2021 Optical Society of America under the terms of the OSA Open Access Publishing Agreement
+1.
+Introduction
+Over the last 50 years, the capability of fiber optic technology to deal with an ever growing
+demand for higher communication rates has fueled a revolution in telecommunication and
+networking industries, as well as in science and engineering. Using available techniques for
+time-, polarization-, and wavelength-division signal multiplexing, high capacity communications
+systems have been implemented resorting to single-mode fibers (SMFs) [1–7].
+However,
+nowadays the information capacity carried by SMFs is rapidly approaching its physical limit
+[8–10], a problem known as the “capacity crunch”. One of the main proposals to overcome
+this limiting issue is the use of multiple spatial channels to multiplex signals into optical fibers,
+in addition to the aforementioned techniques [8,11]. To achieve this, novel optical fibers that
+support propagation of several spatial modes have been under development. To date, at least
+three main fiber types can be found, namely, few mode fibers (FMFs) [12,13], multi-core fibers
+(MCFs) [14], and ring-core fibers (RCFs) [15].
+Ring-core fibers (see Fig. 1) have been successful in this context, with demonstrations showing
+that the spatial modes of these fibers can be used to enhance not only classical [16–18], but also
+#425419
+https://doi.org/10.1364/OE.425419
+Journal © 2021
+Received 19 Mar 2021; revised 30 Jun 2021; accepted 1 Jul 2021; published 9 Jul 2021
+
+--- PAGE 2 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23382
+quantum communication links [19–22]. Several RCF configurations and modifications to the core
+design have been proposed to allow the propagation of a large number of guided modes [23–25].
+The spatial modes of a RCF can carry orbital-angular-momentum (OAM). Orthogonality of such
+OAM modes makes them particularly useful for multiplexing information, since it reduces the
+problem of mode coupling present in standard multimode fibers. OAM modes are usually excited
+by means of independent data streams propagating in different free-space Laguerre-Gaussian
+(LG) beams [16,26,27]. However, since there are several spatial modes supported by the fiber, the
+optical configuration adopted to couple the beams into the RCF may lead to drastic differences in
+the coupling efficiencies of each input signal. For instance, a LG beam–characterized by radial
+(p) and azimuthal (ℓ) numbers–is a helically phased beam composed of an azimuthal phase term
+eiℓφ, where each photon carries OAM ℓℏ, with ℓbeing the topological charge of the beam and ϕ
+its azimuthal angle [28,29]. The LG beam width depends on both of these numbers. For constant
+radial number, the ring radius size scale with
+√︁
+|ℓ|. The spatial eigenmodes of the RCF, on the
+other hand, have a width parameter defined almost only by the core radius, and consequently
+an asymmetry on the coupling efficiencies as a function of ℓis observed for a given optical
+configuration. This results in space-division multiplexing communication schemes with channels
+that may have drastically different overall transmissions, which in general decreases the achievable
+communication rates. For quantum communication, asymmetrical coupling efficiencies result in
+undesired state transformations performed by the fiber, resulting in high quantum error rates.
+Fig. 1. (a) Schematics of a ring-core fiber. Light propagates through the annular core with
+internal and external radius b and a, respectively, delimited by refractive index nco embedded
+on a cladding with refractive index ncl. (b) Radial step profile of the refractive index for
+the fiber parameters used in our study (green area). As a reference we plot the GRIN-RCF
+profile used in [18] (dark blue line).
+To overcome such limitations, we study the optimal conditions to multiplex information into
+a RCF using linearly polarized (LP) modes which are available when there is a small contrast
+between the refractive index of the core and the cladding. First, we show which are the most
+relevant LG beams to be considered, and how their coupling efficiency can be maximized by
+properly adjusting the beam width with respect to the fiber core radius. Then, we show that LG
+beams are not optimal to couple signals multiplexed in the spatial domain into a RCF. As an
+alternative to the usual LG beams, we consider the perfect vortex (PV) beams introduced by
+Ostrovsky et al. [30,31], and we show that these PV beams allow for nearly perfect coupling
+efficiency for all spatial modes supported by RCFs.
+Our results can be used to optimize
+experimental configurations by providing an upper bound to the coupling efficiency attainable
+with free-space beams.
+
+--- PAGE 3 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23383
+2.
+Spatial modes of ring-core optical fibers
+To study the coupling efficiency between a RCF and different spatial modes propagating in free-
+space, first we need to determine the bound modes of the fiber. The system under consideration is
+a ring core fiber, illustrated in Fig. 1(a). Let z be the direction corresponding to the longitudinal
+axis of the RCF. The electric and magnetic components of the j-th bound mode carried by the
+fiber can then be expressed as ejeiβz and hjeiβz respectively, where amplitudes ej and hj solve
+the vector eigenvalue equations derived from the source-free Maxwell equations [32]. The
+corresponding eigenvalue βj is the propagation constant of the mode. Depending on the symmetry
+of the particular problem, exact solutions of the vector equations can be found [33]. When the
+contrast ∆n between the core (nco) and cladding (ncl) refractive indexes is low enough, different
+subsets of vector (exact) modes become nearly degenerate. This regime, commonly referred
+to as the weakly guiding approximation [34], is attainable with standard fabrication techniques
+and enables linear combinations of the exact solutions to become bound modes of the fiber. In
+particular, the fiber sustains linearly polarized (LP) modes whose longitudinal field components
+are small compared to the transverse components, which keep the same direction of polarization
+across the transverse section (unlike the exact vector modes). This last property is related to the
+LP modes being solutions of the scalar equation ∇2
+t Ψℓ+ (k2n2 −β2
+ℓ)Ψℓ= 0, derived from the
+exact vector equations in the limit nco ≃ncl. Therefore, in the weakly guiding approximation the
+LP modes form a basis, where for each propagation constant βℓother than the fundamental one,
+there are two orthogonal states of different parity (i.e., different variation with the azymuthal
+angle ϕ). Indeed, linear combinations of such degenerate basis states are also eigenmodes of the
+fiber with the same eigenvalue, which makes it possible to encode OAM using LP modes with
+azimuthal dependence exp(iℓϕ), depicted in Fig. 2(c). If the external cladding is taken to have a
+finite extension, their spatial profile can be expressed as
+Ψℓ(r, ϕ) = S(ℓϕ)
+⎧⎪⎪⎪⎨
+⎪⎪⎪⎩
+C1Iℓ(wr)
+0 ≤r<b,
+A1Jℓ(ur) + A2Yℓ(ur)
+b ≤r<a,
+C2Kℓ(wr) + C3Iℓ(wr)
+a ≤r ≤c,
+(1)
+where S(ℓϕ) is either cos(ℓϕ) or sin(ℓϕ) depending on the mode parity, while JℓYℓ, Kℓand Iℓ
+are the Bessel functions of the first and second kind. Real coefficients Ai and Ci are determined
+by the condition that fields described by Eq. (1) must be continuous and smooth across all the
+fiber section, and null in the cladding border r = c, in order to solve the scalar wave equation.
+These requirements results in the following characteristic equation for βℓ:
+I′
+ℓ(wb)Jℓ(ub) −u
+wJ′
+ℓ(ub)Iℓ(wb)
+I′
+ℓ(wb)Yℓ(ub) −u
+wY′
+ℓ(ub)Iℓ(wb)
+=
+(︂
+K′
+ℓ(wa) −Kℓ(wc)
+Iℓ(wc) I′(wa)
+)︂
+Jℓ(ua) −u
+wJ′
+ℓ(ua)
+(︂
+Kℓ(wa) −Kℓ(wc)
+Iℓ(wc) I(wa)
+)︂
+(︂
+K′
+ℓ(wa) −Kℓ(wc)
+Iℓ(wc) I′(wa)
+)︂
+Yℓ(ua) −u
+wY′
+ℓ(ua)
+(︂
+Kℓ(wa) −Kℓ(wc)
+Iℓ(wc) I(wa)
+)︂,
+(2)
+with w2 = β2
+ℓ−k2
+0n2
+cl and u2 = k2
+0n2
+cl −β2
+ℓbeing the fiber parameters. Note that in the limit
+c →∞we recover the characteristic equation for LP modes in annular cores [35,36]. We start by
+computing the bound modes of a RCF with external radius a = 9.0 µm for different internal radii
+[37]. The fiber material is taken to be fused silica, such that ncl = 1.444 when the wavelength of
+the incident light is λ = 1550 nm. The refractive index contrast is ∆n = 0.025. We first solve the
+scalar equation to obtain the LP modes of the fiber. Our results for the effective refractive index
+neff (proportional to the propagation constant) of the modes are shown in Fig. 2(a). In order to
+ensure that the LP modes can be used to encode OAM, we need to confirm the validity of the
+weakly guiding approximation for the parameters in our analysis. To evaluate this, we solved
+
+--- PAGE 4 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23384
+the exact problem and obtained the neff curves for the vector solutions. The exact results are
+very well approximated by the LP modes, so the curves overlap in the full picture. Furthermore,
+we estimate the time spread of the LP modes to be ∼0.1 ns per kilometer. For an internal
+radius b equal to 6.0 µm, (vertical blue line in the figure) we find that the fiber supports thirteen
+modes LPℓ1: the fundamental ℓ= 0 mode and two parities for each ℓbetween 1 and 6, which
+corresponds to 26 modes when the polarization degree-of-freedom is considered. The second
+index m = 1 indicates that all the modes are first-order regarding the radial distribution of the
+field amplitude. In Ref. [18], a graded-index (GRIN) RCF with an internal radius of ∼6.0 µm
+was used for space-division multiplexing. Thus, analysis in the following sections are made with
+this configuration. We note that the GRIN-RCF was designed to support propagation up to the
+mode LP51 [18], while the step-index fiber analyzed herein (with a = 6.0 µm and b = 6.0 µm)
+enables the propagation of the LP61 mode. A comparison between both profiles is shown in
+Fig. 1(b).
+Fig. 2. (a) Effective refractive index of the linearly polarized modes supported by the
+RCF, as a function of the internal radius b. The vertical blue line marks the particular
+configuration b = 6 µm used in our calculations, which supports the seven modes indicated
+by the labels, with the same radial order m = 1 (higher-order modes are represented by the
+dashed curves). The example in the inset shows an enlarged region of the plot including the
+exact (vector) modes. (b) Example of a combination of exact vector modes giving rise to a
+linearly polarized mode in the limit nco ≃ncl. (c) A complex superposition of orthogonal
+LP modes allows to encode OAM. In this example the topological charge is ℓ= 3.
+The example in Fig. 2(b) illustrates how LP modes arise as linear combinations of the vector
+modes in the limit where these become degenerate. In Fig. 2(c) we show a combination of LP
+modes allowing to encode OAM. For each OAM order, the topological charge is given by ±|ℓ|
+(ℓ= 3 in the example) so it can be excited by a free-space beam with the same ℓand linear
+polarization. Note that this is not possible when the refractive-index contrast is high, such as in
+fibers with doped cores [38]. In that regime, OAM modes must be constructed as phase-shifted
+combinations of even and odd vector modes, so the propagated field has circular polarization.
+Finally, we note that for certain quantum information protocols the relative time delay between
+modes, induced by the difference in their effective refractive index, may be relevant. In our case,
+the delay between the fundamental and the highest-order mode is 20.97 ps (10.82 ns) after a
+transmission distance of 50 cm (1 km). We leave detailed study of the temporal delay of these
+modes for a future study, and remark that the relative delays can be corrected at the receiver or
+transmitter, if necessary.
+
+--- PAGE 5 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23385
+3.
+Coupling efficiency between the fiber and free-space spatial modes
+The OAM modes in a RCF can be used as orthogonal carriers to multiplex data streams. Typically,
+free-space modes are used to excite OAM fiber modes. We shall now study the coupling
+conditions to optimally multiplex information into ring-core fibers, using LG modes and PV
+beams.
+3.1.
+Using LG beams
+LG beams are a suitable choice for the adopted free-space modes to excite the RCF modes since
+they share the cylindrical symmetry of the fiber. Moreover, they are eigenmodes of first-order
+optical systems with cylindrical symmetry, such as free space propagation or spherical lenses.
+These modes are solutions of the paraxial Helmholtz equation, and are given by [39]:
+LGpℓ= Mpℓ
+(︄
+2r2
+w2
+0
+)︄|ℓ|
+2
+L|ℓ|
+p
+(︄
+2r2
+w2
+0
+)︄
+exp
+(︄
+−r2
+w2
+0
+)︄
+exp(iℓϕ),
+(3)
+where, L|ℓ|
+p are the associated Laguerre polynomials, w0 defines the width of the beam and Mpℓis
+a normalization factor.
+Using LG beams to couple OAM modes into a RCF has been successfully demonstrated, and
+was used in [18,40]. Despite this, coupling multiple OAM with different topological charge
+remains a practical challenge, as the diameter of the LG mode is proportional to
+√︁
+|ℓ|. In
+practice, this means that one cannot simultaneously optimize the coupling of different free space
+modes into the fiber using the same optical configuration. In [40], optical modes use the same
+topological charge ℓ= ±1 with opposite wavefront rotation directions, and in [18] OAM modes
+were multiplexed with contiguous ℓ= {+4, +5} to simplify the coupling setup. Note that both
+references use systems with 2 spatial modes or dimensions.
+To analyze the coupling efficiency of LG beams in a RCF we use the projection of the modes
+onto the LP basis and viceversa. As described in the previous section, OAM modes within the
+RCF can be generated as a linear combination of LP modes. We consider the following figure of
+merit, which measures the overlap between the modes:
+η =
+|︁|︁|︁|︁
+∬
+LGpℓ(r, ϕ)Ψ∗
+ℓ(r, ϕ) dA
+|︁|︁|︁|︁.
+(4)
+The integral is defined across all the transverse section of the RCF. If we consider a finite
+cladding, the integration region is limited by its external radius c. From Eq. (4) it follows directly
+that LG and LP modes can be matched only if they have the same azimuthal index ℓ, in accordance
+with the definition of η, since they both have the same angular dependence exp(iℓϕ). Unlike the
+standard step-index fiber with a cylinder core [41], modes of the RCF can be matched to LG
+modes having different radial order due to the ring shape of the core. Therefore, for each LP mode
+we evaluate the overlap with the first four radial orders (p = 0, 1, 2, 3) of the corresponding LG
+modes. The overlap between LG and LP modes can be characterized by a single parameter–the
+ratio w0/a between the beam width w0 of the LG mode and the external core radius a of the RCF.
+Figure 3 presents the overlap between the LG and LP modes as a function of the w0/a ratio. It
+can be observed that the coupling between the free-space and fiber modes can be maximized by
+properly adjusting this ratio, which in a practical case (e.g. fiber with fixed a) can be performed
+by changing the LG beam width. Vertical lines show the maximum coupling efficiency for a
+given order ℓ. Each sub-figure presents a different radial order p of the LG beams. As the
+azimuthal order of the LG mode is increased, the ratio w0/a needs to be decreased in order to
+couple light into the fiber with maximum efficiency. In general, higher coupling efficiencies are
+observed using LG beams with radial order p = 0. However, large differences are observed in the
+
+--- PAGE 6 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23386
+optimal w0/a ratio for different values of ℓ. For example, for p = 0, a w0/a of 1.2 is required to
+optimally couple ℓ= 0 into the RCF, while w0/a of 0.47 is needed for ℓ= 6. Alternatively, using
+p = 3 results in lower coupling efficiencies, however the optimal w0/a ratios of 0.35 and 0.25 for
+ℓ= 0 and 6 are much closer. For radial orders p>0, multiple peaks in the coupling efficiency are
+observed as w0/a is increased. This is due to the fact that LG modes can have multiple rings, and
+as the beam width is increased the inner rings are coupled into the RCF. However, the highest
+overlap is observed for the outer ring of any LG mode, which usually has the highest intensity. It
+is worth noting that while the previous results are valid for the parameters defined in Sec. 2.,
+varying the core thickness in a way that does not add LP modes of higher radial order gives the
+same overall results for different optimal widths.
+Fig. 3. Overlap between the LPℓ1 modes sustained by the fiber and the matching Laguerre-
+Gaussian modes LGpℓup to p = 3, as a function of the ratio between the width w0 of the
+LG-modes and the external radius a of the fiber core.
+The maximal coupling efficiency that can be achieved for each optical configuration studied is
+highlighted in Table 1. Note that for the p = 0 the efficiency increases together with the azimuthal
+number, while for p>0 the opposite effect is observed. In the former case, this is due to the fact
+that the rings get narrower as a function of |ℓ|. In the latter case, as discussed previously, in the
+optimal coupling scenario only the external ring of the LG mode is coupled into the fiber for
+p>0, leading to coupling losses.
+3.2.
+Using PV beams
+Our results show that the coupling efficiency between LG and LP modes strongly depends on the
+topological charge ℓ, even for the case of constant radial index p. This must be considered when
+coupling multiple OAM modes into ring core fiber, and leads to a trade-off between optimality
+and homogeneity in terms of the coupling efficiencies. To eliminate this ℓ-dependence, we now
+consider PV beams, whose field profile is more convenient for this type of application. The PV
+
+--- PAGE 7 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23387
+Table 1. Maximum Overlap Between Different Pairs of LPℓ1 and LG Modes
+ηmax
+LG0ℓ
+LG1ℓ
+LG2ℓ
+LG3ℓ
+LP01
+0.7214
+0.8101
+0.7353
+0.6553
+LP11
+0.8314
+0.7878
+0.7000
+0.6235
+LP21
+0.8860
+0.7686
+0.6729
+0.6000
+LP31
+0.9188
+0.7532
+0.6525
+0.5818
+LP41
+0.9411
+0.7372
+0.6355
+0.5657
+LP51
+0.9568
+0.7258
+0.6205
+0.5484
+LP61
+0.9690
+0.7199
+0.6039
+0.5389
+beams are obtained as Fourier transformations of Bessel-Gaussian beams, and have a transverse
+field distribution given by [42]:
+PVℓ≃iℓ−1 wg
+w0
+exp(iℓϕ) exp
+(︄
+−(r −rr)2
+w2
+0
+)︄
+,
+(5)
+where wg is the beam width of the Gaussian beam which is used to confine the Bessel beam, w0
+is the beam width at the focus plane (w0 = 2f/kwg), and the annular profile of PV beams have
+thickness and radius of the ring equal to 2w0 and rr, respectively. Thus, as long as rr is large
+enough for the approximation of Eq. (5) to be valid, it is possible to set the field amplitude to
+have the desired transverse “ring" profile that is independent of the value ℓ. PV modes have been
+generated by different methods based on holograms with periodic variation in the azimuthal
+direction, phase mask formed by the combination of the phase functions of the axicon and the
+spiral phase, and also based on passive elements such as axicons, which have been successfully
+reported in [31,38,43,44]. We note that PV beams have also been used to demonstrate the
+propagation of OAM modes through specially designed ring core and air core fibers, which
+support up to 36 and 10 OAM modes, respectively [38,44]. In our case, the linear polarization
+and the sign of the topological charge allows the fiber to support 26 modes. Different to the case
+of conventional few- and multi-mode fibers, in the RCF the spatial modes are confined within
+the annular core in such a way that the radial profile of the LP modes only varies slightly with
+ℓ, but is determined by the radii parameters a and b. Figure 4 shows the radial dependence of
+modes LP01 and LP61, which have the most different profiles, along with the average of all the
+modes (beige region). Thus, it is possible to find a single wo and rr which maximizes the average
+coupling for each LPℓ1 to a PV beam PVℓwith the same topological charge. This is shown in
+Fig. 5, where we plot the overlap between the PV and the LP modes obtained by using the PV
+beam of Eq. (5) in relation Eq. (4). In this case, an average coupling efficiency of 0.9959 is
+achieved for the ratios rr/a = 0.83 and w0/a = 0.235. If instead we look for specific PV beam
+optimized for each ℓ, considering the dependence of the LP beam width on the fiber geometry,
+the maximum overlap is 0.9986 for ℓ= 3, close to the 0.9989 benchmark attainable with exact
+vector modes. This coupling efficiency outperforms all cases considered for the LG beams. For
+instance, the best coupling efficiency of LG beams (indicated by the horizontal marks in Fig. 5) is
+achieved for p = 0, which is about 3% lower than the coupling efficiency of PV into RCF modes.
+Furthermore, for p>0 the coupling efficiency is 25% to 50% lower than PV beams (Fig. 3). Note
+that the optimal parameters we find (rr/a = 0.83 and w0/a = 0.235) are in the regime where
+the PV beams are effectively independent of the topological charge, being 0.03 the maximum
+norm difference between spatial profiles for successive orders of ℓ. This ensures that the core
+dimensions considered in our study are suitable to couple PV beams to the RCF input.
+
+--- PAGE 8 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23388
+Fig. 4. Radial amplitude profiles of the LP modes with ℓ= 0 and |ℓ| = 6, the minimum and
+maximum topological charge in our fiber. The average of all the LP modes is shown by the
+beige region.
+Fig. 5. (a) Overlap between the LP modes of the fiber and a PV beam as a function of its
+radius rr in units of a. (b) The same with respect to the width w0 in units of a. Vertical blue
+lines indicate the parameters for optimal coupling. Horizontal marks indicate the maximum
+overlap attainable with LG modes.
+3.3.
+LG vs. PV beam coupling efficiencies
+To further compare the use of both LG and PV beams to excite OAM modes in a RCF, we now
+use the radial profile of the modes and examine how they compare to those of the bound modes of
+the fiber. Figure 6(a) shows the radial amplitude profiles of the LG modes with p = 0 and ℓfrom
+0 to 6, for the width w0/a = 0.475 at which mode LG06 reachs the maximum coupling efficiency.
+As discussed above, the annular structure strongly determines the radial profile of the LP modes
+(the average is shown by the beige region in the figure) so a single PV beam can be found which
+optimally couples to all LP modes, with an average overlap of 0.9959. This corresponds to the
+optimal parameters found in the previous section, and it shown in Fig. 6(b). Visual inspection of
+the amplitude profiles clearly shows that sub-optimal coupling is achieved for every LG mode
+when the beam width is fixed. LG modes LG06 and LG05 have similar amplitude profiles, and
+thus similar efficiency is observed [compare with Fig. 3(a)]. However, LG modes with lower
+azimuthal order deviate greatly from the LP mode profile. On the other hand, since the radial
+profile of the PV beam is independent of the azimuthal charge, the same overlap is observed
+between PVℓand the bound mode LPℓ1 supported in the fiber. Though the overlap between the
+PV and the LP modes is not perfect, they are very close to unity (>0.995). The radial profile of
+the PV beam deviates slightly from the LP mode because the former is explicitly defined to have
+a Gaussian profile around rr. Since the LP modes must satisfy the boundary conditions for the
+parallel components of the electromagnetic field, its radial profile exhibits a different decay in
+the inner and the outer cladding, described by different kinds of Bessel functions in each region.
+3.4.
+Achievable dimension of quantum communication channels
+To use OAM as a viable candidate to solve the "capacity crunch" in optical fiber communication
+systems, and to expand quantum communication systems, a large number of OAM modes need
+to be multiplexed into a single RCF. As studied here, the use of LG beams to multiplex OAM
+
+--- PAGE 9 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23389
+Fig. 6. (a) Variation in the radial profile of the LG0ℓmodes as the topological charge ℓis
+increased, for a fixed beam width w0 = 0.475. Their radius scales as
+√
+ℓ, so the maximal
+overlap with the LP modes (beige area) is achieved with ℓ= 6 for the chosen w0. (b) Radial
+profile of the optimal PV beam amplitude and the averaged amplitude of the LP modes.
+into a RCF will lead to different transmission losses for each spatial channel. For classical
+communications links this will result in different quality of transmission for each channel, limiting
+the amount of information that can be encoded into it.
+In quantum information, it is well known that some protocols can be more robust when using
+quantum states in higher dimensions (qudits) [45–48]. In the current scenario, a typical approach
+is to encode a d-dimensional qudit state as a single photon in a superposition of LG modes with
+different OAM ℓand fixed radial order p [49–51]. Here it is necessary to couple not only the
+individual OAM basis states into the RCF, but also superposition states with reasonable fidelity.
+Thus, one must search for a ratio parameter w0/a that gives the same coupling efficiency for several
+OAM modes. For instance, a mode overlap of ∼0.95 can be achieved for the LG modes with
+p = 0 and ℓ= ±4, ±5, ±6 for the ratio w0/a = 0.52, allowing for a fairly high and homogeneous
+coupling efficiency for the basis elements of a 6-dimensional quantum state [Fig. 3(a)]. Similar
+situations for six-dimensional states occur for radial orders p>0, but with a coupling efficiency
+less than 75% for a ratio parameter w0/a between 0.25 and 0.35 (Fig. 3). Consequently, the
+dimension of the quantum state encoded in the LG modes is restricted by the coupling efficiency
+between LG and RCF modes, instead of the number of allowed propagation modes allowed by the
+RCF. We note that the overall effect of coupling into the RCF is a non-unitary filtering operation
+on the qudit state. This operation could of course be corrected at the expense of further losses.
+Therefore, though we identify 13 different eigenmodes in the RCF we study, a 13-dimensional
+quantum states cannot be transmitted into the RCF without a drastic loss in fidelity, efficiency or
+both.
+On the other hand, the PV beams can be used to encode quantum states in higher dimensions,
+and to encode classical channels in SDM systems. Due to the characteristic property of the
+PV beams, which is that the beam shape is independent of the topological charge ℓ, PV beams
+present a constant coupling efficiency for all OAM modes supported by a RCF. In this case, the
+dimension of a quantum state and the number of spatial channels are limited ultimately by the
+propagation modes allowed by the RCF instead of the coupling efficiency of the free-space beams
+into the fiber. The use of PV beams will lead to improved transmission systems, and simplify the
+optical setup to generate high order quantum and classical communication systems using RCF.
+4.
+Conclusions
+The use of orbital angular momentum to generate spatially multiplexed channels in optical
+fiber has the potential to reduce the impact of the capacity crunch in classical communications
+fibers, and to increase the efficiency of quantum communication links. By evaluating the overlap
+between free space optical beams capable of carrying OAM and the spatial modes supported by
+a ring-core fiber we have computed the coupling efficiency between them, for different beam
+
+--- PAGE 10 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23390
+parameters. Optimum conditions were found to couple LG beams into RCF as a function of the
+beam width and the core size. We show that, for Laguerre-Gaussian input beams, the coupling
+efficiency depends not only upon the beam width and fiber core diameters, but also upon the
+OAM value of the beam. This leads to a decrease in communication capacity, as some OAM
+channels will be coupled worse than others. Presumably, one could resort to much more complex
+optical systems to achieve homogeneous coupling efficiencies. As an alternative solution, we
+investigate the use of perfect vortex beams as input to the RCF. We show that in this case the
+coupling efficiencies are nearly independent of the OAM value with an average overlap with all
+RCF bound modes of 0.995. This renders PV beams as much more suitable for multiplexing high
+counts of OAM channels from free space into a ring-core fiber. We expect these results to play an
+important role in space-division multiplexing of both classical and quantum optical information.
+Funding. Fondo Nacional de Desarrollo Científico y Tecnológico (11190710, 1190901, 1190933, 1200266, 1200859,
+3180752); ANID - Millenium Science Initiative Program (ICN17_012).
+Disclosures. The authors declare no conflicts of interest.
+Data availability. Data underlying the results presented in this paper may be available from the corresponding author
+upon reasonable request.
+References
+1.
+Y. Zhu, M. Jiang, and F. Zhang, “Direct detection of polarization multiplexed single sideband signals with orthogonal
+offset carriers,” Opt. Express 26(12), 15887–15898 (2018).
+2.
+T. Kan, K. Kasai, M. Yoshida, and M. Nakazawa, “42.3 tbit/s, 18 gbaud 64 qam wdm coherent transmission over 160
+km in the c-band using an injection-locked homodyne receiver with a spectral efficiency of 9 bit/s/hz,” Opt. Express
+25(19), 22726–22737 (2017).
+3.
+A. H. Gnauck, P. J. Winzer, S. Chandrasekhar, X. Liu, B. Zhu, and D. W. Peckham, “Spectrally efficient long-haul
+wdm transmission using 224-gb/s polarization-multiplexed 16-qam,” J. Lightwave Technol. 29(4), 373–377 (2011).
+4.
+L. Galdino, A. Edwards, W. Yi, E. Sillekens, Y. Wakayama, T. Gerard, W. S. Pelouch, S. Barnes, T. Tsuritani, R. I.
+Killey, D. Lavery, and P. Bayvel, “Optical fibre capacity optimisation via continuous bandwidth amplification and
+geometric shaping,” IEEE Photonics Technol. Lett. 32(17), 1021–1024 (2020).
+5.
+M. Ionescu, D. Lavery, A. Edwards, E. Sillekens, D. Semrau, L. Galdino, R. I. Killey, W. Pelouch, S. Barnes, and P.
+Bayvel, “74.38 tb/s transmission over 6300 km single mode fibre enabled by c+l amplification and geometrically
+shaped pdm-64qam,” J. Lightwave Technol. 38(2), 531–537 (2020).
+6.
+F. Hamaoka, K. Minoguchi, T. Sasai, A. Matsushita, M. Nakamura, S. Okamoto, E. Yamazaki, and Y. Kisaka, “150.3-
+tb/s ultra-wideband (s, c, and l bands) single-mode fibre transmission over 40-km using >519gb/s/a pdm-128qam
+signals,” in 2018 European Conference on Optical Communication (ECOC), (2018), pp. 1–3.
+7.
+J. Renaudier, A. C. Meseguer, A. Ghazisaeidi, P. Tran, R. R. Muller, R. Brenot, A. Verdier, F. Blache, K. Mekhazni, B.
+Duval, H. Debregeas, M. Achouche, A. Boutin, F. Morin, L. Letteron, N. Fontaine, Y. Frignac, and G. Charlet, “First
+100-nm continuous-band wdm transmission system with 115tb/s transport over 100km using novel ultra-wideband
+semiconductor optical amplifiers,” in 2017 European Conference on Optical Communication (ECOC), (2017), pp.
+1–3.
+8.
+R.-J. Essiambre, G. J. Foschini, G. Kramer, and P. J. Winzer, “Capacity limits of information transport in fiber-optic
+networks,” Phys. Rev. Lett. 101(16), 163901 (2008).
+9.
+D. J. Richardson, “Filling the light pipe,” Science 330(6002), 327–328 (2010).
+10. R.-J. Essiambre, G. Kramer, P. J. Winzer, G. J. Foschini, and B. Goebel, “Capacity limits of optical fiber networks,” J.
+Lightwave Technol. 28(4), 662–701 (2010).
+11. D. J. Richardson, J. M. Fini, and L. E. Nelson, “Space-division multiplexing in optical fibres,” Nat. Photonics 7(5),
+354–362 (2013).
+12. P. Sillard, M. Bigot-Astruc, and D. Molin, “Few-mode fibers for mode-division-multiplexed systems,” J. Lightwave
+Technol. 32(16), 2824–2829 (2014).
+13. G. Rademacher, R. S. Luís, B. J. Puttnam, T. A. Eriksson, R. Ryf, E. Agrell, R. Maruyama, K. Aikawa, Y. Awaji, H.
+Furukawa, and N. Wada, “High capacity transmission with few-mode fibers,” J. Lightwave Technol. 37(2), 425–432
+(2019).
+14. K. Saitoh and S. Matsuo, “Multicore fiber technology,” J. Lightwave Technol. 34(1), 55–66 (2016).
+15. C. Brunet, B. Ung, L. Wang, Y. Messaddeq, S. LaRochelle, and L. A. Rusch, “Design of a family of ring-core fibers
+for OAM transmission studies,” Opt. Express 23(8), 10553–10563 (2015).
+16. N. Bozinovic, Y. Yue, Y. Ren, M. Tur, P. Kristensen, H. Huang, A. E. Willner, and S. Ramachandran, “Terabit-scale
+orbital angular momentum mode division multiplexing in fibers,” Science 340(6140), 1545–1548 (2013).
+17. R. M. Nejad, K. Allahverdyan, P. Vaity, S. Amiralizadeh, C. Brunet, Y. Messaddeq, S. LaRochelle, and L. A. Rusch,
+“Mode division multiplexing using orbital angular momentum modes over 1.4-km ring core fiber,” J. Lightwave
+Technol. 34(18), 4252–4258 (2016).
+
+--- PAGE 11 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23391
+18. L. Zhu, G. Zhu, A. Wang, L. Wang, J. Ai, S. Chen, C. Du, J. Liu, S. Yu, and J. Wang, “18 km low-crosstalk OAM +
+WDM transmission with 224 individual channels enabled by a ring-core fiber with large high-order mode group
+separation,” Opt. Lett. 43(8), 1890–1893 (2018).
+19. D. Cozzolino, D. Bacco, B. Da Lio, K. Ingerslev, Y. Ding, K. Dalgaard, P. Kristensen, M. Galili, K. Rottwitt, S.
+Ramachandran, and L. K. Oxenløwe, “Orbital angular momentum states enabling fiber-based high-dimensional
+quantum communication,” Phys. Rev. Appl. 11(6), 064058 (2019).
+20. A. Sit, R. Fickler, F. Alsaiari, F. Bouchard, H. Larocque, P. Gregg, L. Yan, R. W. Boyd, S. Ramachandran, and
+E. Karimi, “Quantum cryptography with structured photons through a vortex fiber,” Opt. Lett. 43(17), 4108–4111
+(2018).
+21. H. Cao, S.-C. Gao, C. Zhang, J. Wang, D.-Y. He, B.-H. Liu, Z.-W. Zhou, Y.-J. Chen, Z.-H. Li, S.-Y. Yu, J. Romero,
+Y.-F. Huang, C.-F. Li, and G.-C. Guo, “Distribution of high-dimensional orbital angular momentum entanglement
+over a 1 km few-mode fiber,” Optica 7(3), 232–237 (2020).
+22. G. B. Xavier and G. Lima, “Quantum information processing with space-division multiplexing optical fibres,”
+Commun. Phys. 3(1), 9 (2020).
+23. H. Zhang, W. Zhang, L. Xi, X. Tang, X. Zhang, and X. Zhang, “A new type circular photonic crystal fiber for orbital
+angular momentum mode transmission,” IEEE Photonics Technol. Lett. 28(13), 1426–1429 (2016).
+24. G. Zhou, G. Zhou, C. Chen, M. Xu, C. Xia, and Z. Hou, “Design and analysis of a microstructure ring fiber for orbital
+angular momentum transmission,” IEEE Photonics J. 8(2), 1–12 (2016).
+25. A. Tandjè, J. Yammine, M. Dossou, G. Bouwmans, K. Baudelle, A. Vianou, E. R. Andresen, and L. Bigot, “Ring-core
+photonic crystal fiber for propagation of oam modes,” Opt. Lett. 44(7), 1611 (2019).
+26. J. Zhang, J. Liu, L. Shen, L. Zhang, J. Luo, J. Liu, and S. Yu, “Mode-division multiplexed transmission of
+wavelength-division multiplexing signals over a 100-km single-span orbital angular momentum fiber,” Photonics Res.
+8(7), 1236–1242 (2020).
+27. G. Zhu, Z. Hu, X. Wu, C. Du, W. Luo, Y. Chen, X. Cai, J. Liu, J. Zhu, and S. Yu, “Scalable mode division multiplexed
+transmission over a 10-km ring-core fiber using high-order orbital angular momentum modes,” Opt. Express 26(2),
+594–604 (2018).
+28. L. Allen, M. W. Beijersbergen, R. J. C. Spreeuw, and J. P. Woerdman, “Orbital angular momentum of light and the
+transformation of laguerre-gaussian laser modes,” Phys. Rev. A 45(11), 8185–8189 (1992).
+29. M. J. Padgett, “Orbital angular momentum 25 years on [invited],” Opt. Express 25(10), 11265–11274 (2017).
+30. A. S. Ostrovsky, C. Rickenstorff-Parrao, and V. Arrizón, “Generation of the &#x201c;perfect&#x201d; optical vortex
+using a liquid-crystal spatial light modulator,” Opt. Lett. 38(4), 534–536 (2013).
+31. J. García-García, C. Rickenstorff-Parrao, R. Ramos-García, V. Arrizón, and A. S. Ostrovsky, “Simple technique for
+generating the perfect optical vortex,” Opt. Lett. 39(18), 5305–5308 (2014).
+32. A. W. Snyder and J. Love, Optical Waveguide Theory (Chapman & Hall, 1983).
+33. C. Brunet, B. Ung, P.-A. Bélanger, Y. Messaddeq, A. LaRochelle, and L. A. Rusch, “Vector Mode Analysis of
+Ring-Core Fibers: Design Tools for Spatial Division Multiplexing,” J. Lightwave Technol. 32(23), 4648–4659 (2014).
+34. A. W. Snyder and W. R. Young, “Modes of optical waveguides,” J. Opt. Soc. Am. 68(3), 297 (1978).
+35. B. C. Sarkar, P. K. Choudhury, and T. Yoshino, “On the analysis of a weakly guiding doubly clad dielectric optical
+fiber with an annular core,” Microw. Opt. Techn. Lett. 31(6), 435–439 (2001).
+36. J. Marcou and S. Février, “Comments on ‘On the analysis of a weakly guiding doubly clad dielectric optical fiber
+with an annular core’,” Microw. Opt. Techn. Lett. 38(3), 249–254 (2003).
+37. M. Kasahara, K. Saitoh, T. Sakamoto, N. Hanzawa, T. Matsui, K. Tsujikawa, and F. Yamamoto, “Design of
+Three-Spatial-Mode Ring-Core Fiber,” J. Lightwave Technol. 32(7), 1337–1343 (2014).
+38. C. Brunet, P. Vaity, Y. Messaddeq, S. LaRochelle, and L. A. Rusch, “Design, fabrication and validation of an oam
+fiber supporting 36 states,” Opt. Express 22(21), 26117–26127 (2014).
+39. L. Allen, S. Barnett, and M. Padgett, Optical Angular Momentum, Optics and Optoelectronics (Institute of Physics
+Publishing, Bristol, UK, 2003).
+40. N. Bozinovic, Y. Yue, Y. Ren, M. Tur, P. Kristensen, H. Huang, A. E. Willner, and S. Ramachandran, “Terabit-scale
+orbital angular momentum mode division multiplexing in fibers,” Science 340(6140), 1545–1548 (2013).
+41. R. Brüning, Y. Zhang, M. McLaren, M. Duparré, and A. Forbes, “Overlap relation between free-space Laguerre
+Gaussian modes and step-index fiber modes,” J. Opt. Soc. Am. A 32(9), 1678 (2015).
+42. P. Vaity and L. Rusch, “Perfect vortex beam: Fourier transformation of a Bessel Beam,” Opt. Lett. 40(4), 597 (2015).
+43. M. Chen, M. Mazilu, Y. Arita, E. M. Wright, and K. Dholakia, “Dynamics of microparticles trapped in a perfect
+vortex beam,” Opt. Lett. 38(22), 4919–4922 (2013).
+44. P. Vaity, C. Brunet, Y. Messaddeq, S. LaRochelle, and L. A. Rusch, “Exciting oam modes in annular-core fibers via
+perfect oam beams,” in 2014 The European Conference on Optical Communication (ECOC), (2014), pp. 1–3.
+45. N. J. Cerf, M. Bourennane, A. Karlsson, and N. Gisin, “Security of quantum key distribution using d-level systems,”
+Phys. Rev. Lett. 88(12), 127902 (2002).
+46. I. C. V. Brukner, M. Zukowski, and A. Zeilinger, “Quantum communication complexity protocol with two entangled
+qutrits,” Phys. Rev. Lett. 89(19), 197901 (2002).
+47. D. Martínez, A. Tavakoli, M. Casanova, G. Canas, B. Marques, and G. Lima, “High-dimensional quantum
+communication complexity beyond strategies based on bell’s theorem,” Phys. Rev. Lett. 121(15), 150504 (2018).
+
+--- PAGE 12 ---
+Research Article
+Vol. 29, No. 15 / 19 July 2021 / Optics Express 23392
+48. G. M. Nikolopoulos, K. S. Ranade, and G. Alber, “Error tolerance of two-basis quantum-key-distribution protocols
+using qudits and two-way classical communication,” Phys. Rev. A 73(3), 032325 (2006).
+49. M. Erhard, R. Fickler, M. Krenn, and A. Zeilinger, “Twisted photons: new quantum perspectives in high dimensions,”
+Light: Sci. Appl. 7(3), 17146 (2018).
+50. G. Gibson, J. Courtial, M. J. Padgett, M. Vasnetsov, V. Pas’ko, S. M. Barnett, and S. Franke-Arnold, “Free-space
+information transfer using light beams carrying orbital angular momentum,” Opt. Express 12(22), 5448–5456 (2004).
+51. A. M. Yao and M. J. Padgett, “Orbital angular momentum: origins, behavior and applications,” Adv. Opt. Photonics
+3(2), 161–204 (2011).

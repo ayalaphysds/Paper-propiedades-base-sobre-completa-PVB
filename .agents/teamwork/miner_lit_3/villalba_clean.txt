@@ -1,0 +1,873 @@
+=== 2023-Transmission of optical communication signals through ring core fiber using perfect vortex beams.pdf ===
+
+
+--- PAGE 1 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40113
+Transmission of optical communication signals
+through ring core fiber using perfect vortex
+beams
+NELSON VILLALBA,1 CRISTÓBAL MELO,2
+SEBASTIÁN AYALA,3,4
+CHRISTOPHER MANCILLA,2 WLADIMIR VALENZUELA,2
+MIGUEL FIGUEROA,2 ERIK BARADIT,1 RIU LIN,5 MING TANG,6
+STEPHEN P. WALBORN,3,4 GUSTAVO LIMA,3,4
+GABRIEL SAAVEDRA,2
+AND GUSTAVO CAÑAS1,*
+1Departamento de Física, Universidad del Bío-Bío, Collao 1202, 5-C Concepción, Chile
+2Departamento de Ingeniería Eléctrica , Universidad de Concepción, 160-C Concepción, Chile
+3Departamento de Física, Universidad de Concepción, 160-C Concepción, Chile
+4Millennium Institute for Research in Optics, Universidad de Concepción, 160-C Concepción, Chile
+5 Department of Electrical Engineering, Chalmers University of Technology, 41296 Göteborg, Sweden
+6Wuhan National Lab for Optoelectronics (WNLO) & National Engineering Laboratory for Next
+Generation Internet Access System, School of Optical and Electronic Information, Huazhong University of
+Science and Technology, Wuhan 430074, China
+*gcanas@ubiobio.cl
+Abstract: Orbital angular momentum can be used to implement high capacity data transmission
+systems that can be applied for classical and quantum communications. Here we experimentally
+study the generation and transmission properties of the so-called perfect vortex beams and the
+Laguerre-Gaussian beams in ring-core optical fibers. Our results show that when using a single
+preparation stage, the perfect vortex beams present less ring-radius variation that allows coupling
+of higher optical power into a ring core fiber. These results lead to lower power requirements to
+establish fiber-based communications links using orbital angular momentum and set the stage
+for future implementations of high-dimensional quantum communication over space division
+multiplexing fibers.
+Published by Optica Publishing Group under the terms of the Creative Commons Attribution 4.0 License.
+Further distribution of this work must maintain attribution to the author(s) and the published article’s title,
+journal citation, and DOI.
+1.
+Introduction
+To increase the capacity of optical fiber communication systems, the physical properties of light
+such as wavelength (frequency), polarization, amplitude, and phase have been used to multiplex
+information through the years [1–8]. Nevertheless, due to the nonlinear nature of silica-based
+optical fibers, data capacity is reaching its current limits [9,10]. To date, transmission of 244.3
+Tb/s over 54 km has been achieved using all the aforementioned physical dimensions [11]. To
+further increase the information carrying capacity of optical fiber, new degrees of freedom need
+to be exploited, where the use of an extended fiber bandwidth and additional spatial modes are
+some of the most promising solutions [3,11]. Space division multiplexing (SDM) has been
+introduced as a viable way to multiplex channels in the spatial-domain, and novel fiber types
+have been developed to support transmission of multiple spatial modes. Current examples of
+fibers that support SDM include multi-core fibers, few- and multi-mode fibers, and ring-core
+fiber (RCF) [12–15].
+The orbital angular Momentum (OAM) of light can be associated to optical beams with helical
+phase-fronts described by eilθ, where θ is the azimuthal angle in cylindrical coordinates and
+#503740
+https://doi.org/10.1364/OE.503740
+Journal © 2023
+Received 21 Aug 2023; revised 23 Oct 2023; accepted 24 Oct 2023; published 10 Nov 2023
+
+--- PAGE 2 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40114
+l can take integer values and it is usually called topological charge [16]. The intensity profile
+from OAM modes is characterised by a doughnut shape, since destructive interference along
+its propagation axis generates a dark zone. OAM multiplexing has been a subject of intense
+research lately, with great interest in free-space and fiber-based optical communications systems
+[17–20]. OAM eigenmodes with different l values form an orthogonal basis in the associated
+Hilbert space. Moreover, the number of OAM modes can be infinite in principle, so that they
+present the potential to increase the information capacity carried per photon [21,22].
+To date, OAM has been used to establish classical communications links and transmission of
+1.6 Tb/s was achieved over a 1.1 km fiber link using OAM multiplexing [23] and 100 Tb/s in
+free-space data link enabled by three-dimensional multiplexing of orbital angular momentum,
+polarization, and wavelength [22]. The main difficulties in implementing OAM-based SDM
+systems is propagation and coupling of OAM modes into an optical fiber. First, to propagate
+OAM modes in an optical fiber, the fiber should present a large effective index separation between
+vector modes and a refractive index profile compatible with the OAM field [24]. Both of these
+conditions can be achieved using ring-core fiber (RCF) [24–26]. Second, coupling a large
+number of OAM modes into a RCF remains a challenging task. For free-space transmission, the
+Laguerre-Gaussian (LG) modes are a natural choice, as they maintain their transverse structure
+during free-space propagation. However, the doughnut-shaped intensity profile of these modes
+depends on the topological charge of the beam. For this reason, most of the experimental
+demonstrations of OAM propagation in RCFs use two modes either with the same topological
+charge with values ±l [23], or different topological charge with similar beam diameter [27]. This
+limitation determines the practical implementations of large OAM-based SDM systems, and thus
+the capacity increases attainable by this technique. To solve this problem, the use of perfect
+vortex beams (PVB) has been proposed theoretically to efficiently couple OAM modes in RCF
+fiber [28]. PVBs are OAM modes that present a nearly constant intensity radius regardless of the
+topological charge [29,30], and can be mathematically obtained by Fourier transformation of
+Bessel-Gauss modes [31].
+In this article, we experimentally study the coupling and transmission of OAM modes using
+RCFs and evaluate their transmission properties for telecommunication and quantum applications.
+We used both PVB and LG modes in order to evaluate performances in classical and quantum
+communications, benchmarked by the bit error rate in the classical case, and by the average
+quantum state fidelity in the quantum case.
+2.
+OAM generation and fiber coupling
+2.1.
+Coupling OAM into optical fibers
+To propagate OAM in an optical fiber, fiber eigenmodes with the same propagation constant
+should be excited in order to guarantee that no mode walk-off affects the OAM mode [32]. RCFs
+with a single high refractive index ring can support the radially fundamental modes, making
+it an appropriate platform for OAM transmission. Although the use of RCF can maintain the
+OAM mode during propagation with reduced mode cross-talk, the high refractive index ring
+dimensions and doping properties will determine the maximum number of modes supported by
+the RCF. The OAM modes supported by an optical fiber can be described as a linear combination
+of the linearly polarized (LP) modes [28,33] or the vector modes [32] supported by the fiber.
+A set of OAM modes typically used in telecommunications are the LG modes characterised by
+index p and l, these are radial index and OAM value, respectively [16]. To couple OAM modes
+into optical fibers using LG modes, the radial number p = 0 is used, which corresponds to an
+intensity profile consisting of a single ring [23,34]. Using these LG modes, however, leads to
+different coupling efficiencies for different l values, since the ring radius of LG modes scales
+with
+√︁
+|l| [28]. The PVB modes, on the other hand, have a ring-like intensity distribution whose
+radius varies much less as a function of the OAM values [31]. Therefore, using PVBs to couple
+
+--- PAGE 3 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40115
+OAM into fiber should have a higher overall efficiency for a given set of l values compared to LG
+modes, as described in Ref. [28]. In the next section we define these modes mathematically and
+describe techniques for their generation.
+2.2.
+OAM generation using spatial light modulators
+In order to generate a PVB, a real-time method capable of controlling every beam parameter is
+required. It was shown in Refs. [31,35] that it is possible to generate PVBs in free-space through
+a computer generated hologram (CGH) imprinted upon a spatial light modulator (SLM) and
+an optical lens in a Fourier transform configuration. Additionally, in Ref. [35] an alternative
+method to implement a Fourier transformation using the CGH through Fresnel domain pattern
+of the hologram without needing a lens in the process was shown. However, this method has
+a drawback where high-order noise field contributions appear diluted in the Fourier transform
+plane of the encoded signal. As in Ref. [35], creating a CGH for deploying on phase-only SLM
+is possible using the correct encoded of the complex scalar field, of the required PVB and an
+optical lens. This was mathematically described in Ref. [31]:
+PVBl(r, θ) = il−1
+(︃ωg
+ω0
+)︃
+eilθe
+(︃
+−r2+r2r
+ω2
+0
+)︃
+Il
+(︄
+2rrr
+ω2
+0
+)︄
+,
+(1)
+where r and θ are radial and azimuthal coordinates in a cylindrical system, l the OAM topological
+charge, ω0 is the beam waist of the PVB beam, ωg is the beam waist of the gaussian field incident
+on the SLM, rr is the ring radius of the PVB and Il(·) is the l-th modified Bessel function from the
+first kind. Additionally, rr can be defined in terms of the radial wavenumber (kr) using rr = krf
+k ,
+where f is the focus of the lens that allows the Fourier transformation and k is the wavenumber of
+the beam. The parameter kr can be used experimentally as an adjustable parameter to keep a
+constant ring radius from PVB mode [31].
+A similar technique can be used to generate LG beams. In this case, the transverse spatial
+profile of the complex scalar field is given by following equation in Ref. [16]:
+LGl
+p(r, θ, z) =
+√︄
+2p!
+π(p + |l|)!
+1
+ω(z)
+(︄
+r
+√
+2
+ω(z)
+)︄|l|
+exp
+(︃−r2
+ω(z)
+)︃
+L|l|
+p
+(︃2r2
+ω2(z)
+)︃
+eilθ
+exp
+(︄
+−ik
+r2z
+2(z2
+R + z2)
+)︄
+exp
+[︃
+−i(2p + |l| + 1)tan−1
+(︃z
+zR
+)︃]︃
+,
+(2)
+where L|l|
+p is an associated Laguerre polynomial, with l and p the azimuthal and radial index,
+respectively, zR is the Rayleigh range and ω(z) is the beam waist (considered constant in this
+work). The p parameter is associated with numbers of the concentric rings in transversal profile
+in LG modes. In this work we study OAM modes coupling into RCF with just one ring radius,
+then the radial parameter is fixed in p = 0. Equation (2) is described using the same coordinates
+as the PVB (Eq. (1)) and adds z coordinate in the beam propagation direction.
+3.
+Experimental setup
+The experimental setup used in this work to generate, transmit and measure PVB is illustrated
+in Fig. 1. Each stage is highlighted with a color, blue for preparation, orange for transmission
+and green for measurement. A commercial SFP+ transceiver was used to generate and detect
+an optical signal. SFP+ transceivers are intensity-modulation direct-detection devices, where
+the information is modulated into the intensity of the optical field. It uses On-off keying is
+used as modulation format at a symbol rate of 1 GBd. The transceiver was driven by a field
+
+--- PAGE 4 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40116
+Fig. 1. Experimental setup. Blue, orange and green backgrounds represent preparation,
+transmission and measurement stages, respectively.
+programmable gate array (FPGA) with a pseudorandom binary sequence (PRBS) of length
+237. The transmitter uses an optical source centered at 1550 nm, which was amplified by an
+erbium-doped fiber amplifier (EDFA1) and a variable optical attenuator (VOA) to control the
+signal power. Subsequently, the optical signal was launched into free-space, collimated and
+passed through to half wave plate (HWP) and polarizing beam splitter (PBS) to prepare the
+incident beam before the SLM, not shown in Fig. 1 for simplicity. The OAM mode is generated
+when a horizontally polarized Gaussian beam (with ωg ≈1140 µm) is reflected by the phase-only
+SLM (SLM1). SLM1 deploys a CGH with the desired OAM mode. The beam reflected by SLM1
+passes through the 4f confocal optical system formed by two lenses (L3 and L4, with focus
+f3 = f4 = 150 mm) and a pinhole placed between them. The pinhole filters the first diffraction
+order from the CGH, this way the generated OAM mode is placed in the image plane of this
+optical system. The OAM mode is coupled into an RCF, used to propagate the signal. To couple
+the OAM mode a 20x objective lens is used. The RCF has an internal and external radius given
+by a = 6 µm and b = 9 µm, respectively [27]. A total length of 300 m of RFC was used. A
+RCF-based polarization controller was used to control the OAM mode coupled into the fiber.
+After the OAM modes are propagated through the RCF, a second 20x objective lens was used to
+generate the image of the OAM-beam exiting the fiber core. This optical system magnifies the
+mode radius 33× to achieve rr ≈230 µm. A polarization filter comprised of HWP followed by
+a PBS was used at the fiber output to ensure the horizontal polarization of the OAM-beam. A
+second 4f confocal optical system (L5 and L6) was used to magnify the OAM-beam 2× after
+exiting of polarization filter, and it allows the image of OAM-beam to be produced on SLM2. On
+SLM2 we deployed a set of forked holograms (CGH of the LG basis), one at a time, encoding
+a conjugated OAM value relative to SLM1 [36]. Finally, PBS2 was used to select whether the
+signal was sent to a charge coupled device (CCD) camera or coupled into a SMF for detection.
+The SMF is placed at the center of the Fourier transform plane of the last lens (L7). To detect the
+transmitted sequences, the signal was amplified by EDFA2 and filtered to remove out-of-band
+amplified emission noise. An optical spectrum analyzer (OSA) was used to record the received
+
+--- PAGE 5 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40117
+spectrum and power. At the optical receiver, the FPGA was used to determine the bit error rate
+(BER).
+4.
+Results
+Here we present the experimental results on the generation, fiber coupling and measurements of
+OAM. Additionally, we present results on two important application of OAM beams, fiber based
+communication systems and quantum system.
+4.1.
+Mode generation
+To study the OAM mode generation we generated PVB and conventional LG beams using the
+SLM together with the 4f optical system. Using a CCD camera the intensity of the generated
+beams was recorded in the image plane of the first 4f optical system (L3 and L4) before the fiber
+coupling system (see Fig. 1). Results of the OAM generated using a CGH on the SLM are shown
+in Fig. 2(a), where the detected intensity for each mode order l is shown. The ring radius of the
+PVB are shown to remain constant as the order l is increased from l = 1 to l = 6, while the LG
+beam presents a large radius variation. The measured ring radius for the PVB and LG modes is
+shown Fig. 2(b), where the LG modes presented ring radius variation from 77 µm to 193 µm. An
+average ring radius of 147.9 µm was observed when the kr parameter was set to kr = 3.06416. A
+variation of 29 µm in the ring radius was observed in this scenario, with the largest radius of
+165.9 µm observed for l = 6. Next, we studied the impact of the kr parameter on the ring radius
+of the generated PVB, with the results shown in Fig. 2(c). The optimization was performed based
+on kr = 3.06416 obtained for l = 3. Then, kr was either increased or decreased to maintain a
+fixed ring radius using Eq. (1). In this scenario, an average ring radius of 140.5 µm was obtained
+with a maximum variation of 4.7 µm. Note that the differences reported with and without the
+kr optimization are significantly less compared to the ring radius variation observed for the LG
+modes. For example, the ring radius variance of LG modes was approximately 1873.3 µm2,
+while the ring radius variances measured for PVB modes were of 5.4 µm2 and 122.1 µm2 with kr
+and without kr optimization, respectively. Therefore, the LG modes have a variance 15 times
+higher than the PVB modes without adjusting kr. In the case of LG modes, it is well known that
+their radius grows with
+√︁
+|l|, and in order to keep their ring radius constant a different optical
+system should be used for each OAM.
+4.2.
+Fiber coupling and propagation
+OAM modes in an optical fiber can be described using the linear combination of LP modes, as
+in [28,32,33]. We have used a GRIN-RCF with inner and outer ring radius of 6 µm and 9 µm
+[27]. The RCF supports propagation of OAM modes up to l = 4. Considering the fixed ring
+radius of the RCF, we used rr ≈140 µm for the generated PVB modes in order to maintain a
+constant kr parameter for all modes. At the fiber input a polarization controller (PC) was used
+to control the linear combinations of LP modes in the fiber. At the fiber output the following
+parameters were evaluated: field intensity, interference between OAM and a Gaussian mode, and
+optical power. The results are summarized in Fig. 3 and Fig. 4. Figure 3 shows the intensity
+profiles at the fiber output for the LPa,b modes excited by the OAM modes at the fiber input.
+This was achieved using the polarization controller to excite LPa, LPb, or an OAM mode from
+the bend perturbation to the field transmitted through the RCF [19,37,38]. Note that the fiber
+modes propagated are independent of the free-space beam used to excite them, the difference
+arises from the coupled mode intensity. Additionally, the transmitted OAM out of the RCF is
+shown together with the OAM-Gaussian beam interference pattern that shows successful OAM
+propagation [31,19,39–42].
+The coupling efficiency between the OAM modes generated with the CGH and the RCF was
+characterized using the received power at the fiber output. The optical power was measured
+
+--- PAGE 6 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40118
+a)
+OAM
+Value
+LG
+Modes
+PVB
+Modes
+𝑙= 1
+𝑙= 2
+𝑙= 3
+𝑙= 4
+𝑙= 5
+𝑙= 6
+b)
+
+
+
+
+
+
+
+
+
+
+
+
+ LG Mode
+ PVB Mode (Non-Opt.)
+1
+2
+3
+4
+5
+6
+60
+80
+100
+120
+140
+160
+180
+200
+OAM
+Radius [m]
+c)
+
+
+
+
+
+
+
+
+
+
+
+
+ LG Mode
+ PVB Mode (Opt.)
+1
+2
+3
+4
+5
+6
+60
+80
+100
+120
+140
+160
+180
+200
+OAM
+Radius [m]
+Fig. 2. a) Transversal intensity profiles of the generated OAM modes for LG (second
+column) and PVB modes (third column). b) and c) represent two graphical comparisons
+of PVB modes ring radius values with ring radius values from LG modes (blue-star-points
+in both cases) as function of the l OAM values. Where b) compares LG modes with PVB
+non-optimized modes (kr fixed, green-dot-points), and c) compares LG modes with PVB
+optimized modes (kr variable, red-dot-points).
+OAM
+Value
+LP𝑎Modes
+LP𝑏Modes
+OAM Modes
+Interferences
+𝑙= 1
+𝑙= 2
+𝑙= 3
+𝑙= 4
+Fig. 3. Modes propagated through RCF. First column shows LPa modes, second column
+shows LPb modes, third column shows OAM modes, and fourth column shows interference
+pattern for l = 1 to l = 4.
+at the image plane of the second objective lens (20x, see Fig. 1) using a constant coupling
+power into the RCF for both OAM modes (LG and PVB, Pin ≈450 µW). An average output
+power of PPVB
+out
+≈16 µW was measured for the PVB modes, while an average output power of
+
+--- PAGE 7 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40119
+
+
+
+
+
+
+
+
+ PVB Coupling
+ LG Coupling
+1
+2
+3
+4
+0
+5
+10
+15
+20
+OAM
+Power Out [W]
+Fig. 4. Output power measurements from RCF at the image plane of the second objective
+lens 20x using different coupling modes, PVB modes (green-dot-points) and LG modes
+(blue-star-points), as a function of OAM value.
+PLG
+out ≈3.32 µW was observed for LG modes. These results show the higher coupling efficiency
+of the PVB modes compared to the LG modes. To verify the OAM modes propagated through
+the RCF we used an interferometric technique between the OAM mode and a Gaussian beam
+[31,39,40]. The interference patterns shown in Fig. 3, verify qualitatively that the OAM modes
+have effectively propagated through the RCF and have l values of l = 1, 2, 3, 4.
+4.2.1.
+Classical communication systems
+As described above, OAM was proposed as a way to implement SDM to increase the capacity
+of optical fiber communication systems. Considering this, the use of PVB to couple OAM into
+optical fibers can have a positive impact on the systems, allowing to transmit longer distances
+compared to LG modes and simplify the design for a OAM coupling system. Here, the quality of
+the transmitted signals was evaluated using a commercial SFP+ transponder operating at 1 Gbps.
+The bit error rate (BER) was measured after fiber propagation. Figure 5 shows the measured BER
+as a function of the power coupled into the RCF for the PVB and LG mode using l = 1, 2, 3, 4.
+PVB are shown to require lower coupling power to achieve a fixed BER of 4.7x10−3 (FEC limit
+using a 6.69% FEC overhead [43]) compared to the LG modes. A power difference of 8.6 dB
+was observed for the mean BER between PVB and LG modes. Additionally, the PVB modes are
+shown to have smaller performance difference for different l values at a fixed BER, with a 0.6 dB
+difference observed, compared to the 1.2 dB measured for the LG modes.
+From the Fig. 5, we can see that the best performance was obtained using PVB with l = 2,
+because it needs the lowest optical power to transmit the 1 Gbps signal. This characterization
+shows that the PVBs are better candidates to couple amplitude modulated information in
+fiber-based SDM systems, allowing to implement systems with similar power requirements.
+4.2.2.
+Quantum applications
+In the quantum regime, it is well known that some quantum information protocols (QIPs) can
+be more robust when using quantum states in higher dimensions, these are quantum systems
+with d>2 levels (qudit) [44–49]. Photons carrying OAM can be used to encode OAM-qudits,
+thus allowing more information to be transmitted between the communicating parties [17,50,51].
+OAM-qudits have a myriad of applications in QIPs, both in free space and optical fiber channels,
+most notably quantum key distribution (QKD) protocols [21,52–55]. In particular, RCF has
+succeeded in this context with demonstrations showing that the OAM modes supported by RCF
+can be used to enhance classical and quantum communications links [23,27,53,54,56–59].
+
+--- PAGE 8 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40120
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 8.6 dB
+ LGl =1
+ LGl =2
+ LGl =3
+ LGl =4
+ PVBl =1
+ PVBl =2
+ PVBl =3
+ PVBl =4
+LG Avg.
+PVB Avg.
+-10
+-8
+-6
+-4
+-2
+0
+2
+4
+6
+8
+10
+-8
+-6
+-4
+-2
+Power In [dBm]
+Log10(BER)
+Fig. 5. Measured BER after transmission in the RCF using PVB (dot-points) and LG
+(star-points) modes. The continuous lines, represent average of log(BER) values using PVB
+(cyan) and LG (orange) modes. The dashed purple horizontal line represents HD-FEC
+threshold.
+a)
+0.900
+0.061
+0.026
+0.010
+l = 1
+l = 2
+l = 3
+l = 4
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OAM State
+|l1 |li  2
+b)
+0.011
+0.910
+0.070
+0.010
+l = 1
+l = 2
+l = 3
+l = 4
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OAM State
+|l2 |li  2
+c)
+0
+0.040
+0.900
+0.059
+l = 1
+l = 2
+l = 3
+l = 4
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OAM State
+|l3 |li  2
+d)
+0.005
+0.008
+0.016
+0.970
+l = 1
+l = 2
+l = 3
+l = 4
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OAM State
+|l4 |li  2
+Fig. 6. Four measured fidelities after propagated through the 300 m of RCF, for the states a)
+|l = 1⟩, b) |l = 2⟩, c) |l = 3⟩, and d) |l = 4⟩. The average fidelity the states is 92%.
+As shown in Ref. [28], asymmetric coupling of OAM beams into RCF leads to undesired state
+transformations performed by the RCF, which results in high quantum bit error rates (QBER).
+To overcome this drawback PVBs are proposed [28]. The QBER is related to the average
+fidelity of the quantum states used for a QKD protocol, as follows ¯F = 1−QBER. Here we use
+PVBs to experimentally demonstrate that 4-dimensional OAM-encoded quantum systems can be
+
+--- PAGE 9 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40121
+propagated through the 300 m of RCF with high fidelity. As reported in Ref. [50], to guarantee
+the unconditional security of QKD protocols, we must be below the upper limit of the QBER for
+the coherent attacks (Dcoh), which depends on the dimension of the quantum system used. In this
+case, for 4-dimensional OAM-encoded quantum systems, the upper limit of the coherent attack is
+Dcoh = 18.96%. Thus the average fidelity must be greater than ¯F = 0.81.
+Figure 6 shows the measured fidelity of the 4-dimensional OAM-encoded quantum states
+after the propagation through the RCF with the average fidelity of 92%. This paves the way for
+implementing QKD protocols using high-dimensional OAM-encoded quantum states in SDM
+optical fibers.
+5.
+Conclusion
+Here we experimentally studied the generation and transmission properties of two OAM carrying
+beams in ring core optical fibers. The beams studied were the perfect vortex beams (PVB) and
+Laguerre-Gaussian (LG) beams. We have shown that when using a single preparation stage for
+all of the OAM beams, the PVBs present less ring radius variation and are able to couple higher
+powers into a ring core fiber. Ring radius variations from 77 µm to 193 µm where observed for
+LG beams, while an average ring radius of 140.5 µm with a maximum variation of 4.7µm was
+observed for the PVBs. Additionally, higher optical powers were coupled into the RCF using
+PVBs. An average coupled optical power of 15 µW and 4 µW were observed for PVB and LG
+modes, respectively. In addition to successfully coupling optical OAM into a RCF using PVBs,
+we have also demonstrated the possibility of establishing a transmission link operating at 1 Gbps.
+The results show that the high coupling powers of PVB lead to lower power requirements to
+establish fiber-based communications links. An average 8.6 dB difference in required input power
+was observed using PVBs compared to LG modes. In addition, we have shown that the constant
+coupling power of PVBs as a function of the mode order l can allow for the implementation of
+QKD protocols. Here the figure of merit was the measured quantum state fidelity. We report an
+average fidelity of 92% in a 4-dimensional quantum system after transmission in the RCF, which
+is larger than the minimum fidelity required for successful key distribution under coherent attacks.
+Our work therefore can be seen as an initial step for the development of PVBs as information
+carriers in optical fibers leading SDM systems in telecommunications, and to implement high
+dimensional QKD systems. In both scenarios, more efficient coupling of OAM into ring-core
+fibers is a powerful tool to increased information capacity.
+Funding. Fondo Nacional de Desarrollo Científico y Tecnológico (1190933, 1200266, 1200859, 1220960, 1231826);
+Millennium Science Initiative Program (ICN17_012); Vetenskapsrådet; National Natural Science Foundation of China
+(62225110).
+Acknowledgments. The authors thank G. B. Xavier for valuable discussions.
+Disclosures. The authors declare no conflicts of interest.
+Data availability. Data underlying the results presented in this paper are not publicly available at this time but may
+be obtained from the authors upon reasonable request
+References
+1.
+Y. Zhu, M. Jiang, and F. Zhang, “Direct detection of polarization multiplexed single sideband signals with orthogonal
+offset carriers,” Opt. Express 26(12), 15887–15898 (2018).
+2.
+T. Kan, K. Kasai, M. Yoshida, et al., “42.3 tbit/s, 18 gbaud 64 qam wdm coherent transmission over 160 km in the
+c-band using an injection-locked homodyne receiver with a spectral efficiency of 9 bit/s/hz,” Opt. Express 25(19),
+22726–22737 (2017).
+3.
+P. J. Winzer and D. T. Neilson, “From scaling disparities to integrated parallelism: A decathlon for a decade,” J.
+Lightwave Technol. 35(5), 1099–1115 (2017).
+4.
+A. Gnauck, P. Winzer, S. Chandrasekhar, et al., “Spectrally efficient long-haul wdm transmission using 224-gb/s
+polarization-multiplexed 16-qam,” J. Lightwave Technol. 29(4), 373–377 (2011).
+5.
+L. Galdino, A. Edwards, W. Yi, et al., “Optical fibre capacity optimisation via continuous bandwidth amplification
+and geometric shaping,” IEEE Photonics Technol. Lett. 32(17), 1021–1024 (2020).
+
+--- PAGE 10 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40122
+6.
+M. Ionescu, D. Lavery, A. Edwards, et al., “74.38 tb/s transmission over 6300 km single mode fibre enabled by c+ l
+amplification and geometrically shaped pdm-64qam,” J. Lightwave Technol. 38(2), 531–537 (2020).
+7.
+F. Hamaoka, K. Minoguchi, T. Sasai, et al., “150.3-tb/s ultra-wideband (s, c, and l bands) single-mode fibre
+transmission over 40-km using> 519gb/s/a pdm-128qam signals,” in 2018 European Conference on Optical
+Communication (ECOC), (IEEE, 2018), pp. 1–3.
+8.
+J. Renaudier, A. C. Meseguer, A. Ghazisaeidi, et al., “First 100-nm continuous-band wdm transmission system
+with 115tb/s transport over 100km using novel ultra-wideband semiconductor optical amplifiers,” in 2017 European
+Conference on Optical Communication (ECOC), (IEEE, 2017), pp. 1–3.
+9.
+R.-J. Essiambre, G. J. Foschini, G. Kramer, et al., “Capacity limits of information transport in fiber-optic networks,”
+Phys. Rev. Lett. 101(16), 163901 (2008).
+10. R.-J. Essiambre, G. Kramer, P. J. Winzer, et al., “Capacity limits of optical fiber networks,” J. Lightwave Technol.
+28(4), 662–701 (2010).
+11. B. J. Puttnam, R. S. Luís, G. Rademacher, et al., “S-, c- and l-band transmission over a 157 nm bandwidth using
+doped fiber and distributed raman amplification,” Opt. Express 30(6), 10011–10018 (2022).
+12. D. J. Richardson, J. M. Fini, and L. E. Nelson, “Space-division multiplexing in optical fibres,” Nat. Photonics 7(5),
+354–362 (2013).
+13. P. Sillard, M. Bigot-Astruc, and D. Molin, “Few-mode fibers for mode-division-multiplexed systems,” J. Lightwave
+Technol. 32(16), 2824–2829 (2014).
+14. G. Rademacher, R. S. Luís, B. J. Puttnam, et al., “High capacity transmission with few-mode fibers,” J. Lightwave
+Technol. 37(2), 425–432 (2019).
+15. K. Saitoh and S. Matsuo, “Multicore fiber technology,” J. Lightwave Technol. 34(1), 55–66 (2016).
+16. L. Allen, M. W. Beijersbergen, R. Spreeuw, et al., “Orbital angular momentum of light and the transformation of
+laguerre-gaussian laser modes,” Phys. Rev. A 45(11), 8185–8189 (1992).
+17. A. M. Yao and M. J. Padgett, “Orbital angular momentum: origins, behavior and applications,” Adv. Opt. Photonics
+3(2), 161–204 (2011).
+18. A. E. Willner and C. Liu, “Perspective on using multiple orbital-angular-momentum beams for enhanced capacity in
+free-space optical communication links,” Nanophotonics 10(1), 225–233 (2020).
+19. M. Ma, Y. Lian, Y. Wang, et al., “Generation, transmission and application of orbital angular momentum in optical
+fiber: A review,” Front. Phys. 9, 773505 (2021).
+20. A. E. Willner, K. Pang, H. Song, et al., “Orbital angular momentum of light for communications,” Appl. Phys. Rev.
+8(4), 041312 (2021).
+21. M. Erhard, R. Fickler, M. Krenn, et al., “Twisted photons: new quantum perspectives in high dimensions,” Light:
+Sci. Appl. 7(3), 17146 (2017).
+22. A. E. Willner, Y. Ren, G. Xie, et al., “Recent advances in high-capacity free-space optical and radio-frequency
+communications using orbital angular momentum multiplexing,” Philos. Trans. R. Soc., A 375(2087), 20150439
+(2017).
+23. N. Bozinovic, Y. Yue, Y. Ren, et al., “Terabit-scale orbital angular momentum mode division multiplexing in fibers,”
+Science 340(6140), 1545–1548 (2013).
+24. C. Brunet, B. Ung, L. Wang, et al., “Design of a family of ring-core fibers for oam transmission studies,” Opt. Express
+23(8), 10553–10563 (2015).
+25. Y. Jung, Q. Kang, H. Zhou, et al., “Low-loss 25.3 km few-mode ring-core fiber for mode-division multiplexed
+transmission,” J. Lightwave Technol. 35(8), 1363–1368 (2017).
+26. X. Jin, A. Gomez, K. Shi, et al., “Mode coupling effects in ring-core fibers for space-division multiplexing systems,”
+J. Lightwave Technol. 34(14), 3365–3372 (2016).
+27. L. Zhu, G. Zhu, A. Wang, et al., “18km low-crosstalk oam+wdm transmission with 224 individual channels enabled
+by a ring-core fiber with large high-order mode group separation,” Opt. Lett. 43(8), 1890–1893 (2018).
+28. S. Rojas-Rojas, G. Cañas, G. Saavedra, et al., “Evaluating the coupling efficiency of oam beams into ring-core optical
+fibers,” Opt. Express 29(15), 23381–23392 (2021).
+29. A. S. Ostrovsky, C. Rickenstorff-Parrao, and V. Arrizón, “Generation of the “perfect” optical vortex using a
+liquid-crystal spatial light modulator,” Opt. Lett. 38(4), 534–536 (2013).
+30. J. García-García, C. Rickenstorff-Parrao, R. Ramos-García, et al., “Simple technique for generating the perfect optical
+vortex,” Opt. Lett. 39(18), 5305–5308 (2014).
+31. P. Vaity and L. Rusch, “Perfect vortex beam: Fourier transformation of a bessel beam,” Opt. Lett. 40(4), 597–600
+(2015).
+32. Y. Yue, Y. Yan, N. Ahmed, et al., “Mode properties and propagation effects of optical orbital angular momentum
+(oam) modes in a ring fiber,” IEEE Photonics J. 4(2), 535–543 (2012).
+33. X. Zeng, Y. Li, L. Feng, et al., “All-fiber orbital angular momentum mode multiplexer based on a mode-selective
+photonic lantern and a mode polarization controller,” Opt. Lett. 43(19), 4779–4782 (2018).
+34. J. Wang, J.-Y. Yang, I. M. Fazal, et al., “Terabit free-space data transmission employing orbital angular momentum
+multiplexing,” Nat. Photonics 6(7), 488–496 (2012).
+35. V. Arrizón, U. Ruiz, R. Carrada, et al., “Pixelated phase computer holograms for the accurate encoding of scalar
+complex fields,” J. Opt. Soc. Am. A 24(11), 3500–3507 (2007).
+
+--- PAGE 11 ---
+Research Article
+Vol. 31, No. 24 / 20 Nov 2023 / Optics Express 40123
+36. J. Pinnell, V. Rodríguez-Fajardo, and A. Forbes, “Quantitative orbital angular momentum measurement of perfect
+vortex beams,” Opt. Lett. 44(11), 2736–2739 (2019).
+37. P. Z. Dashti, F. Alhassen, and H. P. Lee, “Observation of orbital angular momentum transfer between acoustic and
+optical vortices in optical fiber,” Phys. Rev. Lett. 96(4), 043604 (2006).
+38. P. Gregg, P. Kristensen, and S. Ramachandran, “Conservation of orbital angular momentum in air-core optical fibers,”
+Optica 2(3), 267–270 (2015).
+39. Y. Jiang, G. Ren, W. Jin, et al., “Polarization properties of fiber-based orbital angular momentum modes,” Opt. Fiber
+Technol. 38, 113–118 (2017).
+40. A. J. Willner, Y. Ren, G. Xie, et al., “Experimental demonstration of 20 gbit/s data encoding and 2 ns channel
+hopping using orbital angular momentum modes,” Opt. Lett. 40(24), 5810–5813 (2015).
+41. N. Heckenberg, R. McDuff, C. Smith, et al., “Generation of optical phase singularities by computer-generated
+holograms,” Opt. Lett. 17(3), 221–223 (1992).
+42. D. L. Andrews, Photonics, Volume 1: Fundamentals of photonics and physics (John Wiley & Sons, 2015).
+43. L. M. Zhang and F. R. Kschischang, “Staircase codes with 6% to 33% overhead,” J. Lightwave Technol. 32(10),
+1999–2002 (2014).
+44. N. Gisin, G. Ribordy, W. Tittel, et al., “Quantum cryptography,” Rev. Mod. Phys. 74(1), 145–195 (2002).
+45. S. P. Walborn, D. S. Lemelle, D. S. Tasca, et al., “Schemes for quantum key distribution with higher-order alphabets
+using single-photon fractional fourier optics,” Phys. Rev. A 77(6), 062323 (2008).
+46. S. Pironio, A. Acín, S. Massar, et al., “Random numbers certified by bell’s theorem,” Nature 464(7291), 1021–1024
+(2010).
+47. R. Gallego, N. Brunner, C. Hadley, et al., “Device-independent tests of classical and quantum dimensions,” Phys.
+Rev. Lett. 105(23), 230501 (2010).
+48. D. Martínez, A. Tavakoli, M. Casanova, et al., “High-dimensional quantum communication complexity beyond
+strategies based on bell’s theorem,” Phys. Rev. Lett. 121(15), 150504 (2018).
+49. E. A. Aguilar, M. Farkas, D. Martínez, et al., “Certifying an irreducible 1024-dimensional photonic state using
+refined dimension witnesses,” Phys. Rev. Lett. 120(23), 230503 (2018).
+50. N. J. Cerf, M. Bourennane, A. Karlsson, et al., “Security of quantum key distribution using d-level systems,” Phys.
+Rev. Lett. 88(12), 127902 (2002).
+51. M. Mirhosseini, O. S. Magaña-Loaiza, M. N. O’Sullivan, et al., “High-dimensional quantum cryptography with
+twisted light,” New J. Phys. 17(3), 033033 (2015).
+52. A. Nicolas, L. Veissier, E. Giacobino, et al., “Quantum state tomography of orbital angular momentum photonic
+qubits via a projection-based technique,” New J. Phys. 17(3), 033037 (2015).
+53. A. Sit, R. Fickler, F. Alsaiari, et al., “Quantum cryptography with structured photons through a vortex fiber,” Opt.
+Lett. 43(17), 4108 (2018).
+54. D. Cozzolino, D. Bacco, B. Da Lio, et al., “Orbital angular momentum states enabling fiber-based high-dimensional
+quantum communication,” Phys. Rev. Appl. 11(6), 064058 (2019).
+55. E. Otte, I. Nape, C. Rosales-Guzmán, et al., “High-dimensional cryptography with spatial modes of light: tutorial,” J.
+Opt. Soc. Am. B 37(11), A309 (2020).
+56. R. M. Nejad, K. Allahverdyan, P. Vaity, et al., “Mode division multiplexing using orbital angular momentum modes
+over 1.4-km ring core fiber,” J. Lightwave Technol. 34(18), 4252–4258 (2016).
+57. H. Cao, S.-C. Gao, C. Zhang, et al., “Distribution of high-dimensional orbital angular momentum entanglement over
+a 1 km few-mode fiber,” Optica 7(3), 232 (2020).
+58. G. B. Xavier and G. Lima, “Quantum information processing with space-division multiplexing optical fibres,”
+Commun. Phys. 3(1), 9 (2020).
+59. G. Cañas, E. S. Gómez, E. Baradit, et al., “Engineering entangled photons for transmission in ring-core optical
+fibers,” Front. Phys. 9, 752081 (2021).

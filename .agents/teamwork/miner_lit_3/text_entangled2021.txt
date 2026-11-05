@@ -1,0 +1,930 @@
+=== 2021-Engineering Entangled Photons for Transmission in Ring-Core Optical Fibers.pdf ===
+
+
+--- PAGE 1 ---
+Engineering Entangled Photons for
+Transmission in Ring-Core Optical
+Fibers
+G. Cañas 1, E. S. Gómez 2,3, E. Baradit 1, G. Lima 2,3 and S. P. Walborn 2,3*
+1Departamento de Física, Universidad del Bío-Bío, Concepción, Chile, 2Departamento de Física, Universidad de Concepción,
+Concepción, Chile, 3Millennium Institute for Research in Optics, Universidad de Concepción, Concepción, Chile
+The capacity of optical communication channels can be increased by space division
+multiplexing in structured optical ﬁbers. Radial core optical ﬁbers allows for the propagation
+of twisted light–eigenmodes of orbital angular momentum, which have attracted
+considerable attention for high-dimensional quantum information. Here we study the
+generation of entangled photons that are tailor-made for coupling into ring core optical
+ﬁbers. We show that the coupling of photon pairs produced by parametric down-
+conversion can be increased by close to a factor of three by pumping the non-linear
+crystal with a perfect vortex mode with orbital angular momentum ℓ, rather than a gaussian
+mode. Moreover, the two-photon orbital angular momentum spectrum has a nearly
+constant shape. This provides an interesting scenario for quantum state engineering,
+as pumping the crystal with a superposition of perfect vortex modes can be used in
+conjunction with the mode ﬁltering properties of the ring core ﬁber to produce simple and
+interesting quantum states.
+Keywords: parametric down conversion, ring-core ﬁber, entangled photons, orbital angular momentum, perfect
+vortex beam
+1 INTRODUCTION
+Distribution of photonic entangled states is a cornerstone of future quantum networks. Most likely,
+this will need to be realized within the same optical infrastructure as standard telecommunications
+networks. Recent developments in optical ﬁber technology have resulted in novel ﬁber core
+structures, which allow for the propagation of multiple spatial modes. These ﬁbers are expected
+to play an important role in increasing the transmission capacity of future telecommunications
+networks through space division multiplexing (SDM) [1]. Examples of SDM ﬁber candidates include
+multi-mode ﬁbers [2,3], multi-core ﬁbers [4], and ring core ﬁbers [5], among others. In the quantum
+regime, SDM technology has attractive features. The multiple spatial modes are a straightforward
+way to increase the dimension of quantum systems, which has several advantages in quantum key
+distribution (QKD) [6–11], and have shown to be more resistant to some types of noise [12].
+Additional applications can be found in a recent review [13]. In addition to providing multiple
+channels, it is expected that these ﬁbers will offer more phase stability, when compared to
+superposition states of several modes propagating in independent ﬁbers [14,15].
+Ring-core ﬁbers (RCFs) allow for the propagation of orbital angular momentum (OAM) eigenmodes
+[16–25], which have attracted considerable attention as they allow for the encoding of high-dimensional
+quantum information [26–28]. To date, the principal source of entangled photons has been spontaneous
+parametric down-conversion (SPDC). A beautiful and useful characteristic of SPDC is that the two
+Edited by:
+Bao-Sen Shi,
+University of Science and Technology
+of China, China
+Reviewed by:
+Jianming Wen,
+Kennesaw State University,
+United States
+Bi-Heng Liu,
+University of Science and Technology
+of China, China
+Mingtao Cao,
+National Time Service Center (CAS),
+China
+*Correspondence:
+S. P. Walborn
+swalborn@udec.cl
+Specialty section:
+This article was submitted to
+Optics and Photonics,
+a section of the journal
+Frontiers in Physics
+Received: 02 August 2021
+Accepted: 07 September 2021
+Published: 22 September 2021
+Citation:
+Cañas G, Gómez ES, Baradit E, Lima G
+and Walborn SP (2021) Engineering
+Entangled Photons for Transmission in
+Ring-Core Optical Fibers.
+Front. Phys. 9:752081.
+doi: 10.3389/fphy.2021.752081
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+1
+ORIGINAL RESEARCH
+published: 22 September 2021
+doi: 10.3389/fphy.2021.752081
+
+--- PAGE 2 ---
+photon spatial state can be engineered by manipulating the pump
+beam [29–35]. This has led to the production of quantum states with
+interesting properties [36–40]. The entanglement properties of these
+states are determined by the mode decomposition of the two-photon
+state, in which one has the freedom to choose between quite a few
+families of transverse modes. Of particular interest are those
+decompositions onto OAM eigen-modes such as Laguerre-Gauss
+[41–44] or Bessel-Gauss [45–47], which comprise a set of Schmidt
+modes of the two-photon state [48,49].
+In this paper we study the coupling of down-converted photons
+into RCFs and the two-photon state that is produced, as sketched in
+Figure 1. We consider the decomposition of the two-photon state in
+terms of perfect vortex (PV) modes, which can have near-perfect
+ﬁdelity with the eigen-modes of RCFs [25]. We show that by pumping
+the down-conversion crystal with a PV pump beam, the amplitude of
+the most relevant down-converted PV modes can be increased while
+maintaining a high degree of entanglement. While the two-photon
+OAM mode spectrum is wider for a gaussian pump beam, leading to
+larger Schmidt numbers, this increase in entanglement is irrelevant
+when coupling into RCFs or similar optical devices, as only a ﬁnite set
+of lower-order PV modes excite the ﬁber eigen-modes. In addition, the
+shape of the mode spectrum is nearly independent of the OAM of the
+PV pump beam. The combination of the two-photon state
+engineering using PV pump beams and the mode ﬁltering
+provided by the RCF can be a powerful tool, providing a simple
+method to generate interesting two-photon states, some examples of
+which are discussed in section 4.
+2 PERFECT VORTEX BEAMS AND RING
+CORE FIBERS
+An illustration of a RCF is shown in Figure 2. It is described by a
+ring-shaped core, with interior radius b and exterior radius a. A
+set of eigenmodes of the RCF (circularly symmetric LP modes)
+have an azimuthal phase dependence eiℓϕ, and thus carry OAM
+[50]. In Ref. 25 it was shown that an example of a commercially
+available RCF supports 13 LP modes with OAM ℓ 0, ±1, ±2,
+/ ± 6. Moreover, depending on the ﬁber properties, they can
+have near perfect (∼0.995) overlap with the so-called PV modes
+with the same value of ℓ. PV modes are the Fourier transform of
+Bessel-Gaussian beams, carrying OAM with eigenvalue ℓ. They
+are given by [51].
+Uℓ(r)  N exp(iℓϕ)uℓ(r),
+(1)
+where N is a normalization constant and the radial component is
+given by
+uℓ(r)  exp
+−(r2 + r2
+r)
+w2
+0
+
+Iℓ
+2rrr
+w2
+0
+
+,
+(2)
+with Iℓthe modiﬁed Bessel function of the ﬁrst kind. The
+parameters rr and w0 are the ring radius and the Gaussian
+beam waist at the focus. As shown in Ref. 51, with certain
+parameter relations, the radial function can be approximated by
+uℓ(r) ≈u(r)  exp
+−(r −rr)2
+w2
+0
+
+,
+(3)
+which presents the interesting property that it is independent of ℓ.
+Numerical evaluation of the overlap between normalized versions of
+(2) and (3) is near unity when ℓ≲3rr/w0. The ring-shape with
+constant radius makes these modes attractive for coupling into RCFs
+[25,51–53]. Thus, entangled photons in perfect vortex modes are an
+interesting candidate for distribution of entanglement in RCFs.
+3 SPONTANEOUS PARAMETRIC
+DOWN-CONVERSION WITH PV MODES
+The two-photon state produced from SPDC using a continuous-
+wave, monochromatic pump beam incident on a thin non-linear
+crystal, is given by [29,54–56].
+|ψ〉  dq1dq2ψ(q1, q2) q1
+
+〉q2
+
+〉,
+(4)
+where ql (l  1, 2) are transverse components of the down-
+converted wave vectors. The single photons with transverse wave
+vector ql and frequency ωl are written as |ql〉. The two-photon
+amplitude in the paraxial regime, written in wave vector
+coordinates at the exit face of the crystal is given by
+ψ(q1, q2)  V(q1 + q2)sinc[(k1z + k2z −kpz)L/2].
+(5)
+Here L is the length of the non-linear crystal and kpz is the z-
+component of the pump beam wavevector. The function V(q) is
+the angular spectrum of the pump beam [29], and the sinc
+function is known as the phase matching function [55]. For
+simplicity, all modes are assumed to be polarized. If narrowband
+ﬁlters are
+used to detect
+the photons, we can assume
+monochromatic down-converted ﬁelds, and apply the Fresnel
+approximation kz ≈k(1−q2/2k2), which gives
+FIGURE 1 | Sketch of the basic idea. SPDC at a thin non-linear crystal
+(NLC) produces down-converted photon pairs, which are then coupled into
+ring-core ﬁbers. The angle between the down-converted beams and the
+pump beam is exaggerated in the Panel for visual clarity. In the
+calculations, it is assumed to be small enough so that the setup can be treated
+as co-linear. The optical systems are such that the image plane of the crystal
+coincides with the entrance face of the ﬁbers, with appropriate magniﬁcation
+factors.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+2
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 3 ---
+k1z + k2z −kpz ≈−1
+2kp
+δ1q1 −δ2q2
+
+
+2,
+(6)
+where we deﬁne kp ≡|kp| as the wavenumber of the pump beam,
+and δ1 
+
+k2/k1
+	
+, δ2 
+
+k1/k2
+	
+. We can rewrite the two-photon
+amplitude as:
+ψ(q1, q2)  V(q1 + q2)S
+δ1q1 −δ2q2
+
+
+2
+
+,
+(7)
+where S(q)  AsincLq2/4kp. Deﬁning the variables
+Q±  q1 ± q2,
+(8)
+R±  1
+2 (r1 ± r2)
+(9)
+δ±  1
+2 (δ1 ± δ2),
+(10)
+and taking the Fourier transform of Eq. 7, the two-
+photon amplitude can be written in position coordinates
+r1, r2 as
+Ψ(r1, r2)  1
+2  dQ+dQ−eiQ+R+eiQ−R−V(Q+)
+× S
+δ+Q+ + δ−Q−
+
+
+2
+
+.
+(11)
+By integrating Eq. 11, we obtain
+Ψ(r1, r2)  1
+2 W R+ −δ+
+δ−
+R−
+
+Γ R−
+(
+),
+(12)
+where W and Γ are the Fourier transforms of the angular
+spectrum of the pump beam V(q) and the phase matching
+function S(q), respectively.
+3.1 Projection Onto PV Modes
+The amplitude to project the two-photon state onto a product
+state of PV modes is given by
+A(ℓ1, ℓ2)  1
+2 dr1dr2Γ r1 −r2
+2
+
+U*
+ℓ1(r1)U*
+ℓ2(r2) ×
+W r1 + r2
+2
+−δ+
+δ−
+r1 −r2
+2
+
+.
+(13)
+In the thin crystal approximation, such that L ≪zR, where zR is
+the Rayleigh range of the pump beam, we can approximate
+Γ(r1−r2
+2 ) ≈2δ(r1 −r2), where δ(x) is the Dirac delta function.
+The amplitude becomes
+A(ℓ1, ℓ2)   drU*
+ℓ1(r)U*
+ℓ2(r)W(r).
+(14)
+Assuming now that the pump beam is an OAM eigenstate, it can
+be written as W(r)  M exp(iℓϕ)wℓ(r), with M a normalization
+constant. Then, using expression (1) for the PV modes, we have
+A(ℓ1, ℓ2, ℓ)  (N*)2M  dr ruℓ1*(r)u*ℓ2(r)wℓ(r) ×  dϕeiϕ(ℓ−ℓ1−ℓ2),
+(15)
+which leads to
+A(ℓ1, ℓ2, ℓ)  δℓ,ℓ1+ℓ2(N*)2M
+′  dr ruℓ1*(r)uℓ2*(r)wℓ(r),
+(16)
+where M′  2πM. The appearance of the Kronecker delta function
+guarantees that the OAM winding numbers of the down-
+converted photons are correlated. These OAM correlations are
+typically observed in OAM mode decompositions of the two
+photon state, and corresponds to conservation of the orbital
+angular momentum [41–46,48,49,57].
+3.2 Limited OAM Spectra: Optimizing Into
+RCF Modes
+Let us consider now that the OAM spectra of the down-converted
+photons are limited by the optical system, such as is the case when
+FIGURE 2 | (A) Illustration of a Ring-Core Fiber (RCF). (B), (D) Proﬁles of perfect vortex modes and (C), (E) superpositions of perfect vortex modes.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+3
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 4 ---
+coupling into a RCF, which supports a ﬁnite set {L} of OAM
+eigenmodes. We assume that ℓj ∈{L} and the ratio rr/w0 of the
+down-converted modes permits approximation of uℓ(r) ≈u(r),
+where we recall that this is valid when ℓj ≲rr/w0. Then, we can
+write the PV mode product
+u∗
+ℓ1(r)u∗
+ℓ2(r) ≈[u∗(r, rr, w0)]2  u∗(r, rr, w0/
+
+2
+√
+),
+(17)
+where the RCF ring radius and beam width are included explicitly
+in the argument of these functions for clarity. The integral (16) is
+thus the overlap of a PV radial mode function described by a
+gaussian ring centered at rr and ring thickness w0/
+
+2
+√
+, with the
+pump radial mode function wℓ(r). It is thus expected that the
+amplitude integral is maximized when the pump beam is also a
+PV beam, with the same ring thickness and ring width. Let us also
+consider that the pump is prepared in a PV mode and that wℓ(r) ≈
+u(r) ≡u (r, rrp, wp). The amplitude integral (16) becomes
+A  (N*)2M′  dr r u*(r, rr, w0/
+
+2
+√
+)u(r, rrp, wp),
+(18)
+which has the very appealing characteristic that it depends neither
+on ℓnor ℓ1, ℓ2. In Figure 3 we show a plot of |A|2 as a function
+of the pump beam width wp for several pump beams, where
+we used rr  3.53w0, corresponding to the parameters of PV
+modes that are most efﬁciently coupled into a commercially
+available RCF [25]. The red solid curve and the blue dotted
+curve correspond to PV pump beams with ring radii rrp  rr
+and rrp  2w0 ≈0.57rr. As a comparison, we also show the
+squared amplitude when the pump beam is described by a
+gaussian beam w(r) 
+
+2/πw2
+p
+
+exp −r2/w2
+p. We can see
+that the amplitude to produce down-converted photons in
+these eigenmodes can be increased by using a PV pump beam,
+and reaches a maximum when wp  w0/
+
+2
+√
+. In principle, this
+corresponds to an a factor of ∼2.8 increase in generation of
+the relevant down-converted modes. We note that we have
+considered nearly co-linear SPDC, in which the pump beam
+and photon pair propagate in the same direction. It has been
+shown that non-colinear SPDC can lead to asymmetry when the
+pump beam is a PV mode [58]. Recently, it was shown that the
+heralding efﬁciency of a twisted down-converted photon with
+ℓ2  ℓ(with ℓ1  0) can be increased by pumping with a PV mode
+Anwar et al. [47].
+An important characteristic here is that, aside from the OAM
+correlation provided by the Kronecker delta function, the
+amplitude of the overlap coefﬁcients does not depend upon ℓ1,
+ℓ2 nor ℓ. Thus, considering a post-selected set of PV modes in
+both the down-converted ﬁelds, the two-photon state can be
+written
+|ψ〉 A
+C
+√
+
+ℓ−ℓ1,ℓ1∈{L}
+ℓ1
+| 〉1 ℓ−ℓ1〉2
+
+,
+(19)
+where the states |ℓ〉represent single photon PV modes,
+i.e., 〈r|ℓ〉 Uℓ(r), C is a normalization constant, and {L} is the
+set of OAM supported by the ﬁbers. This is a maximally entangled
+state, whose entanglement depends upon the number of terms in
+the summation. We emphasize here the fact that (19) is valid in
+the case where the characteristics of the pump and down-
+converted photons allow the modes to be written in form (3).
+Typically, this approach is restricted to smaller OAM values. In
+the next section, we consider the complete two-photon OAM
+spectrum.
+3.3 Unlimited OAM Spectra
+When the optical system does not severely limit the OAM spectra
+of the down-converted photons, such as emission into free space,
+we can evaluate the amplitude integral (16) numerically using Eq.
+2 to describe the modes. Plots of |A(ℓ1, ℓ−ℓ1, ℓ)|2 as a function of
+ℓ1 are shown in Figure 4 for ℓ 0, ±3, ±12. To compare the
+relative weights, we have normalized to the value |A(0, 0, 0)|2. We
+can see that the curves have similar forms and magnitudes, but
+are shifted along the ℓ1 axis by an amount equal to ℓ.
+To compare between a PV and a gaussian pump beam, we
+evaluated the OAM mode spectra and the entanglement of the
+two-photon state. Figure 5A) shows the normalized probabilites
+|Aℓ1|2/ℓ1|Aℓ1|2 for a PV pump beam given by (2) with the
+optimal parameters wp  w/
+
+2
+√
+and rrp  rr  3.53w0, and a
+gaussian beam with wp  5w, similar to section 3.2. We can see
+that the probability to produce down-converted PV modes in the
+range |ℓj| ≲15 (j  1, 2) is larger for the PV pump beam than the
+gaussian pump beam, and nearly constant for |ℓj|≲6. Moreover,
+the probabilities approach zero for |ℓj|∼30. The gaussian pump
+mode, on the other hand, results in an OAM spectrum with much
+more spread, giving negligible probabilities only when |ℓj|≳100
+(not shown). The narrower mode spectrum produced by the PV
+pump beam concentrates the probability in a smaller group of
+OAM modes, leading to better efﬁciency when one is working
+within this ﬁnite subspace. For example, looking at the subset of
+modes corresponding to |ℓ| ≤15 (a 31 × 31 dimensional bipartite
+system) in Figure 5A, this corresponds to 81% of the state
+produced with the PV pump beam, and only 41% percent of
+the state produced by the gaussian pump beam. Likewise, for
+FIGURE 3 | Overlap squared |A|2 as a function of the pump beam width
+wp (in arbitrary units of length) for a gaussian pump beam rrp  0 (black dashed
+curve), and for a PV pump beam with ring radius rrp  2w0 ≈0.57rr (blue dotted
+curve) and ring radius rrp  rr  3.53w0 (PV optimal, red solid curve) for
+best coupling into a commercially available RCF [25]. The optimal PV pump
+beam increases the probability to produce relevant down-converted modes
+by a factor of ∼2.8.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+4
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 5 ---
+generating the 13 OAM modes (|ℓ| ≤6) of the RCF ﬁber
+studied in Ref. 25, the PV pump beam concentrates 38% of
+the probability in these modes, compared to 19% for the
+gaussian pump beam.
+It is known that SPDC can produce high-dimensional
+entanglement in transverse spatial modes [13,26–28,36,59]. Let
+us see how the PV pump beam compares with a gaussian pump
+beam for high-dimensional entanglement generation. The
+FIGURE 4 | Mode probabilities |Aℓ1, ℓ−ℓ1, ℓ|2, normalized by |A0, 0, 0|2, as a function of ℓ1 for a PV pump beams with optimal width wp  w0/
+
+2
+√
+and ring
+radius rrp  rr, and OAM number ℓ 0 (black solid line), ℓ ±3 (red dashed and dotted lines) and ℓ ±12 (blue dashed and dotted lines). The curves are centered at ℓ1  ℓ.
+FIGURE 5 | (A) Normalized probabilities for an optimal PV pump beam with ℓ 0 (red solid line) and a gaussian pump beam with wp  5w0 (black dashed line). The
+PV pump mode concentrates the probability in lower OAM modes. (B) The Schmidt number K for the two photon state, truncated at ± ℓmax for the same pump beams.
+The grey dotted line corresponds to the maximum allowable Schmidt number, given by d  2ℓmax + 1.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+5
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 6 ---
+entanglement in PV modes can be evaluated by calculating the
+Schmidt number, given by
+K 
+
+ℓmax
+ℓ1−ℓmax
+Aℓ1
+
+
+2
+
+ℓmax
+ℓ1−ℓmax
+A2
+ℓ1
+,
+(20)
+where we assume that the relevant OAM spectrum is limited by ±
+ℓmax, so that the overall dimension of the system is d  2ℓmax + 1.
+In Figure 5B we calculate K for different values of ℓmax for the
+same pump beams as in Figure 5A. The dotted grey line shows
+the maximum allowable K  d for comparison. We can see that
+the PV pump beam results in a Schmidt number that saturates at
+around K ∼42, while the gaussian pump beam saturates at
+K ∼128 for ℓmax ∼150 (not shown). For smaller values of
+ℓmax, the PV beam and gaussian beam give almost equivalent
+Schmidt number, and nearly saturate the maximum allowed
+value of d. We also calculated the largest Schmidt numbers for
+PV pump modes with |ℓ| ≤12, and obtained nearly constant
+results in the range K ∼40 −43. Thus, if the optical system
+imposes no practical limit on the system dimension, the
+Gaussian beam allows for higher-dimensional entanglement.
+Nonetheless, for the more realistic scenario in which the
+optical system supports a ﬁnite set of modes with smaller
+values of |ℓj|, a PV pump beam concentrates the probability
+into a smaller set of modes, resulting in a more efﬁcient source,
+and near maximal entanglement.
+4 APPLICATION TO QUANTUM STATE
+ENGINEERING
+Engineering of quantum states with different properties is both a
+challenge and a goal in quantum information science. In SPDC,
+this can be achieved by manipulation of the properties of the
+pump beam, as well as through mode ﬁltering of the individual
+photons. In this regard, integrating the SPDC results from the last
+sections together with the transmission properties of RCFs
+presents several interesting possibilities.
+As shown in Figures 4, 5, the PV pump mode concentrates the
+two-photon probability into a smaller set of joint OAM modes,
+which is particularly interesting when the photons are coupled
+into devices that support a ﬁnite number of eigen-modes. Let us
+consider that both down-converted photons are coupled to RCFs
+that support OAM eigenmodes with |ℓ1|, |ℓ2| ≤6, as was studied in
+Ref. 25. Thus, each down-converted photon has an OAM
+spectrum that is truncated in the shaded blue square region
+shown in Figure 6. When the pump beam is described by a single
+PV mode with OAM ℓ, the two-photon state is described by (19).
+The important point here is that the state (19) contains joint
+OAM modes with ℓ2  ℓ−ℓ1, non-zero overlap integral (18), and
+FIGURE 6 | Illustration of state engineering using OAM correlations from SPDC and mode ﬁltering provided by ring core ﬁbers (RCF). OAM correlations between the
+pump beam and down-converted photons produce photons with OAM distributed along the diagonal directions. The RCF selects modes within the shaded blue square.
+Thus, only OAM mode pairs along the diagonals within the square will propagate.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+6
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 7 ---
+with |ℓ1|, |ℓ2| ≤6. These three conditions can be used to engineer
+the quantum state. Figure 6 illustrates the allowable joint OAM
+spectra for different pump beams, where allowed mode
+combinations appear on the diagonals, as a function of the
+pump OAM number ℓ, and within the blue square region,
+corresponding to the mode selection of the RCF. Since for this
+set of modes the overlap integral is approximately given by (18),
+which is independent of the OAM of the pump and down-
+converted ﬁelds, the pump OAM ℓcan be used as a parameter
+to control the entanglement, where the Schmidt number of the
+state is essentially determined by the number of OAM
+components distributed along diagonals and within the RCF
+square. Thus, one can achieve a 13-dimensional entangled
+state by pumping with ℓ 0. Alternatively, a separable
+product state can be achieved by pumping with ℓ ±12,
+which gives a two-photon state |ψ〉 |± 6〉1|± 6〉2, since these
+are the only joint OAM modes that are both produced in SPDC
+and supported by the RCF.
+A maximally entangled pair of qubits is arguably the most
+useful quantum state, with numerous applications in quantum
+information, such as teleportation and quantum key distribution.
+This state can be created by using a pump beam that is a
+superposition of PV modes. For example, using a pump beam
+described by a PV mode superposition E(r)  αU12(r) + βU−12(r),
+with intensity proﬁle illustrated in Figure 2E, the two-photon
+state that propagates in the RCFs modes is
+ψ±12
+
+〉 α|6〉1|6〉2 + β|−6〉1|−6〉2.
+(21)
+Maximal entanglement is achieved when |α|  |β|. Similar Bell-
+type states have been prepared in OAM modes from SPDC,
+however, they rely on post-selection at the detection system
+[57,60]. Moreover, we note that here the OAM numbers are
+correlated (ℓ1  ℓ2), as opposed to anti-correlated (ℓ1  −ℓ2), as
+is usually the case due to OAM conservation. Correlated OAM
+states
+have
+been
+shown
+to
+be
+useful
+for
+quantum
+metrology [61].
+By the same rationale, pumping with an equally weighted
+superposition of ±10, we have
+ψ±10
+
+〉 1
+6
+√(|4〉1|6〉2 + |5〉1|5〉2 + |6〉1|4〉2 + |−4〉1|−6〉2
++ |−5〉1|−5〉2 + | −6〉1|−4〉2),
+(22)
+which is a 6 × 6 maximally entangled state. Higher-dimensional
+states can provide higher key transmission rates in quantum key
+distribution [6–11], as well as increased resilience to noise [12]
+and other applications [13,27,28]. These are just a few simple
+examples of how the dimension and entanglement of the two-
+photon state can be controlled by manipulating the PV pump
+beam and post-selection capabilities of the ring-core ﬁber. More
+complex quantum states can be created by considering different
+linear combinations of PV pump beams.
+5 CONCLUSION
+The generation of entangled photons in perfect vortex
+modes was studied in the spontaneous parametric down-
+conversion process. Perfect vortex modes carry orbital
+angular momentum, and have very high ﬁdelity with the
+eigen-modes of ring-core optical ﬁbers. We show that
+pumping the non-linear crystal with a perfect-vortex
+beam,
+leads
+to
+an
+output
+two-photon
+state
+that
+is
+concentrated in a smaller set of modes, when compared
+to that of a Gaussian pump beam. It is shown that a near
+three-fold increase in the coupling efﬁciency into ring-core
+ﬁbers could be achieved. Moreover, the two-photon mode
+spectrum can have near constant magnitude, allowing for a
+high degree of entanglement.
+The use of ring-core ﬁbers as mode ﬁlters together with pump
+beam engineering can be a powerful tool for crafting novel
+quantum states. Several examples are given, ranging from
+product states to 13 × 13 dimensional entangled states. These
+can be produced by changing a single pump beam parameter.
+Though we focus only on OAM modes, our ﬁndings can be
+combined with correlations in other degrees of freedom, such as
+polarization. We expect our results will be important for
+integrating entangled photon sources with future optical ﬁber
+networks that employ structured optical ﬁbers.
+DATA AVAILABILITY STATEMENT
+The original contributions presented in the study are included in
+the article/Supplementary Material, further inquiries can be
+directed to the corresponding author.
+AUTHOR CONTRIBUTIONS
+GC, EG, EB, GL, and SW conceived the work, GC and SW
+performed the calculations, all authors analyzed results and wrote
+the manuscript.
+FUNDING
+This work was supported by the Chilean agencies Fondo Nacional
+de Desarrollo Cientíﬁco y Tecnológico (FONDECYT) (1190933,
+1190901, 1200266, 1200859) and ANID–Millennium Science
+Initiative Program–ICN17_012.
+ACKNOWLEDGMENTS
+The authors thank S. E. Restrepo for valuable discussions.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+7
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 8 ---
+REFERENCES
+1. Richardson DJ, Fini JM, and Nelson LE. Space-division Multiplexing in
+Optical Fibres. Nat Photon (2013) 7:354–62. doi:10.1038/nphoton.2013.94
+2. Sillard P, Bigot-Astruc M, and Molin D. Few-mode Fibers for Mode-Division-
+Multiplexed Systems. J Lightwave Technol (2014) 32:2824–9. doi:10.1109/
+jlt.2014.2312845
+3. Rademacher G, Luís RS, Puttnam BJ, Eriksson TA, Ryf R, Agrell E, et al. High
+Capacity Transmission with Few-Mode Fibers. J Lightwave Technol (2019) 37:
+425–32. doi:10.1109/jlt.2018.2870038
+4. Saitoh K, and Matsuo S. Multicore Fiber Technology. J Lightwave Technol
+(2016) 34:55–66. doi:10.1109/jlt.2015.2466444
+5. Brunet C, Ung B, Wang L, Messaddeq Y, LaRochelle S, and Rusch LA. Design
+of a Family of Ring-Core Fibers for OAM Transmission Studies. Opt Express
+(2015) 23:10553–63. doi:10.1364/OE.23.010553
+6. Bourennane M, Karlsson A, and Bjork G. Quantum Key Distribution Using
+Multilevel Encoding. Phys Rev A (Atomic, Mol Opt Physics) (2001) 64:012306.
+doi:10.1103/physreva.64.012306
+7. Collins D, Gisin N, Linden N, Massar S, and Popescu S. Phys Rev Lett (2002)
+88:040404. doi:10.1103/physrevlett.88.040404
+8. Cerf NJ, Bourennane M, Karlsson A, and Gisin N. Security of Quantum Key
+Distribution
+Usingd-Level Systems.
+Phys
+Rev
+Lett
+(2002)
+88:127902.
+doi:10.1103/physrevlett.88.127902
+9. Walborn SP, Lemelle DS, Almeida MP, and Ribeiro PH. Quantum Key
+Distribution with Higher-Order Alphabets Using Spatially Encoded Qudits.
+Phys Rev Lett (2006) 96:090501. doi:10.1103/PhysRevLett.96.090501
+10. Huber M, and Pawłowski M. Weak Randomness in Device-independent
+Quantum Key Distribution and the Advantage of Using High-Dimensional
+Entanglement.
+Phys
+Rev
+A
+(2013)
+88:032309.
+doi:10.1103/
+PhysRevA.88.032309
+11. Cañas G, Vera N, Cariñe J, González P, Cardenas J, Connolly PWR, et al. High-
+dimensional
+Decoy-State
+Quantum
+Key
+Distribution
+over
+Multicore
+Telecommunication Fibers. Phys Rev A (2017) 96:022317. doi:10.1103/
+physreva.96.022317
+12. Zhu F, Tyler M, Valencia NH, Malik M, and Leach J. Is High-Dimensional
+Photonic Entanglement Robust to Noise? AVS Quan Sci (2021) 3:011401.
+doi:10.1116/5.0033889
+13. Erhard M, Krenn M, and Zeilinger A. Advances in High-Dimensional
+Quantum Entanglement. Nat Rev Phys (2020) 2:365–81. doi:10.1038/
+s42254-020-0193-5
+14. Ding Y, Bacco D, Dalgaard K, Cai X, Zhou X, Rottwitt K, et al. High-
+dimensional Quantum Key Distribution Based on Multicore Fiber Using
+Silicon
+Photonic
+Integrated
+Circuits.
+Npj
+Quan
+Inf
+(2017)
+3:25.
+doi:10.1038/s41534-017-0026-2
+15. Xavier GB, and Lima G. Quantum Information Processing with Space-
+Division
+Multiplexing
+Optical
+Fibres.
+Commun
+Phys
+(2020)
+3:9.
+doi:10.1038/s42005-019-0269-7
+16. Bozinovic N, Yue Y, Ren Y, Tur M, Kristensen P, Huang H, et al.Terabit-scale
+Orbital Angular Momentum Mode Division Multiplexing in Fibers. Science
+(2013) 340:1545–8. doi:10.1126/science.1237861
+17. Nejad RM, Allahverdyan K, Vaity P, Amiralizadeh S, Brunet C, Messaddeq Y,
+et al.Mode Division Multiplexing Using Orbital Angular Momentum Modes
+over 1.4-km Ring Core Fiber. J Lightwave Technol (2016) 34:4252–8.
+doi:10.1109/jlt.2016.2594698
+18. Gregg P, Kristensen P, and Ramachandran S. Conservation of Orbital Angular
+Momentum in Air-Core Optical Fibers. Optica (2015) 2:267–70. doi:10.1364/
+optica.2.000267
+19. Ramachandran S, Gregg P, Kristensen P, and Golowich SE. On the Scalability
+of Ring Fiber Designs for Oam Multiplexing. Opt Express (2015) 23:3721–30.
+doi:10.1364/oe.23.003721
+20. Gregg P, Kristensen P, and Ramachandran S. 134km OAM State Propagation
+by Recirculating Fiber Loop. Opt Express (2016) 24:18938–47. doi:10.1364/
+oe.24.018938
+21. Zhu L, Zhu G, Wang A, Wang L, Ai J, Chen S, et al. 18 Km Low-Crosstalk
+OAM + WDM Transmission with 224 Individual Channels Enabled by a Ring-
+Core Fiber with Large High-Order Mode Group Separation. Opt Lett (2018)
+43:1890–3. doi:10.1364/OL.43.001890
+22. Zhu G, Hu Z, Wu X, Du C, Luo W, Chen Y, et al. Scalable Mode Division
+Multiplexed Transmission over a 10-km Ring-Core Fiber Using High-Order
+Orbital Angular Momentum Modes. Opt Express (2018) 26:594–604.
+doi:10.1364/oe.26.000594
+23. Cozzolino D, Bacco D, Da Lio B, Ingerslev K, Ding Y, Dalgaard K, et al. Orbital
+Angular
+Momentum
+States
+Enabling
+Fiber-Based
+High-Dimensional
+Quantum Communication. Phys Rev Appl (2019) 11:064058. doi:10.1103/
+physrevapplied.11.064058
+24. Zhang J, Liu J, Shen L, Zhang L, Luo J, Liu J, et al.Mode-division Multiplexed
+Transmission of Wavelength-Division Multiplexing Signals over a 100-km
+Single-Span Orbital Angular Momentum Fiber. Photon Res (2020) 8:1236–42.
+doi:10.1364/prj.394864
+25. Rojas-Rojas S, Cañas G, Saavedra G, Gómez ES, Walborn SP, and Lima G.
+Evaluating the Coupling Efﬁciency of Oam Beams into Ring-Core Optical
+Fibers. Opt Express (2021) 29:23381–92. doi:10.1364/OE.425419
+26. Bavaresco J, Herrera Valencia N, Klöckl C, Pivoluska M, Erker P, Friis N,
+et al.Measurements in Two Bases Are Sufﬁcient for Certifying High-
+Dimensional
+Entanglement.
+Nat
+Phys
+(2018)
+14:1032–7.
+doi:10.1038/
+s41567-018-0203-z
+27. Erhard M, Fickler R, Krenn M, and Zeilinger A. Twisted Photons: New
+Quantum Perspectives in High Dimensions. Light Sci Appl (2018) 7:17146.
+doi:10.1038/lsa.2017.146
+28. Forbes A, and Nape I. Quantum Mechanics with Patterns of Light: Progress in
+High Dimensional and Multidimensional Entanglement with Structured Light.
+AVS Quan Sci (2019) 1:011701. doi:10.1116/1.5112027
+29. Monken CH, Ribeiro PHS, and Pádua S. Transfer of Angular Spectrum and
+Image Formation in Spontaneous Parametric Down-Conversion. Phys Rev A
+(1998) 57:3123–6. doi:10.1103/physreva.57.3123
+30. Torres JP, Deyanova Y, Torner L, and Molina-Terriza G. Preparation of
+Engineered Two-Photon Entangled States for Multidimensional Quantum
+Information. Phys Rev A (2003) 67:052313. doi:10.1103/physreva.67.052313
+31. Miatto FM, Yao AM, and Barnett SM. Full Characterization of the Quantum
+Spiral Bandwidth of Entangled Biphotons. Phys Rev A (2011) 83:033816.
+doi:10.1103/physreva.83.033816
+32. Yao AM. Angular Momentum Decomposition of Entangled Photons with an
+Arbitrary Pump. New J Phys (2011) 13:053048. doi:10.1088/1367-2630
+33. Kovlakov EV, Bobrov IB, Straupe SS, and Kulik SP. Spatial bell-state
+Generation without Transverse Mode Subspace Postselection. Phys Rev Lett
+(2017) 118:030503. doi:10.1103/PhysRevLett.118.030503
+34. Liu S, Zhou Z, Liu S, Li Y, Li Y, Yang C, et al.Coherent Manipulation of a
+Three-Dimensional Maximally Entangled State. Phys Rev A (2018) 98:062316.
+doi:10.1103/PhysRevA.98.062316
+35. Kovlakov EV, Straupe SS, and Kulik SP. Quantum State Engineering with
+Twisted Photons via Adaptive Shaping of the Pump Beam. Phys Rev A (2018)
+98:060301. doi:10.1103/PhysRevA.98.060301
+36. Walborn SP, and Monken CH. Transverse Spatial Entanglement in Parametric
+Down-Conversion. Phys Rev A (2007) 76:062305. doi:10.1103/physreva.76.062305
+37. Nogueira WA, Walborn SP, Pádua S, and Monken CH. Generation of a Two-Photon
+Singlet Beam. Phys Rev Lett (2004) 92:043602. doi:10.1103/PhysRevLett.92.043602
+38. Vicuña Hernández V, Santiago JT, Jerónimo-Moreno Y, Ramírez-Alarcón R,
+Cruz-Ramírez H, U’Ren AB, et al. Double Transverse Wave-Vector
+Correlations in Photon Pairs Generated by Spontaneous Parametric Down-
+Conversion Pumped by Bessel-Gauss Beams. Phys Rev A (2016) 94:063863.
+39. Gutiérrez-López D, Maldonado-Terrón M, Hernández RJ, Vicuña-Hernández
+V, Ramírez-Alarcón R, Cruz-Ramírez H, et al. Spatial Control of Spontaneous
+Parametric Down-Conversion Photon Pairs through the Use of Apertured
+Bessel-Gauss Pump Beams. Phys Rev A (2019) 100:013802. doi:10.1103/
+PhysRevA.100.013802
+40. Baghdasaryan B, and Fritzsche S. Enhanced Entanglement from Ince-Gaussian
+Pump Beams in Spontaneous Parametric Down-Conversion. Phys Rev A
+(2020) 102:052412. doi:10.1103/PhysRevA.102.052412
+41. Arnaut HH, and Barbosa GA. Phys Rev Lett (2001) 85:286.
+42. Franke-Arnold S, Barnett SM, Padgett MJ, and Allen L. Two-photon
+Entanglement of Orbital Angular Momentum States. Phys Rev A (2002) 65:
+033823. doi:10.1103/physreva.65.033823
+43. Torres JP, Alexandrescu A, and Torner L. Quantum Spiral Bandwidth of
+Entangled Two-Photon States. Phys Rev A (2003) 68:050301. doi:10.1103/
+physreva.68.050301
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+8
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers
+
+--- PAGE 9 ---
+44. Walborn SP, de Oliveira AN, Thebaldi RS, and Monken CH. Entanglement and
+Conservation of Orbital Angular Momentum in Spontaneous Parametric Down-
+Conversion. Phys Rev A (2004) 69:023811. doi:10.1103/physreva.69.023811
+45. McLaren M, Agnew M, Leach J, Roux FS, Padgett MJ, Boyd RW,
+et al.Entangled Bessel-Gaussian Beams. Opt Express (2012) 20:23589–97.
+10.1364/OE.20.023589.
+46. McLaren M, Romero J, Padgett MJ, Roux FS, and Forbes A. Two-photon
+Optics of Bessel-Gaussian Modes. Phys Rev A (2013) 88:033818. doi:10.1103/
+PhysRevA.88.033818
+47. Anwar A, Prabhakar S, and Singh RP. Size Invariant Twisted Optical Modes
+for Efﬁcient Generation of Higher Dimensional Quantum States (2021).
+Available
+at:
+https://www.osapublishing.org/josab/upcoming_pdf.cfm?
+id436088 (Accessed August 17, 2021).
+48. Law CK, and Eberly JH. Analysis and Interpretation of High Transverse
+Entanglement in Optical Parametric Down Conversion. Phys Rev Lett (2004)
+92:127903. doi:10.1103/physrevlett.92.127903
+49. Straupe SS, Ivanov DP, Kalinkin AA, Bobrov IB, and Kulik SP. Angular
+Schmidt Modes in Spontaneous Parametric Down-Conversion. Phys Rev A
+(2011) 83. doi:10.1103/PhysRevA.83.060302
+50. Allen L, Beijersbergen MW, Spreeuw RJC, and Woerdman JP. Orbital Angular
+Momentum of Light and the Transformation of Laguerre-Gaussian Laser
+Modes. Phys Rev A (1992) 45:8185–9. doi:10.1103/physreva.45.8185
+51. Vaity P, and Rusch L. Perfect Vortex Beam: Fourier Transformation of a Bessel
+Beam. Opt Lett (2015) 40:597–600. doi:10.1364/OL.40.000597
+52. Brunet C, Vaity P, Messaddeq Y, LaRochelle S, and Rusch LA. Design,
+Fabrication and Validation of an Oam Fiber Supporting 36 States. Opt
+Express (2014) 22:26117–27. doi:10.1364/OE.22.026117
+53. Vaity P, Brunet C, Messaddeq Y, LaRochelle S, and Rusch LA. Exciting Oam
+Modes in Annular-Core Fibers via Perfect Oam Beams. The European
+Conference on Optical Communication. Bordeaux, France. Cannes, France:
+ECOC (2014). p. 1–3. doi:10.1109/ECOC.2014.6964195
+54. Hong CK, and Mandel L. Theory of Parametric Frequency Down Conversion
+of Light. Phys Rev A (1985) 31:2409–18. doi:10.1103/physreva.31.2409
+55. Walborn SP, Monken CH, Pádua S, and Souto Ribeiro PH. Spatial Correlations
+in Parametric Down-Conversion. Phys Rep (2010) 495:87–139. doi:10.1016/
+j.physrep.2010.06.003
+56. Schneeloch J, and Howell JC. Introduction to the Transverse Spatial
+Correlations in Spontaneous Parametric Down-Conversion through the
+Biphoton Birth Zone. J Opt (2016) 18:053501. doi:10.1088/2040-8978/18/5/
+053501
+57. Mair A, Vaziri A, Weihs G, and Zeilinger A. Entanglement of the Orbital
+Angular Momentum States of Photons. Nature (2001) 412:313–6. doi:10.1038/
+35085529
+58. Jabir MV, Apurv Chaitanya N, Aadhi A, and Samanta GK. Generation of
+"perfect" Vortex of Variable Size and its Effect in Angular Spectrum of the
+Down-Converted Photons. Sci Rep (2016) 6:21877. doi:10.1038/srep21877
+59. Schneeloch J, Tison CC, Fanto ML, Alsing PM, and Howland GA. Quantifying
+Entanglement in a 68-Billion-Dimensional Quantum State Space. Nat
+Commun (2019) 10:2785. doi:10.1038/s41467-019-10810-z
+60. Langford NK, Dalton RB, Harvey MD, O’Brien JL, Pryde GJ, Gilchrist A, et al.
+Phys Rev Lett (2004) 93:053601. doi:10.1103/physrevlett.93.053601
+61. D’Ambrosio V, Spagnolo N, Re LD, Slussarenko S, Li Y, Kwek LC,
+et
+al.Photonic
+Polarization
+Gears
+for
+Ultra-sensitive
+Angular
+Measurements. Nat Commun (2013) 4:2432.
+Conﬂict of Interest: The authors declare that the research was conducted in the
+absence of any commercial or ﬁnancial relationships that could be construed as a
+potential conﬂict of interest.
+Publisher’s Note: All claims expressed in this article are solely those of the authors
+and do not necessarily represent those of their afﬁliated organizations, or those of
+the publisher, the editors and the reviewers. Any product that may be evaluated in
+this article, or claim that may be made by its manufacturer, is not guaranteed or
+endorsed by the publisher.
+Copyright © 2021 Cañas, Gómez, Baradit, Lima and Walborn. This is an open-
+access article distributed under the terms of the Creative Commons Attribution
+License (CC BY). The use, distribution or reproduction in other forums is permitted,
+provided the original author(s) and the copyright owner(s) are credited and that the
+original publication in this journal is cited, in accordance with accepted academic
+practice. No use, distribution or reproduction is permitted which does not comply
+with these terms.
+Frontiers in Physics | www.frontiersin.org
+September 2021 | Volume 9 | Article 752081
+9
+Cañas et al.
+Entangled Photons Using Ring-Core Fibers

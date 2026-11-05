@@ -19,6 +19,9 @@ FIGURES_DIR = V1_DIR / "figures"
 V2_DIR = PROJECT_ROOT / "v2"
 SCRIPTS_V2_DIR = V2_DIR / "scripts"
 FIGURES_V2_DIR = V2_DIR / "figures"
+V3_DIR = PROJECT_ROOT / "v3"
+SCRIPTS_V3_DIR = V3_DIR / "scripts"
+FIGURES_V3_DIR = V3_DIR / "figures"
 TEMPLATES_DIR = PROJECT_ROOT / "latex-universal-template"
 
 
@@ -229,4 +232,96 @@ def find_pdflatex_compiler() -> str:
     if fallback.exists():
         return str(fallback)
     return ""
+
+
+# V3 Specific Constants and Metadata
+V3_EXPECTED_FIGURES = [
+    "fig1_pvb_profiles_divergence.pdf",
+    "fig2_radial_overlap_matrix.pdf",
+    "fig3_frame_spectrum_bounds.pdf",
+    "fig4_turbulence_rkhs_recovery.pdf",
+    "fig5_quantum_povm_entanglement.pdf",
+]
+
+V3_EXPECTED_SCRIPTS = [
+    "generate_fig1_profiles.py",
+    "generate_fig2_overlap.py",
+    "generate_fig3_frame_bounds.py",
+    "generate_fig4_turbulence.py",
+    "generate_fig5_quantum.py",
+    "run_all_simulations.py",
+]
+
+V3_EXPECTED_BIBTEX_COUNT = 70
+
+V3_AUTHOR_METADATA_EXACT = {
+    "name": "Sebastián Ayala",
+    "affiliation": "Investigador Independiente, Cauquenes, Región del Maule, Chile",
+    "email": "ayala.phys.ds@gmail.com",
+    "orcid": "0009-0003-7348-3883",
+}
+
+V3_KEY_AUTHORS_CITED = [
+    "Villalba",
+    "Rojas-Rojas",
+    "Ayala",
+    "Jauhiainen",
+    "PaperBanana",
+    "Haber",
+]
+
+
+def calculate_rcf_power_advantage(
+    eta_pvb: float = 0.98,
+    eta_lg: float = 0.203,
+    isi_lg: float = 0.50,
+    isi_pvb: float = 0.00,
+) -> tuple:
+    """Theoretical first-principles 8.6 dB decomposition in Ring-Core Fibers (RCF):
+    Delta_coupling = 10 * log10(eta_pvb / eta_lg) ~ 6.83 dB
+    Delta_isi = 10 * log10((1 + isi_lg) / (1 + isi_pvb)) ~ 1.77 dB
+    Total Delta = Delta_coupling + Delta_isi ~ 8.60 dB
+    """
+    delta_coupling = 10.0 * math.log10(eta_pvb / eta_lg)
+    delta_isi = 10.0 * math.log10((1.0 + isi_lg) / (1.0 + isi_pvb))
+    return delta_coupling, delta_isi, delta_coupling + delta_isi
+
+
+def check_latex_log_for_unresolved_references(log_text: str) -> list:
+    """Detects unresolved references or citations in LaTeX compiler logs.
+    Returns list of violations.
+    """
+    violations = []
+    undef_cites = re.findall(r"Citation [`']([^']+)' on page \d+ undefined", log_text)
+    if undef_cites:
+        violations.append(f"Undefined citations detected: {set(undef_cites)}")
+    
+    undef_refs = re.findall(r"Reference [`']([^']+)' on page \d+ undefined", log_text)
+    if undef_refs:
+        violations.append(f"Undefined references detected: {set(undef_refs)}")
+        
+    if "There were undefined references" in log_text:
+        violations.append("LaTeX log reports 'There were undefined references'")
+        
+    if re.search(r"citation\s+\?\s+undefined", log_text, re.IGNORECASE):
+        violations.append("Citation '?' undefined found in log")
+        
+    return violations
+
+
+def validate_algebraic_bridges(text: str) -> dict:
+    """Scans text for explicit algebraic bridge phrases connecting numbered equations."""
+    patterns = [
+        r"(?i)(?:sustituyendo|sustituir|reemplazando|substituting|inserting|combining)\s+(?:la\s+)?(?:ec\.|ecuaci[óo]n|eq\.|equation)\s*(?:\([^\)]+\)|[0-9]+)",
+        r"(?i)(?:a\s+partir\s+de|from|using|utilizando)\s+(?:la\s+)?(?:ec\.|ecuaci[óo]n|eq\.|equation)\s*(?:\([^\)]+\)|[0-9]+)",
+        r"(?i)(?:obtenemos|se\s+obtiene|we\s+obtain|yields|which\s+gives)\s+(?:la\s+)?(?:ec\.|ecuaci[óo]n|eq\.|equation)\s*(?:\([^\)]+\)|[0-9]+)",
+        r"(?i)(?:conduce\s+a|leads\s+to|resulting\s+in)\s+(?:la\s+)?(?:ec\.|ecuaci[óo]n|eq\.|equation)\s*(?:\([^\)]+\)|[0-9]+)",
+    ]
+    found = {}
+    for p in patterns:
+        matches = re.findall(p, text)
+        if matches:
+            found[p] = len(matches)
+    return found
+
 
