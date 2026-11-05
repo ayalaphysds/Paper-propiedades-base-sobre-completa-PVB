@@ -1,0 +1,186 @@
+#!/usr/bin/env python3
+"""
+generate_fig2_overlap.py
+Milestone M2: Simulation Script for Figure 2.
+
+Figure 2: Exact Radial Overlap Matrix, Azimuthal Orthogonality, and Universal Cross-Talk:
+(a) Exact radial overlap matrix gamma_l(R1, R2; w0) heatmap for l = 1, w0 = 0.10 mm.
+(b) Azimuthal Kronecker orthogonality delta_{l1, l2} cross-talk matrix across topological charges l in [-4, 4].
+(c) Normalized overlap vs ring separation Delta R / w0 showing universal Gaussian decay exp(-Delta R^2 / (2 w0^2)).
+(d) Discrepancy comparison between exact Weber integral (formula 6.633.2) and asymptotic thin-ring expansion,
+    confirming analytical agreement with error < 10^-4.
+
+Layout: 2x2 multi-panel layout (publication grade).
+Author: Sebastián Ayala (Cauquenes, Chile)
+Paper: Overcomplete Perfect Vortex Beams
+"""
+
+import sys
+from pathlib import Path
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.special import ive
+
+# Adaptive directory discovery for repository and extracted bundle environments
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if (SCRIPTS_DIR.parent / "figures").is_dir():
+    DEFAULT_FIG_DIR = SCRIPTS_DIR.parent / "figures"
+elif (SCRIPTS_DIR.parent.parent / "v2" / "figures").is_dir():
+    DEFAULT_FIG_DIR = SCRIPTS_DIR.parent.parent / "v2" / "figures"
+else:
+    DEFAULT_FIG_DIR = SCRIPTS_DIR.parent / "figures"
+
+for p in [SCRIPTS_DIR, SCRIPTS_DIR.parent, SCRIPTS_DIR.parent.parent]:
+    if p.is_dir() and str(p) not in sys.path:
+        sys.path.insert(0, str(p))
+
+# Publication styling settings
+plt.rcParams.update({
+    "font.family": "serif",
+    "font.size": 9.5,
+    "axes.labelsize": 10,
+    "axes.titlesize": 10.5,
+    "xtick.labelsize": 8.5,
+    "ytick.labelsize": 8.5,
+    "legend.fontsize": 8.0,
+    "figure.titlesize": 11,
+    "lines.linewidth": 1.6,
+    "axes.grid": True,
+    "grid.alpha": 0.3,
+    "grid.linestyle": "--",
+    "mathtext.fontset": "cm",
+})
+
+
+def calculate_exact_overlap(r1: np.ndarray, r2: np.ndarray, w0: float, l: int = 1) -> np.ndarray:
+    r"""
+    Computes exact normalized overlap coefficient:
+    gamma_l(r1, r2; w0) = I_l(r1*r2/w0^2) / sqrt(I_l(r1^2/w0^2) * I_l(r2^2/w0^2))
+    Using ive(l, z) = I_l(z) * exp(-z):
+    gamma_l = exp(-(r1 - r2)^2 / (2 w0^2)) * ive(l, r1*r2/w0^2) / sqrt(ive(l, r1^2/w0^2) * ive(l, r2^2/w0^2))
+    """
+    arg12 = (r1 * r2) / (w0**2)
+    arg11 = (r1**2) / (w0**2)
+    arg22 = (r2**2) / (w0**2)
+
+    exp_factor = np.exp(-((r1 - r2)**2) / (2.0 * (w0**2)))
+    ive_12 = ive(l, arg12)
+    ive_11 = ive(l, arg11)
+    ive_22 = ive(l, arg22)
+
+    den = np.sqrt(ive_11 * ive_22)
+    gamma = exp_factor * (ive_12 / den)
+    return np.clip(gamma, 0.0, 1.0)
+
+
+def calculate_asymptotic_overlap(r1: np.ndarray, r2: np.ndarray, w0: float, l: int = 1) -> np.ndarray:
+    """Asymptotic expansion with second-order curvature correction."""
+    base = np.exp(-((r1 - r2)**2) / (2.0 * (w0**2)))
+    corr = 1.0 + ((4.0 * (l**2) - 1.0) * (w0**2) * ((r1 - r2)**2)) / (16.0 * (r1**2) * (r2**2))
+    return base * corr
+
+
+def generate_figure_2(output_path: Path = None):
+    """Generates publication-quality 2x2 Figure 2."""
+    if output_path is None:
+        output_path = DEFAULT_FIG_DIR / "fig2_radial_overlap_matrix.pdf"
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    fig, axes = plt.subplots(2, 2, figsize=(8.5, 7.0), constrained_layout=True)
+
+    r0 = 1.0   # mm (reference ring radius R0)
+    w0 = 0.10  # mm (ring thickness w0)
+
+    # ----------------------------------------------------
+    # Panel (a): 2D Heatmap of Exact Normalized Overlap Matrix
+    # ----------------------------------------------------
+    ax_a = axes[0, 0]
+    l_heat = 1
+    r_span = np.linspace(0.65, 1.35, 200)  # mm
+    R1, R2 = np.meshgrid(r_span, r_span)
+    gamma_2d = calculate_exact_overlap(R1, R2, w0, l=l_heat)
+
+    im_a = ax_a.imshow(gamma_2d, origin="lower", extent=[r_span[0], r_span[-1], r_span[0], r_span[-1]],
+                       cmap="viridis", vmin=0.0, vmax=1.0, aspect="equal")
+    cs = ax_a.contour(R1, R2, gamma_2d, levels=[0.1, 0.5, 0.8], colors="white",
+                      linewidths=0.8, linestyles=["dotted", "dashed", "solid"])
+    ax_a.clabel(cs, inline=True, fontsize=7.0, fmt="%.1f")
+
+    cbar_a = fig.colorbar(im_a, ax=ax_a, fraction=0.046, pad=0.04)
+    cbar_a.set_label(r"Radial overlap $\gamma_\ell(R_1, R_2)$", rotation=270, labelpad=12)
+
+    ax_a.set_xlabel(r"Ring radius $R_1$ [mm]")
+    ax_a.set_ylabel(r"Ring radius $R_2$ [mm]")
+    ax_a.set_title(r"(a) Exact radial overlap matrix ($\ell = 1$)", fontweight="bold", fontsize=10.5)
+
+    # ----------------------------------------------------
+    # Panel (b): Azimuthal Kronecker Orthogonality Cross-Talk Matrix
+    # ----------------------------------------------------
+    ax_b = axes[0, 1]
+    charges_b = np.arange(-4, 5)
+    L1, L2 = np.meshgrid(charges_b, charges_b)
+    # Azimuthal inner product integral: 1/(2*pi) * \int_0^{2*pi} exp(i*(l2-l1)*phi) dphi = delta_{l1, l2}
+    kronecker_matrix = np.where(L1 == L2, 1.0, 0.0)
+
+    im_b = ax_b.imshow(kronecker_matrix, origin="lower", extent=[-4.5, 4.5, -4.5, 4.5],
+                       cmap="Blues", vmin=0.0, vmax=1.0, aspect="equal")
+    cbar_b = fig.colorbar(im_b, ax=ax_b, fraction=0.046, pad=0.04)
+    cbar_b.set_label(r"Azimuthal inner product $\delta_{\ell_1, \ell_2}$", rotation=270, labelpad=12)
+
+    ax_b.set_xticks(charges_b)
+    ax_b.set_yticks(charges_b)
+    ax_b.set_xlabel(r"Topological charge $\ell_1$")
+    ax_b.set_ylabel(r"Topological charge $\ell_2$")
+    ax_b.set_title(r"(b) Azimuthal Kronecker orthogonality", fontweight="bold", fontsize=10.5)
+
+    # ----------------------------------------------------
+    # Panel (c): Universal Gaussian Cross-Talk vs Delta R / w0
+    # ----------------------------------------------------
+    ax_c = axes[1, 0]
+    delta_r_norm = np.linspace(0.0, 3.5, 200)
+    r_sweep = r0 + delta_r_norm * w0
+    charges_c = [0, 1, 2, 4]
+    colors_c = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728"]
+
+    # Universal Gaussian limit: exp(-Delta R^2 / (2 * w0^2))
+    gamma_univ = np.exp(-0.5 * (delta_r_norm**2))
+    ax_c.plot(delta_r_norm, gamma_univ, "k--", linewidth=2.0, label=r"Universal Gaussian: $e^{-\Delta R^2 / 2w_0^2}$")
+
+    for l_val, col in zip(charges_c, colors_c):
+        gamma_exact = calculate_exact_overlap(r0, r_sweep, w0, l=l_val)
+        ax_c.plot(delta_r_norm, gamma_exact, "-", color=col, label=rf"Exact $\ell = {l_val}$")
+
+    ax_c.axhline(0.5, color="gray", linestyle=":", linewidth=0.9, label=r"FWHM ($0.5$)")
+    ax_c.set_xlabel(r"Normalized ring separation $\Delta R / w_0$")
+    ax_c.set_ylabel(r"Overlap $\gamma_\ell(R_0, R_0 + \Delta R)$")
+    ax_c.set_title("(c) Universal Gaussian cross-talk decay", fontweight="bold", fontsize=10.5)
+    ax_c.set_xlim(0.0, 3.5)
+    ax_c.set_ylim(0.0, 1.05)
+    ax_c.legend(loc="upper right", frameon=True, framealpha=0.9, fontsize=7.5)
+
+    # ----------------------------------------------------
+    # Panel (d): Numerical Comparison: Exact vs Asymptotic Thin-Ring
+    # ----------------------------------------------------
+    ax_d = axes[1, 1]
+    for l_val, col in zip([0, 1, 2, 4], colors_c):
+        gamma_exact = calculate_exact_overlap(r0, r_sweep, w0, l=l_val)
+        gamma_asymp = calculate_asymptotic_overlap(r0, r_sweep, w0, l=l_val)
+        abs_err = np.abs(gamma_exact - gamma_asymp)
+        ax_d.semilogy(delta_r_norm, abs_err + 1e-12, "-", color=col, label=rf"$\ell = {l_val}$")
+
+    ax_d.axhline(1e-4, color="darkred", linestyle="--", linewidth=1.1, label=r"Threshold $10^{-4}$")
+    ax_d.set_xlabel(r"Normalized ring separation $\Delta R / w_0$")
+    ax_d.set_ylabel(r"Absolute discrepancy $|\gamma_{\mathrm{exact}} - \gamma_{\mathrm{asymp}}|$")
+    ax_d.set_title(r"(d) Exact Weber integral vs asymptotic expansion", fontweight="bold", fontsize=10.5)
+    ax_d.set_xlim(0.0, 3.5)
+    ax_d.set_ylim(1e-8, 1e-2)
+    ax_d.legend(loc="upper left", frameon=True, framealpha=0.9, fontsize=7.5)
+
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print(f"[+] Figure 2 successfully generated: {output_path}")
+
+
+if __name__ == "__main__":
+    generate_figure_2()

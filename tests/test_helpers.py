@@ -16,7 +16,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 V1_DIR = PROJECT_ROOT / "v1"
 SCRIPTS_DIR = V1_DIR / "scripts"
 FIGURES_DIR = V1_DIR / "figures"
+V2_DIR = PROJECT_ROOT / "v2"
+SCRIPTS_V2_DIR = V2_DIR / "scripts"
+FIGURES_V2_DIR = V2_DIR / "figures"
 TEMPLATES_DIR = PROJECT_ROOT / "latex-universal-template"
+
 
 # Reference Author Metadata
 EXPECTED_AUTHOR_NAME = "Sebastián Ayala"
@@ -129,3 +133,100 @@ def get_pdf_page_count(pdf_path: Path) -> int:
     if count_matches:
         return max(int(c) for c in count_matches)
     return 1
+
+
+# V2 Specific Constants and Metadata
+V2_EXPECTED_FIGURES = [
+    "fig1_pvb_profiles_divergence.pdf",
+    "fig2_radial_overlap_matrix.pdf",
+    "fig3_frame_spectrum_bounds.pdf",
+    "fig4_turbulence_rkhs_recovery.pdf",
+    "fig5_quantum_povm_entanglement.pdf",
+]
+
+V2_EXPECTED_SCRIPTS = [
+    "generate_fig1_profiles.py",
+    "generate_fig2_overlap.py",
+    "generate_fig3_frame_bounds.py",
+    "generate_fig4_turbulence.py",
+    "generate_fig5_quantum.py",
+    "run_all_simulations.py",
+]
+
+V2_AI_CITATIONS = ["Jauhiainen2026", "Zhu2026PaperBanana", "Haber2025"]
+
+V2_REVISION_COMMENTS = {
+    1: ["radii", "radius", "plural", "ortografía", "spelling"],
+    2: ["abstract", "q1", "equation", "ecuación", "cita", "brackets"],
+    3: ["sección 8", "section 8", "multi-fila", "multi-row", "grid", "cuadrícula", "textbf", "etiquetas"],
+    4: ["sobrecompletitud", "overcompleteness", "ayala (2026)", "ayala 2026", "secciones 1 a 4", "delimitación"],
+    5: ["inteligencia artificial", "artificial intelligence", "codex máxima", "jauhiainen", "paperbanana", "haber", "ética"],
+    6: ["autónomo", "autonomous", "premisa", "marco continuo", "frame", "ventajas clásicas", "cuánticas"],
+    7: ["justificación", "justified", "fundamentada", "decisiones", "técnica"],
+}
+
+
+def validate_abstract_cleanliness(abstract_text: str) -> list:
+    """Validates that an abstract contains no raw equations, direct equation numbers, or bracketed citations.
+    Returns list of violation descriptions (empty if valid).
+    """
+    violations = []
+    # Check for raw math environments
+    if re.search(r"\\begin\{(?:equation|align|gather|multline)\*?\}", abstract_text):
+        violations.append("Contains raw equation environment (\\begin{equation...})")
+    if re.search(r"\$\$.*?\$\$", abstract_text, flags=re.DOTALL):
+        violations.append("Contains display math ($$...$$)")
+    if re.search(r"\\\[.*?\\\]", abstract_text, flags=re.DOTALL):
+        violations.append(r"Contains display math (\[...\])")
+    # Check for raw equation citations: "Eq. (1)", "equation (2)", etc.
+    if re.search(r"(?i)\b(?:eq\.|equation|equations|fórmula)\s*\(\d+\)", abstract_text):
+        violations.append("Contains explicit direct equation citation (Eq. (N))")
+    if re.search(r"\\eqref\{[^}]+\}", abstract_text):
+        violations.append("Contains \\eqref{...}")
+    # Check for bracketed citations: \cite{...} or [1], [1, 2]
+    if re.search(r"\\cite[pt]?\{[^}]+\}", abstract_text):
+        violations.append("Contains \\cite{...} command in abstract")
+    if re.search(r"\[\d+(?:[,\s–-]+\d+)*\]", abstract_text):
+        violations.append("Contains bracketed numeric citation [N] in abstract")
+    return violations
+
+
+def validate_technical_spelling_radii(text: str) -> list:
+    """Validates adherence to technical English standard: 'radii' for plural ring radii.
+    Flags improper usages such as 'multiple radius', 'different radius', 'all radius', 'radiuses'.
+    """
+    violations = []
+    if re.search(r"(?i)\bradiuses\b", text):
+        violations.append("Found non-standard plural 'radiuses'")
+    pattern = r"(?i)\b(?:multiple|different|various|several|two|three|four|both|all|distinct|these|those)\s+radius\b"
+    matches = re.findall(pattern, text)
+    if matches:
+        violations.append(f"Found improper singular with plural quantifier: {matches}")
+    return violations
+
+
+def reproducing_kernel(r: float, r_prime: float, w0: float, l: int = 0) -> float:
+    """Exact reproducing kernel K_l(r, r') of the paraxial PVB subspace."""
+    return exact_overlap_coefficient(r, r_prime, w0, l)
+
+
+def frame_condition_number(w0: float, k_max: float) -> float:
+    """Condition number kappa = B / A for continuous frame on paraxial band [0, K_max].
+    A = exp(-0.5 * K_max^2 * w0^2), B = 1.0.
+    """
+    a = math.exp(-0.5 * (k_max**2) * (w0**2))
+    b = 1.0
+    return b / a
+
+
+def find_pdflatex_compiler() -> str:
+    """Finds pdflatex compiler in PATH or known installation locations."""
+    import shutil
+    found = shutil.which("pdflatex")
+    if found:
+        return found
+    fallback = Path(r"C:\Users\sayal\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe")
+    if fallback.exists():
+        return str(fallback)
+    return ""
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.4)  4 NOV 2026 14:13
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.11.4)  4 NOV 2026 16:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -11,14 +11,14 @@ Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
 File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count275
-\c@section=\count276
-\c@subsection=\count277
-\c@subsubsection=\count278
-\c@paragraph=\count279
-\c@subparagraph=\count280
-\c@figure=\count281
-\c@table=\count282
+\c@part=\count271
+\c@section=\count272
+\c@subsection=\count273
+\c@subsubsection=\count274
+\c@paragraph=\count275
+\c@subparagraph=\count276
+\c@figure=\count277
+\c@table=\count278
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
@@ -27,10 +27,18 @@ File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
-)
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+6.
+
+(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
 
@@ -44,9 +52,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
-\Gm@cnth=\count283
-\Gm@cntv=\count284
-\c@Gm@tempcnt=\count285
+\Gm@cnth=\count279
+\Gm@cntv=\count280
+\c@Gm@tempcnt=\count281
 \Gm@bindingoffset=\dimen149
 \Gm@wd@mp=\dimen150
 \Gm@odd@mp=\dimen151
@@ -78,14 +86,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count286
+\inf@bad=\count282
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count287
-\leftroot@=\count288
+\uproot@=\count283
+\leftroot@=\count284
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count289
-\DOTSCASE@=\count290
+\classnum@=\count285
+\DOTSCASE@=\count286
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -98,20 +106,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen159
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count291
+\macc@depth=\count287
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count292
+\c@MaxMatrixCols=\count288
 \dotsspace@=\muskip17
-\c@parentequation=\count293
-\dspbrk@lvl=\count294
+\c@parentequation=\count289
+\dspbrk@lvl=\count290
 \tag@help=\toks22
-\row@=\count295
-\column@=\count296
-\maxfields@=\count297
+\row@=\count291
+\column@=\count292
+\maxfields@=\count293
 \andhelp@=\toks23
 \eqnshift@=\dimen160
 \alignsep@=\dimen161
@@ -171,10 +179,10 @@ Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 106.
+Package graphics Info: Driver file: xetex.def on input line 106.
 
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen166
 \Gin@req@width=\dimen167
@@ -191,23 +199,23 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen175
 \cmidrulekern=\dimen176
 \defaultaddspace=\dimen177
-\@cmidla=\count298
-\@cmidlb=\count299
+\@cmidla=\count294
+\@cmidlb=\count295
 \@aboverulesep=\dimen178
 \@belowrulesep=\dimen179
-\@thisruleclass=\count300
-\@lastruleclass=\count301
+\@thisruleclass=\count296
+\@lastruleclass=\count297
 \@thisrulewidth=\dimen180
 )
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count302
+\etb@tempcnta=\count298
 )
 \MT@toks=\toks32
 \MT@tempbox=\box55
-\MT@count=\count303
+\MT@count=\count299
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
 LaTeX Info: Redefining \leftprotrusion on input line 1085.
 \MT@prot@toks=\toks33
@@ -216,14 +224,13 @@ LaTeX Info: Redefining \textls on input line 1449.
 \MT@outer@kern=\dimen181
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
-\MT@listname@count=\count304
+\MT@listname@count=\count300
 
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
-tex.def
-File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
-
-LaTeX Info: Redefining \lsstyle on input line 944.
-LaTeX Info: Redefining \lslig on input line 944.
+(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-xet
+ex.def
+File: microtype-xetex.def 2026/03/01 v3.2d Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 443.
+LaTeX Info: Redefining \lslig on input line 451.
 \MT@outer@space=\skip57
 )
 Package microtype Info: Loading configuration file microtype.cfg.
@@ -243,10 +250,9 @@ Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 274.
+Package xcolor Info: Driver file: xetex.def on input line 274.
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
@@ -282,7 +288,7 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode not found.
 ))
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
@@ -300,7 +306,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count305
+\c@section@level=\count301
 )
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
@@ -308,20 +314,16 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen182
-\Hy@linkcounter=\count306
-\Hy@pagecounter=\count307
+\Hy@linkcounter=\count302
+\Hy@pagecounter=\count303
  (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
 ) (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count308
+\Hy@SavedSpaceFactor=\count304
  (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 4066.
 Package hyperref Info: Hyper figures OFF on input line 4195.
@@ -331,7 +333,7 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count309
+\c@Hy@tempcnt=\count305
 
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
@@ -348,7 +350,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count310
+\Fld@menulength=\count306
 \Field@Width=\dimen184
 \Fld@charsize=\dimen185
 Package hyperref Info: Hyper figures OFF on input line 6078.
@@ -358,16 +360,19 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring ON on input line 6096.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count311
-\c@Item=\count312
-\c@Hfootnote=\count313
+\Hy@abspage=\count307
+\c@Item=\count308
+\c@Hfootnote=\count309
 )
-Package hyperref Info: Driver (autodetected): hpdftex.
+Package hyperref Info: Driver (autodetected): hxetex.
 
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count314
-\c@bookmark@seq@number=\count315
+(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
+File: hxetex.def 2025-07-12 v7.01o Hyperref driver for XeTeX
+\pdfm@box=\box56
+\c@Hy@AnnotLevel=\count310
+\HyField@AnnotCount=\count311
+\Fld@listcount=\count312
+\c@bookmark@seq@number=\count313
 
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -382,15 +387,17 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip58
 )
-\c@theorem=\count316
-\c@corollary=\count317
-\c@definition=\count318
-\c@lemma=\count319
+\c@theorem=\count314
+\c@corollary=\count315
+\c@definition=\count316
+\c@lemma=\count317
 
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
-File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count320
+(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xet
+ex.def
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count318
+\g__pdfannot_backend_int=\count319
+\g__pdfannot_backend_link_int=\count320
 ) (Paper_arxiv_v1.aux)
 \openout1 = `Paper_arxiv_v1.aux'.
 
@@ -404,6 +411,8 @@ LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
@@ -414,9 +423,9 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -447,32 +456,6 @@ LaTeX Font Info:    ... okay on input line 26.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count321
-\scratchdimen=\dimen186
-\scratchbox=\box56
-\nofMPsegments=\count322
-\nofMParguments=\count323
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count324
-\MPscratchDim=\dimen187
-\MPnumerator=\count325
-\makeMPintoPDFobject=\count326
-\everyMPtoPDFconversion=\toks35
-)
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
 LaTeX Info: Redefining \microtypecontext on input line 26.
 Package microtype Info: Applying patch `item' on input line 26.
 Package microtype Info: Applying patch `toc' on input line 26.
@@ -480,17 +463,11 @@ Package microtype Info: Applying patch `eqnum' on input line 26.
 Package microtype Info: Applying patch `footnote' on input line 26.
 Package microtype Info: Applying patch `verbatim' on input line 26.
 LaTeX Info: Redefining \microtypesetup on input line 26.
-Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `alltext-nott'.
-Package microtype Info: Patching command `\showhyphens'.
 Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
-
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
@@ -501,8 +478,11 @@ Package hyperref Info: Link coloring ON on input line 26.
 \@outlinefile=\write3
 \openout3 = `Paper_arxiv_v1.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -519,17 +499,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
+9.
+
+(C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
+(microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+ [1
 
-[1
+]
+Overfull \hbox (5.23492pt too wide) in paragraph at lines 60--61
+[]\T1/lmr/bx/n/10.95 Appendix D\T1/lmr/m/n/10.95 : Step-by-Step Deriva-tions of
+ Over-lap In-te-grals and Asymp-totics (Gradshteyn--
+ []
 
-{C:/Users/sayal/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/saya
-l/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-t1.enc}{C:/Us
-ers/sayal/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-ts1.e
-nc}] [2] [3] [4] [5]
+[2] [3] [4] [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 227.
@@ -546,41 +534,36 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 227.
 
-[6] [7] [8] [9] [10]
-<figures/fig1_pvb_profiles_divergence.pdf, id=363, 839.53604pt x 261.376pt>
+
+Overfull \hbox (19.53697pt too wide) in paragraph at lines 233--234
+\T1/lmr/m/it/10.95 to a Dirac-orthonormal ba-sis if and only if the ring width 
+pa-ram-e-ter van-ishes: $[][] \OML/cmm/m/it/10.95 ^^M[]\OT1/cmr/m/n/10.95 (\OML
+/cmm/m/it/10.95 r[]; r[]\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 w[]\OT1/cmr/m/
+n/10.95 ) =
+ []
+
+[6] [7] [8] [9]
+Overfull \hbox (5.86974pt too wide) in paragraph at lines 395--396
+\T1/lmr/m/n/10.95 From Eq. [], the frame op-er-a-tor im-parts the Fourier trans
+-fer func-tion $[]\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 k\OT1/cmr/m/n/10.95 )
+ = [](\OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 w[]\OMS/cmsy/m/n/10.95 j\OT1/c
+mr/bx/n/10.95 k\OMS/cmsy/m/n/10.95 j[]\OML/cmm/m/it/10.95 =\OT1/cmr/m/n/10.95 2
+)$\T1/lmr/m/n/10.95 .
+ []
+
+[10]
 File: figures/fig1_pvb_profiles_divergence.pdf Graphic file (type pdf)
 <use figures/fig1_pvb_profiles_divergence.pdf>
-Package pdftex.def Info: figures/fig1_pvb_profiles_divergence.pdf  used on inpu
-t line 432.
-(pdftex.def)             Requested size: 418.82375pt x 130.39253pt.
-<figures/fig2_radial_overlap_matrix.pdf, id=366, 878.4091pt x 268.60301pt>
 File: figures/fig2_radial_overlap_matrix.pdf Graphic file (type pdf)
 <use figures/fig2_radial_overlap_matrix.pdf>
-Package pdftex.def Info: figures/fig2_radial_overlap_matrix.pdf  used on input 
-line 441.
-(pdftex.def)             Requested size: 418.82375pt x 128.06728pt.
-<figures/fig3_frame_spectrum_bounds.pdf, id=374, 910.25618pt x 268.60301pt>
 File: figures/fig3_frame_spectrum_bounds.pdf Graphic file (type pdf)
 <use figures/fig3_frame_spectrum_bounds.pdf>
-Package pdftex.def Info: figures/fig3_frame_spectrum_bounds.pdf  used on input 
-line 450.
-(pdftex.def)             Requested size: 418.82375pt x 123.58757pt.
-<figures/fig4_turbulence_rkhs_recovery.pdf, id=376, 898.11119pt x 270.0085pt>
 File: figures/fig4_turbulence_rkhs_recovery.pdf Graphic file (type pdf)
 <use figures/fig4_turbulence_rkhs_recovery.pdf>
-Package pdftex.def Info: figures/fig4_turbulence_rkhs_recovery.pdf  used on inp
-ut line 459.
-(pdftex.def)             Requested size: 418.82375pt x 125.9152pt.
-<figures/fig5_quantum_povm_entanglement.pdf, id=378, 890.125pt x 268.60301pt>
+ [11] [12]
 File: figures/fig5_quantum_povm_entanglement.pdf Graphic file (type pdf)
 <use figures/fig5_quantum_povm_entanglement.pdf>
-Package pdftex.def Info: figures/fig5_quantum_povm_entanglement.pdf  used on in
-put line 468.
-(pdftex.def)             Requested size: 418.82375pt x 126.38687pt.
- [11 <./figures/fig1_pvb_profiles_divergence.pdf>] [12 <./figures/fig2_radial_o
-verlap_matrix.pdf> <./figures/fig3_frame_spectrum_bounds.pdf> <./figures/fig4_t
-urbulence_rkhs_recovery.pdf>] [13 <./figures/fig5_quantum_povm_entanglement.pdf
->] [14] [15] [16] [17] (Paper_arxiv_v1.bbl [18]) [19]
+ [13] [14] [15] [16] [17] (Paper_arxiv_v1.bbl [18]) [19]
 (Paper_arxiv_v1.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -590,53 +573,12 @@ Package rerunfilecheck Info: File `Paper_arxiv_v1.out' has not changed.
 (rerunfilecheck)             Checksum: 40A3E2A5B5682EBB21A9A928DBC65D20;13304.
  ) 
 Here is how much of TeX's memory you used:
- 13981 strings out of 467871
- 216895 string characters out of 5418376
- 685972 words of memory out of 5000000
- 42124 multiletter control sequences out of 15000+600000
- 673370 words of font info for 306 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,13n,79p,2396b,639s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx8.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmex10.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/sayal/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/sayal/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/sayal/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/sayal/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users
-/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr6.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr7.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmr8.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/sayal/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/sayal/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/sayal/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/sa
-yal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pf
-b><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfb
-x1000.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-s
-uper/sfbx1095.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/cm-super/sfbx1200.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/cm-super/sfbx1440.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/cm-super/sfbx1728.pfb><C:/Users/sayal/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/cm-super/sfrm0600.pfb><C:/Users/sayal/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0700.pfb><C:/Users/sayal/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0800.pfb><C:/Users/say
-al/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0900.pfb><C:/U
-sers/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.p
-fb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sf
-rm1095.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-
-super/sfrm1200.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/cm-super/sfti0800.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/cm-super/sfti1095.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on Paper_arxiv_v1.pdf (19 pages, 1097381 bytes).
-PDF statistics:
- 1345 PDF objects out of 1440 (max. 8388607)
- 188 named destinations out of 1000 (max. 500000)
- 80746 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 12922 strings out of 402987
+ 197551 string characters out of 5448524
+ 676335 words of memory out of 5000000
+ 41454 multiletter control sequences out of 15000+600000
+ 706506 words of font info for 135 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 72i,13n,79p,2396b,526s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+Output written on Paper_arxiv_v1.pdf (19 pages).

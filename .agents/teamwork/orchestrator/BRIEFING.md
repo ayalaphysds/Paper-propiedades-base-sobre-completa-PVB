@@ -1,110 +1,105 @@
-# BRIEFING — 2026-11-04T17:18:00Z
+# BRIEFING — 2026-11-04T18:56:04Z
 
 ## Mission
-Orchestrate a large team of agents to determine viability, formally prove physical conditions for Perfect Vortex Beams (PVB) forming a basis vs. overcomplete basis, and produce rigorous arXiv and Q1/Q2 journal manuscripts (with Python simulations and full LaTeX/PDF builds) authored by Sebastián Ayala.
+Orchestrate a large team of agents to create Version 2 (v2) of the scientific paper on classical and quantum properties of PVB overcompleteness for arXiv and Q1/Q2 journal, addressing all 7 reviewer comments rigorously.
 
 ## 🔒 My Identity
-- Archetype: teamwork_orchestrator
+- Archetype: orchestrator
 - Roles: orchestrator, user_liaison, human_reporter, successor
 - Working directory: c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\orchestrator
-- Original parent: Sentinel
-- Original parent conversation ID: 9028211d-5092-4d6f-a503-f1ab5cc75b26
+- Original parent: parent
+- Original parent conversation ID: cd73966e-6b3e-4fd7-82ef-4237309ff401
 
 ## 🔒 My Workflow
-- **Pattern**: Project
-- **Scope document**: c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\PROJECT.md
-1. **Decompose**: Survey existing resources (Codex Máxima, LaTeX templates, literature), construct Feature Inventory and Milestones across theory, computation, manuscripts, and E2E verification.
+- **Pattern**: Project Pattern (Dual Track: Implementation Track + E2E Testing Track)
+- **Scope document**: c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\.agents\teamwork\PROJECT.md
+1. **Decompose**: Survey full scope with 3 parallel Explorers, synthesize into PROJECT.md feature inventory, decompose into milestones.
 2. **Dispatch & Execute**:
-   - **Direct (iteration loop)**: Follow survey, decompose into milestones, dispatch sub-orchestrators/workers/reviewers/challengers/auditors.
-   - **Delegate (sub-orchestrator)**: Spawn sub-orchestrators for milestones or parallel dual-track work.
-3. **On failure** (in this order):
+   - Implementation Track & Testing Track decomposed into milestones.
+   - Milestone execution via sub-orchestrator or iteration loop (Explorer -> Worker -> Reviewer -> Challenger -> Auditor -> Gate).
+3. **On failure**:
    - Retry: nudge stuck agent or re-send task
    - Replace: spawn fresh agent with partial progress
    - Skip: proceed without (only if non-critical)
    - Redistribute: split stuck agent's remaining work
    - Redesign: re-partition decomposition
    - Escalate: report to parent (sub-orchestrators only, last resort)
-4. **Succession**: At 16 spawns, write handoff.md, cancel crons, spawn successor.
+4. **Succession**: At 16 spawns and all subagents completed, write soft handoff, spawn successor.
 - **Work items**:
-  1. Survey of Codex Máxima, templates, and theoretical foundations [completed]
-  2. Architecture, decomposition, and PROJECT.md creation [completed]
-  3. Milestone 1: Theory Foundations & Proofs [completed]
-  4. E2E Testing Track: Harness & Test Cases (81 tests, 81 passing) [completed]
-  5. Milestone 2: Python Simulations & Figures (5 vector PDFs in v1/figures/) [completed]
-  6. Milestone 3: Manuscript Drafting & Appendices (Paper_revista_v1.tex & Paper_arxiv_v1.tex) [completed]
-  7. Milestone 4: LaTeX Compilation & Overleaf Packaging (PDFs & Overleaf bundle) [completed]
-  8. Milestone 5: E2E Verification, Adversarial Hardening & Forensic Audit [completed]
-- **Current phase**: 4 (Final Synthesis, Packaging & Sentinel Completion Report)
-- **Current focus**: Verification confirmed, all acceptance criteria satisfied, delivery to Sentinel
+  1. Survey phase (3 Explorers in parallel) [in-progress]
+  2. Project decomposition and PROJECT.md synthesis [pending]
+  3. E2E Testing Track dispatch [pending]
+  4. Implementation Track dispatch (v2 structure, math, code, figures, tex, bundle) [pending]
+  5. Final verification & review gate [pending]
+- **Current phase**: 0 (Survey)
+- **Current focus**: Survey codebase, Codex Máxima, templates, and v1 paper
 
 ## 🔒 Key Constraints
-- Never write, modify, or create source code files directly.
-- Never run build/test commands yourself — require workers to do so.
-- Never investigate or explore the problem at the code level directly — dispatch Explorers.
-- Use file-editing tools ONLY for metadata/state files (.md) in .agents/teamwork/ folder (or PROJECT.md).
-- Zero tolerance for integrity violations: Forensic Auditor veto is absolute.
+- NEVER write, modify, or create source code files directly.
+- NEVER run build/test commands yourself — require workers to do so.
+- NEVER investigate or explore the problem at the code level — dispatch Explorers for technical investigation.
+- Audit is a BINARY VETO — violation means failure, no exceptions.
 - Never reuse a subagent after it has delivered its handoff — always spawn fresh.
-- First author: Sebastián Ayala (Cauquenes, Región del Maule, Chile; ayala.phys.ds@gmail.com; ORCID: https://orcid.org/0009-0003-7348-3883).
-- Manuscript length <= 100 pages, AI declaration included, dedicated educational appendices on PVB, complete bases, and overcomplete bases.
+- Target output directory: c:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-propiedades-base-sobre-completa-PVB\v2
 
 ## Current Parent
-- Conversation ID: 9028211d-5092-4d6f-a503-f1ab5cc75b26
-- Updated: 2026-11-04T17:18:00Z
+- Conversation ID: cd73966e-6b3e-4fd7-82ef-4237309ff401
+- Updated: 2026-11-04T18:56:04Z
 
 ## Key Decisions Made
-- Primary Journal: Optics Express (Optica) via repo `latex-universal-template/` (`optica-article.cls` + `styles/opticajournal.sty`).
-- Secondary Strategic Zero-APC Alternative: Physical Review A (APS) via `revtex4-2`.
-- Forensic Auditor verdict: CLEAN (zero cheating, zero dummy implementations, authentic derivations and simulations).
-- Challengers 1 & 2 verdicts: APPROVE (111/111 tests passing, machine-precision mathematical validation).
-- Reviewers 1, 2, and Final Verification Reviewer verdicts: APPROVE.
-- All 81 E2E tests and 202 discovered unit/integration tests passing (100%).
-- All acceptance criteria satisfied.
+- Selected Project Pattern with Dual Track (Implementation Track + E2E Testing Track).
+- Initiating Survey phase with 3 parallel Explorers to inspect: (1) Repository assets, templates, and v1 files; (2) Physics & mathematical core of PVB overcompleteness and Codex reference papers; (3) Review comments and AI ethics bibliography.
 
 ## Team Roster
 | Agent | Type | Work Item | Status | Conv ID |
 |-------|------|-----------|--------|---------|
-| explorer_survey_1 | teamwork_explorer | Survey Codex Máxima & literature | completed | 253d683f-0ac6-4d61-ae95-a3eacdbebcdd |
-| explorer_survey_2 | teamwork_explorer | Survey LaTeX templates & journal standards | completed | 33ef53c0-563b-4d13-8437-96f89378dfb6 |
-| explorer_survey_3 | teamwork_explorer | Survey Math & Quantum Foundations | completed | d4da4b47-767f-4b15-b964-dd5fdb85624c |
-| worker_theory_1 | teamwork_worker | Milestone M1: Theory Foundations & Proofs | completed | 22219961-3c66-4b70-8652-e4e9aaa32fda |
-| e2e_tester_1 | teamwork_test_writer | E2E Testing Track: Harness & Test Cases | completed | fdbc636b-547a-47f4-b559-a15cf7491bbd |
-| worker_sim_1 | teamwork_worker | Milestone M2: Python Simulations & Figures | completed | 74fea76f-9de5-4840-a29e-54303e1a4aa3 |
-| worker_latex_1 | teamwork_worker | Milestone M3: LaTeX Manuscripts & Appendices | completed | 809d215e-33e5-40a5-8bf9-38037ad67477 |
-| worker_compile_1 | teamwork_worker | Milestone M4: LaTeX Compilation & Packaging | completed | ebd97ba6-fb99-4add-a033-c04e88692ae6 |
-| reviewer_1 | teamwork_reviewer | Milestone M5: Scientific Review | completed | 091e4301-fd3a-492e-84d5-8bf624e19da3 |
-| reviewer_2 | teamwork_reviewer | Milestone M5: Technical & Computational Review | completed | 70ad220e-cf0a-4e50-a0b1-77d4a6f961cc |
-| challenger_1 | teamwork_challenger | Milestone M5: Math & Physics Stress Testing | completed | 87e4cb22-da0e-4094-ad97-64a60b22400b |
-| challenger_2 | teamwork_challenger | Milestone M5: Packaging & PDF Stress Testing | completed | a5073dee-1673-4339-88f9-32ff0fb5daab |
-| auditor_1 | teamwork_auditor | Milestone M5: Forensic Integrity Audit | completed | 45ddae60-adc6-4996-83fe-c7b5ab752e49 |
-| worker_remediation_1 | teamwork_worker | Milestone M5 Remediation: Fixes & Recompilation | completed | 98b5b5f9-86b3-419a-ba46-bb6fadc9ea38 |
-| reviewer_verify_1 | teamwork_reviewer | Milestone M5: Final Verification Review | completed | 2db08752-eda6-434e-8f8d-e450d2155d01 |
+| explorer_survey_repo | teamwork_explorer | Repo, Build & Artifact Survey | completed | 70d3da2e-dbd3-49ff-a9cc-766ed1e2fe24 |
+| explorer_survey_physics | teamwork_explorer | Physics & Overcompleteness Spec | completed | d40c33b4-b886-4012-a5a5-b1a042eec28e |
+| explorer_survey_editorial | teamwork_explorer | Editorial, 7 Comments & Ethics | completed | 2fe7d2ad-72e8-46c4-bc2c-4aca517ce1cc |
+| worker_m1 | teamwork_worker | Milestone 1 Setup & Defense | completed | 524b9cc7-0d0e-42af-b027-3715cfa4a3d9 |
+| test_writer | teamwork_test_writer | E2E Testing Track Suite v2 | completed | 25a08f5f-94ba-4f82-bda9-6816b357fe1c |
+| reviewer_m1_1 | teamwork_reviewer | Review Milestone 1 Assets & Defense | completed | 0889f170-4ad4-426a-98e3-f1ff265383e5 |
+| reviewer_m1_2 | teamwork_reviewer | Review Milestone 1 Bibliography & Docs | completed | 317cf561-2bbf-47e7-9559-a5b81f693f64 |
+| challenger_m1_1 | teamwork_challenger | Stress-test BibTeX & Comment Defenses | completed | dd96a768-e886-4c87-aa37-86dddd709e62 |
+| challenger_m1_2 | teamwork_challenger | Stress-test Codex Citations & Cross-checks | completed | 55cfc09d-3501-442d-b35e-6aade5e23f3c |
+| auditor_m1 | teamwork_auditor | Forensic Integrity Audit of M1 | completed | 99667125-4598-4cc6-975a-bec7f7f58662 |
+| worker_m2 | teamwork_worker | Milestone 2 Scripts & Figures | completed | 1287e26d-5d16-4434-8530-43f0649a7316 |
+| reviewer_m2_1 | teamwork_reviewer | Review Milestone 2 Figures & Layout | completed | 0984ce64-5754-4e76-8287-1c9318a22923 |
+| reviewer_m2_2 | teamwork_reviewer | Review Milestone 2 Physics & Math | completed | 2dfea3b7-1b5b-4f4a-805c-357686bd9123 |
+| challenger_m2_1 | teamwork_challenger | Stress-test Multi-panel & PDFs | completed | 97f3ffff-e2a3-4dcf-9ca4-4a2bfe1cc936 |
+| challenger_m2_2 | teamwork_challenger | Stress-test Reproducibility & Timing | completed | b0700ac2-da2c-4a6f-b46c-7ac89b2081a3 |
+| auditor_m2 | teamwork_auditor | Forensic Integrity Audit of M2 | completed | d3062bd4-9ef6-4504-8444-0bb49d3e4084 |
+| worker_m3 | teamwork_worker | Milestone 3 Manuscript Drafting | completed | 6fb7ddff-4fdb-432a-9bb5-6cd7df679e9b |
+| reviewer_m3_1 | teamwork_reviewer | Review Milestone 3 Manuscripts & Q1 Abstract | completed | 0f855aca-bc87-4d3e-9317-150ebc7874ca |
+| reviewer_m3_2 | teamwork_reviewer | Review Milestone 3 Math & Theorems | completed | 11b34e08-f2ca-43f5-98ec-546352da805f |
+| challenger_m3_1 | teamwork_challenger | Stress-test Citations, Figures & PDFs | completed | 991fd982-ba58-4585-8855-04738d4bc46d |
+| challenger_m3_2 | teamwork_challenger | Stress-test Compilation & Font Quality | completed | 9ac2a124-c3a3-49b7-ad7c-c78fa3833970 |
+| auditor_m3 | teamwork_auditor | Forensic Integrity Audit of M3 | completed | e6e08591-f933-4071-a4d0-7f59d32329db |
+| worker_m4 | teamwork_worker | Milestone 4 Overleaf Packaging | completed | b509ffc0-a90c-46bb-9fcb-ee741c6b8f96 |
+| reviewer_m4_1 | teamwork_reviewer | Review Milestone 4 Bundle & Tests | in-progress | 854f7c78-ca6e-4395-b7ee-d53ed5857851 |
+| reviewer_m4_2 | teamwork_reviewer | Review Milestone 4 Self-Containment | completed | 4ac3014a-45c4-4cc1-808b-3924f52c6e06 |
+| challenger_m4_1 | teamwork_challenger | Stress-test Bundle Extraction & Dry-Run | completed | 21cd7e38-efc6-4f5c-a82c-049ccf57f4cf |
+| challenger_m4_2 | teamwork_challenger | Stress-test Multi-Compiler & Scripts | completed | 6ff874dd-4327-43ca-8a2b-bd81ecead77e |
+| auditor_m4 | teamwork_auditor | Forensic Integrity Audit of M4 | completed | 42a2e727-cd24-4a2e-9db1-82e00e17c29a |
+| explorer_m4_remediation | teamwork_explorer | Investigate Simulation Path Resolution | completed | 1cbff3cc-9efb-49de-a98e-5bc074873116 |
+| worker_m4_remediation | teamwork_worker | Implement Adaptive Simulation Paths | completed | a0bcb996-5495-49a3-bf7a-8a85fd30822d |
+| reviewer_m4_verify | teamwork_reviewer | Review Remediated Bundle & Paths | completed | 003b288a-f3e8-4494-b449-eb03c4d5b5ff |
+| challenger_m4_verify | teamwork_challenger | Stress-test Remediated Bundle & Zero Leak | completed | 02053233-ae4b-4f79-9ec7-6ac78bb294a0 |
+| auditor_m4_verify | teamwork_auditor | Forensic Integrity Audit of Remediation | completed | dd4542a6-84dd-44dd-9e84-a2b1d358477b |
 
 ## Succession Status
-- Succession required: no
-- Spawn count: 15 / 16
+- Succession required: no (project successfully completed)
+- Spawn count: 33 / 128
 - Pending subagents: none
 - Predecessor: none
-- Successor: not needed (all milestones completed)
+- Successor: none (project finished)
 
 ## Active Timers
-- Heartbeat cron: killed (task-30)
-- Safety timer: none
-- On succession: kill all timers before spawning successor
-- On context truncation: handle timers as step 4 of State Recovery says
+- Heartbeat cron: cancelled (none)
+- Safety timer: cancelled (none)
 
 ## Artifact Index
-- PROJECT.md — Global architecture, feature inventory, milestones, contracts, layout
-- .agents/teamwork/ORIGINAL_REQUEST.md — Verbatim user requirements
-- .agents/teamwork/orchestrator/GATE_STATUS.md — Gate verdict tracking
-- .agents/teamwork/orchestrator/BRIEFING.md — Working memory and status
+- .agents/teamwork/ORIGINAL_REQUEST.md — Verbatim user request
+- .agents/teamwork/orchestrator/DISPATCH.md — Dispatch log
+- .agents/teamwork/orchestrator/BRIEFING.md — Persistent working memory
 - .agents/teamwork/orchestrator/progress.md — Liveness heartbeat and milestone tracking
-- .agents/teamwork/orchestrator/handoff.md — Final orchestrator handoff report
-- v1/theory_foundations.md — Complete mathematical foundations and proofs
-- TEST_INFRA.md — E2E test architecture and requirements
-- TEST_READY.md — E2E test suite ready signal
-- v1/scripts/ — Python simulation scripts (6 scripts)
-- v1/figures/ — Publication vector PDF figures (5 figures)
-- v1/Paper_revista_v1.tex & v1/Paper_revista_v1.pdf — Optics Express manuscript & PDF (18 pages)
-- v1/Paper_arxiv_v1.tex & v1/Paper_arxiv_v1.pdf — arXiv preprint & PDF (19 pages)
-- v1/Paper_revista_v1.bbl & v1/Paper_arxiv_v1.bbl — Precompiled BibTeX bbl files
-- v1/overleaf_bundle.zip — Standalone Overleaf bundle (verified clean compilation)

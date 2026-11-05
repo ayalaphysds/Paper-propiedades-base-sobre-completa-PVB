@@ -1,0 +1,177 @@
+FILE: Codex Máxima/2025-Using AI in Academic Writing and Research_ A Complete Guide to Effective and Ethical Academic A.pdf
+METADATA: {'format': 'PDF 1.4', 'title': 'Using AI in Academic Writing and Research ', 'author': '', 'subject': '', 'keywords': '', 'creator': '', 'producer': 'Adobe PDF Library 10.0.1', 'creationDate': "D:20250523155031+05'30'", 'modDate': "D:20250524073946+05'30'", 'trapped': '', 'encryption': None}
+
+=== PAGE 1 ===
+Eldar Haber 
+Dariusz Jemielniak 
+Artur Kurasiński 
+Aleksandra Przegalińska
+Using AI in Academic 
+Writing and Research
+A Complete Guide to 
+Effective and Ethical 
+Academic AI
+
+=== PAGE 2 ===
+Using AI in Academic Writing and Research
+
+=== PAGE 3 ===
+Eldar Haber  •  Dariusz Jemielniak
+Artur Kurasiński  •  Aleksandra Przegalińska
+Using AI in Academic 
+Writing and Research
+A Complete Guide to Effective and Ethical 
+Academic AI
+
+=== PAGE 4 ===
+ISBN 978-3-031-91704-2        ISBN 978-3-031-91705-9  (eBook)
+https://doi.org/10.1007/978-3-031-91705-9
+© The Editor(s) (if applicable) and The Author(s), under exclusive license to Springer Nature 
+Switzerland AG 2025
+This work is subject to copyright. All rights are solely and exclusively licensed by the 
+Publisher, whether the whole or part of the material is concerned, specifically the rights of 
+reprinting, reuse of illustrations, recitation, broadcasting, reproduction on microfilms or in 
+any other physical way, and transmission or information storage and retrieval, electronic 
+adaptation, computer software, or by similar or dissimilar methodology now known or 
+hereafter developed.
+The use of general descriptive names, registered names, trademarks, service marks, etc. in this 
+publication does not imply, even in the absence of a specific statement, that such names are 
+exempt from the relevant protective laws and regulations and therefore free for general use.
+The publisher, the authors and the editors are safe to assume that the advice and information 
+in this book are believed to be true and accurate at the date of publication. Neither the 
+publisher nor the authors or the editors give a warranty, expressed or implied, with respect to 
+the material contained herein or for any errors or omissions that may have been made. The 
+publisher remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+This Palgrave Macmillan imprint is published by the registered company Springer Nature 
+Switzerland AG.
+The registered company address is: Gewerbestrasse 11, 6330 Cham, Switzerland
+If disposing of this product, please recycle the paper.
+Eldar Haber
+Faculty of Law, University of Haifa
+Haifa, Israel
+Artur Kurasiński
+Warszawa, Poland
+Dariusz Jemielniak
+Kozminski University
+Warszawa, Poland
+Aleksandra Przegalińska
+Kozminski University
+Warszawa, Poland
+
+=== PAGE 5 ===
+v
+Contents
+	 1	 Introduction: Generative AI in Academia—A 
+Transformative Frontier
+    1
+Purpose and Scope
+      2
+Foundational Concepts: Understanding Generative AI
+      3
+Key Models and Architectures: The Brains Behind 
+Generative AI
+      4
+How AI “Thinks”: The Mechanics of Language Generation
+      6
+Historical Context: From Symbolic AI to the Generative 
+Revolution
+      7
+The Path Ahead
+    10
+	 2	 The Evolution of Artificial Intelligence: From Winter to 
+Renaissance
+  13
+The AI Winter: A Historical Perspective
+    13
+The Resurgence of AI: Factors Enabling the Current Boom
+    15
+The Computational Revolution: GPUs and Beyond
+    16
+The Data Revolution: From Scarcity to Abundance
+    16
+Algorithmic Breakthroughs: From Theory to Practice
+    17
+The Rise of Generative AI: A Paradigm Shift
+    18
+Present Challenges and Future Concerns
+    20
+The Road Ahead: Balancing Innovation and Responsibility
+    22
+Conclusion
+    23
+References
+    23
+
+=== PAGE 6 ===
+vi
+	 3	 Generative AI for Research
+  27
+Ideation and Conceptual Development
+    29
+Literature Discovery and Rapid Reviews
+    30
+Hypothesis Generation and Preliminary Frameworks
+    32
+Early Methodological Guidance
+    33
+Automated Tool Development and Data Acquisition
+    35
+Conclusion
+    36
+References
+    36
+	 4	 Writing and Publishing with Generative AI
+  39
+The Drafting Process
+    41
+Citations and References
+    50
+Publication Optimization
+    51
+Conclusion
+    53
+References
+    53
+	 5	 AI in Data Management and Analysis
+  55
+AI-Assisted Data Wrangling and Cleaning
+    56
+Data Integration and Harmonization
+    61
+Exploratory Analysis and Feature Engineering with AI
+    63
+Conclusion
+    66
+References
+    67
+	 6	 Presentations
+  69
+Creating Effective Presentations
+    71
+The WOW Effect: Engaging Audiences with AI-Generated 
+Visuals
+    76
+AI and Social Media
+    78
+Presentation Design and Structure
+    80
+Emerging Trends and Future Directions
+    84
+Best Practices and Workflow Integration
+    87
+Conclusion
+    89
+References
+    90
+	 7	 Future Trends and Emerging Tools
+  91
+Technological Advancements
+    92
+Interdisciplinary Opportunities
+    94
+Augmented and Virtual Reality
+    97
+ 
+Contents
+

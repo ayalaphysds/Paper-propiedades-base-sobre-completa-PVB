@@ -1,12 +1,14 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.4)  4 NOV 2026 14:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.4)  4 NOV 2026 16:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./Paper_revista_v1.tex
-(Paper_revista_v1.tex
+**./v1/Paper_revista_v1.tex
+(v1/Paper_revista_v1.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
-(optica-article.cls
+
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\optica-article.cls
 Document Class: optica-article 2022/06/16 v1.0 LaTeX package for Optica Journal
  Submissions
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -770,7 +772,8 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-(jabbrv.sty
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\jabbrv.sty
 Package: jabbrv 2010/08/18 v0.2 Automatic Journal Title Abbreviation Package
 
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
@@ -788,7 +791,11 @@ Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 \c@jabbrv@loop@i=\count328
 \c@jabbrv@loop@max=\count329
 \c@jabbrv@word@count=\count330
- (jabbrv-ltwa-all.ldf) (jabbrv-ltwa-en.ldf))
+
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\jabbrv-ltwa-all.ldf)
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\jabbrv-ltwa-en.ldf))
 (C:\Users\sayal\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
 
@@ -909,7 +916,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
 \Hy@SectionHShift=\skip74
-)) (styles/opticajournal.sty
+))
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\styles/opticajournal.sty
 Package: styles/opticajournal 2022/06/16 v1.0 v1.0 Generic Journal color scheme
 
 )
@@ -1209,7 +1218,8 @@ File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 19.
 
-(Paper_revista_v1.aux)
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\Paper_revista_v1.aux)
 \openout1 = `Paper_revista_v1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 19.
@@ -1773,33 +1783,45 @@ File: figures/fig5_quantum_povm_entanglement.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/fig5_quantum_povm_entanglement.pdf  used on in
 put line 463.
 (pdftex.def)             Requested size: 349.06342pt x 105.33264pt.
- [11 <./figures/fig1_pvb_profiles_divergence.pdf>] [12 <./figures/fig2_radial_o
-verlap_matrix.pdf> <./figures/fig3_frame_spectrum_bounds.pdf> <./figures/fig4_t
-urbulence_rkhs_recovery.pdf>]
+ [11 <C:/Users/sayal/OneDrive/Desktop/Repositorios/Paper PVB Sobrecompletos/Pap
+er-propiedades-base-sobre-completa-PVB/v1/figures/fig1_pvb_profiles_divergence.
+pdf>] [12 <C:/Users/sayal/OneDrive/Desktop/Repositorios/Paper PVB Sobrecompleto
+s/Paper-propiedades-base-sobre-completa-PVB/v1/figures/fig2_radial_overlap_matr
+ix.pdf> <C:/Users/sayal/OneDrive/Desktop/Repositorios/Paper PVB Sobrecompletos/
+Paper-propiedades-base-sobre-completa-PVB/v1/figures/fig3_frame_spectrum_bounds
+.pdf> <C:/Users/sayal/OneDrive/Desktop/Repositorios/Paper PVB Sobrecompletos/Pa
+per-propiedades-base-sobre-completa-PVB/v1/figures/fig4_turbulence_rkhs_recover
+y.pdf>]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 9.0pt on input line 481.
- [13 <./figures/fig5_quantum_povm_entanglement.pdf>] [14] [15] [16]
+ [13 <C:/Users/sayal/OneDrive/Desktop/Repositorios/Paper PVB Sobrecompletos/Pap
+er-propiedades-base-sobre-completa-PVB/v1/figures/fig5_quantum_povm_entanglemen
+t.pdf>] [14] [15] [16]
 
-(Paper_revista_v1.bbl
+
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\Paper_revista_v1.bbl
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.0pt on input line 8.
  [17]) [18]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
-(Paper_revista_v1.aux)
+
+(C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobrecompletos\Paper-pr
+opiedades-base-sobre-completa-PVB\v1\Paper_revista_v1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 31204 strings out of 467871
- 633893 string characters out of 5418376
+ 31205 strings out of 467871
+ 635051 string characters out of 5418376
  907260 words of memory out of 5000000
  59112 multiletter control sequences out of 15000+600000
  845206 words of font info for 460 fonts, out of 8000000 for 9000
  1201 hyphenation exceptions out of 8191
- 89i,13n,131p,2399b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,131p,2402b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXM
 I.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/Ne
 wTXMI5.pfb><C:/Users/sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/new
@@ -1817,7 +1839,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Users/sa
 yal/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><C:/Users/s
 ayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><C:/Users/
 sayal/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
-Output written on Paper_revista_v1.pdf (18 pages, 782223 bytes).
+Output written on "C:\Users\sayal\OneDrive\Desktop\Repositorios\Paper PVB Sobre
+completos\Paper-propiedades-base-sobre-completa-PVB\v1\Paper_revista_v1.pdf" (1
+8 pages, 782818 bytes).
 PDF statistics:
  1117 PDF objects out of 1200 (max. 8388607)
  178 named destinations out of 1000 (max. 500000)
