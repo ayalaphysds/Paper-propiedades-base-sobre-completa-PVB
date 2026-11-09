@@ -22,6 +22,9 @@ FIGURES_V2_DIR = V2_DIR / "figures"
 V3_DIR = PROJECT_ROOT / "v3"
 SCRIPTS_V3_DIR = V3_DIR / "scripts"
 FIGURES_V3_DIR = V3_DIR / "figures"
+V4_DIR = PROJECT_ROOT / "v4"
+SCRIPTS_V4_DIR = V4_DIR / "scripts"
+FIGURES_V4_DIR = V4_DIR / "figures"
 TEMPLATES_DIR = PROJECT_ROOT / "latex-universal-template"
 
 
@@ -323,5 +326,77 @@ def validate_algebraic_bridges(text: str) -> dict:
         if matches:
             found[p] = len(matches)
     return found
+
+
+# ==============================================================================
+# V4 Constants, Prohibited Artifacts, and Sanitization Validators
+# ==============================================================================
+
+V4_EXPECTED_FIGURES = [
+    "fig1_pvb_profiles_divergence.pdf",
+    "fig2_radial_overlap_matrix.pdf",
+    "fig3_frame_spectrum_bounds.pdf",
+    "fig4_turbulence_rkhs_recovery.pdf",
+    "fig5_quantum_povm_entanglement.pdf",
+]
+
+V4_EXPECTED_SCRIPTS = [
+    "generate_fig1_profiles.py",
+    "generate_fig2_overlap.py",
+    "generate_fig3_frame_bounds.py",
+    "generate_fig4_turbulence.py",
+    "generate_fig5_quantum.py",
+    "run_all_simulations.py",
+]
+
+V4_EXPECTED_BIBTEX_COUNT = 70
+
+V4_AUTHOR_METADATA_EXACT = {
+    "name": "Sebastián Ayala",
+    "affiliation": "Investigador Independiente, Cauquenes, Región del Maule, Chile",
+    "email": "ayala.phys.ds@gmail.com",
+    "orcid": "0009-0003-7348-3883",
+}
+
+PROHIBITED_INTERNAL_PATTERNS = [
+    (r"(?i)\bcodex[-_\s]*m[aá]xima\b", "References to internal repository 'Codex Máxima'"),
+    (r"(?i)\bminer_lit(?:_[a-z0-9]+)*\b", "Internal bot handle 'miner_lit*'"),
+    (r"(?i)\bexplorer_math(?:_[a-z0-9]+)*\b", "Internal bot handle 'explorer_math*'"),
+    (r"(?i)\bexplorer_survey(?:_[a-z0-9]+)*\b", "Internal bot handle 'explorer_survey*'"),
+    (r"(?i)\bworker_arxiv(?:_[a-z0-9]+)*\b", "Internal bot handle 'worker_arxiv*'"),
+    (r"(?i)\bworker_revista(?:_[a-z0-9]+)*\b", "Internal bot handle 'worker_revista*'"),
+    (r"(?i)\bworker_m[0-9](?:_[a-z0-9]+)*\b", "Internal bot handle 'worker_m*'"),
+    (r"(?i)\bworker_(?:infra|sim|theory|latex|package|remediation)(?:_[a-z0-9]+)*\b", "Internal worker bot handle"),
+    (r"(?i)\bcritic_referee(?:_[a-z0-9]+)*\b", "Internal bot handle 'critic_referee*'"),
+    (r"(?i)\bchallenger(?:_[a-z0-9]+)*\b", "Internal bot handle 'challenger*'"),
+    (r"(?i)\breviewer(?:_[a-z0-9]+)*\b", "Internal bot handle 'reviewer*'"),
+    (r"(?i)\bauditor(?:_[a-z0-9]+)*\b", "Internal bot handle 'auditor*'"),
+    (r"(?i)\bvictory_auditor\b", "Internal bot handle 'victory_auditor'"),
+    (r"(?i)\bsentinel\b", "Internal bot handle 'sentinel'"),
+    (r"(?i)\bsub_orch(?:_[a-z0-9]+)*\b", "Internal bot handle 'sub_orch*'"),
+    (r"(?i)\bteamwork\s+multi[-_\s]*agent\b", "Internal 'teamwork multi-agent' architecture narrative"),
+    (r"(?i)\bteamwork\s+hierarchy\b", "Internal 'teamwork hierarchy' mention"),
+    (r"(?i)\bthree[-_\s]*iteration\s+triad\b", "Internal 'three-iteration triad' narrative"),
+    (r"(?i)\bv1\s*(?:to|->|\\to)\s*v2\s*(?:to|->|\\to)\s*v3\b", "Internal 'v1 -> v2 -> v3' triad narrative"),
+    (r"(?i)\bversion\s+1\s*\([^)]*initial\s+formulation\)", "Internal iteration description"),
+    (r"(?i)\bversion\s+2\s*\([^)]*structural\s+reorganization\)", "Internal iteration description"),
+    (r"(?i)\bversion\s+3\s*\([^)]*mathematical\s+exhaustiveness\)", "Internal iteration description"),
+]
+
+
+def validate_text_sanitization(text: str, filename: str = "") -> list:
+    """Scans text for prohibited internal artifacts (Codex Máxima, bot codenames, iteration triad).
+    Returns list of formatted violation strings.
+    """
+    violations = []
+    lines = text.splitlines()
+    for pattern_re, desc in PROHIBITED_INTERNAL_PATTERNS:
+        compiled = re.compile(pattern_re)
+        for idx, line in enumerate(lines, 1):
+            if compiled.search(line):
+                # Filter out pure gitignore or self-test references if filename is test/helper
+                violations.append(f"[{filename}:{idx}] {desc}: '{line.strip()[:100]}'")
+    return violations
+
 
 

@@ -1,0 +1,358 @@
+\begin{thebibliography}{10}
+
+\bibitem{Allen1992}
+L.~Allen, M.~W. Beijersbergen, R.~J.~C. Spreeuw, and J.~P. Woerdman, ``Orbital
+  angular momentum of light and the transformation of {Laguerre-Gaussian} laser
+  modes,'' {\em Phys. Rev. A}, vol.~45, no.~11, pp.~8185--8189, 1992.
+
+\bibitem{Durnin1987}
+J.~Durnin, J.~J. Miceli, and J.~H. Eberly, ``Diffraction-free beams,'' {\em
+  Phys. Rev. Lett.}, vol.~58, no.~15, pp.~1499--1501, 1987.
+
+\bibitem{Mair2001}
+A.~Mair, A.~Vaziri, G.~Weihs, and A.~Zeilinger, ``Entanglement of the orbital
+  angular momentum states of photons,'' {\em Nature}, vol.~412, no.~6844,
+  pp.~313--316, 2001.
+
+\bibitem{Dennis2009}
+M.~R. Dennis, K.~O'Holleran, and M.~J. Padgett, ``Singular optics: More than a
+  hole in the light,'' {\em Prog. Opt.}, vol.~53, pp.~293--363, 2009.
+
+\bibitem{FrankeArnold2008}
+S.~Franke-Arnold, L.~Allen, and M.~Padgett, ``Advances in optical angular
+  momentum,'' {\em Laser Photon. Rev.}, vol.~2, no.~4, pp.~299--313, 2008.
+
+\bibitem{Berry1998}
+M.~V. Berry, ``Paraxial beams of spinning light,'' {\em Proc. SPIE}, vol.~3487,
+  pp.~6--11, 1998.
+
+\bibitem{Berry2004}
+M.~V. Berry, ``Optical vortices evolving from helicoidal integer and fractional
+  phase steps,'' {\em J. Opt. A: Pure Appl. Opt.}, vol.~6, no.~2, pp.~259--268,
+  2004.
+
+\bibitem{Barnett2002}
+S.~M. Barnett, ``Extreme orbital angular momentum,'' {\em J. Opt. B: Quantum
+  Semiclass. Opt.}, vol.~4, no.~2, pp.~S7--S14, 2002.
+
+\bibitem{Padgett1999}
+M.~J. Padgett and J.~Courtial, ``Poincar{\'e}-sphere equivalent for light beams
+  containing orbital angular momentum,'' {\em Opt. Lett.}, vol.~24, no.~7,
+  pp.~430--432, 1999.
+
+\bibitem{Gbur2016}
+G.~Gbur, {\em Singular Optics}.
+\newblock Boca Raton, FL: CRC Press, 2016.
+
+\bibitem{MandelWolf1995}
+L.~Mandel and E.~Wolf, {\em Optical Coherence and Quantum Optics}.
+\newblock Cambridge, UK: Cambridge University Press, 1995.
+
+\bibitem{Siegman1986}
+A.~E. Siegman, {\em Lasers}.
+\newblock Mill Valley, CA: University Science Books, 1986.
+
+\bibitem{Villalba2023}
+N.~Villalba, C.~Melo, S.~Ayala, C.~Mancilla, W.~Valenzuela, M.~Figueroa,
+  E.~Baradit, R.~Lin, M.~Tang, S.~P. Walborn, G.~Lima, G.~Saavedra, and
+  G.~Ca{\~n}as, ``Transmission of optical communication signals through ring
+  core fiber using perfect vortex beams,'' {\em Opt. Express}, vol.~31, no.~24,
+  pp.~40113--40123, 2023.
+
+\bibitem{RojasRojas2021}
+S.~Rojas-Rojas, G.~Ca{\~n}as, G.~Saavedra, E.~S. G{\'o}mez, S.~P. Walborn, and
+  G.~Lima, ``Evaluating the coupling efficiency of {OAM} beams into ring-core
+  optical fibers,'' {\em Opt. Express}, vol.~29, no.~15, pp.~23381--23392,
+  2021.
+
+\bibitem{Canas2021}
+G.~Ca{\~n}as, E.~S. G{\'o}mez, E.~Baradit, G.~Lima, and S.~P. Walborn,
+  ``Engineering entangled photons for transmission in ring-core optical
+  fibers,'' {\em Front. Phys.}, vol.~9, p.~752081, 2021.
+
+\bibitem{Ramachandran2009}
+S.~Ramachandran, P.~Kristensen, and M.~F. Yan, ``Generation and propagation of
+  orbital angular momentum in optical fibers,'' {\em Science}, vol.~326,
+  no.~5949, pp.~69--73, 2009.
+
+\bibitem{Bozinovic2013}
+N.~Bozinovic, Y.~Yue, Y.~Ren, M.~Tur, P.~Kristensen, H.~Huang, A.~E. Willner,
+  and S.~Ramachandran, ``Terabit-scale orbital angular momentum mode division
+  multiplexing in fibers,'' {\em Science}, vol.~340, no.~6140, pp.~1545--1548,
+  2013.
+
+\bibitem{Willner2015}
+A.~E. Willner, H.~Huang, Y.~Yan, Y.~Ren, N.~Ahmed, G.~Xie, C.~Bao, L.~Li,
+  Y.~Cao, Z.~Zhao, J.~Wang, M.~P.~J. Lavery, M.~Tur, S.~Ramachandran, A.~F.
+  Molisch, N.~Ashrafi, and S.~Ashrafi, ``Optical communications using orbital
+  angular momentum beams,'' {\em Adv. Opt. Photon.}, vol.~7, no.~1,
+  pp.~66--148, 2015.
+
+\bibitem{Brunet2014}
+C.~Brunet, P.~Vaity, Y.~Messaddeq, S.~LaRochelle, and L.~A. Rusch, ``Design,
+  fabrication and validation of an {OAM} fiber supporting 36 states,'' {\em
+  Opt. Express}, vol.~22, no.~21, pp.~26117--26127, 2014.
+
+\bibitem{Gregg2015}
+P.~Gregg, P.~Kristensen, and S.~Ramachandran, ``High-purity {OAM} mode
+  generation in ring core fiber,'' {\em Optica}, vol.~2, no.~3, pp.~267--270,
+  2015.
+
+\bibitem{Zhu2018}
+G.~Zhu, Z.~Shao, X.~Fu, X.~Li, C.~Shen, Y.~Zhou, Q.~Tang, H.~Liu, and S.~Yu,
+  ``18~km low-loss orbital angular momentum transmission in ring core fiber,''
+  {\em Nat. Photonics}, vol.~12, no.~9, pp.~530--535, 2018.
+
+\bibitem{Wang2012}
+J.~Wang, J.-Y. Yang, I.~M. Fazal, N.~Ahmed, Y.~Yan, H.~Huang, Y.~Ren, Y.~Yue,
+  S.~Dolinar, M.~Tur, and A.~E. Willner, ``Terabit free-space data transmission
+  using orbital angular momentum,'' {\em Nat. Photonics}, vol.~6, no.~7,
+  pp.~488--496, 2012.
+
+\bibitem{Ostrovsky2013}
+A.~S. Ostrovsky, C.~Rickenstorff-Parrao, and V.~Arriz{\'o}n, ``Generation of
+  the perfect optical vortex using a liquid-crystal spatial light modulator,''
+  {\em Opt. Lett.}, vol.~38, no.~4, pp.~534--536, 2013.
+
+\bibitem{Vaity2015}
+P.~Vaity and L.~Rusch, ``Perfect vortex beam: {Fourier} transformation of a
+  {Bessel} beam,'' {\em Opt. Lett.}, vol.~40, no.~4, pp.~597--600, 2015.
+
+\bibitem{Chen2013}
+Y.~Chen, Z.-X. Fang, Y.-X. Ren, L.~Gong, and H.-D. Lu, ``Observation of
+  fractional orbital angular momentum in perfect vortex beams,'' {\em Phys.
+  Rev. Lett.}, vol.~111, no.~3, p.~033901, 2013.
+
+\bibitem{Reddy2016}
+S.~G. Reddy, C.~Permangatt, S.~Prabhakar, A.~Anwar, J.~Banerji, and R.~P.
+  Singh, ``Divergence of {Gaussian} vortex beams,'' {\em J. Opt.}, vol.~18,
+  no.~5, p.~055602, 2016.
+
+\bibitem{Jabir2016}
+M.~Jabir, N.~A. Chaitanya, A.~Aadhi, and G.~K. Samanta, ``Generation of
+  ``perfect'' vortex of variable size and its effect in angular
+  {Goos--H{\"a}nchen} shift,'' {\em Opt. Lett.}, vol.~41, no.~7,
+  pp.~1590--1593, 2016.
+
+\bibitem{GarciaGarcia2014}
+J.~Garc{\'\i}a-Garc{\'\i}a, C.~Rickenstorff-Parrao, R.~Ramos-Garc{\'\i}a,
+  V.~Arriz{\'o}n, and A.~S. Ostrovsky, ``Simple technique for generating the
+  perfect optical vortex,'' {\em Opt. Lett.}, vol.~39, no.~18, pp.~5305--5308,
+  2014.
+
+\bibitem{Li2018PVB}
+P.~Li, S.~Liu, X.~Peng, Y.~Han, and J.~Zhao, ``Generation of perfect vector
+  beams using a single spatial light modulator,'' {\em Opt. Lett.}, vol.~43,
+  no.~12, pp.~2913--2916, 2018.
+
+\bibitem{PerezGarcia2017}
+B.~Perez-Garcia, R.~I. Hernandez-Aranda, A.~Forbes, and T.~Konrad, ``Generating
+  and detecting perfect optical vortices with a single spatial light
+  modulator,'' {\em Opt. Express}, vol.~25, no.~1, pp.~413--421, 2017.
+
+\bibitem{Arrizon2007}
+V.~Arriz{\'o}n, U.~Ruiz, R.~Carrada, and L.~A. Gonz{\'a}lez, ``Pixelated phase
+  computer holograms for the synthesis of arbitrary complex fields,'' {\em J.
+  Opt. Soc. Am. A}, vol.~24, no.~11, pp.~3500--3507, 2007.
+
+\bibitem{GarciaEscartin2008}
+J.~C. Garcia-Escartin and P.~Chamorro-Posada, ``Quantum multiplexing with
+  orbital angular momentum,'' {\em Phys. Rev. A}, vol.~78, no.~6, p.~062320,
+  2008.
+
+\bibitem{Ferreira2026}
+T.~Ferreira, G.~Santos, S.~Ayala, L.~Hutter, E.~S. G{\'o}mez, G.~Lima,
+  G.~Ca{\~n}as, and S.~P. Walborn, ``Second-order moment equivalence of twisted
+  {Gaussian Schell} model beams and orbital angular momentum eigenmodes,'' {\em
+  J. Opt.}, vol.~28, no.~9, p.~095601, 2026.
+
+\bibitem{Duffin1952}
+R.~J. Duffin and A.~C. Schaeffer, ``A class of nonharmonic {Fourier} series,''
+  {\em Trans. Am. Math. Soc.}, vol.~72, no.~2, pp.~341--366, 1952.
+
+\bibitem{Ali1993}
+S.~T. Ali, J.-P. Antoine, and J.-P. Gazeau, ``Continuous frames in {Hilbert}
+  space,'' {\em Ann. Phys.}, vol.~222, no.~1, pp.~1--37, 1993.
+
+\bibitem{Kolmogorov1941}
+A.~N. Kolmogorov, ``The local structure of turbulence in incompressible viscous
+  fluid for very large {Reynolds'} numbers,'' {\em C. R. Acad. Sci. URSS},
+  vol.~30, pp.~301--305, 1941.
+
+\bibitem{Fried1966}
+D.~L. Fried, ``Optical resolution through a randomly inhomogeneous medium for
+  very long and very short exposures,'' {\em J. Opt. Soc. Am.}, vol.~56,
+  no.~10, pp.~1372--1379, 1966.
+
+\bibitem{Noll1976}
+R.~J. Noll, ``Zernike polynomials and atmospheric turbulence,'' {\em J. Opt.
+  Soc. Am.}, vol.~66, no.~3, pp.~207--211, 1976.
+
+\bibitem{Paterson2005}
+C.~Paterson, ``Atmospheric turbulence and orbital angular momentum of single
+  photons for optical communication,'' {\em Phys. Rev. Lett.}, vol.~94, no.~15,
+  p.~153901, 2005.
+
+\bibitem{TylerBoyd2009}
+G.~A. Tyler and R.~W. Boyd, ``Influence of atmospheric turbulence on the
+  performance of an optical system carrying orbital angular momentum,'' {\em
+  Opt. Lett.}, vol.~34, no.~2, pp.~142--144, 2009.
+
+\bibitem{Renes2004}
+J.~M. Renes, R.~Blume-Kohout, A.~J. Scott, and C.~M. Caves, ``Symmetric
+  informationally complete quantum measurements,'' {\em J. Math. Phys.},
+  vol.~45, no.~6, pp.~2171--2180, 2004.
+
+\bibitem{BraunsteinCaves1994}
+S.~L. Braunstein and C.~M. Caves, ``Statistical distance and the geometry of
+  quantum states,'' {\em Phys. Rev. Lett.}, vol.~72, no.~22, pp.~3439--3443,
+  1994.
+
+\bibitem{Cerf2002}
+N.~J. Cerf, M.~Bourennane, A.~Karlsson, and N.~Gisin, ``Security of quantum key
+  distribution using $d$-level systems,'' {\em Phys. Rev. Lett.}, vol.~88,
+  no.~12, p.~127902, 2002.
+
+\bibitem{Mirhosseini2015}
+M.~Mirhosseini, O.~S. Maga{\~n}a-Loaiza, M.~N. O'Sullivan, B.~Rodenburg,
+  M.~Malik, M.~P.~J. Lavery, M.~J. Padgett, D.~J. Gauthier, and R.~W. Boyd,
+  ``High-dimensional quantum cryptography with structured light,'' {\em New J.
+  Phys.}, vol.~17, no.~3, p.~033033, 2015.
+
+\bibitem{BennettBrassard1984}
+C.~H. Bennett and G.~Brassard, ``Quantum cryptography: Public key distribution
+  and coin tossing,'' in {\em Proceedings of IEEE International Conference on
+  Computers, Systems and Signal Processing}, (Bangalore, India), pp.~175--179,
+  1984.
+
+\bibitem{Clauser1969}
+J.~F. Clauser, M.~A. Horne, A.~Shimony, and R.~A. Holt, ``Proposed experiment
+  to test local hidden-variable theories,'' {\em Phys. Rev. Lett.}, vol.~23,
+  no.~15, pp.~880--884, 1969.
+
+\bibitem{LawEberly2004}
+C.~K. Law and J.~H. Eberly, ``Analysis and interpretation of high transverse
+  entanglement in {SPDC},'' {\em Phys. Rev. Lett.}, vol.~92, no.~12, p.~127903,
+  2004.
+
+\bibitem{Walborn2010}
+S.~P. Walborn, C.~H. Monken, S.~P{\'a}dua, and P.~H.~S. Ribeiro, ``Spatial
+  correlations in parametric down-conversion,'' {\em Phys. Rep.}, vol.~495,
+  no.~4--5, pp.~87--139, 2010.
+
+\bibitem{Sakurai2020}
+J.~J. Sakurai and J.~Napolitano, {\em Modern Quantum Mechanics}.
+\newblock Cambridge, UK: Cambridge University Press, 3rd~ed., 2020.
+
+\bibitem{Gradshteyn2014}
+I.~S. Gradshteyn and I.~M. Ryzhik, {\em Table of Integrals, Series, and
+  Products}.
+\newblock Amsterdam: Academic Press, 8th~ed., 2014.
+\newblock Edited by D. Zwillinger and V. Moll.
+
+\bibitem{Arfken2012}
+G.~B. Arfken, H.~J. Weber, and F.~E. Harris, {\em Mathematical Methods for
+  Physicists}.
+\newblock Boston, MA: Academic Press, 7th~ed., 2012.
+
+\bibitem{ISO11146}
+{International Organization for Standardization}, ``Lasers and laser-related
+  equipment -- {Test} methods for laser beam widths, divergence angles and beam
+  propagation ratios -- {Part} 1: {Stigmatic} and simple astigmatic beams.''
+  ISO Standard 11146-1:2021, 2021.
+
+\bibitem{Alonso2011}
+M.~A. Alonso, ``Wigner functions in optics: describing beams as ray bundles and
+  beyond,'' {\em Adv. Opt. Photon.}, vol.~3, no.~4, pp.~272--365, 2011.
+
+\bibitem{Daubechies1990}
+I.~Daubechies, ``The wavelet transform, time-frequency localization and frame
+  analysis,'' {\em IEEE Trans. Inf. Theory}, vol.~36, no.~5, pp.~961--1005,
+  1990.
+
+\bibitem{Christensen2016}
+O.~Christensen, {\em An Introduction to Frames and {Riesz} Bases}.
+\newblock Boston, MA: Birkh{\"a}user, 2nd~ed., 2016.
+
+\bibitem{Klauder1985}
+J.~R. Klauder and B.-S. Skagerstam, {\em Coherent States: Applications in
+  Physics and Mathematical Physics}.
+\newblock Singapore: World Scientific, 1985.
+
+\bibitem{Perelomov1986}
+A.~M. Perelomov, {\em Generalized Coherent States and Their Applications}.
+\newblock Berlin, Heidelberg: Springer-Verlag, 1986.
+
+\bibitem{Proakis2008}
+J.~G. Proakis and M.~Salehi, {\em Digital Communications}.
+\newblock New York: McGraw-Hill, 5th~ed., 2008.
+
+\bibitem{ITUTG9751}
+{International Telecommunication Union}, ``Forward error correction for high
+  bit-rate {DWDM} submarine systems.'' ITU-T Recommendation G.975.1, 2004.
+
+\bibitem{OToole2024}
+K.~O'Toole and E.-{\'A}. Horv{\'a}t, ``Extending human creativity with {AI},''
+  {\em J. Creat.}, vol.~34, no.~1, p.~100080, 2024.
+
+\bibitem{VillaescusaNavarro2026}
+F.~Villaescusa-Navarro, B.~Bolliet, P.~Villanueva-Domingo, A.~E. Bayer,
+  A.~Acquah, C.~Amancharla, A.~Barzilay-Siegal, P.~Bermejo, C.~Bilodeau, P.~C.
+  Ram{\'\i}rez, M.~Cranmer, U.~L. Fran{\c c}a, C.~Hahn, Y.-F. Jiang,
+  R.~Jimenez, J.-Y. Lee, A.~Lerario, O.~Mamun, T.~Meier, A.~A. Ojha,
+  P.~Protopapas, S.~Roy, D.~N. Spergel, P.~Taranc{\'o}n-{\'A}lvarez, U.~Tiwari,
+  M.~Viel, D.~Wadekar, C.~Wang, B.~Y. Wang, L.~Xu, Y.~Yovel, S.~Yue, W.-H.
+  Zhou, Q.~Zhu, J.~Zou, and {\'I}.~Zubeldia, ``{DENARIO Project}: Deep
+  knowledge artificial intelligence agents for scientific discovery,'' {\em PRX
+  Intell.}, vol.~1, no.~2, p.~021001, 2026.
+
+\bibitem{Haber2025}
+E.~Haber, A.~Kurasi{\'n}ski, D.~Jemielniak, and A.~Przegali{\'n}ska, {\em Using
+  {AI} in Academic Writing and Research: A Complete Guide to Effective and
+  Ethical Academic {AI}}.
+\newblock Cham, Switzerland: Palgrave Macmillan, 2025.
+
+\bibitem{Jauhiainen2026}
+J.~S. Jauhiainen, {\em Generative {AI} for Research and Thesis Work: Practical
+  Guidance for Students, Supervisors, and Educational Institutions}.
+\newblock Basel, Switzerland: MDPI, 2026.
+
+\bibitem{Zhu2026PaperBanana}
+D.~Zhu, R.~Meng, Y.~Song, X.~Wei, S.~Li, T.~Pfister, and J.~Yoon,
+  ``{PaperBanana}: Automating academic illustration for {AI} scientists,''
+  2026.
+
+\bibitem{Chandra2026TheoPhysEval}
+A.~R. Chandra, A.~Mahajan, A.~Sanyal, M.~Wang, S.~Chakraborty, S.~Chakraborty,
+  S.~Chandrasekharan, R.~Govindarajan, A.~Goyal, J.~J. Heckman, Y.~Iqbal,
+  D.~Jaganathan, S.~Kapoor, A.~Karch, P.~Khandare, S.~Krishna, A.~Kundu,
+  A.~Laddha, T.~Lin, S.~Maity, N.~Mathur, S.~N. Meynet, A.~Mininno, A.~Mishra,
+  V.~Niranjan, A.~Prakash, P.~Rath, D.~Roy, D.~Sarkar, S.~Sastry, G.~Shiu,
+  A.~Sinha, T.~V. Riet, P.~Netrapalli, and S.~Raju, ``{TheoPhysEval}: Assessing
+  {AI} agents at autonomous theoretical physics problem solving,'' 2026.
+
+\bibitem{Kacena2024}
+M.~A. Kacena, L.~I. Plotkin, and J.~C. Fehrenbacher, ``The use of artificial
+  intelligence in writing scientific review articles,'' {\em Curr. Osteoporos.
+  Rep.}, vol.~22, no.~1, pp.~115--121, 2024.
+
+\bibitem{Gelfand1964}
+I.~M. Gel'fand and N.~Y. Vilenkin, {\em Generalized Functions, Vol. 4:
+  Applications of Harmonic Analysis}.
+\newblock New York: Academic Press, 1964.
+
+\bibitem{Bohm1989}
+A.~Bohm and M.~Gadella, {\em Dirac Kets, Gamow Vectors and {Gel'fand}
+  Triplets}.
+\newblock Berlin: Springer-Verlag, 1989.
+
+\bibitem{Gazeau2009}
+J.-P. Gazeau, {\em Coherent States in Quantum Physics}.
+\newblock Weinheim: Wiley-VCH, 2009.
+
+\bibitem{PaulsenRaghupathi2016}
+V.~I. Paulsen and M.~Raghupathi, {\em An Introduction to the Theory of
+  Reproducing Kernel {Hilbert} Spaces}.
+\newblock Cambridge, UK: Cambridge University Press, 2016.
+
+\end{thebibliography}

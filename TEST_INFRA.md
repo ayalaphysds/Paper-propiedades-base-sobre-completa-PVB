@@ -1,139 +1,146 @@
-# Test Infrastructure Specification: Version 3 (v3) Overcomplete Perfect Vortex Beams (PVB)
+# Test Infrastructure Specification: Version 4 (v4) Overcomplete Perfect Vortex Beams (PVB)
 
-**Project:** Propiedades Clásicas y Cuánticas de la Sobrecompletitud de los Haces de Vórtice Perfecto (PVB) — Versión 3 (v3)  
+**Project:** Propiedades Clásicas y Cuánticas de la Sobrecompletitud de los Haces de Vórtice Perfecto (PVB) — Versión 4 (v4)  
 **Lead Author & Principal Investigator:** Sebastián Ayala (Investigador Independiente, Cauquenes, Región del Maule, Chile; `ayala.phys.ds@gmail.com`; ORCID: `https://orcid.org/0009-0003-7348-3883`)  
-**E2E Test Architecture:** `writer_test_e2e`  
-**Master Test Suite:** `tests/test_v3_suite.py`  
+**E2E Test Architecture:** `test_writer_v4`  
+**Master Test Suite:** `tests/test_v4_e2e.py`  
+**Helper Utilities & Oracles:** `tests/test_helpers.py`  
 **Status:** ACTIVE / OPERATIONAL (0 Failures, 0 Errors, Progressive Milestone Gating Active)  
 
 ---
 
 ## 1. Test Architecture & Verification Philosophy
 
-The E2E Test Infrastructure for Version 3 (v3) provides opaque-box, requirement-driven verification derived directly from `ORIGINAL_REQUEST.md` and `PROJECT.md § Feature Inventory`. It enforces mathematical rigor, physical consistency, and publication standards for arXiv and Q1 scientific journals (Optics Express / Phys. Rev. A).
+The E2E Test Infrastructure for Version 4 (v4) provides an exhaustive, opaque-box, requirement-driven verification suite derived directly from `ORIGINAL_REQUEST.md` and `PROJECT.md § Feature Inventory`. It enforces mathematical completeness, physical rigor, total sanitization of internal project artifacts, and adherence to international publication ethics standards for arXiv and Q1 scientific journals (Optica Publishing Group / American Physical Society / Nature).
 
 ### 1.1 Core Principles
-1. **Opaque-Box Requirement Derivation:** All test assertions evaluate observables and physical behavior directly against specifications rather than matching internal implementation shortcuts.
-2. **First-Principles Mathematical Oracles:** Closed-form Bessel integrals (Gradshteyn-Ryzhik 6.633.2), reproducing kernel Gram matrices, continuous frame spectral bounds, and the theoretical 8.6 dB decomposition in Ring-Core Fibers (RCF) serve as authoritative oracles.
-3. **Progressive Testability:** Foundational mathematics, simulation runners, and physical scaling laws are verified immediately, while deliverables belonging to active/planned implementation milestones (e.g., M2 arXiv manuscript, M3 Journal manuscript, M4 Overleaf bundle) are gated via `require_path(...)`. They skip cleanly during early phases and strictly fail when `FAIL_ON_PENDING=1` is asserted during the final audit gate.
-4. **Zero Tolerance for Facade Tests:** Dummy passes (`assert True`) or simulated outputs are strictly forbidden. All mathematical properties, file headers, and cross-feature references are evaluated dynamically.
-5. **Universal Portability:** Built on standard Python 3.12 (`unittest`, `math`, `re`, `pathlib`, `zipfile`, `subprocess`) and core scientific packages (`numpy`, `scipy`).
+1. **Opaque-Box Requirement Derivation:** All test assertions evaluate external observables, file structures, and physical behavior directly against authoritative specifications rather than matching internal implementation shortcuts.
+2. **First-Principles Mathematical Oracles:** Closed-form Bessel integrals (Gradshteyn-Ryzhik 6.633.2), continuous frame spectral bounds ($0 < A \le B < \infty$, $\kappa \approx 3.08$), the theoretical 8.60 dB decomposition in Ring-Core Fibers (RCF) ($6.83\,\text{dB}$ coupling + $1.77\,\text{dB}$ ISI penalty), and Informationally Complete POVM (IC-POVM) Cramér-Rao advantage ($2.71\times$ lower MSE) serve as authoritative, standalone oracles.
+3. **Strict Sanitization & Zero Internal Artifacts:** Enforces complete absence of "Codex-Máxima", internal multi-agent bot codenames (e.g. `miner_lit_3`, `worker_arxiv_m2`, `critic_referee`, `teamwork_*`, `challenger_*`, etc.), and private iteration narratives (e.g. the v1 $\to$ v2 $\to$ v3 triad or internal sprint histories) across all manuscripts, bibliographies, and scripts.
+4. **100% Citation Parity:** Enforces exact citation coverage across both manuscripts: all 70 BibTeX entries defined in `v4/references.bib` must be cited in both `Paper_arxiv_v4.tex` and `Paper_revista_v4.tex` with zero orphaned citations.
+5. **Progressive Testability:** Mathematical oracles, simulation runners, and physical scaling laws are verified immediately, while deliverables belonging to active/planned implementation milestones (e.g., M2 arXiv/Revista manuscripts, M3 compiled PDFs and Overleaf bundle) are gated via `require_path(...)`. They skip cleanly during early phases and strictly fail when `--strict` or `FAIL_ON_PENDING=1` is asserted during the final audit gate (Milestone M4).
+6. **Zero Tolerance for Facade Tests:** Dummy passes (`assert True`) or simulated outputs are strictly forbidden. All mathematical properties, file headers, and cross-feature references are evaluated dynamically.
+7. **Adversarial Defensive Checks:** Includes negative test cases verifying that sanitization, abstract cleanliness, and Latin plural validators actively catch deliberate violations.
+8. **Universal Portability:** Built on standard Python 3.12 (`unittest`, `math`, `re`, `pathlib`, `zipfile`, `subprocess`) and core scientific packages (`numpy`, `scipy`).
 
 ---
 
 ## 2. Four-Tier Testing Methodology
 
-The v3 test suite is organized into four complementary verification tiers:
+The v4 test suite is organized into four complementary verification tiers:
 
 ```
 +-------------------------------------------------------------------------+
-| Tier 4: Real-World Scenarios & Mathematical Proof Oracles               |
-| - Simulation pipeline execution (run_all_simulations.py -> 5 PDFs)      |
-| - Overleaf standalone bundle unzipping & pdflatex dry-run compilation   |
-| - Theoretical 8.6 dB decomposition: 6.83 dB coupling + 1.77 dB ISI     |
-| - Exact overlap subunitarity (0 < gamma < 1) & normalization            |
-| - Continuous frame bounds (0 < A <= S <= B) & kappa ~ 3.08             |
+| Tier 4: Scientific Ethics, Epistemology & Human-AI Collaboration        |
+| - Dedicated Section 8: "Epistemological Methodology and Human-AI       |
+|   Scientific Collaboration" with 5 structured subsections                |
+| - Paradigm shift: interactive generative cognitive symbiosis vs passive |
+| - Epistemological accountability & human-in-the-loop (HITL) oversight   |
+| - Research integrity: prevention and mitigation of hallucinations       |
+| - Realistic technical case study: 8.60 dB RCF advantage (human         |
+|   intuition directing AI calculation and drafting)                      |
+| - Standard backmatter declaration conforming to COPE/Optica/APS/Nature  |
+| - Scientific citations of peer-reviewed AI methodology literature (>=3) |
++-------------------------------------------------------------------------+
+                                    ^
+                                    |
++-------------------------------------------------------------------------+
+| Tier 3: Step-by-Step Mathematical & Analytical Completeness             |
+| - Theorem 1: Strict non-orthogonality & Bessel ODE linear independence  |
+| - Theorem 2: Complete Seven Pillars of divergence as w0 -> 0            |
+| - Theorem 3: Continuous frame bounds (0 < A <= S <= B) & kappa ~ 3.08   |
+| - First-principles 8.60 dB RCF advantage: 6.83 dB coupling + 1.77 dB ISI|
+| - Informationally Complete POVM (IC-POVM) Cramér-Rao advantage (2.71x)  |
+| - Pedagogical Appendices A, B, C, D, and E full mathematical rigor      |
 | - Reproducing kernel Gram matrix positive semi-definiteness             |
-| - Theorem 2 physical unfeasibility divergence scaling laws             |
-| - High-dimensional IC-POVM Cramér-Rao advantage (2.71x lower MSE)      |
-| - Modified Bessel ODE Wronskian linear independence                     |
+| - Bessel ODE Wronskian non-vanishing independence                       |
 +-------------------------------------------------------------------------+
                                     ^
                                     |
 +-------------------------------------------------------------------------+
-| Tier 3: Cross-Feature Pairwise Consistency                              |
-| - All \includegraphics targets exist in v3/figures/                     |
-| - All 5 figures actively cited/referenced in both manuscripts           |
-| - 100% citation completeness: all \cite keys exist in v3/references.bib |
-| - Continuous algebraic bridges connecting numbered equations (>=5)     |
-| - Complete analytical coverage of Seven Pillars of Theorem 2            |
-| - Modified Bessel ODE linear independence proof coverage                |
-+-------------------------------------------------------------------------+
-                                    ^
-                                    |
-+-------------------------------------------------------------------------+
-| Tier 2: Boundary, Corner & Publication Quality Cases                    |
-| - Zero empty (0-byte) files anywhere in v3/                             |
-| - Page count enforcement: <= 100 pages for both compiled PDFs           |
-| - Exact author metadata string: "Sebastián Ayala", "Cauquenes",         |
-|   "Región del Maule, Chile", email, and ORCID in both manuscripts       |
+| Tier 2: Sanitization & Cleanliness (Zero Internal Artifacts)            |
+| - Zero occurrences of "Codex-Máxima" or internal repository folders     |
+| - Zero occurrences of internal multi-agent bot codenames                |
+| - Zero occurrences of internal sprint / iteration narratives (v1-v2-v3) |
 | - Zero unresolved citations or '?' in LaTeX logs and TeX source         |
+| - Exact 100% citation parity: both manuscripts cite all 70 BibTeX keys   |
 | - Q1 Abstract cleanliness (no raw equations, no Eq. (N), no brackets)   |
 | - Technical English spelling: Latin plural 'radii' strictly enforced    |
-| - Adversarial negative test cases for validators                        |
+| - Exact author metadata string: "Sebastián Ayala", "Cauquenes",         |
+|   "Región del Maule, Chile", email, and ORCID in both manuscripts       |
 +-------------------------------------------------------------------------+
                                     ^
                                     |
 +-------------------------------------------------------------------------+
-| Tier 1: Feature Coverage (Core Deliverables)                            |
-| - Complete v3/ directory layout (v3/scripts/, v3/figures/, styles)      |
-| - Validated 70-entry BibTeX database (v3/references.bib)                |
-| - Standalone Paper_arxiv_v3.tex (>300 lines, Sections 1 to 8)           |
-| - Standalone Paper_revista_v3.tex (optica-article, linenumbers, macros) |
-| - Complete Pedagogical Appendices A, B, C, D, and E                     |
-| - Standalone Section 8: Human-AI Scientific Co-Creation Framework       |
-| - Standalone Section 6.2: 8.6 dB Power Advantage in RCF                 |
-| - Compiled PDFs existence with valid %PDF- magic bytes                  |
-| - 6 reproducible scripts in v3/scripts/ (size > 0)                      |
-| - 5 publication vector PDFs in v3/figures/ (magic bytes %PDF-)          |
-| - Complete standalone v3/overleaf_bundle_v3.zip package                 |
+| Tier 1: Deliverables & Structural Coverage                              |
+| - Complete v4/ directory layout (v4/scripts/, v4/figures/, styles)      |
+| - Preservation of baseline integrity: v1/, v2/, v3/ intact & unmodified|
+| - Validated 70-entry BibTeX database (v4/references.bib)                |
+| - Standalone Paper_arxiv_v4.tex (>300 lines, Sections 1 to 10)          |
+| - Standalone Paper_revista_v4.tex (optica-article, linenumbers, macros) |
+| - 6 reproducible scripts in v4/scripts/ (size > 0)                      |
+| - 5 publication vector PDFs in v4/figures/ (magic bytes %PDF-)          |
+| - Compiled PDFs existence with valid %PDF- magic bytes (<= 100 pages)   |
+| - Complete standalone v4/overleaf_bundle_v4.zip package                 |
 +-------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. Feature Inventory & Test Coverage Matrix
+## 3. Test Execution Guide
 
-Every feature defined in `PROJECT.md § Feature Inventory` is mapped directly to tests in `tests/test_v3_suite.py`:
+### 3.1 Standard Test Execution (Progressive Milestone Mode)
+Executes all testable deliverables, mathematical oracles, simulations, and adversarial validators. Pending milestone deliverables skip gracefully:
+```powershell
+python tests/test_v4_e2e.py
+```
+or via standard unittest:
+```powershell
+python -m unittest tests/test_v4_e2e.py
+```
 
-| Feature # | Feature Name | Milestone | Test Class & Method | Pass Criteria |
-|---|---|---|---|---|
-| **F1** | Directory & Infrastructure Setup | M1 | `TestTier1FeatureCoverage.test_01_v3_directory_and_layout` | `v3/` root, `scripts/`, `figures/`, styles, and classes present |
-| **F2** | Python Simulation Suite & Vector Figures | M1 | `TestTier1FeatureCoverage.test_09_simulation_scripts_presence`, `test_10_vector_figures_presence_and_magic_bytes` | 6 scripts and 5 vector PDF figures present with `%PDF-` headers |
-| **F3** | Validated 70-entry BibTeX Database | M1 | `TestTier1FeatureCoverage.test_02_references_bib_seventy_entries_and_citations` | $\ge 70$ valid BibTeX entries with author/title/year and key authors |
-| **F4** | First-Principles Derivation of 8.6 dB Advantage | M2 | `TestTier1FeatureCoverage.test_07_first_principles_rcf_eight_point_six_db_section`, `TestTier4RealWorldApplicationScenarios.test_03_mathematical_rcf_eight_point_six_db_decomposition` | 6.83 dB coupling ratio + 1.77 dB ISI mitigation derived and validated |
-| **F5** | Elimination of Speedruns & Algebraic Bridges | M2 | `TestTier3CrossFeatureCombinations.test_04_eight_point_six_db_equation_labels_and_algebraic_bridges` | Explicit textual bridges between numbered equations across text |
-| **F6** | Airtight ODE Proof of Theorem 1 | M2 | `TestTier3CrossFeatureCombinations.test_06_ode_proof_theorem_one_linear_independence_in_tex`, `TestTier4RealWorldApplicationScenarios.test_09_mathematical_bessel_ode_wronskian_independence` | Modified Bessel ODE and non-vanishing Wronskian proof of linear independence |
-| **F7** | Complete Seven Pillars Derivations (Theorem 2) | M2 | `TestTier3CrossFeatureCombinations.test_05_seven_pillars_theorem_two_coverage_in_tex`, `TestTier4RealWorldApplicationScenarios.test_07_mathematical_seven_pillars_scaling_laws` | All 7 physical divergence pillars derived and verified numerically |
-| **F8** | Continuous Frame Bounds & Dual Inversion | M2 | `TestTier4RealWorldApplicationScenarios.test_05_mathematical_continuous_frame_bounds_and_condition_number` | $0 < A \approx 0.325 \le S \le B = 1.0$, condition number $\kappa \approx 3.08$ |
-| **F9** | RKHS Filtering & Classical Assets | M2 | `TestTier4RealWorldApplicationScenarios.test_06_mathematical_reproducing_kernel_positive_semidefinite` | Reproducing kernel Gram matrix is symmetric positive semi-definite |
-| **F10** | High-Dimensional Quantum Assets | M2 | `TestTier4RealWorldApplicationScenarios.test_08_mathematical_quantum_ic_povm_cramer_rao_advantage` | IC-POVM Cramér-Rao lower bound MSE is $2.71\times$ lower than projective |
-| **F11** | Human-AI Scientific Co-Creation Section | M2 | `TestTier1FeatureCoverage.test_06_human_ai_cocreation_section_eight` | Dedicated Section 8 covering Ayala + Antigravity + Gemini + Teamwork |
-| **F12** | Comprehensive Pedagogical Appendices A–E | M2 | `TestTier1FeatureCoverage.test_05_pedagogical_appendices_a_to_e` | Full primers on PVB optics, Hilbert bases, RKHS, Weber integral, and RCF waveguides |
-| **F13** | arXiv Manuscript Authoring (`Paper_arxiv_v3.tex`) | M2 | `TestTier1FeatureCoverage.test_03_arxiv_tex_structure_and_scope` | Full standalone arXiv manuscript (>300 lines) with complete math |
-| **F14** | Q1 Journal Manuscript Authoring (`Paper_revista_v3.tex`) | M3 | `TestTier1FeatureCoverage.test_04_revista_tex_structure_and_scope` | Standalone Optica Journal manuscript with macro clash protections & linenumbers |
-| **F15** | Automated 4-Pass Compilation Pipeline | M4 | `TestTier1FeatureCoverage.test_08_compiled_pdfs_headers_and_existence` | Clean compilation to `Paper_arxiv_v3.pdf` and `Paper_revista_v3.pdf` |
-| **F16** | Zero Broken References & Page Budget ($\le 100$ pages) | M4 | `TestTier2BoundaryAndCornerCases.test_02_pdf_page_count_under_one_hundred_pages`, `test_04_absence_of_unresolved_references_or_question_marks` | 0 fatal errors, 0 undefined citations (`?`), page count $\le 100$ |
-| **F17** | Overleaf Bundle Creation | M4 | `TestTier1FeatureCoverage.test_11_overleaf_bundle_zip_presence_and_structure`, `TestTier4RealWorldApplicationScenarios.test_02_overleaf_bundle_unzipping_and_draft_compilation` | Standalone `v3/overleaf_bundle_v3.zip` containing all assets for unzipping & compilation |
-| **F18** | Opaque-Box E2E Test Suite (Tiers 1–4) | E2E Track | `tests/test_v3_suite.py` | Complete 33-test suite executing with 0 failures and 0 errors |
-| **F19** | Adversarial Referee Review (Severe Árbitro) | M5 | `teamwork_auditor` review | Rigorous review of mathematical derivations across Sections 1 to 8 |
-| **F20** | Forensic Integrity Audit | M5 | `teamwork_auditor` | 100% genuine code verification with zero mock passes |
+### 3.2 Strict Final Milestone Gate Execution (M4 Verification Gate)
+In strict mode, any missing deliverable triggers an immediate assertion failure instead of skipping. This mode must be run to pass the Milestone M4 audit gate:
+```powershell
+python tests/test_v4_e2e.py --strict
+```
+or via environment variable:
+```powershell
+$env:FAIL_ON_PENDING="1"
+python tests/test_v4_e2e.py
+```
 
 ---
 
-## 4. Execution Commands & CLI Specifications
+## 4. Test Inventory and Mapping Matrix
 
-### 4.1 Primary Runner (Detailed Verbose Output)
-```bash
-python tests/test_v3_suite.py
-```
-
-### 4.2 Standard Python Unittest Runner
-```bash
-python -m unittest tests/test_v3_suite.py
-```
-
-### 4.3 Strict Milestone Gating Mode (Auditor Final Verification)
-To fail immediately on any pending deliverable (useful during M4/M5 verification):
-```powershell
-$env:FAIL_ON_PENDING="1"
-python tests/test_v3_suite.py
-```
-
-### 4.4 Expected Baseline Results
-- **Tests Run:** 33
-- **Passed:** 15 (Active deliverables & mathematical oracles)
-- **Skipped:** 18 (Gated pending implementation milestones M2–M4)
-- **Failures:** 0
-- **Errors:** 0
-- **Execution Time:** ~5.5 seconds
+| Test ID | Test Method | Tier | Verified Requirement | Gated Dependency |
+|---|---|---|---|---|
+| TC 1.1 | `test_01_v4_directory_and_required_files` | Tier 1 | R1 (Deliverables layout, styles, tex, pdf, bib, zip) | Milestone M1, M2, M3 |
+| TC 1.2 | `test_02_prior_versions_baseline_integrity` | Tier 1 | R1 (v1, v2, v3 intact & unmodified) | None (Immediate PASS) |
+| TC 1.3 | `test_03_python_simulation_scripts_presence` | Tier 1 | R1 (6 scripts in `v4/scripts/`) | Milestone M1 |
+| TC 1.4 | `test_04_python_simulation_execution_and_vector_figures` | Tier 1 | R1 (Execution & 5 figures in `v4/figures/`) | Milestone M1 |
+| TC 1.5 | `test_05_compiled_pdfs_validity_and_page_budget` | Tier 1 | R1 (PDFs `%PDF-` header, $\le 100$ pages) | Milestone M3 |
+| TC 1.6 | `test_06_overleaf_bundle_v4_zip_integrity_and_contents` | Tier 1 | R1 (`overleaf_bundle_v4.zip` packaging) | Milestone M3 |
+| TC 2.1 | `test_01_zero_occurrences_of_codex_maxima` | Tier 2 | R4 (Zero "Codex Máxima" across all v4 files) | Milestone M1, M2 |
+| TC 2.2 | `test_02_zero_occurrences_of_internal_bot_codenames` | Tier 2 | R4 (Zero bot codenames in TeX, Bib, Py) | Milestone M1, M2 |
+| TC 2.3 | `test_03_zero_occurrences_of_internal_iteration_narratives` | Tier 2 | R4 (Zero v1->v2->v3 triad or sprint narratives) | Milestone M1, M2 |
+| TC 2.4 | `test_04_zero_unresolved_citations_or_cross_references` | Tier 2 | R1, R4 (0 errors, 0 undefined citations, 0 `?`) | Milestone M3 |
+| TC 2.5 | `test_05_exact_citation_parity_seventy_entries` | Tier 2 | R4 (100% citation parity: 70/70 cited in both) | Milestone M1, M2 |
+| TC 2.6 | `test_06_abstract_cleanliness_q1_standards` | Tier 2 | R1 (No raw equations, No Eq. numbers, No brackets) | Milestone M2 |
+| TC 2.7 | `test_07_technical_spelling_radii_plural` | Tier 2 | R1 (Latin plural 'radii' strictly enforced) | Milestone M2 |
+| TC 2.8 | `test_08_exact_author_metadata_across_manuscripts` | Tier 2 | R1 (Exact author metadata string) | Milestone M2 |
+| TC 3.1 | `test_01_theorems_coverage_in_tex_manuscripts` | Tier 3 | R2 (Theorems 1, 2, 3 covered in manuscripts) | Milestone M2 |
+| TC 3.2 | `test_02_mathematical_oracle_continuous_frame_bounds_and_condition_number` | Tier 3 | R2 (Frame bounds $A, B$, $\kappa \approx 3.08$, Gram PSD) | None (Immediate PASS) |
+| TC 3.3 | `test_03_first_principles_rcf_eight_point_six_db_derivation` | Tier 3 | R2 (8.60 dB RCF advantage: 6.83 dB + 1.77 dB) | Milestone M2 |
+| TC 3.4 | `test_04_quantum_tomography_and_ic_povm` | Tier 3 | R2 (IC-POVM Cramér-Rao $2.71\times$ lower MSE) | Milestone M2 |
+| TC 3.5 | `test_05_appendices_a_to_e_mathematical_rigor` | Tier 3 | R2 (Pedagogical Appendices A to E present) | Milestone M2 |
+| TC 3.6 | `test_06_mathematical_oracle_overlap_subunitarity_and_wronskian` | Tier 3 | R2 ($0 < \gamma < 1$, Bessel Wronskian non-zero) | None (Immediate PASS) |
+| TC 4.1 | `test_01_section_eight_dedicated_structure` | Tier 4 | R3 (Section 8 structure & 5 subsections) | Milestone M2 |
+| TC 4.2 | `test_02_epistemological_principles_and_anti_hallucination` | Tier 4 | R3 (Cognitive symbiosis, HITL, anti-hallucination) | Milestone M2 |
+| TC 4.3 | `test_03_realistic_technical_case_study` | Tier 4 | R3 (8.60 dB RCF case study: human intuition + AI) | Milestone M2 |
+| TC 4.4 | `test_04_standard_backmatter_ai_declaration` | Tier 4 | R3, R4 (COPE/Optica/APS/Nature AI declaration) | Milestone M2 |
+| TC 4.5 | `test_05_scientific_literature_citations_in_section_eight` | Tier 4 | R3 (>=3 peer-reviewed AI methodology citations) | Milestone M1, M2 |
+| TC Adv.1 | `test_01_sanitization_validator_catches_all_prohibited_patterns` | Adv | Defensive (Sanitization validator flags violations) | None (Immediate PASS) |
+| TC Adv.2 | `test_02_abstract_validator_catches_violations` | Adv | Defensive (Abstract validator flags bad math/cites) | None (Immediate PASS) |
+| TC Adv.3 | `test_03_radii_validator_catches_errors` | Adv | Defensive (Radii validator flags non-standard plural) | None (Immediate PASS) |
