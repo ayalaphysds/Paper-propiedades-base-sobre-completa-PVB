@@ -1,0 +1,284 @@
+================================================================================
+FINAL COMPILATION SPECIFICATION — PRE-SUBMISSION PASS
+Manuscript: main_part1_pra.tex
+Version: November 21, 2026
+Purpose: Last change pass before journal submission. Apply ONLY the items
+         below. Do NOT re-derive, re-edit, or "clean up" anything else.
+Status: Both reviewers have recommended acceptance conditional on Fix-01.
+         Fixes 02 and 03 are optional polish. Everything else in the
+         manuscript is APPROVED and must remain byte-identical.
+================================================================================
+
+PREAMBLE — WHY THIS IS A SHORT LIST
+------------------------------------------------------------
+A prior review cycle incorrectly flagged ~15 items as "blocking errors"
+(Lemma 1 exponents, Eq. 4 exponent, l→I encoding, α_reg notation,
+Jacobi–Anger sign, Hankel I vs J, GR reference numbers, etc.). Direct
+comparison of the .tex source against the PDF confirmed that ALL of those
+were PDF-text-extraction artifacts, not source errors. The .tex source was
+already correct for every one of them.
+
+Therefore:
+
+  ✗ DO NOT modify Lemma 1, Theorem 1, Proposition 1, Proposition 2,
+    Theorem 2, Corollary 1, or Proposition 4 in any way.
+  ✗ DO NOT touch any equation, figure, caption, theorem, or appendix.
+  ✗ DO NOT "fix" anything that looks unusual (e.g., \abs{}, \hbar,
+    \alpha_{\mathrm{reg}}, subscript l, superscript ^2, GR 6.633.2/6.633.4).
+    Those are all correct as written.
+  ✓ The changes below are the ONLY changes to apply in this pass.
+
+================================================================================
+LOCKDOWN LIST — PRESERVE VERBATIM (do not modify)
+================================================================================
+
+L1.  Abstract — entire paragraph, verbatim.
+L2.  Introduction §I — entire section, verbatim (including $l\hbar$,
+     $\mathbb{Z}$, all citation brackets).
+L3.  §II.A — including Eq. (1)–(4), the \emph{Convention} paragraph,
+     the "\paragraph*{Notation and conventions.}" block, footnote 1.
+L4.  §II.B — including Eq. (5)–(7), Remark 1 (rem:propagation).
+L5.  §III.A — including Eq. (8)–(12), all displays.
+L6.  §III.B — including Eq. (13)–(18), Lemma 1 (lem:bessel_upper) and
+     its proof, Proposition 1 (prop:conv_kernel) and its proof.
+L7.  §III.C — including Eq. (paley_wiener)–(sharpness_limits), Theorem 1
+     (thm:pw_bounds) and its proof, Table I (tab:frame_comparison).
+L8.  §IV.A — including Eq. (tikhonov_opt)–(noise_multiplier),
+     Proposition 2 (prop:tikhonov_dual) and its proof.
+L9.  §IV.B — including Eq. (lg_def)–(frame_synthesis_lg), Theorem 2
+     (thm:c_lp_exact).
+L10. §IV.C — including Eq. (fidelity_fourier), Table II (tab:fidelity),
+     Corollary 1 (cor:rayleigh_radial) and its proof.
+L11. §IV.D — including Eq. (gram_normalized)–(channel_capacity),
+     Proposition 4 (prop:channel_capacity), Table III (tab:gram_matrix).
+L12. §V Conclusions — entire section, verbatim.
+L13. Acknowledgments — entire block, verbatim (AI disclosure is complete
+     and correct).
+L14. Appendix A (app:lg_expansion) — entire appendix, including Eq.
+     (app_c_int)–(app_kummer_laguerre), Table IV (tab:c_lp_verification).
+L15. Appendix B (app:tikhonov_toeplitz) — entire appendix.
+L16. All three figure environments (fig:pvb_overlap, fig:frame_regularization,
+     fig:lg_washout_gram) — including all captions.
+L17. All \cite{}, \ref{}, \label{} keys — no renumbering.
+L18. Preamble (\documentclass, packages, theorem environments, macros).
+
+If any of L1–L18 differ from the current source after this pass, revert.
+
+================================================================================
+FIX-01 [REQUIRED] — Data Availability statement
+================================================================================
+
+Location: End of \begin{acknowledgments} block, in the
+          \section*{Data Availability} environment.
+
+Reason: Q1 journals (APS/Optica/Nature) no longer accept "available upon
+        reasonable request" for code/data that reproduces the paper's
+        figures and tables. A concrete repository DOI is mandatory.
+
+----- BEFORE (current text) -------------------------------------------
+
+\section*{Data Availability}
+All analytical verification scripts, first-principles numerical routines
+(\texttt{pvb\_\allowbreak physics.py}, \texttt{verify\_\allowbreak
+analytical\_\allowbreak tables.py}, and \texttt{generate\_\allowbreak
+figures.py}), and 50-digit benchmark datasets supporting the findings of
+this study are self-contained and openly available from the author upon
+reasonable request and in the accompanying open-source code distribution.
+
+----- AFTER (replace with ONE of the two options below) ----------------
+
+OPTION A — Use this if a Zenodo deposit already exists.
+           Substitute <ZENODO_DOI>, <GITHUB_URL>, <COMMIT_HASH>,
+           <LICENSE> with actual values.
+
+\section*{Data Availability}
+All analytical verification scripts, first-principles numerical routines
+(\texttt{pvb\_physics.py}, \texttt{verify\_analytical\_tables.py}, and
+\texttt{generate\_figures.py}), and the 50-digit benchmark datasets
+supporting the findings of this study are archived at Zenodo
+(DOI:~\href{https://doi.org/<ZENODO_DOI>}{10.5281/zenodo.<ZENODO_DOI>})
+and mirrored at
+\href{<GITHUB_URL>}{<GITHUB_URL>} (commit \texttt{<COMMIT_HASH>},
+license \texttt{<LICENSE>}). The repository contains a \texttt{README}
+with one-command reproduction instructions for Figs.~1--3 and
+Tables~I--IV.
+
+OPTION B — Use this if no Zenodo deposit exists yet.
+           DO NOT SUBMIT until a Zenodo DOI has been minted, then
+           replace this placeholder with the Option A text.
+
+\section*{Data Availability}
+All analytical verification scripts, first-principles numerical routines,
+and 50-digit benchmark datasets supporting the findings of this study are
+archived at Zenodo (DOI to be inserted: \texttt{10.5281/zenodo.XXXXXXX})
+and mirrored at GitHub (\texttt{github.com/XXXX/XXXX}). The repository
+contains a \texttt{README} with one-command reproduction instructions for
+Figs.~1--3 and Tables~I--IV.
+
+----- OPERATIONAL ACTION REQUIRED -------------------------------------
+
+1. Create a Zenodo deposit at https://zenodo.org (free, ~5 min):
+   - Upload: pvb_physics.py, verify_analytical_tables.py,
+     generate_figures.py, benchmark_data/, figures/
+   - Title: "PVB Continuous Frame — Part I: Verification Code and Data"
+   - Author: Sebastián Ayala (ORCID 0009-0003-7348-3883)
+   - License: MIT or CC-BY-4.0 (recommended)
+   - Zenodo will mint a DOI (format: 10.5281/zenodo.XXXXXXX).
+2. Copy the DOI into Option A.
+3. Verify the GitHub mirror URL is public and matches the Zenodo upload.
+4. Then compile and submit.
+
+================================================================================
+FIX-02 [OPTIONAL] — Dimension notation in §II.A
+================================================================================
+
+Location: §II.A, in the long paragraph beginning
+          "In physical length units $\ell_0$, $C_0$ and $\Phi_{l,R}$..."
+
+Current:
+  "...for any wavefield $\psi \in L^2(\mathbb{R}^2)$ of unit dimensionless
+   norm $\norm{\psi}_{L^2}^2 = 1$ ($\psi = [\mathrm{length}^{-1}]$), the
+   analysis projection..."
+
+Change only the parenthetical:
+
+  ($\psi = [\mathrm{length}^{-1}]$)
+   →
+  ($[\psi] = [\mathrm{length}^{-1}]$)
+
+Rationale: standard notation for "the dimension of ψ", not "ψ equals a
+unit". Cosmetic, not an error. Skip if you want a minimal diff.
+
+================================================================================
+FIX-03 [OPTIONAL] — Rigorous justification of non-compactness in Prop. 1
+================================================================================
+
+Location: Proposition 1 (prop:conv_kernel), final sentence of the proof
+          (currently reads "...non-compact on unconstrained $L^2(\mathbb{R}^2)$
+          by translation invariance, though Hilbert--Schmidt and compact
+          when spatially restricted to any bounded pupil)").
+
+Current phrasing ("by translation invariance") is heuristic. The rigorous
+reason is that the symbol has uncountable essential range. Replace ONLY
+the parenthetical:
+
+Before:
+  (non-compact on unconstrained $L^2(\mathbb{R}^2)$ by translation
+   invariance, though Hilbert--Schmidt and compact when spatially
+   restricted to any bounded pupil)
+
+After:
+  (non-compact on unconstrained $L^2(\mathbb{R}^2)$ because its symbol
+   $e^{-w^2 k_\perp^2/2}$ has uncountable essential range $[0,1]$,
+   whereas a compact self-adjoint operator's spectrum is at most
+   countable with $0$ as the only possible accumulation point; it is
+   Hilbert--Schmidt and compact when spatially restricted to any
+   bounded pupil)
+
+Rationale: a referee may query "why does translation invariance imply
+non-compactness?". This removes the query. Optional.
+
+================================================================================
+VERIFICATION CHECKLIST (run after applying Fix-01 and any optional fixes)
+================================================================================
+
+[ ] Diff against the pre-pass source. Confirm ONLY the Data Availability
+    block changed (and FIX-02/FIX-03 if applied). No other lines.
+[ ] Compile with the target journal class (revtex4-2, aps, pra, reprint,
+    nofootinbib, floatfix, longbibliography). Zero errors, zero warnings
+    beyond the usual font-substitution notes.
+[ ] Grep the source for the following strings and confirm they are
+    PRESENT and UNCHANGED (do not "fix" them):
+      \norm{T\psi}_{L^2(\Omega,\mu)}^2
+      e^{-w^2 k_\perp^2/2}
+      w^4/R^3
+      \Phi_{l,R}
+      \delta_{l,l'}
+      \psi_{l,R}
+      l\hbar
+      \alpha_{\mathrm{reg}}
+      6.633.2
+      6.633.4
+      \hbar
+    If any of these look "wrong" to you, DO NOT EDIT. They are correct.
+[ ] Grep for these strings and confirm they are ABSENT (they should never
+    have existed in the source):
+      \Phi_{I,R}
+      \delta_{I,l'}
+      \psi_{I,R}
+      \alpha_\alpha
+      \alpha_{\alpha\alpha}
+      1h        (as standalone OAM unit)
+      w^4/R^2
+      k_\perp^3
+[ ] Verify Fig. 1, Fig. 2, Fig. 3 all compile and render (no missing
+    \includegraphics paths).
+[ ] Verify Table I, Table II, Table III, Table IV all compile (no
+    \begin{ruledtabular} mismatches).
+[ ] Verify cross-references resolve: all \ref{} have matching \label{}.
+    Bibliography compiles without undefined citations.
+[ ] Verify page count is within journal limits (typical Q1 limit: 20 pages
+    for regular articles; check target journal's author guidelines).
+[ ] Verify abstract is ≤ 250 words (currently ~230 — OK).
+[ ] Verify AI disclosure in Acknowledgments is complete (model name,
+    environment, dates, scope, human responsibility). Currently present
+    and correct. Do not modify.
+
+================================================================================
+POST-COMPILATION WORKFLOW
+================================================================================
+
+Step 1 (apply this spec):
+  - Apply Fix-01 (required).
+  - Apply Fix-02 and Fix-03 (optional).
+  - Do nothing else.
+
+Step 2 (compile and QA):
+  - Recompile the .tex.
+  - Run the verification checklist above.
+  - Save both the .tex source and the compiled .pdf.
+
+Step 3 (final review):
+  - Attach BOTH the updated .tex and the compiled .pdf in the next
+    message.
+  - This will trigger ONE final verification pass — a source-verified
+    check confirming the three fixes landed correctly and nothing else
+    changed.
+  - If the final review confirms a clean diff, the paper is submitted
+    immediately after.
+
+Step 4 (submit):
+  - Upload to the target journal.
+  - Attach the Zenodo DOI in the submission portal's data-availability
+    field.
+
+================================================================================
+STOP CONDITIONS
+================================================================================
+
+STOP and report back if any of the following occurs:
+
+  (a) The compile produces errors that were not present before this pass.
+  (b) Any item in the LOCKDOWN list (L1–L18) differs from the pre-pass
+      source, for any reason.
+  (c) A grep from the verification checklist shows a forbidden string
+      (\Phi_{I,R}, \alpha_\alpha, k_\perp^3, etc.) is present in the
+      source — this would mean an earlier regeneration introduced a real
+      source-level regression that the PDF hid. Report the exact line
+      number and surrounding context; do NOT attempt to fix it without
+      confirmation.
+  (d) The Zenodo DOI is not yet minted (Fix-01 Option B is a placeholder;
+      the paper cannot be submitted until Option A is used).
+
+================================================================================
+SUMMARY FOR ANTIGRAVITY
+================================================================================
+
+The paper is ACCEPTED pending these three fixes. Fix-01 is required
+(Data Availability). Fix-02 and Fix-03 are optional polish. No other
+changes are permitted. The prior rounds' "blocking" items were PDF
+extraction artifacts, not source errors — do not re-edit them. After
+applying Fix-01 (and optionally Fix-02/Fix-03), compile, run the
+verification checklist, and hand off for the final source-verified
+review before submission.
+================================================================================

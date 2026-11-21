@@ -1,0 +1,191 @@
+ROLE: Senior theoretical physicist and Q1-journal editor.
+TASK: Revise the attached manuscript "Overcompleteness and Continuous Frame
+Properties of Physical Perfect Vortex Beams. I. Operator Theory and
+Laguerre-Gaussian Expansion" (dated November 21, 2026) to address the
+reviewer reports below. Many prior issues are fixed, but NEW REGRESSIONS
+have appeared that must be corrected. Apply ALL blocking fixes. Provide
+the FULL manuscript including §IV and Appendices A–B.
+
+=== STRENGTHS TO PRESERVE (do not modify) ===
+S1. "Notation and Conventions" box at the end of §II.A (full symbol
+    glossary).
+S2. Numerical example in Remark 1 (λ = 1550 nm, f = 100 mm, w_g = 1 mm,
+    R = 1 mm → z_heal ≈ 50 mm, z_R^{ring} = 4.93 mm, w = 49.3 µm).
+S3. Weak (Pettis) operator interpretation of Eq. (14).
+S4. Explicit unitarity statement for the Hankel transform in Lemma 1.
+S5. Ideal-PVB dual normalization statement in the Introduction
+    ((2π)^{-1/2}R^{-1}δ under R dR; (2πR)^{-1/2}δ under dR).
+S6. Notation distinctions ‖·‖_{L²}, ‖·‖_H, ‖·‖ (operator norm).
+S7. Convention paragraph in §II.A.
+S8. The two-part structure, the two-figure presentation, and Eq. (4)'s
+    self-consistent (4l²-3)/8 derivation.
+S9. The abstract now uses "we prove" for the LG expansion.
+
+=== BLOCKING FIXES ===
+B1. Lemma 1 final display — REGRESSION.
+    Current: ‖Tψ‖³_{L²(Ω,μ)} = ... e^{-w²k_⊥³/2} ... 
+    Fix BOTH:
+      ‖Tψ‖²_{L²(Ω,μ)} = (2π)^{-1} Σ_l ∫ k_⊥ dk_⊥
+                        e^{-w²k_⊥²/2} |ψ̃_l(k_⊥)|²
+                     = ∫ e^{-w²k_⊥²/2} |ψ̃(k)|² d²k/(2π)².
+    Verify the exponent on the left is ² (not ³ or ⁴) and the
+    integrand has k_⊥² (not k_⊥³).
+
+B2. Eq. (4) intermediate — REGRESSION.
+    Current: r_peak(l) - R ≈ -w²/(4R) + [(4l²-3)/32](w⁴/R²)
+    Change to: w⁴/R³ (not w⁴/R²). Check dimensionally:
+    [L]⁴/[L]³ = [L] ✓.
+    The final display (Δr_peak = (l²/8)(w/R)⁴ R) is correct.
+
+B3. Systematic l → I encoding failure in §III.
+    Replace ALL:
+      Φ_{I,R} → Φ_{l,R}
+      Φ_{I',R'} → Φ_{l',R'}
+      δ_{I,l'} → δ_{l,l'}
+      ψ_{I,R} → ψ_{l,R}
+      ψ̃_{I,R} → ψ̃_{l,R}
+      Φ̃_{I,R} → Φ̃_{l,R}
+    After replacement, grep for "_I," and "_{I," and "I,R" to confirm
+    none remain.
+
+B4. Introduction — OAM units regression.
+    Current: "carry 1h of OAM per photon"
+    Change to: "carry lℏ of OAM per photon"
+    Verify the LaTeX source is $l\hbar$, not $1h$ or $lh$.
+
+B5. Lemma 1 proof — Jacobi-Anger sign error.
+    Current: "-2π(-i)^l e^{ilφ_k} J_l(k_⊥r)"
+    Fix: remove the leading minus. Correct integrand:
+      ∫_0^{2π} e^{ilφ} e^{-ik_⊥r cos(φ-φ_k)} dφ
+        = 2π(-i)^l e^{ilφ_k} J_l(k_⊥r)
+        = 2π(-i)^{|l|} e^{ilφ_k} J_{|l|}(k_⊥r).
+    State: "for every l ∈ ℤ; using J_{-n}(z) = (-1)^n J_n(z) and
+    (-i)^{-n} = (-1)^n i^n for integer n, both sides agree."
+
+B6. Lemma 1 proof — Hankel integral LHS uses J where it should be I.
+    Current: "∫_0^∞ r e^{-r²/w²} J_{|l|}(2Rr/w²) J_{|l|}(k_⊥r) dr
+              = (w²/2) exp(R²/w² - w²k_⊥²/4) J_{|l|}(Rk_⊥)"
+    Fix: change the first J_{|l|}(2Rr/w²) to I_{|l|}(2Rr/w²).
+    (Only b → -ik_⊥ is substituted; a = 2R/w² stays real and
+     the first Bessel remains I.)
+
+B7. Eq. (6) context — J_{l'} should be J_{|l|}.
+    Current: "or (-i)^{l+1} e^{2ik_0f} when J_{l'}(k_r ρ) is imprinted"
+    Fix: "or (-i)^{|l|+1} e^{2ik_0f} when J_{|l|}(k_r ρ) is imprinted"
+
+B8. Abstract — Tikhonov notation still garbled.
+    Current: "S_w^{-1}_{α, α} = (S_w² + α_{αα})^{-1} S_w"
+              "(2√α_α)^{-1} at spatial frequency k_peak = w^{-1}√ln(1/α_α)"
+    Fix all three:
+      S_{w,α_reg}^{-1} = (S_w² + α_reg 𝕀)^{-1} S_w
+      (2√α_reg)^{-1} at spatial frequency k_peak = w^{-1}√ln(1/α_reg)
+    After correction, grep for "\alpha_\alpha", "\alpha_{\alpha\alpha}",
+    and "α_α" to verify none remain.
+
+B9. Gradshteyn-Ryzhik references — decimal points and verification.
+    Eq. (10): "formula 6.6332" → "formula 6.633.2".
+    Lemma 1 proof: "Gradshteyn-Ryzhik formula 6.6334" → verify whether
+    this is the correct number for the Hankel transform
+      ∫_0^∞ r e^{-r²/w²} I_{|l|}(2Rr/w²) J_{|l|}(k_⊥r) dr.
+    If the correct reference is GR 6.618.2 or another section, correct
+    the citation. If no exact GR match, cite Erdélyi et al. or state
+    the analytic continuation explicitly.
+
+B10. Proposition 1 — confirm the full proof is present in the
+     submitted manuscript, showing
+       ⟨φ|S_w ψ⟩ = (2π)^{-2} ∫ e^{-w²k_⊥²/2} φ̃*(k) ψ̃(k) d²k
+                 = ⟨φ|G_w * ψ⟩.
+
+B11. AI disclosure — confirm the Acknowledgments contain:
+       "AI disclosure: Portions of this work were developed with the
+        assistance of Gemini 4 Carbon (Google DeepMind) operating
+        within the Antigravity IDE [version, dates]. The AI was used
+        for symbolic calculus, asymptotic expansions, numerical
+        scripting, and LaTeX typesetting. All hypotheses, proofs, and
+        physical interpretations were conceived and audited by the
+        human author, who takes full responsibility."
+
+B12. Refs. [18]–[23] — verify support for the HITL methodology.
+
+B13. §IV and Appendices A–B — provide the full manuscript content and
+     confirm the abstract's claims (p=0 threshold, 0.573 Rayleigh limit,
+     Jacobi-theta Toeplitz structure, Theorem 2 derivation, numerical
+     verification table) are fully derived and verified.
+
+=== MAJOR FIXES ===
+M1. C_0 notation in Lemma 1's proof:
+    Change "C_0 = √(2/π/w²)" to "C_0 = √(2/π)/w²" (matching Eq. 2).
+
+M2. Φ_{1,2} notation in §II.A:
+    Change "‖Φ_{1,2}‖²_{L²} = 0.3894 ℓ_0^{-2}" to explicitly state
+    "‖Φ_{l=1,R=2ℓ_0}‖²_{L²} = 0.3894 ℓ_0^{-2}".
+
+M3. Standardize k_max notation throughout:
+    Replace all "k_max" with "k_{\max}" (roman subscript).
+
+M4. Standardize ℤ notation:
+    In the Introduction, replace "l ∈ Z", "p ∈ Z_{≥0}" with
+    "l ∈ ℤ", "p ∈ ℤ_{≥0}".
+
+M5. Verify footnote 1 on Eq. (4) contains the self-consistency
+    justification:
+      "The leading term -(2x_peak)^{-1} ≈ -w²/(4R²); the first
+       self-consistent correction w⁴/(16R⁴) contributes
+       -1/4 · w⁴/(4R⁴) to the coefficient of w⁴/(4R⁴), hence the
+       shift from (4l²-1)/8 to (4l²-3)/8."
+
+=== MINOR FIXES ===
+m1. In Remark 1, add: "the pre-focal (z_heal) and post-focal
+    (z_R^{ring}) zones do not overlap in the telecom example."
+m2. Verify reference [9]'s p=0 claim (with equation or page).
+m3. Confirm all cross-references ([n] → equation/section) are
+    consistent after renumbering.
+
+=== WORKFLOW CHECK (CRITICAL) ===
+The manuscript shows a pattern of new regressions per round. Before
+submitting:
+1. Run `diff` against the previous version. Inspect all changes.
+2. Compile-check for Greek subscripts and special characters:
+   - grep "\\\\hbar" — verify all instances render as ℏ.
+   - grep "\\\\alpha_{\\\\mathrm{reg}}" — verify all instances.
+   - grep "\\\\Phi_{l,R}" — verify no "\\\\Phi_{I,R}" remain.
+   - grep "k_\\\\perp^2" in Lemma 1 — verify not "k_\\\\perp^3".
+3. Verify all displayed equations by reading aloud:
+   - "squared, not cubed"
+   - "w⁴/R³, not w⁴/R²"
+   - "α-reg, not α-α"
+4. Provide the complete manuscript (Sections I–V plus Appendices A–B)
+   for the next review round.
+
+=== OUTPUT FORMAT ===
+1. Full revised Part I main text (Sections I–V).
+2. Revised Table I and figure captions.
+3. Appendices A–B (Theorem 2 derivation, Tikhonov dual details).
+4. AI disclosure paragraph.
+5. Revised abstract.
+
+=== ACCEPTANCE CHECKLIST ===
+Blocking:
+  [ ] B1 Lemma 1 display fixed (², not ³).
+  [ ] B2 Eq. (4) exponent fixed (R³, not R²).
+  [ ] B3 l → I encoding fixed throughout §III.
+  [ ] B4 "1h" → "lℏ" in Introduction.
+  [ ] B5 Jacobi-Anger minus sign removed.
+  [ ] B6 Hankel LHS uses I, not J.
+  [ ] B7 J_{l'} → J_{|l|} in Eq. (6) context.
+  [ ] B8 Abstract α_α → α_reg.
+  [ ] B9 GR references corrected.
+  [ ] B10 Proposition 1 complete proof.
+  [ ] B11 AI disclosure.
+  [ ] B12 Refs. [18]–[23] verified.
+  [ ] B13 §IV and Appendices A–B content confirmed.
+Major:
+  [ ] M1–M5.
+Minor:
+  [ ] m1–m3.
+Workflow:
+  [ ] Diff-and-compile check completed.
+  [ ] Full manuscript provided.
+
+Ready to submit iff all blocking and major items are checked, the workflow
+check is completed, and the FULL manuscript is provided for review.

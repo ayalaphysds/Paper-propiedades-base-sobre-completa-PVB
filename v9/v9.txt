@@ -1,0 +1,168 @@
+ROLE: Senior theoretical physicist and Q1-journal editor.
+TASK: Revise the attached manuscript "Overcompleteness and Continuous Frame
+Properties of Physical Perfect Vortex Beams. I. Operator Theory and
+Laguerre-Gaussian Expansion" (dated November 21, 2026) to address the
+reviewer reports below. The Lemma 1 exponent regression from the previous
+round is FIXED (good), but new typographical errors have appeared. Apply
+ALL blocking fixes without compromise. Output the full revised Part I
+manuscript, including §IV and Appendices A–B.
+
+=== STRENGTHS TO PRESERVE (do not modify) ===
+S1. The Convention paragraph in §II.A (frame elements Φ_{l,R}, normalized
+    states ψ_{l,R}, dimensional bookkeeping, forward pointer to §IV.D).
+S2. Lemma 1's corrected proof chain (Jacobi-Anger → Weber with b = -ik_⊥
+    → exact Fourier transform Eq. 17 → Hankel unitarity → Plancherel →
+    B ≤ 1), and its optimality argument via test fields concentrated in
+    B(0,1/n). The squared exponent in Eq. (16) is now CORRECT — do not
+    regress.
+S3. Proposition 1 (frame operator = isotropic Gaussian convolution).
+S4. Eq. (4) with the (4l²-3) coefficient derivation.
+S5. Remark 1 (pre-focal BG self-healing vs post-focal ring diffraction).
+S6. Eq. (12) asymptotic expansion with the (4l²-1)/16 correction.
+S7. The Fourier convention Eq. (15).
+S8. The two-part structure (Part I = operator theory; Part II =
+    applications).
+S9. Fig. 1 and Fig. 2 captions with the wk_max = 0.604 → A = 0.833,
+    κ = 1.20 and wk_max = 1.394 → A = 0.378, κ = 2.64 annotations;
+    the NA = 0.20 at w/λ = 1.11 annotation in Fig. 2(b).
+
+=== BLOCKING FIXES ===
+B1. Abstract — garbled Tikhonov notation (NEW regression).
+    The current abstract has:
+      "S_w^{-1}_{α, α} = (S_w² + α_{αα})^{-1} S_w"
+      "(2√α_α)^{-1} at spatial frequency k_peak = w^{-1}√ln(1/α_α)"
+    All three occurrences of α_α and α_{αα} are LaTeX encoding
+    failures. They must be:
+      S_{w,α_reg}^{-1} = (S_w² + α_reg 𝕀)^{-1} S_w
+      (2√α_reg)^{-1} at spatial frequency k_peak = w^{-1}√ln(1/α_reg)
+    After correcting, run a global grep for "\alpha_\alpha" and
+    "\alpha_{\alpha\alpha}" to verify no other occurrences remain.
+
+B2. Introduction — OAM units regression.
+    Change "carry $lh$ of OAM per photon" to "carry $l\hbar$ of OAM per
+    photon." This was CORRECT in the previous version ("$l\hbar$") and
+    has regressed to "$lh$".
+
+B3. Introduction — ideal PVB normalization.
+    Change "$(2\pi)^{-1/2}R^{-1}\delta(r-R)e^{il\phi}$" to
+    "$(2\pi R)^{-1/2}\delta(r-R)e^{il\phi}$" (correctly unit-normalized
+    under the r dr dφ measure).
+
+B4. Introduction — missing closing parenthesis.
+    Change "restrictions $(L^2(\mathbb{R}^2)$ versus $\mathcal{H}_{k_{\max}}$,"
+    to "restrictions $(L^2(\mathbb{R}^2)$ versus $\mathcal{H}_{k_{\max}}$),"
+
+B5. Gradshteyn-Ryzhik reference in Lemma 1.
+    Verify the correct GR formula number for
+      ∫_0^∞ r e^{-r²/w²} I_{|l|}(2Rr/w²) J_{|l|}(k_⊥r) dr.
+    If GR 6.633.4 is correct, cite it. If GR 6.618.2 or another, correct
+    the citation. State the analytic continuation explicitly:
+    "valid for Re(p) > 0 and Re(ν) > -1, with the limit b → -ik_⊥ taken
+     along the imaginary axis, using I_{|l|}(-ik_⊥r) = (-i)^{|l|}
+     J_{|l|}(k_⊥r) for integer |l|."
+
+B6. Proposition 1 — complete the proof.
+    Ensure the full proof is present, showing
+      ⟨φ|S_w ψ⟩ = (2π)^{-2} ∫ e^{-w²k_⊥²/2} φ̃*(k) ψ̃(k) d²k
+                = ⟨φ|G_w * ψ⟩,
+    with G_w(r) = (2πw²)^{-1} exp(-|r|²/(2w²)).
+
+B7. §IV.C — verify the following are fully derived:
+    (a) The exact p=0 fidelity threshold (criterion + value).
+    (b) The generalized nodal Rayleigh limit
+        w_crit ≈ 0.573 w_0/√(2p+|l|+1) for p ≥ 1
+        (derivation or fit accuracy, and whether 0.573 depends on p, l).
+
+B8. §IV.D — verify the "Jacobi-theta Toeplitz" identification.
+    Justify [Γ]_ij = γ_l(R_i, R_j) = f(R_i - R_j) in the appropriate
+    limit, or remove the specific structural claim. State
+    κ(γ) = 1.645 at ΔR = 2.0w and 17.36 dB isolation with derivation.
+
+B9. Appendix A — verify Theorem 2 derivation contains:
+    (a) Step-by-step derivation from Eq. (10) and Laguerre generating
+        function.
+    (b) Numerical verification table for (p,l) ∈ {(0,0),(1,0),(0,1),
+        (2,1),(3,2)} and w/w_0 ∈ {0.25,0.5,1.0}, with |Δc|/|c| < 10^{-6}.
+    (c) Explicit p=0 limit against direct quadrature.
+
+B10. AI disclosure.
+    Confirm the Acknowledgments contain:
+      "AI disclosure: Portions of this work were developed with the
+       assistance of Gemini 4 Carbon (Google DeepMind) operating within
+       the Antigravity IDE [version, dates]. The AI was used for
+       symbolic calculus, asymptotic expansions, numerical scripting,
+       and LaTeX typesetting. All hypotheses, proofs, and physical
+       interpretations were conceived and audited by the human author,
+       who takes full responsibility."
+
+B11. Refs. [18]–[22] — verify support for the HITL methodological
+     claim. Replace or supplement any generic AI-ethics references.
+
+=== MAJOR FIXES ===
+M1. Global notation find-replace:
+    - k_max → k_{\max} (roman subscript).
+    - \mathcal{Z} → \mathbb{Z} (if present).
+    - L²(R²) → L²(ℝ²).
+    - \tilde{(S_w ψ)(k)} → \widetilde{S_w ψ}(k) (or consistently
+      \widehat{S_w ψ}(k)).
+
+M2. Add one-sentence footnote for Eq. (4)'s (4l²-3)/8 coefficient:
+    "The leading term -(2x_peak)^{-1} ≈ -w²/(4R²); the first
+     self-consistent correction w⁴/(16R⁴) from x^{-1}_peak contributes
+     -1/4 · w⁴/(4R⁴) to the coefficient of w⁴/(4R⁴), hence the shift
+     from (4l²-1)/8 to (4l²-3)/8."
+
+M3. In Proposition 1, add:
+    "S_w is compact, positive, self-adjoint, with continuous spectrum
+     {e^{-w²k_⊥²/2}}_{k_⊥ ≥ 0} accumulating at 0."
+
+M4. In Lemma 1's proof, add the explicit unitarity statement:
+    "The Hankel transform 𝓗_{|l|}[f](R) = ∫_0^∞ f(k_⊥)
+     J_{|l|}(Rk_⊥) k_⊥ dk_⊥ is unitary on L²((0,∞), k_⊥ dk_⊥)."
+
+=== MINOR FIXES ===
+m1. Add "Notation and Conventions" box at the end of §II.A listing
+    l, p, R, w, w_0, k_{\max}, Φ_{l,R}, ψ_{l,R}, γ_l, κ, A, B, S_w,
+    α_reg.
+m2. In the abstract, change "we derive" to "we prove" for theorem-level
+    results.
+m3. Verify reference [9]'s claim about p=0 (with equation or page).
+m4. Add a numerical example to Remark 1 (e.g., λ = 1550 nm, w_g = 1 mm,
+    a_obs = 0.5R).
+m5. Distinguish ‖·‖_{L²(ℝ²)} from ‖·‖ on first use.
+m6. Clarify weak Bochner interpretation of Eq. (14).
+
+=== ROOT CAUSE NOTE ===
+The two new abstract/Introduction errors (α_α garbling and lh for lℏ)
+look like LaTeX encoding failures during AI regeneration. After applying
+all fixes, do a diff against the previous version to catch any new
+regressions, and compile-check for Greek subscripts and special
+characters.
+
+=== OUTPUT FORMAT ===
+1. Full revised Part I main text (Sections I–V).
+2. Revised Table I and figure captions.
+3. Appendices A–B (Theorem 2 derivation, Tikhonov dual details).
+4. AI disclosure paragraph.
+5. Revised abstract.
+
+=== ACCEPTANCE CHECKLIST ===
+Blocking:
+  [ ] B1 Abstract Tikhonov notation fixed.
+  [ ] B2 lh → lℏ.
+  [ ] B3 Ideal PVB normalization fixed.
+  [ ] B4 Missing closing paren fixed.
+  [ ] B5 GR reference verified.
+  [ ] B6 Proposition 1 complete proof.
+  [ ] B7 §IV.C p=0 threshold and 0.573 Rayleigh limit.
+  [ ] B8 §IV.D Jacobi-theta Toeplitz justified.
+  [ ] B9 Appendix A Theorem 2 derivation + numerical table.
+  [ ] B10 AI disclosure.
+  [ ] B11 Refs. [18]–[22] verified.
+Major:
+  [ ] M1–M4.
+Minor:
+  [ ] m1–m6.
+
+Ready to submit iff all blocking and major items are checked and the
+FULL manuscript (including §IV and Appendices A–B) is provided for review.

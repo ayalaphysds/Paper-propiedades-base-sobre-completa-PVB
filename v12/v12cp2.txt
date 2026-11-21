@@ -1,0 +1,334 @@
+================================================================================
+FINAL COMPILATION SPECIFICATION — PRE-SUBMISSION PASS
+Manuscript: main_part2_pra.tex
+Version: November 21, 2026
+Purpose: Last change pass before joint arXiv + PRA submission of Parts I and II.
+         Apply ONLY the items below. Do NOT re-derive, re-edit, or "clean up"
+         anything else. The source is verified correct in all other respects.
+Status: Both reviewers recommend acceptance conditional on Blocking-1, Blocking-2,
+         and Data-Availability. All other items are optional polish.
+================================================================================
+
+PREAMBLE — WHY THIS IS A SHORT LIST
+------------------------------------------------------------
+Direct comparison of the .tex source against the PDF confirmed that the prior
+"regressions" (H̃ missing /2, missing parentheses, α_reg vs α_α, etc.) were
+PDF-extraction artifacts, not source errors. The .tex source has been correct
+throughout for those items. Only the items below are actual changes to apply.
+
+  ✗ DO NOT modify any equation, theorem, figure, or appendix not listed below.
+  ✗ DO NOT "fix" anything that looks unusual in the source. The source is correct.
+  ✓ The changes below are the ONLY changes to apply in this pass.
+
+================================================================================
+LOCKDOWN LIST — PRESERVE VERBATIM (do not modify)
+================================================================================
+
+L1.  Abstract — verbatim EXCEPT for Fix-M1 below.
+L2.  Introduction §I — verbatim.
+L3.  §II (Summary of PVB Frame Primitives) — verbatim.
+L4.  §III.A (Noisy LG21 Reconstruction) — verbatim EXCEPT for Fix-C1 below.
+L5.  §III.B (Sturm-Liouville RCF Coupling) — verbatim.
+L6.  §IV (Kolmogorov Turbulence) — verbatim EXCEPT for Fix-C1 below.
+L7.  §V.A (IC-POVM Tomography) — verbatim EXCEPT for Fix-B1 and Fix-C3 below.
+L8.  §V.B (CHSH) — verbatim EXCEPT for Fix-C2 below.
+L9.  §VI (Conclusions) — verbatim.
+L10. Acknowledgments — verbatim.
+L11. All Tables (I, II, III) — verbatim.
+L12. All Figures (1, 2, 3) — verbatim.
+L13. All \cite{}, \ref{}, \label{} keys — no renumbering.
+L14. Appendix A — verbatim EXCEPT for Fix-B2 and Fix-C4 below.
+L15. Preamble — verbatim.
+
+If any of L1-L15 differ from the current source after this pass, revert.
+
+================================================================================
+BLOCKING-1 [REQUIRED] — "Rank 7/16" justification in §V.A
+================================================================================
+
+Location: §V.A (subsec:povm), paragraph beginning "Consider quantum state
+          tomography on a d-dimensional fixed-l radial photonic qudit space..."
+
+Current text:
+  "single-plane projectors |Φ_l,R⟩⟨Φ_l,R| have real matrix elements in the
+   LG_{p,l} basis and vanish on all d(d-1)/2 imaginary antisymmetric
+   coherences, spanning at most 2d-1 < d^2 real Hermitian parameters
+   (certified rank 7/16 at d = 4, l = 1)."
+
+Problem: The reasoning gives "at most 2d-1 = 7" (for d=4), which matches
+         the numerator of 7/16. But the text is confusing because 2d-1 = 7
+         does not equal d(d+1)/2 = 10 (real symmetric dimension). The
+         discrepancy means either:
+           (a) The c_{l,p}(R) span only a 7-dimensional real subspace
+               (not the full 10-dimensional real-symmetric space), OR
+           (b) The rank should be reported as 10/16, not 7/16.
+
+Fix Option A — If empirical rank is 7/16:
+  Replace the parenthetical with:
+    "(certified rank 7/16 by numerical SVD of the frame matrix at d=4, l=1;
+     the reduced rank below the real-symmetric d(d+1)/2 = 10 reflects the
+     specific analytic structure of c_{l,p}(R) for the low-p modes of
+     LG_{p,1})."
+
+Fix Option B — If numerical rank is actually 10/16:
+  Replace "certified rank 7/16" with "certified rank 10/16" throughout
+  §V.A and the abstract, and recompute the downstream claim "lifting
+  single-plane rank 7/16 to full rank 16/16" as "lifting 10/16 to 16/16."
+
+DECISION REQUIRED: Re-run the numerical SVD of the single-plane frame matrix
+at d=4, l=1, and report the actual rank. Then apply Option A or B accordingly.
+
+================================================================================
+BLOCKING-2 [REQUIRED] — "18.75" MUB CRB derivation in Appendix A
+================================================================================
+
+Location: §V.A (subsec:povm), paragraph beginning "compared against 18.75
+          for 5 sequential mutually unbiased bases (MUBs)"
+
+Current text:
+  "compared against 18.75 for 5 sequential mutually unbiased bases (MUBs)---
+   trading a 2.23× photon-budget factor for completely passive,
+   reconfiguration-free single-shot acquisition."
+
+Problem: The value 18.75 is asserted, not derived. Given that the 2.23×
+         tradeoff claim depends on it, this must be justified.
+
+Fix — Add to Appendix A (app:methods), after the IC-POVM Fisher matrix paragraph:
+
+  "For the comparison value Tr(F^{-1}) = 18.75 quoted in §V.A, we use the
+   standard result for state tomography of a d-dimensional qudit with d+1
+   MUBs under the Frobenius (generalized Gell-Mann) parameterization
+   [CITE: e.g., Wootters & Fields 1989, or Bengtsson & Zyczkowski
+   'Geometry of Quantum States' Ch. 3, or Scott 2006 for the d=4 case].
+   For d=4 with 5 MUBs and uniform distribution of N photons across
+   them, the asymptotic Fisher matrix has Tr(F^{-1}) = 15 × (d+1)/N =
+   75/N, giving 18.75 at N=4 (per unit photon budget). The PVB POVM
+   gives 41.80 at N=1 per-shot, so the tradeoff is 41.80/18.75 = 2.23×
+   in photon budget for reconfiguration-free passive acquisition."
+
+  If the actual reference or derivation differs, insert the correct version.
+  If the number 18.75 cannot be derived from a standard reference, replace
+  it with a computed value and re-state the tradeoff ratio accordingly.
+
+================================================================================
+FIX-M1 [RECOMMENDED] — "matching" → "closely approximating" in abstract
+================================================================================
+
+Location: Abstract, item (ii).
+
+Current: "...+6.90 dB gain over fixed-collimator LG_{0,4}, matching the
+          +6.83 dB experimental benchmark of Villalba et al."
+
+Change: "...+6.90 dB gain over fixed-collimator LG_{0,4}, closely
+         approximating the +6.83 dB experimental benchmark of Villalba
+         et al."
+
+Rationale: The 0.07 dB difference is below experimental uncertainty, but
+           "matching" is a slightly strong claim; "closely approximating"
+           is more precise and consistent with the body's "closely parallels."
+
+================================================================================
+FIX-M2 [RECOMMENDED] — "single-shot" → "single-setting" clarification in §V.A
+================================================================================
+
+Location: §V.A (subsec:povm), first sentence of the "passive beam-splitter
+          tree" paragraph.
+
+Current: "We lift this real-polynomial degeneracy passively by splitting the
+          input beam across M ≥ d+1 propagation planes z_m (realizable
+          without active SLM switching via a passive beam-splitter tree..."
+
+Add one clarifying sentence after the existing parenthetical:
+  "Throughout, 'single-shot' refers to single-setting acquisition (no
+   active reconfiguration between measurement outcomes), not to
+   single-photon-per-detector; with M = 5 planes and N radial bins, each
+   single-photon event yields one of MN + 1 POVM outcomes."
+
+================================================================================
+FIX-C1 [CRITICAL] — MSE definition clarification in §III.A and §IV
+================================================================================
+
+Location: §III.A, after Eq. (eq:tikhonov_mse_worked); and §IV, first
+          paragraph after Eq. (eq:discrete_pvb_turb_filter).
+
+Add one sentence in each location:
+
+§III.A: "Throughout, MSE denotes E[||ψ̂_α - ψ_{2,1}||_L²²]/||ψ_{2,1}||_L²²,
+        measured against the clean target field, not the noisy measurement."
+
+§IV: "All normalized field MSE values in Table II are measured against the
+      clean unperturbed field ψ_clean, not the turbulent field ψ_turb."
+
+Rationale: A reader who computes the projection residual will get the
+           out-of-subspace power fraction f_out = 0.448, not 0.138, and
+           will be confused. The MSE metric must be stated explicitly.
+
+================================================================================
+FIX-C2 [CRITICAL] — Post-selection phrasing in §V.B
+================================================================================
+
+Location: §V.B (subsec:spdc_chsh), after Eq. (eq:iris_chsh).
+
+Add one clarifying sentence after the S(R_iris) formula:
+  "The CHSH values reported below are post-selected on the transmission
+   of both photons through their respective irises; this is standard
+   practice in SPDC CHSH experiments with lossy detection, and the
+   post-selected S values should be interpreted as an upper bound on
+   the lossless-source Bell violation [CITE: Walborn 2010]."
+
+================================================================================
+FIX-C3 [CRITICAL] — Π_res derivation from B = 1 in §V.A
+================================================================================
+
+Location: §V.A (subsec:povm), after Eq. (eq:ic_povm_elements).
+
+Add one clarifying sentence before the "completed on H_d^(l) by the positive
+semidefinite residual element" clause:
+
+  "The bin sum Σ_{m,k}Π_{m,k} is a Riemann approximation to (1/M)Σ_m S_w on
+   H_d^(l); since S_w ≤ I by Lemma 1 of Paper I and (1/M)Σ_m 1 = 1, we have
+   Σ_{m,k}Π_{m,k} ≤ I, hence Π_res = I_d - Σ Π_{m,k} ≥ 0 is well-defined."
+
+================================================================================
+FIX-C4 [CRITICAL] — Fisher parameterization clarification in Appendix A
+================================================================================
+
+Location: Appendix A (app:methods), paragraph "IC-POVM operator frame and
+          Fisher matrix."
+
+Add one clarifying sentence after Eq. (eq:app_fisher):
+
+  "The Fisher matrix in Eq. (app_fisher) is expressed in the generalized
+   Gell-Mann basis {B_j}; Tr(F^{-1}) is basis-invariant (equal to the sum
+   of inverse eigenvalues of the linear map F on the traceless Hermitian
+   subspace) and independent of the choice of orthonormal basis."
+
+================================================================================
+FIX-M3 [RECOMMENDED] — Data Availability, harmonize with Paper I
+================================================================================
+
+Location: \section*{Data Availability}.
+
+Problem: Same placeholder comment as Paper I. Should match Paper I's final
+         Data Availability statement (GitHub-only is acceptable; Zenodo DOI
+         preferred).
+
+Fix: Apply whichever Data Availability statement is used in Paper I's final
+     version, with the GitHub URL and DOI (if any) adjusted to reflect
+     Paper II's specific scripts and datasets. Delete the placeholder comment
+     "% Optional Zenodo DOI: ..." from the .tex source.
+
+If the combined code archive covers both papers, use the SAME Zenodo DOI in
+both papers with a note: "see also Paper I, Data Availability."
+
+================================================================================
+FIX-M4 [RECOMMENDED] — rounding consistency
+================================================================================
+
+Location: Abstract vs §III.A.
+
+Abstract: "258.6× (24.1 dB)". §III.A: "258.6 (24.13 dB)."
+
+Change abstract to "258.6× (24.13 dB)" for consistency.
+
+================================================================================
+FIX-M5 [RECOMMENDED] — verify Paper I citation
+================================================================================
+
+Verify \cite{AyalaPaperI} bib entry has:
+  - Correct title matching Paper I's submitted title.
+  - Correct arXiv ID once Paper I is posted.
+  - Correct status: "submitted to Phys. Rev. A" or "in preparation, arXiv:XXXX.XXXXX"
+    as appropriate.
+
+If Paper I is already on arXiv at the time of submission, cite the arXiv ID.
+If not yet posted, use "submitted to Phys. Rev. A (2026)" with the joint-
+submission accession code referenced in the cover letter.
+
+================================================================================
+FIX-M6 [RECOMMENDED] — verify all new references
+================================================================================
+
+Verify DOIs and titles for the ~25 new citations in Paper II. This is
+particularly important given the AI-assisted workflow. Pay special attention to:
+  - Bozinovic2013, Willner2015, Wang2019 (SDM background)
+  - Cerf2002, Mirhosseini2015, Bavaresco2018 (QKD background)
+  - Ramachandran2009, Brunet2014, Gregg2015, Canas2021, RojasRojas2021 (RCF)
+  - Fontaine2019, Berkhout2010, Bouchard2018 (MPLC)
+  - Paterson2005, TylerBoyd2009, AndrewsPhillips2005, Lane1992 (turbulence)
+  - Renes2004, Lvovsky2004 (POVM/tomography)
+  - Clauser1969, LawEberly2004, Walborn2010 (CHSH/SPDC)
+
+================================================================================
+VERIFICATION CHECKLIST
+================================================================================
+
+[ ] Diff against the pre-pass source. Confirm ONLY the items above changed.
+[ ] Compile with revtex4-2 (aps, pra, reprint, nofootinbib, floatfix, longbibliography).
+    Zero errors, zero warnings beyond usual font-substitution notes.
+[ ] Verify these strings in the source are PRESENT and UNCHANGED (do not "fix"):
+      \widetilde{H}_{w,\alpha_{\mathrm{reg}}}(k_\perp) = e^{-w^2 k_\perp^2/2}/(e^{-w^2 k_\perp^2}+\alpha_{\mathrm{reg}})
+      T_{\alpha_{\mathrm{reg}}}(k_\perp) = e^{-w^2 k_\perp^2}/(e^{-w^2 k_\perp^2}+\alpha_{\mathrm{reg}})
+      \xi = 2w^2/(w_0^2+w^2)
+      \mathcal{A}_{p,l}(R)
+      6.90
+      98.52
+      41.80
+      2.8284271
+      AI disclosure is complete in Acknowledgments
+    If any look "wrong," do NOT edit — verify against Paper I and the
+    derivation in §III.A before touching anything.
+[ ] Grep for these and confirm ABSENT (they should never appear):
+      \alpha_\alpha
+      \alpha_{\alpha\alpha}
+      \Phi_{I,R}
+      $1h$
+      w^4/R^2
+    If present, this indicates a real source-level regression — report
+    before fixing.
+[ ] Verify all figures compile (fig1_noisy_deconvolution.pdf,
+    fig2_rcf_turbulence.pdf, fig3_quantum_tomography_chsh.pdf).
+[ ] Verify Tables I, II, III compile without \begin{ruledtabular} errors.
+[ ] Verify cross-references resolve (no undefined \ref, no undefined \cite).
+
+================================================================================
+POST-COMPILATION WORKFLOW
+================================================================================
+
+Step 1: Apply the fixes above.
+Step 2: Compile and run the verification checklist.
+Step 3: Attach BOTH the .tex and .pdf for a final source-verified check.
+Step 4: Submit both papers to arXiv (Paper I first, then Paper II with
+        cross-reference to Paper I in the Comments field).
+Step 5: Submit to PRA (Paper I as Regular Article; Paper II as Joint Submission
+        citing Paper I's accession code in the cover letter).
+
+================================================================================
+STOP CONDITIONS
+================================================================================
+
+STOP and report if:
+  (a) Blocking-1 or Blocking-2 cannot be resolved with a derivation or
+      numerical verification.
+  (b) The grep finds a real source-level regression (as opposed to a PDF
+      artifact that is not in the source).
+  (c) Compilation fails.
+  (d) Data Availability cannot be harmonized with Paper I.
+
+================================================================================
+SUMMARY FOR ANTIGRAVITY
+================================================================================
+
+Paper II is ACCEPTED pending:
+  - Blocking-1: verify or correct the "rank 7/16" claim.
+  - Blocking-2: derive or cite the "18.75" MUB CRB.
+  - Fix-M3: harmonize Data Availability with Paper I.
+  - The four "critical clarification" fixes (C1-C4) add one sentence each.
+  - Apply the minor fixes (M1-M6).
+
+DO NOT touch anything else. The source is otherwise correct. After applying
+these fixes and verifying compilation, the paper is ready for submission.
+
+The two papers together form a coherent two-part study. Submit both to arXiv
+the same day (Paper I first), and submit both to PRA as a joint submission.
+================================================================================
