@@ -1,0 +1,696 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{48}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Allen}\ \emph {et~al.}(1992)\citenamefont {Allen},
+  \citenamefont {Beijersbergen}, \citenamefont {Spreeuw},\ and\ \citenamefont
+  {Woerdman}}]{Allen1992}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Allen}}, \bibinfo {author} {\bibfnamefont {M.~W.}\ \bibnamefont
+  {Beijersbergen}}, \bibinfo {author} {\bibfnamefont {R.~J.~C.}\ \bibnamefont
+  {Spreeuw}},\ and\ \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+  {Woerdman}},\ }\bibfield  {title} {\bibinfo {title} {Orbital angular momentum
+  of light and the transformation of {Laguerre-Gaussian} laser modes},\ }\href
+  {https://doi.org/10.1103/PhysRevA.45.8185} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {45}},\ \bibinfo
+  {pages} {8185} (\bibinfo {year} {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Siegman}(1986)}]{Siegman1986}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~E.}\ \bibnamefont
+  {Siegman}},\ }\href@noop {} {\emph {\bibinfo {title} {Lasers}}}\ (\bibinfo
+  {publisher} {University Science Books},\ \bibinfo {address} {Mill Valley,
+  CA},\ \bibinfo {year} {1986})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Padgett}\ and\ \citenamefont
+  {Bowman}(2011)}]{Padgett2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Padgett}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Bowman}},\ }\bibfield  {title} {\bibinfo {title} {Tweezers with a twist},\
+  }\href {https://doi.org/10.1038/nphoton.2011.81} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nat. Photonics}\ }\textbf {\bibinfo {volume} {5}},\
+  \bibinfo {pages} {343} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bozinovic}\ \emph {et~al.}(2013)\citenamefont
+  {Bozinovic}, \citenamefont {Yue}, \citenamefont {Ren}, \citenamefont {Tur},
+  \citenamefont {Kristensen}, \citenamefont {Huang}, \citenamefont {Willner},\
+  and\ \citenamefont {Ramachandran}}]{Bozinovic2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Bozinovic}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Yue}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Ren}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Tur}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Kristensen}}, \bibinfo {author} {\bibfnamefont
+  {H.}~\bibnamefont {Huang}}, \bibinfo {author} {\bibfnamefont {A.~E.}\
+  \bibnamefont {Willner}},\ and\ \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Ramachandran}},\ }\bibfield  {title} {\bibinfo {title}
+  {Terabit-scale orbital angular momentum mode division multiplexing in
+  fibers},\ }\href {https://doi.org/10.1126/science.1237861} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {340}},\ \bibinfo {pages} {1545} (\bibinfo {year} {2013})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Willner}\ \emph {et~al.}(2015)\citenamefont
+  {Willner}, \citenamefont {Huang}, \citenamefont {Yan}, \citenamefont {Ren},
+  \citenamefont {Ahmed}, \citenamefont {Xie}, \citenamefont {Bao},
+  \citenamefont {Li}, \citenamefont {Cao}, \citenamefont {Zhao}, \citenamefont
+  {Wang}, \citenamefont {Lavery}, \citenamefont {Tur}, \citenamefont
+  {Ramachandran}, \citenamefont {Molisch}, \citenamefont {Ashrafi},\ and\
+  \citenamefont {Ashrafi}}]{Willner2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~E.}\ \bibnamefont
+  {Willner}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Huang}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Yan}}, \bibinfo {author}
+  {\bibfnamefont {Y.}~\bibnamefont {Ren}}, \bibinfo {author} {\bibfnamefont
+  {N.}~\bibnamefont {Ahmed}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Xie}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Bao}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Li}}, \bibinfo
+  {author} {\bibfnamefont {Y.}~\bibnamefont {Cao}}, \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {Zhao}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Wang}}, \bibinfo {author} {\bibfnamefont {M.~P.~J.}\
+  \bibnamefont {Lavery}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Tur}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Ramachandran}},
+  \bibinfo {author} {\bibfnamefont {A.~F.}\ \bibnamefont {Molisch}}, \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Ashrafi}},\ and\ \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Ashrafi}},\ }\bibfield  {title} {\bibinfo
+  {title} {Optical communications using orbital angular momentum beams},\
+  }\href {https://doi.org/10.1364/AOP.7.000066} {\bibfield  {journal} {\bibinfo
+   {journal} {Adv. Opt. Photon.}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo
+  {pages} {66} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}(2019)}]{Wang2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Wang}},\ }\bibfield  {title} {\bibinfo {title} {Twisted optical
+  communications using orbital angular momentum},\ }\href
+  {https://doi.org/10.1007/s11433-018-9260-8} {\bibfield  {journal} {\bibinfo
+  {journal} {Sci. China Phys. Mech. Astron.}\ }\textbf {\bibinfo {volume}
+  {62}},\ \bibinfo {pages} {034201} (\bibinfo {year} {2019})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Cerf}\ \emph {et~al.}(2002)\citenamefont {Cerf},
+  \citenamefont {Bourennane}, \citenamefont {Karlsson},\ and\ \citenamefont
+  {Gisin}}]{Cerf2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Cerf}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Bourennane}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Karlsson}},\ and\
+  \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Gisin}},\ }\bibfield
+  {title} {\bibinfo {title} {Security of quantum key distribution using
+  $d$-level systems},\ }\href {https://doi.org/10.1103/PhysRevLett.88.127902}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {88}},\ \bibinfo {pages} {127902} (\bibinfo {year}
+  {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mirhosseini}\ \emph {et~al.}(2015)\citenamefont
+  {Mirhosseini}, \citenamefont {Maga{\~n}a-Loaiza}, \citenamefont {O'Sullivan},
+  \citenamefont {Rodenburg}, \citenamefont {Malik}, \citenamefont {Lavery},
+  \citenamefont {Padgett}, \citenamefont {Gauthier},\ and\ \citenamefont
+  {Boyd}}]{Mirhosseini2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Mirhosseini}}, \bibinfo {author} {\bibfnamefont {O.~S.}\ \bibnamefont
+  {Maga{\~n}a-Loaiza}}, \bibinfo {author} {\bibfnamefont {M.~N.}\ \bibnamefont
+  {O'Sullivan}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Rodenburg}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Malik}},
+  \bibinfo {author} {\bibfnamefont {M.~P.~J.}\ \bibnamefont {Lavery}}, \bibinfo
+  {author} {\bibfnamefont {M.~J.}\ \bibnamefont {Padgett}}, \bibinfo {author}
+  {\bibfnamefont {D.~J.}\ \bibnamefont {Gauthier}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.~W.}\ \bibnamefont {Boyd}},\ }\bibfield  {title} {\bibinfo
+  {title} {High-dimensional quantum cryptography with twisted light},\ }\href
+  {https://doi.org/10.1088/1367-2630/17/3/033033} {\bibfield  {journal}
+  {\bibinfo  {journal} {New J. Phys.}\ }\textbf {\bibinfo {volume} {17}},\
+  \bibinfo {pages} {033033} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bavaresco}\ \emph {et~al.}(2018)\citenamefont
+  {Bavaresco}, \citenamefont {Valencia}, \citenamefont {Kl{\"o}ckl},
+  \citenamefont {Pivoluska}, \citenamefont {Erker}, \citenamefont {Friis},
+  \citenamefont {Malik},\ and\ \citenamefont {Huber}}]{Bavaresco2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Bavaresco}}, \bibinfo {author} {\bibfnamefont {N.~H.}\ \bibnamefont
+  {Valencia}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Kl{\"o}ckl}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Pivoluska}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Erker}},
+  \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Friis}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Malik}},\ and\ \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Huber}},\ }\bibfield  {title} {\bibinfo
+  {title} {Measurements in two bases are sufficient for certifying
+  high-dimensional entanglement},\ }\href
+  {https://doi.org/10.1038/s41567-018-0203-z} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Phys.}\ }\textbf {\bibinfo {volume} {14}},\ \bibinfo {pages}
+  {1032} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Erhard}\ \emph {et~al.}(2018)\citenamefont {Erhard},
+  \citenamefont {Fickler}, \citenamefont {Krenn},\ and\ \citenamefont
+  {Zeilinger}}]{Erhard2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Erhard}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Fickler}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Krenn}},\ and\ \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Zeilinger}},\ }\bibfield  {title}
+  {\bibinfo {title} {Twisted photons: new quantum perspectives in high
+  dimensions},\ }\href {https://doi.org/10.1038/lsa.2017.146} {\bibfield
+  {journal} {\bibinfo  {journal} {Light Sci. Appl.}\ }\textbf {\bibinfo
+  {volume} {7}},\ \bibinfo {pages} {17146} (\bibinfo {year}
+  {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ramachandran}\ \emph {et~al.}(2009)\citenamefont
+  {Ramachandran}, \citenamefont {Kristensen},\ and\ \citenamefont
+  {Yan}}]{Ramachandran2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Ramachandran}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Kristensen}},\ and\ \bibinfo {author} {\bibfnamefont {M.~F.}\ \bibnamefont
+  {Yan}},\ }\bibfield  {title} {\bibinfo {title} {Generation and propagation of
+  radially polarized beams in optical fibers},\ }\href
+  {https://doi.org/10.1364/OL.34.002525} {\bibfield  {journal} {\bibinfo
+  {journal} {Opt. Lett.}\ }\textbf {\bibinfo {volume} {34}},\ \bibinfo {pages}
+  {2525} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Brunet}\ \emph {et~al.}(2014)\citenamefont {Brunet},
+  \citenamefont {Vaity}, \citenamefont {Messaddeq}, \citenamefont
+  {LaRochelle},\ and\ \citenamefont {Rusch}}]{Brunet2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Brunet}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Vaity}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Messaddeq}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {LaRochelle}},\ and\ \bibinfo
+  {author} {\bibfnamefont {L.~A.}\ \bibnamefont {Rusch}},\ }\bibfield  {title}
+  {\bibinfo {title} {Design, fabrication and validation of an {OAM} fiber
+  supporting 36 states},\ }\href {https://doi.org/10.1364/OE.22.026117}
+  {\bibfield  {journal} {\bibinfo  {journal} {Opt. Express}\ }\textbf {\bibinfo
+  {volume} {22}},\ \bibinfo {pages} {26117} (\bibinfo {year}
+  {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gregg}\ \emph {et~al.}(2015)\citenamefont {Gregg},
+  \citenamefont {Kristensen},\ and\ \citenamefont {Ramachandran}}]{Gregg2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Gregg}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Kristensen}},\
+  and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Ramachandran}},\
+  }\bibfield  {title} {\bibinfo {title} {Conservation of orbital angular
+  momentum in air-core optical fibers},\ }\href
+  {https://doi.org/10.1364/OPTICA.2.000267} {\bibfield  {journal} {\bibinfo
+  {journal} {Optica}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {267}
+  (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ca{\~n}as}\ \emph {et~al.}(2021)\citenamefont
+  {Ca{\~n}as}, \citenamefont {G{\'o}mez}, \citenamefont {Baradit},
+  \citenamefont {Lima},\ and\ \citenamefont {Walborn}}]{Canas2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Ca{\~n}as}}, \bibinfo {author} {\bibfnamefont {E.~S.}\ \bibnamefont
+  {G{\'o}mez}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Baradit}},
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Lima}},\ and\ \bibinfo
+  {author} {\bibfnamefont {S.~P.}\ \bibnamefont {Walborn}},\ }\bibfield
+  {title} {\bibinfo {title} {Engineering entangled photons for transmission in
+  ring-core optical fibers},\ }\href {https://doi.org/10.3389/fphy.2021.752081}
+  {\bibfield  {journal} {\bibinfo  {journal} {Front. Phys.}\ }\textbf {\bibinfo
+  {volume} {9}},\ \bibinfo {pages} {752081} (\bibinfo {year}
+  {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rojas-Rojas}\ \emph {et~al.}(2021)\citenamefont
+  {Rojas-Rojas}, \citenamefont {Ca{\~n}as}, \citenamefont {Saavedra},
+  \citenamefont {G{\'o}mez}, \citenamefont {Walborn},\ and\ \citenamefont
+  {Lima}}]{RojasRojas2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Rojas-Rojas}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Ca{\~n}as}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Saavedra}},
+  \bibinfo {author} {\bibfnamefont {E.~S.}\ \bibnamefont {G{\'o}mez}}, \bibinfo
+  {author} {\bibfnamefont {S.~P.}\ \bibnamefont {Walborn}},\ and\ \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Lima}},\ }\bibfield  {title}
+  {\bibinfo {title} {Evaluating the coupling efficiency of {OAM} beams into
+  ring-core optical fibers},\ }\href {https://doi.org/10.1364/OE.425419}
+  {\bibfield  {journal} {\bibinfo  {journal} {Opt. Express}\ }\textbf {\bibinfo
+  {volume} {29}},\ \bibinfo {pages} {23381} (\bibinfo {year}
+  {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ostrovsky}\ \emph {et~al.}(2013)\citenamefont
+  {Ostrovsky}, \citenamefont {Rickenstorff-Parrao},\ and\ \citenamefont
+  {Arriz{\'o}n}}]{Ostrovsky2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~S.}\ \bibnamefont
+  {Ostrovsky}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Rickenstorff-Parrao}},\ and\ \bibinfo {author} {\bibfnamefont
+  {V.}~\bibnamefont {Arriz{\'o}n}},\ }\bibfield  {title} {\bibinfo {title}
+  {Generation of the ``perfect'' optical vortex using a liquid-crystal spatial
+  light modulator},\ }\href {https://doi.org/10.1364/OL.38.000534} {\bibfield
+  {journal} {\bibinfo  {journal} {Opt. Lett.}\ }\textbf {\bibinfo {volume}
+  {38}},\ \bibinfo {pages} {534} (\bibinfo {year} {2013})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Vaity}\ and\ \citenamefont
+  {Rusch}(2015)}]{Vaity2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Vaity}}\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Rusch}},\
+  }\bibfield  {title} {\bibinfo {title} {Perfect vortex beam: {Fourier}
+  transformation of a {Bessel} beam},\ }\href
+  {https://doi.org/10.1364/OL.40.000597} {\bibfield  {journal} {\bibinfo
+  {journal} {Opt. Lett.}\ }\textbf {\bibinfo {volume} {40}},\ \bibinfo {pages}
+  {597} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Reddy}\ \emph {et~al.}(2016)\citenamefont {Reddy},
+  \citenamefont {{Chithrabhanu P.}}, \citenamefont {Vaity}, \citenamefont
+  {Aadhi}, \citenamefont {Prabhakar},\ and\ \citenamefont {Singh}}]{Reddy2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~G.}\ \bibnamefont
+  {Reddy}}, \bibinfo {author} {\bibnamefont {{Chithrabhanu P.}}}, \bibinfo
+  {author} {\bibfnamefont {P.}~\bibnamefont {Vaity}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Aadhi}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Prabhakar}},\ and\ \bibinfo {author} {\bibfnamefont
+  {R.~P.}\ \bibnamefont {Singh}},\ }\bibfield  {title} {\bibinfo {title}
+  {Non-diffracting speckles of a perfect vortex beam},\ }\href
+  {https://doi.org/10.1088/2040-8978/18/5/055602} {\bibfield  {journal}
+  {\bibinfo  {journal} {J. Opt.}\ }\textbf {\bibinfo {volume} {18}},\ \bibinfo
+  {pages} {055602} (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Villalba}\ \emph {et~al.}(2023)\citenamefont
+  {Villalba}, \citenamefont {Melo}, \citenamefont {Ayala}, \citenamefont
+  {Mancilla}, \citenamefont {Valenzuela}, \citenamefont {Figueroa},
+  \citenamefont {Baradit}, \citenamefont {Lin}, \citenamefont {Tang},
+  \citenamefont {Walborn}, \citenamefont {Lima}, \citenamefont {Saavedra},\
+  and\ \citenamefont {Ca{\~n}as}}]{Villalba2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Villalba}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Melo}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Ayala}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Mancilla}}, \bibinfo {author}
+  {\bibfnamefont {W.}~\bibnamefont {Valenzuela}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Figueroa}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Baradit}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Lin}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Tang}}, \bibinfo {author} {\bibfnamefont {S.~P.}\ \bibnamefont {Walborn}},
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Lima}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Saavedra}},\ and\ \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Ca{\~n}as}},\ }\bibfield  {title} {\bibinfo
+  {title} {Transmission of optical communication signals through ring core
+  fiber using perfect vortex beams},\ }\href
+  {https://doi.org/10.1364/OE.503740} {\bibfield  {journal} {\bibinfo
+  {journal} {Opt. Express}\ }\textbf {\bibinfo {volume} {31}},\ \bibinfo
+  {pages} {40113} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ferreira}\ \emph {et~al.}(2026)\citenamefont
+  {Ferreira}, \citenamefont {Santos}, \citenamefont {Ayala}, \citenamefont
+  {Hutter}, \citenamefont {G{\'o}mez}, \citenamefont {Lima}, \citenamefont
+  {Ca{\~n}as},\ and\ \citenamefont {Walborn}}]{Ferreira2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Ferreira}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Santos}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Ayala}}, \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {Hutter}}, \bibinfo {author}
+  {\bibfnamefont {E.~S.}\ \bibnamefont {G{\'o}mez}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Lima}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Ca{\~n}as}},\ and\ \bibinfo {author} {\bibfnamefont
+  {S.~P.}\ \bibnamefont {Walborn}},\ }\bibfield  {title} {\bibinfo {title}
+  {Second-order moment equivalence of twisted {Gaussian Schell} model beams and
+  orbital angular momentum eigenmodes},\ }\href
+  {https://doi.org/10.1088/2040-8986/ae9b1d} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Opt.}\ }\textbf {\bibinfo {volume} {28}},\ \bibinfo {pages}
+  {095601} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ayala}(2026)}]{AyalaPaperI}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Ayala}},\ }\bibfield  {title} {\bibinfo {title} {Overcompleteness and
+  continuous frame properties of physical perfect vortex beams. {I}. {Operator}
+  theory and {Laguerre--Gaussian} expansion},\ }\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\href {https://doi.org/10.5281/zenodo.24426770}
+  {10.5281/zenodo.24426770} (\bibinfo {year} {2026}),\ \bibinfo {note}
+  {submitted as a companion paper}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Duffin}\ and\ \citenamefont
+  {Schaeffer}(1952)}]{Duffin1952}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
+  {Duffin}}\ and\ \bibinfo {author} {\bibfnamefont {A.~C.}\ \bibnamefont
+  {Schaeffer}},\ }\bibfield  {title} {\bibinfo {title} {A class of nonharmonic
+  {Fourier} series},\ }\href
+  {https://doi.org/10.1090/S0002-9947-1952-0047179-6} {\bibfield  {journal}
+  {\bibinfo  {journal} {Trans. Am. Math. Soc.}\ }\textbf {\bibinfo {volume}
+  {72}},\ \bibinfo {pages} {341} (\bibinfo {year} {1952})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Daubechies}(1990)}]{Daubechies1990}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Daubechies}},\ }\bibfield  {title} {\bibinfo {title} {The wavelet transform,
+  time-frequency localization and signal analysis},\ }\href
+  {https://doi.org/10.1109/18.57199} {\bibfield  {journal} {\bibinfo  {journal}
+  {IEEE Trans. Inf. Theory}\ }\textbf {\bibinfo {volume} {36}},\ \bibinfo
+  {pages} {961} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ali}\ \emph {et~al.}(1993)\citenamefont {Ali},
+  \citenamefont {Antoine},\ and\ \citenamefont {Gazeau}}]{Ali1993}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~T.}\ \bibnamefont
+  {Ali}}, \bibinfo {author} {\bibfnamefont {J.-P.}\ \bibnamefont {Antoine}},\
+  and\ \bibinfo {author} {\bibfnamefont {J.-P.}\ \bibnamefont {Gazeau}},\
+  }\bibfield  {title} {\bibinfo {title} {Continuous frames in {Hilbert}
+  space},\ }\href {https://doi.org/10.1006/aphy.1993.1016} {\bibfield
+  {journal} {\bibinfo  {journal} {Ann. Phys. (N.Y.)}\ }\textbf {\bibinfo
+  {volume} {222}},\ \bibinfo {pages} {1} (\bibinfo {year} {1993})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Christensen}(2016)}]{Christensen2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Christensen}},\ }\href {https://doi.org/10.1007/978-3-319-25613-9} {\emph
+  {\bibinfo {title} {An Introduction to Frames and {Riesz} Bases}}},\ \bibinfo
+  {edition} {2nd}\ ed.\ (\bibinfo  {publisher} {Birkh{\"a}user},\ \bibinfo
+  {address} {Cham},\ \bibinfo {year} {2016})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Paulsen}\ and\ \citenamefont
+  {Raghupathi}(2016)}]{PaulsenRaghupathi2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~I.}\ \bibnamefont
+  {Paulsen}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Raghupathi}},\ }\href {https://doi.org/10.1017/CBO9781316219232} {\emph
+  {\bibinfo {title} {An Introduction to the Theory of Reproducing Kernel
+  {Hilbert} Spaces}}}\ (\bibinfo  {publisher} {Cambridge University Press},\
+  \bibinfo {address} {Cambridge},\ \bibinfo {year} {2016})\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fontaine}\ \emph {et~al.}(2019)\citenamefont
+  {Fontaine}, \citenamefont {Ryf}, \citenamefont {Chen}, \citenamefont
+  {Neilson}, \citenamefont {Kim},\ and\ \citenamefont
+  {Carpenter}}]{Fontaine2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~K.}\ \bibnamefont
+  {Fontaine}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Ryf}},
+  \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Chen}}, \bibinfo {author}
+  {\bibfnamefont {D.~T.}\ \bibnamefont {Neilson}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Kim}},\ and\ \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Carpenter}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Laguerre-Gaussian} mode sorter},\ }\href
+  {https://doi.org/10.1038/s41467-019-09840-4} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Commun.}\ }\textbf {\bibinfo {volume} {10}},\ \bibinfo
+  {pages} {1865} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Berkhout}\ \emph {et~al.}(2010)\citenamefont
+  {Berkhout}, \citenamefont {Lavery}, \citenamefont {Courtial}, \citenamefont
+  {Beijersbergen},\ and\ \citenamefont {Padgett}}]{Berkhout2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~C.~G.}\
+  \bibnamefont {Berkhout}}, \bibinfo {author} {\bibfnamefont {M.~P.~J.}\
+  \bibnamefont {Lavery}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Courtial}}, \bibinfo {author} {\bibfnamefont {M.~W.}\ \bibnamefont
+  {Beijersbergen}},\ and\ \bibinfo {author} {\bibfnamefont {M.~J.}\
+  \bibnamefont {Padgett}},\ }\bibfield  {title} {\bibinfo {title} {Efficient
+  sorting of orbital angular momentum states of light},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.105.153601} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {105}},\
+  \bibinfo {pages} {153601} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bouchard}\ \emph {et~al.}(2018)\citenamefont
+  {Bouchard}, \citenamefont {Valencia}, \citenamefont {Brandt}, \citenamefont
+  {Fickler}, \citenamefont {Huber},\ and\ \citenamefont
+  {Malik}}]{Bouchard2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Bouchard}}, \bibinfo {author} {\bibfnamefont {N.~H.}\ \bibnamefont
+  {Valencia}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Brandt}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Fickler}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Huber}},\ and\ \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Malik}},\ }\bibfield  {title} {\bibinfo
+  {title} {Measuring azimuthal and radial modes of photons},\ }\href
+  {https://doi.org/10.1364/OE.26.031925} {\bibfield  {journal} {\bibinfo
+  {journal} {Opt. Express}\ }\textbf {\bibinfo {volume} {26}},\ \bibinfo
+  {pages} {31925} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Proakis}\ and\ \citenamefont
+  {Salehi}(2008)}]{Proakis2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~G.}\ \bibnamefont
+  {Proakis}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Salehi}},\ }\href@noop {} {\emph {\bibinfo {title} {Digital
+  Communications}}},\ \bibinfo {edition} {5th}\ ed.\ (\bibinfo  {publisher}
+  {McGraw-Hill},\ \bibinfo {address} {New York},\ \bibinfo {year}
+  {2008})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Paterson}(2005)}]{Paterson2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Paterson}},\ }\bibfield  {title} {\bibinfo {title} {Atmospheric turbulence
+  and orbital angular momentum of single photons for optical communication},\
+  }\href {https://doi.org/10.1103/PhysRevLett.94.153901} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {94}},\
+  \bibinfo {pages} {153901} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tyler}\ and\ \citenamefont
+  {Boyd}(2009)}]{TylerBoyd2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~A.}\ \bibnamefont
+  {Tyler}}\ and\ \bibinfo {author} {\bibfnamefont {R.~W.}\ \bibnamefont
+  {Boyd}},\ }\bibfield  {title} {\bibinfo {title} {Influence of atmospheric
+  turbulence on the propagation of quantum states of light carrying orbital
+  angular momentum},\ }\href {https://doi.org/10.1364/OL.34.000142} {\bibfield
+  {journal} {\bibinfo  {journal} {Opt. Lett.}\ }\textbf {\bibinfo {volume}
+  {34}},\ \bibinfo {pages} {142} (\bibinfo {year} {2009})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Andrews}\ and\ \citenamefont
+  {Phillips}(2005)}]{AndrewsPhillips2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~C.}\ \bibnamefont
+  {Andrews}}\ and\ \bibinfo {author} {\bibfnamefont {R.~L.}\ \bibnamefont
+  {Phillips}},\ }\href@noop {} {\emph {\bibinfo {title} {Laser Beam Propagation
+  through Random Media}}},\ \bibinfo {edition} {2nd}\ ed.\ (\bibinfo
+  {publisher} {SPIE Press},\ \bibinfo {address} {Bellingham, WA},\ \bibinfo
+  {year} {2005})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lane}\ \emph {et~al.}(1992)\citenamefont {Lane},
+  \citenamefont {Glindemann},\ and\ \citenamefont {Dainty}}]{Lane1992}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~G.}\ \bibnamefont
+  {Lane}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Glindemann}},\
+  and\ \bibinfo {author} {\bibfnamefont {J.~C.}\ \bibnamefont {Dainty}},\
+  }\bibfield  {title} {\bibinfo {title} {Simulation of a {Kolmogorov} phase
+  screen},\ }\href {https://doi.org/10.1088/0959-7174/2/3/003} {\bibfield
+  {journal} {\bibinfo  {journal} {Waves Random Media}\ }\textbf {\bibinfo
+  {volume} {2}},\ \bibinfo {pages} {209} (\bibinfo {year} {1992})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Renes}\ \emph {et~al.}(2004)\citenamefont {Renes},
+  \citenamefont {Blume-Kohout}, \citenamefont {Scott},\ and\ \citenamefont
+  {Caves}}]{Renes2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Renes}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Blume-Kohout}},
+  \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Scott}},\ and\
+  \bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont {Caves}},\ }\bibfield
+  {title} {\bibinfo {title} {Symmetric informationally complete quantum
+  measurements},\ }\href {https://doi.org/10.1063/1.1737053} {\bibfield
+  {journal} {\bibinfo  {journal} {J. Math. Phys.}\ }\textbf {\bibinfo {volume}
+  {45}},\ \bibinfo {pages} {2171} (\bibinfo {year} {2004})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Lvovsky}(2004)}]{Lvovsky2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~I.}\ \bibnamefont
+  {Lvovsky}},\ }\bibfield  {title} {\bibinfo {title} {Iterative
+  maximum-likelihood reconstruction in quantum homodyne tomography},\ }\href
+  {https://doi.org/10.1088/1464-4266/6/6/014} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Opt. B: Quantum Semiclass. Opt.}\ }\textbf {\bibinfo {volume}
+  {6}},\ \bibinfo {pages} {S556} (\bibinfo {year} {2004})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Clauser}\ \emph {et~al.}(1969)\citenamefont
+  {Clauser}, \citenamefont {Horne}, \citenamefont {Shimony},\ and\
+  \citenamefont {Holt}}]{Clauser1969}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont
+  {Clauser}}, \bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont {Horne}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Shimony}},\ and\ \bibinfo
+  {author} {\bibfnamefont {R.~A.}\ \bibnamefont {Holt}},\ }\bibfield  {title}
+  {\bibinfo {title} {Proposed experiment to test local hidden-variable
+  theories},\ }\href {https://doi.org/10.1103/PhysRevLett.23.880} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {23}},\ \bibinfo {pages} {880} (\bibinfo {year} {1969})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Law}\ and\ \citenamefont
+  {Eberly}(2004)}]{LawEberly2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~K.}\ \bibnamefont
+  {Law}}\ and\ \bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont
+  {Eberly}},\ }\bibfield  {title} {\bibinfo {title} {Analysis and
+  interpretation of high transverse entanglement in optical parametric down
+  conversion},\ }\href {https://doi.org/10.1103/PhysRevLett.92.127903}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {92}},\ \bibinfo {pages} {127903} (\bibinfo {year}
+  {2004})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Walborn}\ \emph {et~al.}(2010)\citenamefont
+  {Walborn}, \citenamefont {Monken}, \citenamefont {P{\'a}dua},\ and\
+  \citenamefont {Ribeiro}}]{Walborn2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~P.}\ \bibnamefont
+  {Walborn}}, \bibinfo {author} {\bibfnamefont {C.~H.}\ \bibnamefont {Monken}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {P{\'a}dua}},\ and\
+  \bibinfo {author} {\bibfnamefont {P.~H.~S.}\ \bibnamefont {Ribeiro}},\
+  }\bibfield  {title} {\bibinfo {title} {Spatial correlations in parametric
+  down-conversion},\ }\href {https://doi.org/10.1016/j.physrep.2010.06.003}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rep.}\ }\textbf {\bibinfo
+  {volume} {495}},\ \bibinfo {pages} {87} (\bibinfo {year} {2010})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Krenn}\ \emph {et~al.}(2022)\citenamefont {Krenn},
+  \citenamefont {Pollice}, \citenamefont {Guo}, \citenamefont {Aldeghi},
+  \citenamefont {Cervera-Lierta}, \citenamefont {Friederich}, \citenamefont
+  {dos Passos~Gomes}, \citenamefont {H{\"a}se}, \citenamefont {Jinich},
+  \citenamefont {Nigam}, \citenamefont {Yao},\ and\ \citenamefont
+  {Aspuru-Guzik}}]{Krenn2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Krenn}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Pollice}},
+  \bibinfo {author} {\bibfnamefont {S.~Y.}\ \bibnamefont {Guo}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Aldeghi}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Cervera-Lierta}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Friederich}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {dos Passos~Gomes}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {H{\"a}se}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Jinich}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Nigam}}, \bibinfo {author} {\bibfnamefont
+  {Z.}~\bibnamefont {Yao}},\ and\ \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Aspuru-Guzik}},\ }\bibfield  {title} {\bibinfo {title} {On
+  scientific understanding with artificial intelligence},\ }\href
+  {https://doi.org/10.1038/s42254-022-00518-3} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Rev. Phys.}\ }\textbf {\bibinfo {volume} {4}},\ \bibinfo
+  {pages} {761} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Birhane}\ \emph {et~al.}(2023)\citenamefont
+  {Birhane}, \citenamefont {Kasirzadeh}, \citenamefont {Leslie},\ and\
+  \citenamefont {Wachter}}]{Birhane2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Birhane}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kasirzadeh}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Leslie}},\ and\ \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Wachter}},\ }\bibfield  {title}
+  {\bibinfo {title} {Science in the age of large language models},\ }\href
+  {https://doi.org/10.1038/s42254-023-00581-4} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Rev. Phys.}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo
+  {pages} {277} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Messeri}\ and\ \citenamefont
+  {Crockett}(2024)}]{Messeri2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Messeri}}\ and\ \bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {Crockett}},\ }\bibfield  {title} {\bibinfo {title} {Artificial intelligence
+  and illusions of understanding in scientific research},\ }\href
+  {https://doi.org/10.1038/s41586-024-07146-0} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {627}},\ \bibinfo {pages}
+  {49} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chandra}\ \emph {et~al.}(2026)\citenamefont
+  {Chandra}, \citenamefont {Mahajan}, \citenamefont {Sanyal}, \citenamefont
+  {Wang}, \citenamefont {Chakraborty}, \citenamefont {Chakraborty},
+  \citenamefont {Chandrasekharan}, \citenamefont {Govindarajan}, \citenamefont
+  {Goyal}, \citenamefont {Heckman}, \citenamefont {Iqbal}, \citenamefont
+  {Jaganathan}, \citenamefont {Kapoor}, \citenamefont {Karch}, \citenamefont
+  {Khandare}, \citenamefont {Krishna}, \citenamefont {Kundu}, \citenamefont
+  {Laddha}, \citenamefont {Lin}, \citenamefont {Maity}, \citenamefont {Mathur},
+  \citenamefont {Meynet}, \citenamefont {Mininno}, \citenamefont {Mishra},
+  \citenamefont {Niranjan}, \citenamefont {Prakash}, \citenamefont {Rath},
+  \citenamefont {Roy}, \citenamefont {Sarkar}, \citenamefont {Sastry},
+  \citenamefont {Shiu}, \citenamefont {Sinha}, \citenamefont {Riet},
+  \citenamefont {Netrapalli},\ and\ \citenamefont
+  {Raju}}]{Chandra2026TheoPhysEval}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~R.}\ \bibnamefont
+  {Chandra}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mahajan}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Sanyal}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Wang}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Chakraborty}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Chakraborty}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Chandrasekharan}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Govindarajan}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Goyal}}, \bibinfo {author} {\bibfnamefont
+  {J.~J.}\ \bibnamefont {Heckman}}, \bibinfo {author} {\bibfnamefont
+  {Y.}~\bibnamefont {Iqbal}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Jaganathan}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Kapoor}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Karch}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Khandare}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Krishna}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Kundu}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Laddha}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Lin}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Maity}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Mathur}},
+  \bibinfo {author} {\bibfnamefont {S.~N.}\ \bibnamefont {Meynet}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Mininno}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Mishra}}, \bibinfo {author} {\bibfnamefont
+  {V.}~\bibnamefont {Niranjan}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Prakash}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Rath}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Roy}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Sarkar}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Sastry}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Shiu}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Sinha}}, \bibinfo {author} {\bibfnamefont
+  {T.~V.}\ \bibnamefont {Riet}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Netrapalli}},\ and\ \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Raju}},\ }\href
+  {https://doi.org/10.48550/arXiv.2610.16733} {\bibinfo {title}
+  {{TheoPhysEval}: Assessing {AI} agents at autonomous theoretical physics
+  problem solving}} (\bibinfo {year} {2026}),\ \Eprint
+  {https://arxiv.org/abs/2610.16733} {arXiv:2610.16733 [hep-th]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Thorp}(2023)}]{Thorp2023Science}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~H.}\ \bibnamefont
+  {Thorp}},\ }\bibfield  {title} {\bibinfo {title} {{ChatGPT} is fun, but not
+  an author},\ }\href {https://doi.org/10.1126/science.adg7879} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {379}},\ \bibinfo {pages} {313} (\bibinfo {year} {2023})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {{Committee on Publication
+  Ethics}}(2023)}]{COPE2023AI}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Committee on
+  Publication Ethics}}},\ }\href {https://doi.org/10.24318/cCVRZBms} {\bibinfo
+  {title} {Authorship and {AI} tools: {COPE} position statement}} (\bibinfo
+  {year} {2023})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gradshteyn}\ and\ \citenamefont
+  {Ryzhik}(2014)}]{Gradshteyn2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~S.}\ \bibnamefont
+  {Gradshteyn}}\ and\ \bibinfo {author} {\bibfnamefont {I.~M.}\ \bibnamefont
+  {Ryzhik}},\ }\href@noop {} {\emph {\bibinfo {title} {Table of Integrals,
+  Series, and Products}}},\ \bibinfo {edition} {8th}\ ed.,\ edited by\ \bibinfo
+  {editor} {\bibfnamefont {D.}~\bibnamefont {Zwillinger}}\ and\ \bibinfo
+  {editor} {\bibfnamefont {V.}~\bibnamefont {Moll}}\ (\bibinfo  {publisher}
+  {Academic Press},\ \bibinfo {address} {Amsterdam},\ \bibinfo {year}
+  {2014})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gori}\ \emph {et~al.}(1987)\citenamefont {Gori},
+  \citenamefont {Guattari},\ and\ \citenamefont {Padovani}}]{Gori1987}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Gori}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Guattari}},\
+  and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Padovani}},\
+  }\bibfield  {title} {\bibinfo {title} {{Bessel-Gauss} beams},\ }\href
+  {https://doi.org/10.1016/0030-4018(87)90276-8} {\bibfield  {journal}
+  {\bibinfo  {journal} {Opt. Commun.}\ }\textbf {\bibinfo {volume} {64}},\
+  \bibinfo {pages} {491} (\bibinfo {year} {1987})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wootters}\ and\ \citenamefont
+  {Fields}(1989)}]{WoottersFields1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.~K.}\ \bibnamefont
+  {Wootters}}\ and\ \bibinfo {author} {\bibfnamefont {B.~D.}\ \bibnamefont
+  {Fields}},\ }\bibfield  {title} {\bibinfo {title} {Optimal
+  state-determination by mutually unbiased measurements},\ }\href
+  {https://doi.org/10.1016/0003-4916(89)90322-9} {\bibfield  {journal}
+  {\bibinfo  {journal} {Ann. Phys. (N.Y.)}\ }\textbf {\bibinfo {volume}
+  {191}},\ \bibinfo {pages} {363} (\bibinfo {year} {1989})}\BibitemShut
+  {NoStop}%
+\end{thebibliography}%
