@@ -1,0 +1,179 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Allen1992}
+L.~Allen, M.~W. Beijersbergen, R.~J.~C. Spreeuw, and J.~P. Woerdman,
+  \enquote{Orbital angular momentum of light and the transformation of
+  {Laguerre-Gaussian} laser modes,} {\protect\JournalTitle{Phys. Rev. A}}
+  \textbf{45}, 8185--8189 (1992).
+
+\bibitem{Siegman1986}
+A.~E. Siegman, \emph{Lasers} (University Science Books, Mill Valley, CA, 1986).
+
+\bibitem{Padgett2011}
+M.~Padgett and R.~Bowman, \enquote{Tweezers with a twist,}
+  {\protect\JournalTitle{Nat. Photonics}} \textbf{5}, 343--348 (2011).
+
+\bibitem{Erhard2018}
+M.~Erhard, R.~Fickler, M.~Krenn, and A.~Zeilinger, \enquote{Twisted photons:
+  new quantum perspectives in high dimensions,} {\protect\JournalTitle{Light
+  Sci. Appl.}} \textbf{7}, 17146 (2018).
+
+\bibitem{Plick2015}
+W.~N. Plick and M.~Krenn, \enquote{Physical meaning of the radial index of
+  {Laguerre-Gauss} beams,} {\protect\JournalTitle{Phys. Rev. A}} \textbf{92},
+  063841 (2015).
+
+\bibitem{Karimi2014}
+E.~Karimi, R.~W. Boyd, P.~de~la Hoz, \emph{et~al.}, \enquote{Radial quantum
+  number of {Laguerre-Gauss} modes,} {\protect\JournalTitle{Phys. Rev. A}}
+  \textbf{89}, 063813 (2014).
+
+\bibitem{Ostrovsky2013}
+A.~S. Ostrovsky, C.~Rickenstorff-Parrao, and V.~Arriz{\'o}n,
+  \enquote{Generation of the ``perfect'' optical vortex using a liquid-crystal
+  spatial light modulator,} {\protect\JournalTitle{Opt. Lett.}} \textbf{38},
+  534--536 (2013).
+
+\bibitem{Vaity2015}
+P.~Vaity and L.~Rusch, \enquote{Perfect vortex beam: {Fourier} transformation
+  of a {Bessel} beam,} {\protect\JournalTitle{Opt. Lett.}} \textbf{40},
+  597--600 (2015).
+
+\bibitem{Gori1987}
+F.~Gori, G.~Guattari, and C.~Padovani, \enquote{{Bessel-Gauss} beams,}
+  {\protect\JournalTitle{Opt. Commun.}} \textbf{64}, 491--495 (1987).
+
+\bibitem{Reddy2016}
+S.~G. Reddy, {Chithrabhanu P.}, P.~Vaity, \emph{et~al.},
+  \enquote{Non-diffracting speckles of a perfect vortex beam,}
+  {\protect\JournalTitle{J. Opt.}} \textbf{18}, 055602 (2016).
+
+\bibitem{Jabir2016Variable}
+M.~V. Jabir, N.~A. Chaitanya, A.~Aadhi, and G.~K. Samanta, \enquote{Generation
+  of perfect vortex of variable size and its effect in angular spectrum of the
+  down-converted photons,} arXiv:1601.03129 (2016).
+
+\bibitem{Pinnell2019HowPerfect}
+J.~Pinnell, V.~Rodr{\'i}guez-Fajardo, and A.~Forbes, \enquote{How perfect are
+  perfect vortex beams?} {\protect\JournalTitle{Opt. Lett.}} \textbf{44},
+  5614--5617 (2019).
+
+\bibitem{Pinnell2019Quantitative}
+J.~Pinnell, V.~Rodr{\'i}guez-Fajardo, and A.~Forbes, \enquote{Quantitative
+  orbital angular momentum measurement of perfect vortex beams,}
+  {\protect\JournalTitle{Opt. Lett.}} \textbf{44}, 2736--2739 (2019).
+
+\bibitem{Yan2022Customizable}
+W.~Yan, Z.~Gao, Z.~Yuan, \emph{et~al.}, \enquote{Customizable
+  {Laguerre-Gaussian} perfect vortex beams,} arXiv:2209.01723 (2022).
+
+\bibitem{Banerji2016}
+A.~Banerji, R.~P. Singh, D.~Banerjee, and A.~Bandyopadhyay, \enquote{Generating
+  a perfect quantum optical vortex,} {\protect\JournalTitle{Phys. Rev. A}}
+  \textbf{94}, 053838 (2016).
+
+\bibitem{Barral2017}
+D.~Barral and J.~Li{\~n}ares, \enquote{Comment on ``{Generating} a perfect
+  quantum optical vortex'',} {\protect\JournalTitle{Phys. Rev. A}} \textbf{96},
+  047802 (2017).
+
+\bibitem{Villalba2023}
+N.~Villalba, G.~Ca{\~n}as, S.~Ayala, \emph{et~al.}, \enquote{Transmission of
+  optical communication signals through ring core fiber using perfect vortex
+  beams,} {\protect\JournalTitle{Opt. Express}} \textbf{31}, 40113--40125
+  (2023).
+
+\bibitem{Gelfand1964}
+I.~M. Gel'fand and N.~Y. Vilenkin, \emph{Generalized Functions, Vol. 4:
+  Applications of Harmonic Analysis} (Academic Press, New York, 1964).
+
+\bibitem{Ferreira2026}
+T.~Ferreira, G.~Santos, S.~Ayala, \emph{et~al.}, \enquote{Second-order moment
+  equivalence of twisted {Gaussian Schell} model beams and orbital angular
+  momentum eigenmodes,} {\protect\JournalTitle{J. Opt.}} \textbf{28}, 095601
+  (2026).
+
+\bibitem{Duffin1952}
+R.~J. Duffin and A.~C. Schaeffer, \enquote{A class of nonharmonic {Fourier}
+  series,} {\protect\JournalTitle{Trans. Am. Math. Soc.}} \textbf{72}, 341--366
+  (1952).
+
+\bibitem{Daubechies1990}
+I.~Daubechies, \enquote{The wavelet transform, time-frequency localization and
+  signal analysis,} {\protect\JournalTitle{IEEE Trans. Inf. Theory}}
+  \textbf{36}, 961--1005 (1990).
+
+\bibitem{Ali1993}
+S.~T. Ali, J.-P. Antoine, and J.-P. Gazeau, \enquote{Continuous frames in
+  {Hilbert} space,} {\protect\JournalTitle{Ann. Phys. (N.Y.)}} \textbf{222},
+  1--37 (1993).
+
+\bibitem{Christensen2016}
+O.~Christensen, \emph{An Introduction to Frames and {Riesz} Bases}
+  (Birkh{\"a}user, Cham, 2016), 2nd ed.
+
+\bibitem{Bastiaans1980}
+M.~J. Bastiaans, \enquote{Gabor's expansion of a signal into {Gaussian}
+  elementary signals,} {\protect\JournalTitle{Proc. IEEE}} \textbf{68},
+  538--539 (1980).
+
+\bibitem{Grochenig2016}
+K.~Gr{\"o}chenig, A.~Haimi, and J.~L. Romero, \enquote{Completeness of {Gabor}
+  systems,} {\protect\JournalTitle{J. Approx. Theory}} \textbf{207}, 283--300
+  (2016).
+
+\bibitem{Klauder1985}
+J.~R. Klauder and B.-S. Skagerstam, \emph{Coherent States: Applications in
+  Physics and Mathematical Physics} (World Scientific, Singapore, 1985).
+
+\bibitem{Perelomov1986}
+A.~Perelomov, \emph{Generalized Coherent States and Their Applications}
+  (Springer, Berlin, 1986).
+
+\bibitem{Gazeau2009}
+J.-P. Gazeau, \emph{Coherent States in Quantum Physics} (Wiley-VCH, Weinheim,
+  2009).
+
+\bibitem{Gazeau2018}
+J.-P. Gazeau, \enquote{Coherent states in quantum optics: An oriented
+  overview,} in \emph{Integrability, Supersymmetry and Coherent States,}
+  (Springer, 2019), pp. 69--101.
+
+\bibitem{MoralesRodriguez2024OL}
+M.~P.~M. Rodr{\'i}guez, O.~S. Maga{\~n}a-Loaiza, B.~Perez-Garcia,
+  \emph{et~al.}, \enquote{Coherent states of the {Laguerre-Gauss} modes,}
+  {\protect\JournalTitle{Opt. Lett.}} \textbf{49}, 1489--1492 (2024).
+
+\bibitem{MoralesRodriguez2024PRA}
+M.~P.~M. Rodr{\'i}guez, E.~Piceno-Mart{\'i}nez, L.~M. Nieto, \emph{et~al.},
+  \enquote{Spatial light mode analogues of generalized quantum coherent
+  states,} {\protect\JournalTitle{Phys. Rev. A}} \textbf{110}, 033523 (2024).
+
+\bibitem{Engl1996}
+H.~W. Engl, M.~Hanke, and A.~Neubauer, \emph{Regularization of Inverse
+  Problems} (Kluwer Academic Publishers, Dordrecht, 1996).
+
+\bibitem{Bownik2026}
+M.~Bownik and J.~Jasper, \enquote{Uniform discretization of continuous frames,}
+  arXiv:2603.10423 (2026).
+
+\bibitem{Gradshteyn2014}
+I.~S. Gradshteyn and I.~M. Ryzhik, \emph{Table of Integrals, Series, and
+  Products} (Academic Press, Amsterdam, 2014), 8th ed.
+
+\bibitem{Goodman2017}
+J.~W. Goodman, \emph{Introduction to {Fourier} Optics} (W. H. Freeman, New
+  York, 2017), 4th ed.
+
+\bibitem{PaulsenRaghupathi2016}
+V.~I. Paulsen and M.~Raghupathi, \emph{An Introduction to the Theory of
+  Reproducing Kernel {Hilbert} Spaces} (Cambridge University Press, Cambridge,
+  2016).
+
+\bibitem{AyalaCodeV15}
+S.~Ayala, \enquote{Verification and figure-generation code for continuous frame
+  theory and photonic protocols of physical perfect vortex beams,} GitHub /
+  Zenodo (2026).
+
+\end{thebibliography}

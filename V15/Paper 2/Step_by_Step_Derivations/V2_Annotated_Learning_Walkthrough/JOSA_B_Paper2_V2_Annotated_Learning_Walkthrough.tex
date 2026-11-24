@@ -1,0 +1,369 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.80in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\usepackage{bm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!65!black,citecolor=blue!65!black,urlcolor=blue!65!black]{hyperref}
+
+\emergencystretch=1.8em
+
+% Pedagogical color palette
+\definecolor{navy}{HTML}{1B4F72}
+\definecolor{softblue}{HTML}{EBF5FB}
+\definecolor{plum}{HTML}{5B2C6F}
+\definecolor{softplum}{HTML}{F5EEF8}
+\definecolor{forest}{HTML}{145A32}
+\definecolor{softgreen}{HTML}{EAFAF1}
+\definecolor{amberborder}{HTML}{9A7D0A}
+\definecolor{softamber}{HTML}{FEF9E7}
+\definecolor{slate}{HTML}{34495E}
+
+\newtcolorbox{targeteq}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softblue,colframe=navy,fonttitle=\bfseries\small,
+  title={Exact Target in JOSA B Submission: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{approxbox}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softplum,colframe=plum,fonttitle=\bfseries\small,
+  title={Approximation \& Source Provenance: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{pencheck}[1][Pen-and-Paper Worked Numerical Check]{
+  breakable,enhanced,lines before break=2,
+  colback=softgreen,colframe=forest,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{learnbox}[1][Physical Intuition \& Common Pitfalls]{
+  breakable,enhanced,lines before break=2,
+  colback=softamber,colframe=amberborder,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{slate}\textit{JOSA B (V15 Paper 2) --- Version 2: Annotated Learning \& Provenance Edition}}
+\fancyhead[R]{\footnotesize\color{slate}\textit{S. Ayala}}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\josb}[1]{\textbf{[JOSA~B Eq.~(#1)]}}
+\newcommand{\tagexact}{\textcolor{forest}{\textbf{[EXACT]}}}
+\newcommand{\tagmodel}{\textcolor{navy}{\textbf{[PHYSICAL MODEL]}}}
+\newcommand{\tagasymp}{\textcolor{plum}{\textbf{[ASYMPTOTIC]}}}
+
+\numberwithin{equation}{section}
+
+\title{\vspace{-1.0cm}\textbf{\Large Version 2 --- Annotated Learning \& Provenance Workbook for JOSA B (V15 Paper 2)}\\[0.35em]
+\large\textit{Every Exact Calculation, Every Physical \& Asymptotic Approximation, Where Each Tool Comes From,\\
+and Step-by-Step Mini-Derivations for ``Classical and quantum photonic protocols based on\\
+physical perfect optical vortex beam frames''}}
+\author{Sebasti\'an Ayala\thanks{\texttt{ayala.phys.ds@gmail.com}; ORCID: \href{https://orcid.org/0009-0003-7348-3883}{0009-0003-7348-3883}}}
+\date{Version 2 (Annotated Learning Edition) --- November 24, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+\noindent This \textbf{Version~2} workbook expands the concise Version~1 walkthrough of \texttt{Manuscript\_JOSA\_B/main\_paper2\_josab.pdf} (\textbf{Eqs.~(1)--(10)} and \textbf{Tables~1--4}) into a complete learning manual. Every calculation is explicitly labeled \tagexact{}, \tagmodel{}, or \tagasymp{} with its governing small parameter, validity regime, neglected remainder $\mathcal{O}(\cdots)$, and primary literature provenance (Snyder \& Love, Proakis \& Salehi, Kolmogorov/Fried/Andrews \& Phillips, Wootters \& Fields, Lvovsky, NIST DLMF, Horodecki \emph{et al.}, Clauser--Horne--Shimony--Holt, Garg--Mermin, Eberhard). Key theorems used in the four photonic protocols---including the weakly guiding LP reduction, the GRIN $\sqrt{2/3}$ cutoff rule, Kolmogorov's $N_{\mathrm{scr}}^{3/5}$ split-step scaling, the single-plane rank-$7$ polynomial proof, the closed-form MUB Fisher trace $18.75$, the Hankel $(w/R_0)^3$ iris expansion with exact $c_0 = 0$, and Horodecki's $S_{\max} = 2\sqrt{1+\mathcal{V}^2}$---are derived from first principles.
+\end{abstract}
+
+\tableofcontents
+\vspace{0.5em}
+
+% ==============================================================================
+\section*{Master Approximation \& Identity Ledger for JOSA B (Paper 2)}
+\addcontentsline{toc}{section}{Master Approximation \& Identity Ledger for JOSA B (Paper 2)}
+
+\begin{center}
+\scriptsize
+\renewcommand{\arraystretch}{1.18}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}p{1.5cm}p{2.05cm}p{4.3cm}p{3.6cm}p{4.1cm}@{}}
+\toprule
+\textbf{JOSA B Eq.} & \textbf{Status} & \textbf{Calculation / Approximation Stated} & \textbf{Small Param.\ / Validity} & \textbf{Primary Source / Provenance} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{JOSA B Eq.} & \textbf{Status} & \textbf{Calculation / Approximation Stated} & \textbf{Small Param.\ / Validity} & \textbf{Primary Source / Provenance} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Eqs.~(1)--(2) & \tagexact{} & PVB frame $\Phi_{l,R}$, exact $(p+1)$-term $c_{l,p}(R)$, telecom $\kappa$ & Bandlimited $\mathrm{NA} = 0.20$ pupil & Paper~1 (JOSA~A); DLMF~(13.2.39), (18.5.12) \\
+Eq.~(3) & \tagmodel{} + \tagexact{} & Weakly guiding LP scalar RCF ODE \& Liouville $\chi_l = \sqrt{r}\,u_l$ & $\Delta n/n_{\mathrm{clad}} = 0.0229 \ll 1$; FD error $\mathcal{O}(h^2)$ & Snyder \& Love~Ch.~14; Gloge~(1971); Sturm--Liouville \\
+Eq.~(4), Table~1 & \tagmodel{} + \tagasymp{} & Parabolic GRIN index profile \& $\sqrt{2/3}$ cutoff rule & $l_{\max}^{\mathrm{GRIN}}/l_{\max}^{\mathrm{step}} \approx \sqrt{2/3} \approx 0.8165$ & Zhang \emph{et al.}~(2018); Villalba \emph{et al.}~(2023) \\
+Eq.~(5), Fig.~1 & \tagmodel{} + \tagexact{} & $N\times N$ ZF penalties $\mathcal{P}_{\mathrm{corr}}$, $\mathcal{P}_{\mathrm{AWGN}}$, OOK BER & Linear additive Gaussian noise; equiprobable OOK & Proakis \& Salehi~Chs.~4, 9 (equalizer \& $\operatorname{erfc}$ BER) \\
+Eq.~(6) & \tagexact{} & Biorthogonal orthogonal projector $P_{\mathrm{PVB},l_0}$ ($P^2=P=P^\dagger$) & Any linearly independent frame ($\det\gamma > 0$) & Hilbert-space projection theorem; Christensen~Ch.~5 \\
+Sec.~4 turb. & \tagmodel{} & Kolmogorov PSD $\propto \kappa^{-11/3}$ + 5-screen split-step $r_{0,\mathrm{scr}}$ & Inertial range $l_0 \ll \rho \ll L_0$; Markov thin slices & Kolmogorov~(1941); Fried~(1965); Lane~(1992); Andrews \& Phillips \\
+Eq.~(7) & \tagexact{} & Rank-$(2d-1)$ single-plane ceiling + $M=5$ Gouy IC-POVM & Exact POVM ($\sum\Pi_\alpha = \mathbb{I}_d$); Riemann $\mathcal{O}(\Delta R^2)$ & Paper~1 Eq.~(15); Renes \emph{et al.}~(2004); polynomial degree bound \\
+Eq.~(8), Table~3 & \tagexact{} + \tagasymp{} & Gell-Mann Fisher $\mathbf{F}$, MUB $18.75$, $R\hat{\rho}R$ MLE, jitter $\delta\vartheta_m$ & CRB exact asymptotically ($N_{\mathrm{phot}} \gg 1$); $\delta z_m/z_R \ll 1$ & Wootters \& Fields~(1989); Paris~(2009); Lvovsky~(2004) \\
+Eq.~(9) (LG) & \tagexact{} & $\mathrm{LG}_{0,l}$ iris survival $t_l^{\mathrm{LG}} = P(\abs{l}+1,\,2R_{\mathrm{iris}}^2/w_0^2)$ & All $R_{\mathrm{iris}}, w_0 > 0$, $l \in \mathbb{Z}$ & Incomplete gamma integral: DLMF~\S8.2 \\
+Eq.~(9) (PVB) & \tagasymp{} & Hankel iris law $t_l^{\mathrm{PVB}}(R_0) = \frac{1}{2} - \frac{4l^2-1}{16\sqrt{2\pi}}(w/R_0)^3$ ($c_0=0$) & $\epsilon = w/R_0 \ll 1$; drops $\mathcal{O}(\epsilon^5)$ \& $\mathcal{O}(\epsilon e^{-2/\epsilon^2})$ & DLMF~(10.40.1) + exact $r/x$ polar Jacobian cancellation \\
+Eq.~(10) & \tagexact{} + \tagasymp{} & Horodecki $S = 2\sqrt{1+\mathcal{V}^2}$ + 6th-order $2\sqrt{2}\delta_{14}^2$ bound & $\delta_{14} \ll 1$; drops $\mathcal{O}(\delta_{14}^4) = \mathcal{O}(\epsilon^{12})$ & Horodecki \emph{et al.}~(1995); Taylor expansion of $\mathcal{V}^{(2)}$ \\
+Table~4 loophole & \tagexact{} & Symmetric detection-loophole threshold $\eta > \frac{2}{1+\sqrt{2}} = 82.84\%$ & Maximally entangled qubit, no fair sampling & CHSH~(1969); Garg \& Mermin~(1987); cf.\ Eberhard~(1993) \\
+\end{longtable}
+\end{center}
+
+% ==============================================================================
+\section{JOSA B Section 2: PVB Primitives and Telecom Benchmark --- \josb{1}--\josb{2}}
+\label{sec:v2_b2}
+
+\begin{targeteq}{JOSA B Eqs.~(1)--(2) and Telecom Conditioning Check (p.~2)}
+\[
+  \Phi_{l,R}(r,\phi) = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}\,e^{il\phi}e^{-(r^2+R^2)/w^2} I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right), \qquad
+  c_{l,p}(R) = \mathcal{A}_{p,l}(R)\sum_{m=0}^p (-1)^m\binom{p+\abs{l}}{p-m}\xi^m L_m^{\abs{l}}(-\zeta_R).
+\]
+\end{targeteq}
+
+Both \josb{1} and \josb{2} are \tagexact{} identities derived from scratch in the Paper~1 Version~2 Workbook (Secs.~1 and~5). The telecom space--bandwidth check at $\lambda = 1.55\,\mu\mathrm{m}$, $\mathrm{NA} = 0.20$, $w = 1.72\,\mu\mathrm{m}$ applies the sharp Paley--Wiener bound (Paper~1 Eq.~(10), \tagmodel{} hard-pupil aperture $k_{\max} = k_0\mathrm{NA}$):
+
+\begin{pencheck}[Step-by-Step Calculator Check of the Telecom Benchmark]
+$k_0 = 2\pi/(1.550\times 10^{-6}) = 4.05367\times 10^6\,\mathrm{m}^{-1}$; $k_{\max} = 0.20\,k_0 = 8.10734\times 10^5\,\mathrm{m}^{-1}$; $w k_{\max} = (1.72\times 10^{-6})(8.10734\times 10^5) = \mathbf{1.39446}$; $(w k_{\max})^2/2 = 1.94452/2 = 0.97226$; $A = e^{-0.97226} = \mathbf{0.3782}$; $\kappa = e^{+0.97226} = \mathbf{2.644}$.
+\end{pencheck}
+
+% ==============================================================================
+\section{JOSA B Section 3: RCF Eigenmodes, Parabolic GRIN Cutoff, and SDM}
+\label{sec:v2_b3}
+
+\subsection{Weakly Guiding RCF Hamiltonian, Liouville Symmetrization, and GRIN Cutoff --- \josb{3}--\josb{4}}
+
+\begin{targeteq}{JOSA B Eqs.~(3)--(4) and Table~1 (pp.~2--3)}
+\[
+  -\frac{\dd^2\chi_l}{\dd r^2} + \left[\frac{l^2 - \frac{1}{4}}{r^2} - k_0^2 n^2(r)\right]\chi_l(r) = -\beta_l^2\chi_l(r), \qquad
+  n_{\mathrm{GRIN}}^2(r) = n_{\mathrm{clad}}^2 + (n_{\mathrm{core}}^2 - n_{\mathrm{clad}}^2)\max\!\left[0,\;1 - \left(\frac{r-r_{\mathrm{mid}}}{a_{\mathrm{ring}}}\right)^2\right].
+\]
+\end{targeteq}
+
+\begin{approxbox}{Weakly Guiding LP Fiber Approximation + Central-Difference Discretization}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagmodel{} for the scalar Helmholtz fiber equation; \tagexact{} for the Liouville transformation $u_l = \chi_l/\sqrt{r}$; $\mathcal{O}(h^2)$ numerical approximation for finite differences.
+  \item \textbf{Where the scalar fiber ODE comes from:} Start from Maxwell's exact vector wave equation in an inhomogeneous dielectric: $\nabla^2\mathbf{E} + k_0^2 n^2(r)\mathbf{E} = -\nabla(\mathbf{E}\cdot\nabla\ln n^2)$ (\emph{A.\ W.\ Snyder \& J.\ D.\ Love}, \emph{Optical Waveguide Theory}, Ch.~14; \emph{D.\ Gloge}, \emph{Appl.\ Opt.} \textbf{10}, 2252 (1971)). The RHS couples radial and azimuthal polarizations (splitting $\mathrm{HE}_{l+1,1}$ and $\mathrm{EH}_{l-1,1}$ vector eigenmodes) with relative magnitude $\Delta \equiv (n_{\mathrm{core}} - n_{\mathrm{clad}})/n_{\mathrm{clad}}$. Here $\Delta = 0.033/1.444 = 0.02285 \ll 1$, so neglecting spin--orbit coupling changes radial intensity envelopes by $\mathcal{O}(\Delta) \approx 2\%$ (typically $<0.2\%$ in power overlap!).
+  \item \textbf{Why the Liouville substitution $u_l = r^{-1/2}\chi_l$ is used (Sturm--Liouville theory):} In $-\frac{1}{r}(r u'_l)' + (\frac{l^2}{r^2} - k_0^2 n^2) u_l = -\beta_l^2 u_l$, the operator is symmetric only in the \emph{weighted} inner product $\int_0^\infty r u^* v\,\dd r$, so naive finite differencing yields a non-symmetric matrix. Setting $u_l = r^{-1/2}\chi_l$ cancels the first derivative identically:
+  \[
+    (r u'_l)' = \left(r^{1/2}\chi'_l - \frac{1}{2}r^{-1/2}\chi_l\right)' = \frac{1}{2}r^{-1/2}\chi'_l + r^{1/2}\chi''_l + \frac{1}{4}r^{-3/2}\chi_l - \frac{1}{2}r^{-1/2}\chi'_l = r^{1/2}\chi''_l + \frac{1}{4}r^{-3/2}\chi_l,
+  \]
+  producing the standard unweighted Hermitian Schr\"odinger equation \josb{3} with exact centrifugal shift $l^2 \mapsto l^2 - \frac{1}{4}$!
+  \item \textbf{Numerical discretization error:} Replacing $-\chi''(r_j)$ by $(-\chi_{j-1}+2\chi_j-\chi_{j+1})/h^2$ has local truncation error $\frac{h^2}{12}\chi^{(4)}(r_j)$ (Taylor expansion of $\chi(r_j \pm h)$). With $N_r = 2500$ on $[0.01, 20.0]\,\mu\mathrm{m}$, $h = 8.0\,\mathrm{nm}$, so $(h/a_{\mathrm{ring}})^2 = (0.008/1.5)^2 \approx 2.8\times 10^{-5}$, ensuring $n_{\mathrm{eff}}$ accuracy to $< 10^{-6}$.
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Analytical $\sqrt{2/3}$ explanation of the parabolic GRIN $l = 0\text{--}6$ cutoff \tagasymp{}.}
+Compare the radial index-squared integral $\mathcal{I} \equiv \int_{r_1}^{r_2} [n^2(r) - n_{\mathrm{clad}}^2]\,\dd r$ (the 1D quantum-well binding strength entering the effective normalized frequency $V_{\mathrm{eff}} \propto \sqrt{\mathcal{I}}$; Snyder \& Love~\S14-3):
+\begin{equation}
+  \frac{\mathcal{I}_{\mathrm{GRIN}}}{\mathcal{I}_{\mathrm{step}}} = \frac{\int_{-1}^{1}(1 - s^2)\,\dd s}{\int_{-1}^{1} 1\,\dd s} = \frac{2 - 2/3}{2} = \frac{2}{3} \implies \frac{V_{\mathrm{eff}}^{\mathrm{GRIN}}}{V_{\mathrm{eff}}^{\mathrm{step}}} = \sqrt{\frac{2}{3}} = 0.8165.
+\end{equation}
+Thus $l_{\max}^{\mathrm{GRIN}} \approx 0.8165 \times 8 \approx 6.5$, immediately explaining why our Sturm--Liouville solver finds strictly $l = 0\text{--}6$ guided in the GRIN RCF ($n_{\mathrm{eff}}(6) = 1.44760 > 1.444 > n_{\mathrm{eff}}(7) = 1.44295$), matching Villalba \emph{et al.}~(2023)!
+
+\begin{pencheck}[Hand Check of Decibel Coupling Gain at $l = 4$ (Table~1)]
+GRIN RCF: $\eta_{\mathrm{PVB}} = 0.99177$, fixed-collimator $\eta_{\mathrm{LG}}(3.22\,\mu\mathrm{m}) = 0.19911 \implies 10\log_{10}(0.99177/0.19911) = 10\log_{10}(4.9810) = \mathbf{+6.97\,\mathrm{dB}}$. Step-index RCF: $10\log_{10}(0.99160/0.20263) = \mathbf{+6.90\,\mathrm{dB}}$.
+\end{pencheck}
+
+\subsection{Multi-Ring SDM Zero-Forcing Noise Penalties and OOK BER --- \josb{5}}
+
+\begin{targeteq}{JOSA B Eq.~(5) and OOK BER Law (p.~3)}
+\[
+  \mathcal{P}_{\mathrm{corr}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-1}), \qquad \mathcal{P}_{\mathrm{AWGN}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-2}), \qquad \mathrm{BER} = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{\eta_l(E_b/N_0)}{2\mathcal{P}}}\right).
+\]
+\end{targeteq}
+
+\begin{approxbox}{Linear Equalizer Noise Models \& Binary OOK Detection Theory}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} algebra under the \tagmodel{} assumption of a linear non-orthogonal channel $\mathbf{y} = \gamma\mathbf{s} + \boldsymbol{\varepsilon}$ with circularly symmetric Gaussian noise and equiprobable binary on--off keying (OOK).
+  \item \textbf{Where it comes from:} \emph{J.\ G.\ Proakis \& M.\ Salehi}, \emph{Digital Communications} (5th ed., Ch.~4 for $\operatorname{erfc}$ BER of antipodal/OOK constellations, Ch.~9 for linear zero-forcing equalization).
+  \item \textbf{Crucial physical distinction between $\mathcal{P}_{\mathrm{corr}}$ and $\mathcal{P}_{\mathrm{AWGN}}$:}
+    Applying $\hat{\mathbf{s}} = \gamma^{-1}\mathbf{y} = \mathbf{s} + \gamma^{-1}\boldsymbol{\varepsilon}$ transforms any noise covariance $\Sigma_\varepsilon = \mathbb{E}[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^\dagger]$ into $\Sigma_{\mathrm{ZF}} = \gamma^{-1}\Sigma_\varepsilon\gamma^{-1}$ (since $\gamma^\dagger = \gamma$).
+    \begin{enumerate}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+      \item \emph{Optical pre-amplifier (ASE) white noise} $\mathbb{E}[\varepsilon_{\mathrm{opt}}(\mathbf{r})\varepsilon_{\mathrm{opt}}^*(\mathbf{r}')] = \sigma^2\delta^{(2)}(\mathbf{r}-\mathbf{r}')$ projected onto the non-orthogonal rings $\{\psi_{l,R_m}\}$ acquires covariance $[\Sigma_\varepsilon]_{mn} = \sigma^2\braket{\psi_{l,R_m}}{\psi_{l,R_n}} = \sigma^2\gamma_{mn}$! Hence $\Sigma_{\mathrm{ZF}} = \sigma^2\gamma^{-1} \implies \mathcal{P}_{\mathrm{corr}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-1})$.
+      \item \emph{Independent electronic photodiode thermal noise} at each demultiplexed port has $\Sigma_\varepsilon = \sigma^2\mathbb{I}_N$, giving $\Sigma_{\mathrm{ZF}} = \sigma^2\gamma^{-2} \implies \mathcal{P}_{\mathrm{AWGN}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-2}) \ge \mathcal{P}_{\mathrm{corr}}$ (always steeper when $\kappa(\gamma) > 1$!).
+    \end{enumerate}
+  \item \textbf{OOK BER derivation:} For equiprobable symbols $s \in \{0, \sqrt{2E_b}\}$ (average bit energy $\frac{1}{2}(0 + 2E_b) = E_b$) attenuated by coupling $\eta_l$ with noise variance $\sigma_n^2 = \mathcal{P} N_0/2$ per real quadrature, the optimal midpoint decision boundary sits at distance $d = \sqrt{2\eta_l E_b}/2$. Integrating the Gaussian tail gives $\mathrm{BER} = \frac{1}{\sqrt{2\pi\sigma_n^2}}\int_d^\infty e^{-x^2/(2\sigma_n^2)}\,\dd x = \frac{1}{2}\operatorname{erfc}(d/(\sqrt{2}\sigma_n)) = \frac{1}{2}\operatorname{erfc}(\sqrt{\eta_l(E_b/N_0)/(2\mathcal{P})})$.
+\end{itemize}
+\end{approxbox}
+
+% ==============================================================================
+\section{JOSA B Section 4: Kolmogorov Turbulence Dual-Frame Projector --- \josb{6}}
+\label{sec:v2_b4}
+
+\begin{targeteq}{JOSA B Eq.~(6) and Multi-Screen Scaling (pp.~3--4)}
+\[
+  P_{\mathrm{PVB},l_0}\psi_{\mathrm{turb}} = \sum_{n,m=1}^N (\gamma^{-1})_{nm}\braket{\psi_{l_0,R_m}^{(\mathrm{prop})}}{\psi_{\mathrm{turb}}}\psi_{l_0,R_n}^{(\mathrm{prop})}, \qquad r_{0,\mathrm{scr}} = r_{0,\mathrm{tot}}\,N_{\mathrm{scr}}^{3/5}.
+\]
+\end{targeteq}
+
+\paragraph*{Step 1: Exact least-squares derivation of $P_{\mathrm{PVB},l_0}$ \tagexact{}.}
+Because Fresnel propagation $\mathcal{U}_z$ is unitary, the propagated states $v_n \equiv \mathcal{U}_z\psi_{l_0,R_n}$ preserve the waist Gram matrix identically: $\braket{v_m}{v_n} = \gamma_{mn}$. Setting $\frac{\partial}{\partial c_m^*}\norm{\psi_{\mathrm{turb}} - \sum_n c_n v_n}_{L^2}^2 = 0$ gives the normal equations $\sum_n \gamma_{mn} c_n = \braket{v_m}{\psi_{\mathrm{turb}}} \implies \mathbf{c} = \gamma^{-1}\mathbf{b}$, yielding \josb{6}. Direct substitution verifies idempotence ($P^2 = P$, via $\gamma^{-1}\gamma\gamma^{-1} = \gamma^{-1}$) and self-adjointness ($P^\dagger = P$). Because every $v_m \in \mathcal{H}_{l_0}$ carries $e^{il_0\phi}$, all $l \neq l_0$ turbulence crosstalk vanishes identically ($\braket{v_m}{\psi^{(l)}} = 0$).
+
+\begin{approxbox}{Kolmogorov Phase PSD, Fried Parameter $r_0$, and 5-Screen Split-Step Scaling}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagmodel{} (atmospheric turbulence physics) + \tagasymp{} (thin-screen split-step approximation).
+  \item \textbf{Where the $k^{-11/3}$ and $r_0^{-5/3}$ exponents come from:}
+    (1) \emph{A.\ N.\ Kolmogorov}~(1941) showed by dimensional analysis of turbulent kinetic-energy cascade rate $\varepsilon$ ($[\varepsilon] = \mathrm{m}^2/\mathrm{s}^3$) that the 1D energy spectrum scales as $E(k) \propto \varepsilon^{2/3} k^{-5/3}$ in the inertial subrange $2\pi/L_0 \ll k \ll 2\pi/l_0$. Spreading this isotropically over a 3D shell of area $4\pi k^2$ gives the 3D refractive-index PSD $\Phi_n(k) = 0.033\,C_n^2 k^{-11/3}$ (\emph{L.\ C.\ Andrews \& R.\ L.\ Phillips}, \emph{Laser Beam Propagation through Random Media}, 2nd ed., Ch.~3).
+    (2) Integrating phase delays $\phi(\mathbf{r}) = k_0 \int_0^L \delta n(\mathbf{r},z)\,\dd z$ through a slab of thickness $L$ under the Markov (delta-correlated along $z$) approximation gives the 2D phase PSD $\Phi_\phi(\kappa) = 0.023\,r_0^{-5/3}\kappa^{-11/3}$ and phase structure function $D_\phi(\rho) = \mathbb{E}[\abs{\phi(\mathbf{r}+\boldsymbol{\rho})-\phi(\mathbf{r})}^2] = 6.88(\rho/r_0)^{5/3}$ (\emph{D.\ L.\ Fried}, \emph{J.\ Opt.\ Soc.\ Am.} \textbf{55}, 1427 (1965); \emph{R.\ G.\ Lane, A.\ Glindemann \& J.\ C.\ Dainty}, \emph{Waves Random Media} \textbf{2}, 209 (1992)).
+  \item \textbf{Derivation of $r_{0,\mathrm{scr}} = r_{0,\mathrm{tot}} N_{\mathrm{scr}}^{3/5}$:} Splitting continuous propagation into $N_{\mathrm{scr}}$ thin phase screens separated by free-space Fresnel steps $\Delta z = z/N_{\mathrm{scr}}$ (valid when per-screen scintillation is weak) requires the sum of independent phase structure functions to reproduce the total path $D_\phi^{\mathrm{tot}}(\rho)$:
+  \[
+    \sum_{s=1}^{N_{\mathrm{scr}}} 6.88\left(\frac{\rho}{r_{0,\mathrm{scr}}}\right)^{5/3} = 6.88\,N_{\mathrm{scr}}\left(\frac{\rho}{r_{0,\mathrm{scr}}}\right)^{5/3} = 6.88\left(\frac{\rho}{r_{0,\mathrm{tot}}}\right)^{5/3} \implies r_{0,\mathrm{scr}} = r_{0,\mathrm{tot}}\,N_{\mathrm{scr}}^{3/5}.
+  \]
+  At $N_{\mathrm{scr}} = 5$, $5^{3/5} = 2.62653$. Notice what is neglected: diffraction \emph{inside} each individual slice of thickness $\Delta z = 0.1\,\mathrm{m}$ (splitting into 5 screens captures full volume scintillation / amplitude-to-phase conversion far better than a single lumped screen!).
+\end{itemize}
+\end{approxbox}
+
+% ==============================================================================
+\section{JOSA B Section 5: Multi-Plane Gouy IC-POVM Tomography}
+\label{sec:v2_b5}
+
+\subsection{Single-Plane Rank-$(2d-1)$ Ceiling and $M=5$ Gouy IC-POVM --- \josb{7}}
+
+\begin{targeteq}{JOSA B Eq.~(7) (p.~5)}
+\[
+  \Pi_{m,k} = \frac{R_k\Delta R}{M}\ket{\phi_{m,k}}\bra{\phi_{m,k}}, \qquad [\Pi_{m,k}]_{p,p'} = \frac{R_k\Delta R}{M} e^{-i 2(p-p')\vartheta_m} c_{l,p}(R_k) c_{l,p'}(R_k).
+\]
+\end{targeteq}
+
+\paragraph*{Exact algebraic proof of the single-plane rank-$(2d-1) = 7$ ceiling \tagexact{}.}
+On $\mathcal{H}_d^{(l)} = \operatorname{span}\{\ket{\psi_{p,l}}\}_{p=0}^{d-1}$, the real vector space $\mathrm{Herm}(\mathcal{H}_d^{(l)})$ has dimension $d^2$ ($d$ diagonals, $\frac{d(d-1)}{2}$ real symmetric off-diagonals, $\frac{d(d-1)}{2}$ imaginary antisymmetric off-diagonals). At $z = 0$, Eq.~\josb{2} yields $c_{l,p}(R) = \mathcal{A}_{0,l}(R)\,Q_p(\zeta_R)$ with \emph{real} polynomial $Q_p$ of degree $p$ in $\zeta_R \propto R^2$. Thus every outer-product matrix $[\ket{\Phi_{l,R}}\bra{\Phi_{l,R}}]_{p,p'} = [\mathcal{A}_{0,l}(R)]^2\,Q_p(\zeta_R) Q_{p'}(\zeta_R)$ is:
+(i) purely real symmetric (zero overlap with all $\frac{d(d-1)}{2}$ imaginary antisymmetric operators), AND
+(ii) $[\mathcal{A}_{0,l}(R)]^2$ times a polynomial of degree at most $2d - 2$ in $\zeta_R$.
+Because the space of polynomials of degree $\le 2d-2$ has dimension $2d - 1$, the real span of $\{\ket{\Phi_{l,R}}\bra{\Phi_{l,R}}\}_{R>0}$ has dimension \emph{at most} $2d - 1$! At $d = 4$, $2d - 1 = \mathbf{7}$ (even strictly smaller than the $10$-dimensional real symmetric subspace!).
+
+\begin{approxbox}{Riemann Discretization vs.\ Exact POVM Completion in Eq.~(7)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} The midpoint radial sum $\sum_{k=1}^K R_k\Delta R\ket{\phi_{m,k}}\bra{\phi_{m,k}}$ approximates the continuous integral $\int_0^\infty R\,\dd R\ket{\phi_{l,R}^{(m)}}\bra{\phi_{l,R}^{(m)}} = P_{\mathcal{H}_d} S_w P_{\mathcal{H}_d}$ with midpoint quadrature error $\mathcal{O}(\Delta R^2)$. However, once $\lambda_{\max}(\sum_{m,k}\Pi_{m,k}) = 0.90498 < 1$, defining the residual outcome $\Pi_{\mathrm{res}} \equiv \mathbb{I}_d - \sum_{m,k}\Pi_{m,k} \ge 0$ makes $\{\Pi_{m,k}\}\cup\{\Pi_{\mathrm{res}}\}$ a \textbf{100\%} \tagexact{} \textbf{discrete POVM} ($\Pi_\alpha \ge 0$, $\sum_\alpha\Pi_\alpha = \mathbb{I}_d$)!
+  \item \textbf{How Gouy phases break the rank-7 barrier:} At plane $z_m$, Paper~1 Eq.~(15) inserts $e^{-i 2(p-p')\vartheta_m}$ on off-diagonals $p \neq p'$. Sampling $M = 5$ planes across $\vartheta_m \in [0,\pi/2)$ provides linearly independent $\cos[2(p-p')\vartheta_m]$ and $\sin[2(p-p')\vartheta_m]$ Fourier harmonics for all $\abs{p-p'} \in \{1,2,3\}$, lifting the operator span from $7$ to the full $d^2 = \mathbf{16}$ (verified numerically: smallest singular value strictly positive)!
+\end{itemize}
+\end{approxbox}
+
+\subsection{Gell-Mann Fisher Matrix, Closed-Form MUB Bound, and $R\hat{\rho}R$ MLE --- \josb{8}}
+
+\begin{targeteq}{JOSA B Eq.~(8) and Table~3 (pp.~5--6)}
+\[
+  F_{jk} = \sum_\alpha \frac{\operatorname{Tr}(\Pi_\alpha B_j)\operatorname{Tr}(\Pi_\alpha B_k)}{\operatorname{Tr}(\Pi_\alpha)/d}, \qquad
+  \operatorname{Tr}(\mathbf{F}_{\mathrm{MUB}}^{-1}) = \frac{(d^2-1)(d+1)}{d} = 18.75 \quad (d = 4).
+\]
+\end{targeteq}
+
+\begin{approxbox}{Cram\'er--Rao Bound, MUB Optimality, $R\hat{\rho}R$ MLE, and Axial Jitter Taylor Expansion}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} for $\mathbf{F}$, $\operatorname{Tr}(\mathbf{F}_{\mathrm{MUB}}^{-1}) = 18.75$, and the Cram\'er--Rao inequality $\operatorname{Cov}(\hat{\boldsymbol{\theta}}) \ge (N_{\mathrm{phot}}\mathbf{F})^{-1}$ (attained asymptotically by MLE as $N_{\mathrm{phot}} \to \infty$); \tagasymp{} for first-order axial jitter sensitivity $\delta\vartheta_m \approx \frac{\delta z_m/z_R}{1+(z_m/z_R)^2} + \mathcal{O}((\delta z_m/z_R)^2)$.
+  \item \textbf{Where each ingredient comes from:}
+    (1) \textbf{Cram\'er--Rao \& generalized Gell-Mann Bloch vector:} \emph{M.\ G.\ A.\ Paris}, \emph{Int.\ J.\ Quantum Inf.} \textbf{7}, 125 (2009); \emph{Nielsen \& Chuang}~\S2.2.6. Expanding $\rho(\boldsymbol{\theta}) = \mathbb{I}_d/d + \sum_{j=1}^{d^2-1}\theta_j B_j$ ($\operatorname{Tr}(B_j B_k) = \delta_{jk}$, $\operatorname{Tr} B_j = 0$) gives $p_\alpha(\boldsymbol{\theta}) = \operatorname{Tr}(\rho\Pi_\alpha) \implies \partial_{\theta_j} p_\alpha = \operatorname{Tr}(\Pi_\alpha B_j)$ and Frobenius MSE $\mathbb{E}[\norm{\hat{\rho}-\rho_0}_F^2] = \mathbb{E}[\norm{\hat{\boldsymbol{\theta}}-\boldsymbol{\theta}}_2^2] \ge \operatorname{Tr}(\mathbf{F}^{-1})/N_{\mathrm{phot}}$.
+    (2) \textbf{MUB Fisher trace \josb{8}:} \emph{W.\ K.\ Wootters \& B.\ D.\ Fields}, \emph{Ann.\ Phys.\ (N.Y.)} \textbf{191}, 363 (1989). For $d+1$ MUBs ($d = 4 = 2^2$ is a prime power, so $d+1 = 5$ MUBs exist!) with $\Pi_{b,r} = \frac{1}{d+1}\ket{e_{b,r}}\bra{e_{b,r}}$, aligning $\{B_j\}$ with the $d+1$ mutually Hilbert--Schmidt-orthogonal $(d-1)$-dimensional diagonal blocks diagonalizes $\mathbf{F}_{\mathrm{MUB}}$ identically to $\frac{(d+1)^{-2}}{[d(d+1)]^{-1}}\delta_{jk} = \frac{d}{d+1}\delta_{jk}$, giving $\operatorname{Tr}(\mathbf{F}_{\mathrm{MUB}}^{-1}) = (d^2-1)(d+1)/d = 15\times 5/4 = \mathbf{18.75}$!
+    (3) \textbf{$R\hat{\rho}R$ iterative MLE:} \emph{A.\ I.\ Lvovsky}, \emph{J.\ Opt.\ B} \textbf{6}, S556 (2004). Maximizing $\mathcal{L}(\rho) = \sum_\alpha n_\alpha\ln\operatorname{Tr}(\rho\Pi_\alpha) - \lambda(\operatorname{Tr}\rho - 1)$ yields the extremal equation $R(\rho)\rho = \rho$ with $R(\rho) = \sum_\alpha \frac{n_\alpha}{N_{\mathrm{phot}}\operatorname{Tr}(\rho\Pi_\alpha)}\Pi_\alpha \ge 0$; updating $\rho^{(t+1)} = \mathcal{N}[R\rho^{(t)}R]$ strictly enforces $\rho \ge 0$ and $\operatorname{Tr}\rho = 1$.
+\end{itemize}
+\end{approxbox}
+
+% ==============================================================================
+\section{JOSA B Section 6: Circular-Iris Bell--CHSH and Detection-Loophole Threshold}
+\label{sec:v2_b6}
+
+\subsection{LG Incomplete Gamma Law and Complete Hankel Derivation of $t_l^{\mathrm{PVB}}(R_0)$ --- \josb{9}}
+
+\begin{targeteq}{JOSA B Eq.~(9) and Exact LG Iris Law (p.~6)}
+\[
+  t_l^{\mathrm{LG}}(R_{\mathrm{iris}}) = P\!\left(\abs{l}+1,\;\frac{2R_{\mathrm{iris}}^2}{w_0^2}\right), \qquad
+  t_l^{\mathrm{PVB}}(R_0) = \frac{1}{2} + c_0\frac{w}{R_0} - \frac{4l^2-1}{16\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3 + \mathcal{O}\!\left(\frac{w^5}{R_0^5}\right), \quad (c_0 = 0).
+\]
+\end{targeteq}
+
+\paragraph*{Step 1: Exact $\mathrm{LG}_{0,l}$ iris survival \tagexact{}.}
+Substituting $u = 2r^2/w_0^2$ ($2\pi r\,\dd r = \frac{\pi w_0^2}{2}\dd u$) into $t_l^{\mathrm{LG}} = \int_0^{R_{\mathrm{iris}}} 2\pi r\abs{\psi_{0,l}(r)}^2\,\dd r$ yields $\frac{1}{\abs{l}!}\int_0^{2R_{\mathrm{iris}}^2/w_0^2} u^{\abs{l}} e^{-u}\,\dd u = P(\abs{l}+1,\,2R_{\mathrm{iris}}^2/w_0^2)$ (regularized lower incomplete gamma function, \emph{NIST DLMF~\S8.2.4}).
+
+\begin{approxbox}{Every Single Approximation Inside the Hankel $(w/R_0)^3$ Iris Expansion (Eq.~(9))}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagasymp{} in small parameter $\epsilon \equiv w/R_0 \ll 1$ (with $l^2\epsilon^2 \ll 1$).
+  \item \textbf{Three explicit approximations tracked step by step:}
+    \begin{enumerate}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+      \item \emph{Hankel asymptotic series for $I_{\abs{l}}(x)$ (DLMF~10.40.1):} With $r = R_0(1 + \epsilon u)$, $x = 2R_0 r/w^2 = \frac{2}{\epsilon^2}(1+\epsilon u)$, and $\mu \equiv 4l^2 - 1$, squaring $[e^{-x} I_{\abs{l}}(x)]^2 = \frac{1}{2\pi x}[1 - \frac{\mu}{4x} + \mathcal{O}(x^{-2})]$ drops $\mathcal{O}(\epsilon^4)$ inside the even part and $\mathcal{O}(\epsilon^5)$ inside the odd part.
+      \item \emph{Exact polar Jacobian cancellation (NO approximation!):} Multiplying by $r = R_0(1+\epsilon u)$ gives $r/x = \frac{R_0(1+\epsilon u)}{(2/\epsilon^2)(1+\epsilon u)} = \frac{R_0\epsilon^2}{2}$, cancelling $(1+\epsilon u)$ \textbf{identically to all orders}! That is why the linear $l$-independent term vanishes identically ($c_0 = 0$)!
+      \item \emph{Geometric series + extending lower limit $u_{\min} = -1/\epsilon \to -\infty$:} Expanding $(1+\epsilon u)^{-1} = 1 - \epsilon u + \mathcal{O}(\epsilon^2)$ inside $\frac{\mu}{4x} = \frac{\mu\epsilon^2}{8(1+\epsilon u)}$ neglects $\mathcal{O}(\epsilon^4)$ (even in $u$, cancels in $\mathcal{N}/\mathcal{D}$!) and $\mathcal{O}(\epsilon^5)$ (first odd remainder). Extending $\int_{-1/\epsilon}^0 e^{-2u^2}\,\dd u \to \int_{-\infty}^0 e^{-2u^2}\,\dd u$ drops only $\frac{1}{4}\operatorname{erfc}(\sqrt{2}/\epsilon) \sim \frac{\epsilon}{4\sqrt{2\pi}}e^{-2/\epsilon^2} \approx 10^{-88}$ at $\epsilon = 0.1$!
+    \end{enumerate}
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 2: Explicit ratio evaluation $\mathcal{N}/\mathcal{D}$ yielding \josb{9} \tagasymp{}.}
+Using $\int_{-\infty}^\infty e^{-2u^2}\dd u = \sqrt{\pi/2}$, $\int_{-\infty}^0 e^{-2u^2}\dd u = \frac{1}{2}\sqrt{\pi/2}$, $\int_{-\infty}^\infty u e^{-2u^2}\dd u = 0$, and $\int_{-\infty}^0 u e^{-2u^2}\dd u = [-\frac{1}{4}e^{-2u^2}]_{-\infty}^0 = -\frac{1}{4}$ on $r\abs{\Phi_{l,R_0}}^2 \propto e^{-2u^2}[1 - \frac{\mu\epsilon^2}{8} + \frac{\mu\epsilon^3}{8}u + \mathcal{O}(\epsilon^4)]$:
+\begin{equation}
+  t_l^{\mathrm{PVB}}(R_0) = \frac{\bigl(1 - \frac{\mu\epsilon^2}{8}\bigr)\frac{1}{2}\sqrt{\frac{\pi}{2}} + \frac{\mu\epsilon^3}{8}\bigl(-\frac{1}{4}\bigr) + \mathcal{O}(\epsilon^4)}{\bigl(1 - \frac{\mu\epsilon^2}{8}\bigr)\sqrt{\frac{\pi}{2}} + \mathcal{O}(\epsilon^4)}
+  = \frac{1}{2} - \frac{\mu\epsilon^3}{32\sqrt{\pi/2}} + \mathcal{O}(\epsilon^5)
+  = \frac{1}{2} - \frac{4l^2 - 1}{16\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3 + \mathcal{O}\!\left(\frac{w^5}{R_0^5}\right),
+\end{equation}
+proving \josb{9} (with $c_0 = 0$ identically!). Notice how $(1 - \mu\epsilon^2/8)$ cancels completely between numerator and denominator!
+
+\subsection{Horodecki Theorem (Proved From Scratch), Sixth-Order CHSH Bound, and Loophole Threshold --- \josb{10}}
+
+\begin{targeteq}{JOSA B Eq.~(10) and Table~4 (p.~7)}
+\[
+  S_{\max} = 2\sqrt{1 + \mathcal{V}^2}, \qquad 2\sqrt{2} - S_{\mathrm{PVB}}^{(2)}(R_0) \approx 2\sqrt{2}\,\delta_{14}^2 = \mathcal{O}\!\left((l_1^2-l_2^2)^2(w/R_0)^6\right), \qquad \eta_{\mathrm{crit}}^{\mathrm{CHSH}} = \frac{2}{1+\sqrt{2}} = 82.8427\%.
+\]
+\end{targeteq}
+
+\begin{approxbox}{Horodecki Theorem (1995) --- Self-Contained 5-Line Proof + Sixth-Order Taylor Expansion}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} for $S_{\max} = 2\sqrt{1+\mathcal{V}^2}$; \tagasymp{} for the $\delta_{14}^2 \propto (w/R_0)^6$ expansion (next correction is $\mathcal{O}(\delta_{14}^4) = \mathcal{O}((w/R_0)^{12}) \sim 10^{-11}$!).
+  \item \textbf{Where Horodecki's theorem comes from:} \emph{R.\ Horodecki, P.\ Horodecki \& M.\ Horodecki}, \emph{Phys.\ Lett.\ A} \textbf{200}, 340--344 (1995).
+  \item \textbf{Mini-derivation from scratch:} For any two-qubit state with correlation matrix $T_{ij} = \operatorname{Tr}(\rho\,\sigma_i\otimes\sigma_j)$ and measurement Bloch unit vectors $\mathbf{a}, \mathbf{a}', \mathbf{b}, \mathbf{b}' \in \mathbb{R}^3$, the CHSH expectation value is $S = \mathbf{a}\cdot T(\mathbf{b}+\mathbf{b}') + \mathbf{a}'\cdot T(\mathbf{b}-\mathbf{b}')$. Write $\mathbf{b} + \mathbf{b}' = 2\cos\theta\,\hat{\mathbf{c}}$ and $\mathbf{b} - \mathbf{b}' = 2\sin\theta\,\hat{\mathbf{c}}_\perp$ where $\hat{\mathbf{c}} \perp \hat{\mathbf{c}}_\perp$ are orthogonal unit vectors ($\norm{\mathbf{b}+\mathbf{b}'}^2 + \norm{\mathbf{b}-\mathbf{b}'}^2 = 4$). Maximizing over unit vectors $\mathbf{a}, \mathbf{a}'$ via Cauchy--Schwarz sets $\mathbf{a} \parallel T\hat{\mathbf{c}}$ and $\mathbf{a}' \parallel T\hat{\mathbf{c}}_\perp$:
+  \[
+    S \le 2\cos\theta\,\norm{T\hat{\mathbf{c}}} + 2\sin\theta\,\norm{T\hat{\mathbf{c}}_\perp} \le 2\sqrt{\norm{T\hat{\mathbf{c}}}^2 + \norm{T\hat{\mathbf{c}}_\perp}^2},
+  \]
+  again by Cauchy--Schwarz in $(\cos\theta, \sin\theta)$! For any orthogonal pair $(\hat{\mathbf{c}}, \hat{\mathbf{c}}_\perp)$, $\norm{T\hat{\mathbf{c}}}^2 + \norm{T\hat{\mathbf{c}}_\perp}^2 = \hat{\mathbf{c}}^{\mathsf{T}}(T^{\mathsf{T}}T)\hat{\mathbf{c}} + \hat{\mathbf{c}}_\perp^{\mathsf{T}}(T^{\mathsf{T}}T)\hat{\mathbf{c}}_\perp$ is maximized by choosing the two eigenvectors corresponding to the two largest eigenvalues $u_1, u_2$ of $T^{\mathsf{T}}T$, yielding $S_{\max} = 2\sqrt{u_1 + u_2}$ identically!
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 1: Post-selected correlation tensor and sixth-order expansion \josb{10}.}
+For $\ket{\Psi_{\mathrm{ps}}} = \alpha\ket{00} + \beta\ket{11}$ ($\alpha = \sqrt{p_1/(p_1+p_2)}$, $\beta = \sqrt{p_2/(p_1+p_2)}$), direct Pauli evaluation gives $T = \operatorname{diag}(\mathcal{V}, -\mathcal{V}, 1)$ with $\mathcal{V} = 2\alpha\beta = \frac{2\sqrt{p_1 p_2}}{p_1+p_2}$, so $T^{\mathsf{T}}T = \operatorname{diag}(\mathcal{V}^2, \mathcal{V}^2, 1)$ has two largest eigenvalues $1$ and $\mathcal{V}^2 \implies S_{\max} = 2\sqrt{1+\mathcal{V}^2}$. Setting $t_1 = \bar{t}(1+\delta_{14})$, $t_4 = \bar{t}(1-\delta_{14})$ and $p_l = t_l^2$ (two-arm truncation), expand via $(1+u)^{-1} = 1 - u + u^2 - \cdots$ and $\sqrt{1-v} = 1 - \frac{1}{2}v - \frac{1}{8}v^2 - \cdots$:
+\begin{equation}
+  \mathcal{V}^{(2)} = \frac{1 - \delta_{14}^2}{1 + \delta_{14}^2} = 1 - 2\delta_{14}^2 + \mathcal{O}(\delta_{14}^4)
+  \implies S_{\mathrm{PVB}}^{(2)} = 2\sqrt{2 - 4\delta_{14}^2 + \mathcal{O}(\delta_{14}^4)} = 2\sqrt{2}\left(1 - \delta_{14}^2 + \mathcal{O}(\delta_{14}^4)\right).
+\end{equation}
+Thus $2\sqrt{2} - S_{\mathrm{PVB}}^{(2)}(R_0) = 2\sqrt{2}\,\delta_{14}^2 + \mathcal{O}(\delta_{14}^4) = \mathcal{O}((l_1^2-l_2^2)^2(w/R_0)^6)$! (For one-arm truncation, $\mathcal{V}^{(1)} = \sqrt{1-\delta_{14}^2} \implies 2\sqrt{2} - S_{\mathrm{PVB}}^{(1)} \approx \delta_{14}^2/\sqrt{2}$, four times smaller.)
+
+\begin{approxbox}{Symmetric Detection-Loophole Threshold ($82.84\%$) vs.\ Eberhard's Bound ($66.67\%$)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} for maximally entangled states under symmetric single-arm efficiency $\eta$ without fair sampling!
+  \item \textbf{Where it comes from:} \emph{J.\ F.\ Clauser, M.\ A.\ Horne, A.\ Shimony \& R.\ A.\ Holt}, \emph{Phys.\ Rev.\ Lett.} \textbf{23}, 880 (1969); \emph{A.\ Garg \& N.\ D.\ Mermin}, \emph{Phys.\ Rev.\ D} \textbf{35}, 3831 (1987).
+  \item \textbf{Derivation:} Assign every undetected photon locally to outcome $+1$. Both photons are detected with probability $\eta^2$ (giving $E_{\mathrm{QM}}$), neither with $(1-\eta)^2$ (giving $(+1)(+1) = +1$), and exactly one photon with $2\eta(1-\eta)$ (giving $\eta(1-\eta)\langle A\rangle = 0$ because a maximally entangled state has maximally mixed marginals $\langle A\rangle = \langle B\rangle = 0$!). Hence $E(a,b) = \eta^2 E_{\mathrm{QM}}(a,b) + (1-\eta)^2$, so $S_{\mathrm{uncond}}(\eta) = 2\sqrt{2}\,\eta^2 + 2(1-\eta)^2 > 2 \iff (2\sqrt{2}+2)\eta^2 > 4\eta \iff \eta > \frac{2}{1+\sqrt{2}} = 2(\sqrt{2}-1) = \mathbf{82.8427\%}$!
+  \item \textbf{Educational contrast with Eberhard (1993):} \emph{P.\ H.\ Eberhard}, \emph{Phys.\ Rev.\ A} \textbf{47}, R747 (1993) proved that \emph{non-maximally} entangled states ($\alpha \neq \beta$, which have non-zero marginals $\langle A\rangle \neq 0$) lower the required threshold to $\eta > 2/3 = 66.67\%$---at the cost of much smaller raw violation and sensitivity to dark counts. For \emph{maximally} entangled states like $\frac{1}{\sqrt{2}}(\ket{1,1}+\ket{4,4})$, $82.84\%$ is the sharp symmetric threshold!
+\end{itemize}
+\end{approxbox}
+
+\begin{pencheck}[Hand Check of $\delta_{14}$, $2\sqrt{2}-S^{(2)}$, and Table~4 Pupil-Area Ratios]
+At $w/R_0 = 0.1$, $l_1 = 1$ ($\mu_1 = 3$), $l_2 = 4$ ($\mu_2 = 63$): $\delta_{14} \approx \frac{63-3}{16\sqrt{2\pi}}(0.1)^3 = \mathbf{1.4960\times 10^{-3}}$ (exact: $1.510\times 10^{-3}$); $2\sqrt{2}\,\delta_{14}^2 = 2.82843(1.4960\times 10^{-3})^2 = \mathbf{6.33\times 10^{-6}}$ (exact: $6.48\times 10^{-6}$). Pupil-area reductions to clear $82.84\%$ ($R_{\mathrm{crit}}^{\mathrm{PVB}} = 1.0476\,R_0$): $(1.3243/1.0476)^2 = \mathbf{1.60\times}$, $(1.8729/1.0476)^2 = \mathbf{3.20\times}$, and $(2.6487/1.0476)^2 = \mathbf{6.39\times}$.
+\end{pencheck}
+
+% ==============================================================================
+\section*{Annotated Study Guide \& Reading Map (Paper 2)}
+\addcontentsline{toc}{section}{Annotated Study Guide \& Reading Map (Paper 2)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Ring-Core Fibers \& Communications:} \emph{Snyder \& Love}, \emph{Optical Waveguide Theory} (Ch.~14); \emph{Proakis \& Salehi}, \emph{Digital Communications} (Chs.~4, 9); local arXiv PDFs in \texttt{Paper 2/References/}: Villalba \emph{et al.} (\texttt{2308.11354}), Rojas-Rojas \emph{et al.} (\texttt{2101.06280}), Zhang \emph{et al.} (\texttt{1711.04646}, GRIN RCF), Ca\~nas \emph{et al.} (\texttt{2109.03064}).
+  \item \textbf{Atmospheric Turbulence:} \emph{Andrews \& Phillips}, \emph{Laser Beam Propagation through Random Media} (2nd ed., Chs.~3, 9); Lane \emph{et al.}~(1992); local PDFs: Roux (\texttt{1009.1956}), Ibrahim \emph{et al.} (\texttt{1306.6495}).
+  \item \textbf{Quantum Tomography \& Radial Modes:} Wootters \& Fields~(1989); Paris~(2009); local PDFs: Renes \emph{et al.} (\texttt{quant-ph/0310075}), Lvovsky (\texttt{quant-ph/0311097}), Gu \emph{et al.} (\texttt{1712.02892}), Zhou \emph{et al.} (\texttt{1711.08120}), Fontaine \emph{et al.} (\texttt{1803.04126}).
+  \item \textbf{Bell--CHSH \& Detection Loophole:} Horodecki \emph{et al.}~(1995); CHSH~(1969); Garg \& Mermin~(1987); Eberhard~(1993); local PDFs: V\'ertesi \emph{et al.} (\texttt{0909.3171}), Walborn \emph{et al.} (\texttt{1010.1236}).
+\end{itemize}
+
+\end{document}

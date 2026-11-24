@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main_paper1_josaa.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+The style file: opticajnl.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--can't use both author and editor fields in Gradshteyn2014
+You've used 37 entries,
+            2666 wiz_defined-function locations,
+            867 strings with 9996 characters,
+and the built_in function-call counts, 12431 in all, are:
+= -- 909
+> -- 411
+< -- 8
++ -- 188
+- -- 94
+* -- 853
+:= -- 1392
+add.period$ -- 65
+call.type$ -- 37
+change.case$ -- 33
+chr.to.int$ -- 21
+cite$ -- 38
+duplicate$ -- 1164
+empty$ -- 1292
+format.name$ -- 122
+if$ -- 2817
+int.to.chr$ -- 0
+int.to.str$ -- 37
+missing$ -- 307
+newline$ -- 115
+num.names$ -- 37
+pop$ -- 489
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 246
+stack$ -- 0
+substring$ -- 590
+swap$ -- 730
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 79
+width$ -- 39
+write$ -- 315
+(There was 1 warning)

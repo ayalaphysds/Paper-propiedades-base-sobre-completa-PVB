@@ -1,0 +1,318 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.80in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\usepackage{bm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!65!black,citecolor=blue!65!black,urlcolor=blue!65!black]{hyperref}
+
+\emergencystretch=1.8em
+
+% Pedagogical color palette for Version 3 (Bottom-Up First-Principles Course)
+\definecolor{tealborder}{HTML}{0E6251}
+\definecolor{softteal}{HTML}{E8F8F5}
+\definecolor{crimsonborder}{HTML}{922B21}
+\definecolor{softcrimson}{HTML}{FDEDEC}
+\definecolor{forestborder}{HTML}{145A32}
+\definecolor{softgreen}{HTML}{EAFAF1}
+\definecolor{slateborder}{HTML}{2C3E50}
+\definecolor{softslate}{HTML}{F2F4F4}
+
+\newtcolorbox{foundationbox}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softteal,colframe=tealborder,fonttitle=\bfseries\small,
+  title={First-Principles Building Block [BACKGROUND --- Not in Main Paper]: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{paperhit}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softcrimson,colframe=crimsonborder,fonttitle=\bfseries\small,
+  title={Paper Milestone [ALREADY IN JOSA B]: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{pencilbox}[1][Pencil-and-Paper Checkpoint]{
+  breakable,enhanced,lines before break=2,
+  colback=softgreen,colframe=forestborder,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{whystep}[1][Why We Take the Next Step]{
+  breakable,enhanced,lines before break=2,
+  colback=softslate,colframe=slateborder,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{slateborder}\textit{JOSA B (V15 Paper 2) --- Version 3: Bottom-Up First-Principles Course}}
+\fancyhead[R]{\footnotesize\color{slateborder}\textit{S. Ayala}}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\inpaper}[1]{\textcolor{crimsonborder}{\textbf{[In JOSA~B: #1]}}}
+\newcommand{\bgtag}{\textcolor{tealborder}{\textbf{[Background]}}}
+
+\numberwithin{equation}{section}
+
+\title{\vspace{-1.0cm}\textbf{\Large Version 3 --- From First Principles With Pencil and Paper (JOSA B, Paper 2)}\\[0.35em]
+\large\textit{A Bottom-Up Self-Study Course Starting From Basic Waves, Linear Algebra, Probability, and Qubits,\\
+Building Step by Step to Every Equation (1)--(10) and Table~1--4 of ``Classical and quantum photonic protocols\\
+based on physical perfect optical vortex beam frames''}}
+\author{Sebasti\'an Ayala\thanks{\texttt{ayala.phys.ds@gmail.com}; ORCID: \href{https://orcid.org/0009-0003-7348-3883}{0009-0003-7348-3883}}}
+\date{Version 3 (First-Principles Self-Study Edition) --- November 24, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+\noindent This \textbf{Version~3} course is written for a reader \textbf{unfamiliar with ring-core fibers, atmospheric turbulence, quantum tomography, or Bell inequalities} who wants to work through all four photonic protocols of \texttt{main\_paper2\_josab.pdf} from scratch with pencil and paper. Each chapter begins from the simplest undergraduate equation (1D quantum wells, $2\times 2$ linear systems, Gaussian tails, coin-flip Fisher information, and two-qubit Pauli matrices) and builds step by step. Teal boxes mark pure \bgtag{} prerequisites not printed in the paper, while crimson \emph{Paper Milestone} boxes signal the exact moment our derivation reaches a published result \inpaper{Eq.~(k), p.~m}.
+\end{abstract}
+
+\tableofcontents
+\vspace{0.5em}
+
+% ==============================================================================
+\section{Chapter 1: The Two Ingredients Imported From Paper 1}
+\label{sec:b_c1}
+
+Before launching into the four photonic applications, recall the two core formulas we built from scratch in Paper~1's Version~3 course: the finite-width physical PVB ring $\Phi_{l,R}(r,\phi)$ (width $w$, radius $R$, twist $e^{il\phi}$) and its exact finite $(p+1)$-term overlap $c_{l,p}(R) = \braket{\Phi_{l,R}}{\psi_{p,l}}$ with standard Laguerre--Gaussian ($\mathrm{LG}_{p,l}$) modes.
+
+\begin{paperhit}{JOSA B Eqs.~(1) and (2) (p.~2)}
+\[
+  \Phi_{l,R}(r,\phi) = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}\,e^{il\phi}e^{-(r^2+R^2)/w^2} I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right), \qquad
+  c_{l,p}(R) = \mathcal{A}_{p,l}(R)\sum_{m=0}^p (-1)^m\binom{p+\abs{l}}{p-m}\xi^m L_m^{\abs{l}}(-\zeta_R).
+\]
+At telecom wavelength $\lambda = 1.55\,\mu\mathrm{m}$, $\mathrm{NA} = 0.20$ ($k_{\max} = k_0\mathrm{NA} = 8.107\times 10^5\,\mathrm{m}^{-1}$), and $w = 1.72\,\mu\mathrm{m}$ ($wk_{\max} = 1.3945$), Paper~1's frame bound gives $A = e^{-(wk_{\max})^2/2} = \mathbf{0.3782}$ and $\kappa = \mathbf{2.644}$.
+\end{paperhit}
+
+% ==============================================================================
+\section{Chapter 2: Protocol 1 --- Ring-Core Optical Fibers and Multi-Ring Communications}
+\label{sec:b_c2}
+
+\begin{whystep}[What Is a Ring-Core Optical Fiber?]
+A regular optical fiber traps light inside a solid glass disk of high refractive index $n_{\mathrm{core}}$ surrounded by lower-index cladding $n_{\mathrm{clad}}$. A \textbf{ring-core fiber (RCF)} replaces the solid disk with a high-index \emph{annular ring} ($r_1 \le r \le r_2$) so twisted vortex beams ($e^{il\phi}$) of many different orders $l$ all sit snugly inside the same ring! Let us derive the fiber's modes from the wave equation.
+\end{whystep}
+
+\subsection{Step 2.1: From Maxwell's Wave Equation to a 1D Schr\"odinger Well}
+
+\begin{foundationbox}{Weakly Guiding Fiber Modes as Bound States in a Quantum Well}
+In a glass fiber whose refractive index $n(r)$ depends only on radius $r$, light traveling along $z$ with propagation constant $\beta_l$ has the form $E(r,\phi,z) = (2\pi)^{-1/2} u_l(r) e^{il\phi} e^{i\beta_l z}$. When the index contrast is small ($\Delta n/n_{\mathrm{clad}} = 0.033/1.444 = 2.3\% \ll 1$), polarization coupling is tiny, and Maxwell's equation reduces to the scalar Helmholtz equation $(\nabla_\perp^2 + k_0^2 n^2(r) - \beta_l^2) E = 0$. Writing $\nabla_\perp^2 = \frac{1}{r}\partial_r(r\partial_r) + \frac{1}{r^2}\partial_\phi^2$ ($\partial_\phi^2 e^{il\phi} = -l^2 e^{il\phi}$) gives:
+\[
+  -\frac{1}{r}\frac{\dd}{\dd r}\!\left(r\frac{\dd u_l}{\dd r}\right) + \left[\frac{l^2}{r^2} - k_0^2 n^2(r)\right] u_l(r) = -\beta_l^2 u_l(r).
+\]
+Think of $-k_0^2 n^2(r)$ as a \textbf{potential energy well} and $-\beta_l^2$ as the \textbf{energy eigenvalue}! A mode is trapped ("guided") strictly when its effective index $n_{\mathrm{eff}} \equiv \beta_l/k_0$ lies inside the well: $n_{\mathrm{clad}} < n_{\mathrm{eff}} < n_{\mathrm{core}}$!
+\end{foundationbox}
+
+To solve this ODE cleanly on a computer or by hand, we want to remove the messy $\frac{1}{r}\frac{\dd}{\dd r}(r\frac{\dd}{\dd r})$ first-derivative term AND turn the weighted normalization $\int_0^\infty r\abs{u_l}^2\dd r = 1$ into unweighted $\int_0^\infty \abs{\chi_l}^2\dd r = 1$. That immediately suggests setting $u_l(r) \equiv r^{-1/2}\chi_l(r)$! Differentiate step by step:
+\begin{align}
+  r u'_l &= r\left(r^{-1/2}\chi'_l - \frac{1}{2}r^{-3/2}\chi_l\right) = r^{1/2}\chi'_l - \frac{1}{2}r^{-1/2}\chi_l, \\
+  (r u'_l)' &= \left(\frac{1}{2}r^{-1/2}\chi'_l + r^{1/2}\chi''_l\right) - \left(-\frac{1}{4}r^{-3/2}\chi_l + \frac{1}{2}r^{-1/2}\chi'_l\right) = r^{1/2}\chi''_l + \frac{1}{4}r^{-3/2}\chi_l.
+\end{align}
+The $\pm\frac{1}{2}r^{-1/2}\chi'_l$ terms cancel identically! Dividing by $-r$ and multiplying the ODE through by $r^{1/2}$ produces an exact symmetric 1D Schr\"odinger equation:
+
+\begin{paperhit}{JOSA B Eqs.~(3) and (4) and Table~1 (pp.~2--3)}
+\[
+  -\frac{\dd^2\chi_l}{\dd r^2} + \left[\frac{l^2 - \frac{1}{4}}{r^2} - k_0^2 n^2(r)\right]\chi_l(r) = -\beta_l^2\chi_l(r), \qquad
+  n_{\mathrm{GRIN}}^2(r) = n_{\mathrm{clad}}^2 + (n_{\mathrm{core}}^2 - n_{\mathrm{clad}}^2)\max\!\left[0,\;1 - \left(\frac{r-r_{\mathrm{mid}}}{a_{\mathrm{ring}}}\right)^2\right].
+\]
+\end{paperhit}
+
+\subsection{Step 2.2: Why a Parabolic GRIN Ring Guides Fewer OAM Modes ($l = 0\text{--}6$ vs.\ $0\text{--}8$)}
+
+Compare the area (binding strength) of the parabolic well $1 - s^2$ on $s \in [-1,1]$ against a flat step-index box of height $1$:
+\begin{equation}
+  \frac{\int_{-1}^1 (1 - s^2)\,\dd s}{\int_{-1}^1 1\,\dd s} = \frac{2 - 2/3}{2} = \frac{2}{3}
+  \implies \frac{V_{\mathrm{eff}}^{\mathrm{GRIN}}}{V_{\mathrm{eff}}^{\mathrm{step}}} = \sqrt{\frac{2}{3}} = 0.8165.
+\end{equation}
+So $l_{\max}^{\mathrm{GRIN}} \approx 0.8165\times 8 \approx 6.5$, explaining right on scratch paper why the GRIN RCF cuts off cleanly between $l = 6$ ($n_{\mathrm{eff}} = 1.4476 > 1.444$) and $l = 7$ ($n_{\mathrm{eff}} = 1.4430 < 1.444$)! Computing the overlap $\eta_l = \abs{\int_0^\infty r u_l f_l\,\dd r}^2$ at $l = 4$ gives $\eta_{\mathrm{PVB}} = 99.18\%$ vs.\ fixed-waist $\eta_{\mathrm{LG}} = 19.91\%$, a $+6.97\,\mathrm{dB}$ coupling gain \inpaper{Table~1, p.~3}.
+
+\subsection{Step 2.3: Sending $N$ Parallel Data Streams on Overlapping Rings (Equalization \& BER)}
+
+\begin{foundationbox}{Warm-Up: Recovering Two Overlapping Signals + Binary OOK Error Probability}
+Suppose we send $N$ independent symbols $\mathbf{s} = (s_1,\dots,s_N)^{\mathsf{T}}$ on $N$ concentric rings $\psi_{\mathrm{tx}} = \sum_{n=1}^N s_n \psi_{l,R_n}$. Projecting onto each ring at the receiver measures $y_m = \sum_{n=1}^N \gamma_{mn} s_n + \varepsilon_m$, i.e.\ $\mathbf{y} = \gamma\mathbf{s} + \boldsymbol{\varepsilon}$. To remove all inter-ring crosstalk ("zero forcing"), simply invert the Gram matrix: $\hat{\mathbf{s}} = \gamma^{-1}\mathbf{y} = \mathbf{s} + \gamma^{-1}\boldsymbol{\varepsilon}$! Notice the price: noise is multiplied by $\gamma^{-1}$, so its covariance matrix $\Sigma_\varepsilon = \mathbb{E}[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^\dagger]$ becomes
+\[
+  \Sigma_{\mathrm{ZF}} = \mathbb{E}\bigl[(\gamma^{-1}\boldsymbol{\varepsilon})(\gamma^{-1}\boldsymbol{\varepsilon})^\dagger\bigr] = \gamma^{-1}\Sigma_\varepsilon \gamma^{-1}.
+\]
+Now check the two physical noise sources:
+\begin{enumerate}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+  \item \emph{Optical amplifier noise} before demultiplexing ($\mathbb{E}[\varepsilon(\mathbf{r})\varepsilon^*(\mathbf{r}')] = \sigma^2\delta^{(2)}(\mathbf{r}-\mathbf{r}')$) projects to $[\Sigma_\varepsilon]_{mn} = \sigma^2\braket{\psi_{l,R_m}}{\psi_{l,R_n}} = \sigma^2\gamma_{mn}$, so $\Sigma_{\mathrm{ZF}} = \sigma^2\gamma^{-1}$!
+  \item \emph{Independent electronic detector noise} on each port has $\Sigma_\varepsilon = \sigma^2\mathbb{I}_N$, so $\Sigma_{\mathrm{ZF}} = \sigma^2\gamma^{-2}$!
+\end{enumerate}
+Finally, for binary on--off keying (OOK) sending $0$ or $\sqrt{2E_b}$ (average bit energy $E_b$) with power coupling $\eta_l$ and noise variance $\sigma_n^2 = \mathcal{P} N_0/2$, a bit error occurs whenever Gaussian noise exceeds the midpoint $d = \sqrt{2\eta_l E_b}/2$:
+\[
+  \mathrm{BER} = \frac{1}{\sqrt{2\pi\sigma_n^2}}\int_d^\infty e^{-x^2/(2\sigma_n^2)}\,\dd x = \frac{1}{2}\operatorname{erfc}\!\left(\frac{d}{\sqrt{2}\sigma_n}\right) = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{\eta_l(E_b/N_0)}{2\mathcal{P}}}\right).
+\]
+\end{foundationbox}
+
+Averaging the diagonal noise variance over all $N$ rings gives the per-channel penalty factor $\mathcal{P}$:
+
+\begin{paperhit}{JOSA B Eq.~(5) and Fig.~1 (pp.~3--4)}
+\[
+  \mathcal{P}_{\mathrm{corr}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-1}), \qquad
+  \mathcal{P}_{\mathrm{AWGN}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-2}), \qquad
+  \mathrm{BER} = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{\eta_l(E_b/N_0)}{2\mathcal{P}}}\right).
+\]
+\end{paperhit}
+
+% ==============================================================================
+\section{Chapter 3: Protocol 2 --- Filtering Out Atmospheric Turbulence}
+\label{sec:b_c3}
+
+\begin{foundationbox}{How Turbulent Air Scrambles Light (Kolmogorov Scaling From Dimensional Analysis!)}
+Warm and cool air pockets create random refractive-index ripples $\delta n(\mathbf{r},z)$. In 1941, Kolmogorov noticed that between large eddies ($L_0$) and tiny viscous eddies ($l_0$), the kinetic-energy spectrum $E(k)$ (units $\mathrm{m}^3/\mathrm{s}^2$) can depend ONLY on wavenumber $k$ ($\mathrm{m}^{-1}$) and energy cascade rate $\varepsilon$ ($\mathrm{m}^2/\mathrm{s}^3$). Matching dimensions $[k]^a[\varepsilon]^b = \mathrm{m}^{2b-a}\mathrm{s}^{-3b} = \mathrm{m}^3\mathrm{s}^{-2}$ uniquely forces $b = 2/3$ and $a = -5/3$, so $E(k) \propto \varepsilon^{2/3}k^{-5/3}$! Dividing by 3D spherical shell area $4\pi k^2$ yields the famous 3D turbulence power spectrum $\Phi_n(k) \propto k^{-11/3}$. Integrating phase delays along a path gives the phase structure function $D_\phi(\rho) \equiv \mathbb{E}[\abs{\phi(\mathbf{r}+\boldsymbol{\rho})-\phi(\mathbf{r})}^2] = 6.88(\rho/r_0)^{5/3}$, where $r_0$ is the \textbf{Fried coherence diameter} (the patch size over which wavefront phase stays flat). Splitting a path into $N_{\mathrm{scr}}$ independent thin phase screens requires their structure functions to sum to the total path:
+\[
+  N_{\mathrm{scr}}\cdot 6.88\left(\frac{\rho}{r_{0,\mathrm{scr}}}\right)^{5/3} = 6.88\left(\frac{\rho}{r_{0,\mathrm{tot}}}\right)^{5/3} \implies r_{0,\mathrm{scr}} = r_{0,\mathrm{tot}}\,N_{\mathrm{scr}}^{3/5} \quad (N_{\mathrm{scr}}=5 \implies 2.6265\,r_{0,\mathrm{tot}}).
+\]
+\end{foundationbox}
+
+Now suppose a clean beam $\psi_{l_0,R_0}$ passes through turbulence and arrives as a scrambled field $\psi_{\mathrm{turb}}$ containing unwanted OAM crosstalk ($l \neq l_0$) and radial speckle. We want the closest approximation $\hat{\psi} = \sum_{n=1}^N c_n v_n$ inside the clean span of $N$ propagated PVB rings $v_n \equiv \mathcal{U}_z\psi_{l_0,R_n}$! Minimize the squared error $E(\mathbf{c}) = \norm{\psi_{\mathrm{turb}} - \sum_n c_n v_n}_{L^2}^2$ by setting $\frac{\partial E}{\partial c_m^*} = 0$:
+\begin{equation}
+  -\braket{v_m}{\psi_{\mathrm{turb}}} + \sum_{n=1}^N \underbrace{\braket{v_m}{v_n}}_{\gamma_{mn}\text{ (unitarity!)}} c_n = 0
+  \implies \mathbf{c} = \gamma^{-1}\mathbf{b} \quad (b_m = \braket{v_m}{\psi_{\mathrm{turb}}}).
+\end{equation}
+
+\begin{paperhit}{JOSA B Eq.~(6) and Table~2 (pp.~3--5)}
+\[
+  P_{\mathrm{PVB},l_0}\psi_{\mathrm{turb}} = \sum_{n,m=1}^N (\gamma^{-1})_{nm}\braket{\psi_{l_0,R_m}^{(\mathrm{prop})}}{\psi_{\mathrm{turb}}}\psi_{l_0,R_n}^{(\mathrm{prop})}.
+\]
+Direct substitution verifies $P^2 = P$ (via $\gamma^{-1}\gamma\gamma^{-1} = \gamma^{-1}$), $P^\dagger = P$, and $100\%$ rejection of all $l \neq l_0$ crosstalk!
+\end{paperhit}
+
+% ==============================================================================
+\section{Chapter 4: Protocol 3 --- Quantum State Tomography With Multi-Plane Gouy PVBs}
+\label{sec:b_c4}
+
+\begin{foundationbox}{Quick Primer: Density Matrices, POVMs, and Coin-Flip Fisher Information}
+\begin{enumerate}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+  \item \textbf{Quantum states:} A general (possibly noisy) $d$-dimensional quantum state is a $d\times d$ Hermitian positive-semidefinite matrix $\rho$ with $\operatorname{Tr}\rho = 1$. How many real numbers specify $\rho$? A Hermitian matrix has $d$ real diagonals + $\frac{d(d-1)}{2}$ complex off-diagonals $= d^2$ real entries; $\operatorname{Tr}\rho = 1$ removes $1$, leaving $d^2 - 1$ real parameters! (For $d = 4$, $16 - 1 = 15$ parameters.)
+  \item \textbf{Generalized measurements (POVMs):} Any physical detector apparatus with outcomes $\alpha$ is described by positive-semidefinite matrices $\Pi_\alpha \ge 0$ summing to identity ($\sum_\alpha \Pi_\alpha = \mathbb{I}_d$), with click probabilities $p_\alpha = \operatorname{Tr}(\rho\Pi_\alpha)$ (Born rule). A POVM is \textbf{informationally complete (IC)} iff $\{\Pi_\alpha\}$ spans all $d^2$ Hermitian matrices so $\rho$ is uniquely determined from $\{p_\alpha\}$!
+  \item \textbf{What is Fisher information?} Start with a biased coin (heads probability $p(\theta)$). After $N$ flips, the log-likelihood is $\ln L = n\ln p + (N-n)\ln(1-p)$. The curvature of $-\mathbb{E}[\ln L]$ measures how sharply data pins down $\theta$: $F(\theta) = \sum_\alpha \frac{(\partial_\theta p_\alpha)^2}{p_\alpha}$. By the \textbf{Cram\'er--Rao theorem}, ANY unbiased estimator has variance $\ge 1/(N F)$! For $15$ parameters $\boldsymbol{\theta}$, this generalizes directly to the $15\times 15$ matrix $F_{jk} = \sum_\alpha \frac{(\partial_{\theta_j} p_\alpha)(\partial_{\theta_k} p_\alpha)}{p_\alpha}$ and total MSE $\ge \operatorname{Tr}(\mathbf{F}^{-1})/N_{\mathrm{phot}}$!
+\end{enumerate}
+\end{foundationbox}
+
+\subsection{Step 4.1: Why One Focal Plane Can Never Reconstruct a Radial Qudit (Rank-7 Proof!)}
+
+Suppose an unknown photon state $\rho$ lives in the $d = 4$ radial subspace $\operatorname{span}\{\ket{\psi_{0,l}}, \ket{\psi_{1,l}}, \ket{\psi_{2,l}}, \ket{\psi_{3,l}}\}$. Can we determine all $16$ entries of $\rho$ by measuring PVB ring overlaps at the focal plane $z = 0$ alone?
+Look at the matrix entries $[\ket{\Phi_{l,R}}\bra{\Phi_{l,R}}]_{p,p'} = c_{l,p}(R) c_{l,p'}(R)$ from Chapter~1:
+\begin{enumerate}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+  \item Every $c_{l,p}(R)$ is \emph{real}, so $c_{l,p}(R) c_{l,p'}(R)$ is real and symmetric---completely blind to all $6$ imaginary parts of $\rho$!
+  \item Even worse, $c_{l,p}(R) = \mathcal{A}_{0,l}(R) Q_p(\zeta_R)$ where $Q_p$ is a polynomial of degree $p \le d-1$ in $\zeta_R \propto R^2$. Thus $c_{l,p}(R) c_{l,p'}(R)$ is $[\mathcal{A}_{0,l}(R)]^2$ times a polynomial of degree at most $(d-1)+(d-1) = 2d - 2$! Since polynomials of degree $\le 2d - 2$ form a $(2d-1)$-dimensional space, a single plane can NEVER exceed rank $2d - 1 = \mathbf{7}$ (even missing $3$ real parameters out of $10$!).
+\end{enumerate}
+
+\subsection{Step 4.2: Breaking the Rank-7 Barrier Passively With Gouy Phases}
+
+How do we see imaginary off-diagonals and lift the rank from $7$ to $16$ without active phase modulators? Let the photon propagate freely to $M = 5$ axial planes $z_m$! By Paper~1 Eq.~(15), each radial mode picks up a distinct Gouy phase $e^{-i(2p+\abs{l}+1)\vartheta_m}$, rotating off-diagonals by $e^{-i 2(p-p')\vartheta_m}$:
+
+\begin{paperhit}{JOSA B Eq.~(7) (p.~5)}
+\[
+  \Pi_{m,k} = \frac{R_k\Delta R}{M}\ket{\phi_{m,k}}\bra{\phi_{m,k}}, \qquad
+  [\Pi_{m,k}]_{p,p'} = \frac{R_k\Delta R}{M} e^{-i 2(p-p')\vartheta_m} c_{l,p}(R_k) c_{l,p'}(R_k), \qquad
+  \Pi_{\mathrm{res}} = \mathbb{I}_d - \sum_{m,k}\Pi_{m,k} \ge 0.
+\]
+With $M = 5$ Gouy planes, the rank jumps from $7/16$ to full $\mathbf{16/16}$ (informationally complete)!
+\end{paperhit}
+
+\subsection{Step 4.3: Benchmarking Accuracy Against Optimal Mutually Unbiased Bases (MUBs)}
+
+Expand $\rho(\boldsymbol{\theta}) = \mathbb{I}_d/d + \sum_{j=1}^{d^2-1}\theta_j B_j$ using $15$ orthonormal traceless Gell-Mann matrices ($\operatorname{Tr}(B_j B_k) = \delta_{jk}$). Then $p_\alpha(\boldsymbol{\theta}) = \frac{1}{d}\operatorname{Tr}(\Pi_\alpha) + \sum_j \theta_j\operatorname{Tr}(\Pi_\alpha B_j)$, so $\partial_{\theta_j} p_\alpha = \operatorname{Tr}(\Pi_\alpha B_j)$. To benchmark our passive PVB scheme against the theoretical optimum, consider $d+1 = 5$ mutually unbiased bases ($\Pi_{b,r} = \frac{1}{d+1}\ket{e_{b,r}}\bra{e_{b,r}}$). Because the $d+1$ diagonal traceless blocks of each MUB are mutually orthogonal in Hilbert--Schmidt inner product, $\mathbf{F}_{\mathrm{MUB}}$ is diagonal with every entry equal to $\frac{(d+1)^{-2}}{[d(d+1)]^{-1}} = \frac{d}{d+1}$!
+
+\begin{paperhit}{JOSA B Eq.~(8) and Table~3 (pp.~5--6)}
+\[
+  F_{jk} = \sum_\alpha \frac{\operatorname{Tr}(\Pi_\alpha B_j)\operatorname{Tr}(\Pi_\alpha B_k)}{\operatorname{Tr}(\Pi_\alpha)/d}, \qquad
+  \operatorname{Tr}(\mathbf{F}_{\mathrm{MUB}}^{-1}) = \frac{(d^2-1)(d+1)}{d} = 18.75 \quad\text{vs.}\quad \operatorname{Tr}(\mathbf{F}_{\mathrm{PVB}}^{-1}) = 41.80\;(2.23\times).
+\]
+\end{paperhit}
+
+% ==============================================================================
+\section{Chapter 5: Protocol 4 --- Protecting Entangled Photons Through Circular Irises}
+\label{sec:b_c5}
+
+\begin{foundationbox}{Quick Primer: Entangled Qubits, Bell--CHSH Inequality, and Tsirelson's Bound}
+Take two photons created in the maximally entangled OAM state $\ket{\Psi} = \frac{1}{\sqrt{2}}(\ket{1,1} + \ket{4,4}) \equiv \frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$. Alice chooses one of two binary ($\pm 1$) measurement directions $\mathbf{a}, \mathbf{a}'$ on her qubit Bloch sphere; Bob chooses $\mathbf{b}, \mathbf{b}'$. Form the CHSH correlation combination $S = E(\mathbf{a},\mathbf{b}) + E(\mathbf{a},\mathbf{b}') + E(\mathbf{a}',\mathbf{b}) - E(\mathbf{a}',\mathbf{b}')$.
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+  \item \textbf{Classical (local hidden variables):} Any pre-assigned outcomes $a,a',b,b' \in \{\pm 1\}$ obey $a(b+b') + a'(b-b') = \pm 2$ (because one of $b\pm b'$ is $\pm 2$ and the other is $0$!), so averaging over hidden variables strictly enforces $\abs{S} \le \mathbf{2}$!
+  \item \textbf{Quantum mechanics:} Writing $E(\mathbf{a},\mathbf{b}) = \bra{\Psi}(\mathbf{a}\cdot\boldsymbol{\sigma})\otimes(\mathbf{b}\cdot\boldsymbol{\sigma})\ket{\Psi} = \mathbf{a}\cdot T\mathbf{b}$ with $T_{ij} = \bra{\Psi}\sigma_i\otimes\sigma_j\ket{\Psi}$, a maximally entangled state reaches $S = \mathbf{2\sqrt{2} \approx 2.8284}$ (violating $2$!).
+\end{itemize}
+\end{foundationbox}
+
+\subsection{Step 5.1: What a Circular Iris Does to LG vs.\ PVB Modes}
+
+Pass each photon through a circular aperture (iris) of radius $R_{\mathrm{iris}}$. For standard $\mathrm{LG}_{0,l}$ modes, substituting $u = 2r^2/w_0^2$ gives the exact fraction of surviving power $t_l^{\mathrm{LG}} = \frac{1}{\abs{l}!}\int_0^{2R_{\mathrm{iris}}^2/w_0^2} u^{\abs{l}} e^{-u}\dd u = P(\abs{l}+1, 2R_{\mathrm{iris}}^2/w_0^2)$---strongly favoring $l = 1$ over $l = 4$ because $l = 4$ is much wider!
+
+Now do the same calculation for a physical PVB clipped right at its ring center $R_{\mathrm{iris}} = R_0$! Set $\epsilon \equiv w/R_0 \ll 1$, $\mu \equiv 4l^2 - 1$, and $r = R_0(1 + \epsilon u)$ so $x = \frac{2R_0 r}{w^2} = \frac{2}{\epsilon^2}(1+\epsilon u)$. Plug Paper~1's Hankel expansion $[e^{-x}I_{\abs{l}}(x)]^2 = \frac{1}{2\pi x}[1 - \frac{\mu}{4x} + \mathcal{O}(x^{-2})]$ into $r\abs{\Phi_{l,R_0}}^2$:
+\begin{equation}
+  \frac{r}{x} = \frac{R_0(1+\epsilon u)}{(2/\epsilon^2)(1+\epsilon u)} = \frac{R_0\epsilon^2}{2}\quad\text{(exact cancellation of }1+\epsilon u\text{!)}.
+\end{equation}
+Expanding $(1+\epsilon u)^{-1} = 1 - \epsilon u + \mathcal{O}(\epsilon^2)$ inside $\frac{\mu}{4x} = \frac{\mu\epsilon^2}{8(1+\epsilon u)}$ leaves $r\abs{\Phi_{l,R_0}}^2 \propto e^{-2u^2}[1 - \frac{\mu\epsilon^2}{8} + \frac{\mu\epsilon^3}{8}u + \mathcal{O}(\epsilon^4)]$. Integrating with $\int_{-\infty}^0 e^{-2u^2}\dd u = \frac{1}{2}\sqrt{\pi/2}$ and $\int_{-\infty}^0 u e^{-2u^2}\dd u = -\frac{1}{4}$ cancels $(1 - \mu\epsilon^2/8)$ between numerator and denominator:
+
+\begin{paperhit}{JOSA B Eq.~(9) (p.~6)}
+\[
+  t_l^{\mathrm{PVB}}(R_0) = \frac{1}{2} - \frac{4l^2 - 1}{16\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3 + \mathcal{O}\!\left(\frac{w^5}{R_0^5}\right) \qquad (\text{with }c_0 = 0\text{ identically!}).
+\]
+At $w/R_0 = 0.1$, the asymmetry between $l = 1$ and $l = 4$ is only $\delta_{14} = \frac{t_1-t_4}{t_1+t_4} \approx \frac{63-3}{16\sqrt{2\pi}}(0.1)^3 = \mathbf{1.496\times 10^{-3}}$!
+\end{paperhit}
+
+\subsection{Step 5.2: From Unbalanced Survival to the Sixth-Order CHSH Bound and $82.84\%$ Loophole}
+
+Behind two identical irises, the surviving state becomes $\ket{\Psi_{\mathrm{ps}}} = \alpha\ket{00} + \beta\ket{11}$ ($\alpha = \frac{t_1}{\sqrt{t_1^2+t_4^2}}$, $\beta = \frac{t_4}{\sqrt{t_1^2+t_4^2}}$). Computing $T_{ij} = \bra{\Psi_{\mathrm{ps}}}\sigma_i\otimes\sigma_j\ket{\Psi_{\mathrm{ps}}}$ gives $T = \operatorname{diag}(\mathcal{V}, -\mathcal{V}, 1)$ with visibility $\mathcal{V} = 2\alpha\beta = \frac{2 t_1 t_4}{t_1^2+t_4^2}$. To maximize $S = \mathbf{a}\cdot T(\mathbf{b}+\mathbf{b}') + \mathbf{a}'\cdot T(\mathbf{b}-\mathbf{b}')$, write $\mathbf{b}+\mathbf{b}' = 2\cos\theta\,\hat{\mathbf{c}}$ and $\mathbf{b}-\mathbf{b}' = 2\sin\theta\,\hat{\mathbf{c}}_\perp$ ($\hat{\mathbf{c}} \perp \hat{\mathbf{c}}_\perp$); Cauchy--Schwarz twice immediately yields Horodecki's exact formula $S_{\max} = 2\sqrt{u_1 + u_2} = 2\sqrt{1 + \mathcal{V}^2}$! Writing $t_1 = \bar{t}(1+\delta_{14}), t_4 = \bar{t}(1-\delta_{14})$ gives $\mathcal{V} = \frac{1-\delta_{14}^2}{1+\delta_{14}^2} \approx 1 - 2\delta_{14}^2 \implies S_{\max} \approx 2\sqrt{2}(1 - \delta_{14}^2)$!
+
+Finally, what if we do NOT assume "fair sampling" (i.e.\ we close the detection loophole by assigning any missed photon to $+1$)? At symmetric efficiency $\eta$, both photons click with probability $\eta^2$ (giving $2\sqrt{2}$), neither clicks with $(1-\eta)^2$ (giving $+1+1+1-1 = 2$), and single clicks average to $0$ (maximally mixed marginals!). Requiring violation of local realism:
+\begin{equation}
+  S_{\mathrm{uncond}}(\eta) = 2\sqrt{2}\,\eta^2 + 2(1-\eta)^2 > 2 \iff (2\sqrt{2}+2)\eta^2 > 4\eta \iff \eta > \frac{2}{1+\sqrt{2}} = 2(\sqrt{2}-1) = \mathbf{82.8427\%}.
+\end{equation}
+
+\begin{paperhit}{JOSA B Eq.~(10) and Table~4 (pp.~7--8)}
+\[
+  S = 2\sqrt{1+\mathcal{V}^2}, \qquad 2\sqrt{2} - S_{\mathrm{PVB}}^{(2)}(R_0) \approx 2\sqrt{2}\,\delta_{14}^2 = \mathcal{O}\!\left((l_1^2-l_2^2)^2(w/R_0)^6\right), \qquad \eta_{\mathrm{crit}}^{\mathrm{CHSH}} = 82.8427\%.
+\]
+\end{paperhit}
+
+\begin{pencilbox}[Check the Pupil-Area Advantage by Hand (Table~4)]
+Clearing $\min(t_1,t_4) \ge 82.84\%$ requires $R_{\mathrm{crit}}^{\mathrm{PVB}} = 1.0476\,R_0$ vs.\ $1.3243\,R_0$, $1.8729\,R_0$, and $2.6487\,R_0$ for $\mathrm{LG}$ beams. Squaring the ratios gives $\mathbf{1.60\times}$, $\mathbf{3.20\times}$, and $\mathbf{6.39\times}$ smaller detector pupil area!
+\end{pencilbox}
+
+% ==============================================================================
+\section*{Summary Map: Where Every JOSA B Equation Was Built From Scratch}
+\addcontentsline{toc}{section}{Summary Map: Where Every JOSA B Equation Was Built From Scratch}
+
+\begin{table}[ht!]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Version 3 Chapter} & \textbf{Background Foundations Built} & \textbf{Paper Milestones Reached} & \textbf{JOSA B Pages} \\
+\midrule
+Ch.~1 (PVB Recap) & Imported from Paper~1 V3 Course & \textbf{Eqs.~(1), (2)} & p.~2 \\
+Ch.~2 (RCF \& SDM) & Quantum-well fiber modes, ZF equalizer, OOK $\operatorname{erfc}$ BER & \textbf{Eqs.~(3), (4), (5)}, Table~1, Fig.~1 & pp.~2--4 \\
+Ch.~3 (Turbulence) & Kolmogorov dimensional $k^{-11/3}$, Fried $r_0$, $N_{\mathrm{scr}}^{3/5}$, least squares & \textbf{Eq.~(6)}, Table~2, Fig.~2 & pp.~3--5 \\
+Ch.~4 (Tomography) & Density matrices, POVMs, coin-flip Fisher info, MUB blocks & \textbf{Eqs.~(7), (8)}, Table~3, Fig.~3 & pp.~5--6 \\
+Ch.~5 (Bell--CHSH) & Entangled qubits, CHSH $\le 2$, Horodecki proof, loophole $\eta$ & \textbf{Eqs.~(9), (10)}, Table~4, Fig.~4 & pp.~6--8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

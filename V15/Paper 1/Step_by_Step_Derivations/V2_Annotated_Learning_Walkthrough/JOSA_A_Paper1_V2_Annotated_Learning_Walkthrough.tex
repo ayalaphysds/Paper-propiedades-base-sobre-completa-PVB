@@ -1,0 +1,611 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.80in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\usepackage{bm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!65!black,citecolor=blue!65!black,urlcolor=blue!65!black]{hyperref}
+
+\emergencystretch=1.8em
+
+% Pedagogical color palette
+\definecolor{navy}{HTML}{1B4F72}
+\definecolor{softblue}{HTML}{EBF5FB}
+\definecolor{plum}{HTML}{5B2C6F}
+\definecolor{softplum}{HTML}{F5EEF8}
+\definecolor{forest}{HTML}{145A32}
+\definecolor{softgreen}{HTML}{EAFAF1}
+\definecolor{amberborder}{HTML}{9A7D0A}
+\definecolor{softamber}{HTML}{FEF9E7}
+\definecolor{slate}{HTML}{34495E}
+
+\newtcolorbox{targeteq}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softblue,colframe=navy,fonttitle=\bfseries\small,
+  title={Exact Target in JOSA A Submission: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{approxbox}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softplum,colframe=plum,fonttitle=\bfseries\small,
+  title={Approximation \& Source Provenance: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{pencheck}[1][Pen-and-Paper Worked Numerical Check]{
+  breakable,enhanced,lines before break=2,
+  colback=softgreen,colframe=forest,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\newtcolorbox{learnbox}[1][Physical Intuition \& Common Pitfalls]{
+  breakable,enhanced,lines before break=2,
+  colback=softamber,colframe=amberborder,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{slate}\textit{JOSA A (V15 Paper 1) --- Version 2: Annotated Learning \& Provenance Edition}}
+\fancyhead[R]{\footnotesize\color{slate}\textit{S. Ayala}}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\josa}[1]{\textbf{[JOSA~A Eq.~(#1)]}}
+\newcommand{\tagexact}{\textcolor{forest}{\textbf{[EXACT]}}}
+\newcommand{\tagmodel}{\textcolor{navy}{\textbf{[PHYSICAL MODEL]}}}
+\newcommand{\tagasymp}{\textcolor{plum}{\textbf{[ASYMPTOTIC]}}}
+
+\numberwithin{equation}{section}
+
+\title{\vspace{-1.0cm}\textbf{\Large Version 2 --- Annotated Learning \& Provenance Workbook for JOSA A (V15 Paper 1)}\\[0.35em]
+\large\textit{Every Exact Calculation, Every Physical \& Asymptotic Approximation, Where Each Tool Comes From,\\
+and Step-by-Step Mini-Derivations for ``Continuous Hilbert frame theory, paraxial propagation invariance,\\
+and exact Laguerre--Gaussian expansion of finite-width perfect optical vortex beams''}}
+\author{Sebasti\'an Ayala\thanks{\texttt{ayala.phys.ds@gmail.com}; ORCID: \href{https://orcid.org/0009-0003-7348-3883}{0009-0003-7348-3883}}}
+\date{Version 2 (Annotated Learning Edition) --- November 24, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+\noindent This \textbf{Version~2} workbook extends the concise Version~1 walkthrough of \texttt{Manuscript\_JOSA\_A/main\_paper1\_josaa.pdf} (\textbf{Eqs.~(1)--(26)} and \textbf{Tables~1--2}) into a self-contained study text designed for learning from scratch with pen and paper. Every single step is explicitly tagged as \tagexact{} (holds identically for all parameters), \tagmodel{} (an optics/physics modeling assumption with its validity condition), or \tagasymp{} (a controlled expansion with explicit small parameter and neglected remainder $\mathcal{O}(\cdots)$). Purple \emph{Approximation \& Source Provenance} cards cite the exact handbook equation (NIST DLMF, Gradshteyn--Ryzhik, Watson, Goodman, Christensen, Grenander--Szeg\H{o}) and \emph{derive the underlying mathematical tools themselves}---including Weber's integral, Hankel's $I_\nu(x)$ ODE recurrence, Kummer's Euler-integral proof, the WKB radial-oscillator arcsine density, and Szeg\H{o}'s Toeplitz eigenvalue proof.
+\end{abstract}
+
+\tableofcontents
+\vspace{0.5em}
+
+% ==============================================================================
+\section*{Master Approximation \& Identity Ledger for JOSA A (Paper 1)}
+\addcontentsline{toc}{section}{Master Approximation \& Identity Ledger for JOSA A (Paper 1)}
+
+Before deriving anything, use this ledger as a map of what is \emph{exact mathematics} versus where \emph{physical or asymptotic approximations} enter the manuscript and which reference each tool comes from.
+
+\begin{center}
+\scriptsize
+\renewcommand{\arraystretch}{1.18}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}p{1.5cm}p{2.05cm}p{4.3cm}p{3.6cm}p{4.1cm}@{}}
+\toprule
+\textbf{JOSA A Eq.} & \textbf{Status} & \textbf{Calculation / Approximation Stated} & \textbf{Small Param.\ / Validity} & \textbf{Primary Source / Provenance} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{JOSA A Eq.} & \textbf{Status} & \textbf{Calculation / Approximation Stated} & \textbf{Small Param.\ / Validity} & \textbf{Primary Source / Provenance} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Eqs.~(1)--(2) & \tagexact{} & PVB definition $\Phi_{l,R}$, norm $\norm{\Phi_{l,R}}_{L^2}^2 < w^{-2}$ & All $R, w > 0$, $l \in \mathbb{Z}$ & DLMF~(10.22.67); GR~6.633.2; Watson~\S13.31 \\
+Eq.~(3) (ring) & \tagasymp{} & Thin-ring Gaussian limit of $\Phi_{l,R}$ & $x = 2Rr/w^2 \gg \abs{l^2 - \frac{1}{4}}$; error $\mathcal{O}(x^{-1})$ & Hankel expansion: DLMF~(10.40.1); Watson~\S7.23 \\
+Eq.~(3) (peak) & \tagasymp{} & Self-consistent shift $\Delta r_{\mathrm{peak}} \approx \frac{l^2}{8}(w/R)^4 R$ & $\delta = (w/R)^2 \ll 1$; error $\mathcal{O}((w/R)^6 R)$ & DLMF~(10.40.1) + perturbative bootstrap; cf.\ Pinnell~(2019) \\
+Eq.~(4) & \tagmodel{} + \tagexact{} & $2f$ lens optical Fourier transform of $E_{\mathrm{BG}}$ & Paraxial $\mathrm{NA} \ll 1$, thin lens, infinite aperture & Goodman~Ch.~5; Vaity \& Rusch~(2015); DLMF~(10.12.1) \\
+Eqs.~(5)--(6) & \tagexact{} & Exact overlap $\braket{\Phi_{l,R}}{\Phi_{l',R'}}$ and $\gamma_l(R,R')$ & All $R, R', w > 0$, $l,l' \in \mathbb{Z}$ & Analytic continuation of DLMF~(10.22.67) \\
+Eq.~(6) asymp. & \tagasymp{} & Universal Gaussian $\gamma_l \approx e^{-(R-R')^2/(2w^2)}$ & $RR'/w^2 \gg 1$; error $\mathcal{O}\bigl(\frac{l^2 w^2(R-R')^2}{R^2 R'^2}\bigr)$ & DLMF~(10.40.1) + $(1-\epsilon)^{-1/2}$ binomial series \\
+Eqs.~(7)--(9) & \tagexact{} & 2D FT $\widetilde{\Phi}_{l,R}$, Hankel isometry $B=1$, $S_w = G_w * \cdot$ & All $\psi \in L^2(\mathbb{R}^2)$, $w > 0$ & Plancherel; Hankel completeness; Ali--Antoine--Gazeau~(1993) \\
+Eq.~(10) & \tagexact{} & Sharp Paley--Wiener bounds $A = e^{-w^2 k_{\max}^2/2}, B=1$ & Bandlimited $\psi \in \mathcal{H}_{k_{\max}}$ ($\mathrm{NA} = k_{\max}/k_0$) & Christensen~Ch.~5; Fourier-annulus test functions \\
+Eqs.~(11)--(13) & \tagmodel{} + \tagexact{} & Complex waist $w_c^2(z)$, $\Phi_{l,R}^{(z)}$, $[S_w,\mathcal{U}_z]=0$ & Scalar paraxial Helmholtz: $\mathrm{NA}^2/4 \ll 1$ & Goodman~Ch.~4; Siegman~Ch.~16; DLMF~(10.22.67) ($\operatorname{Re} p > 0$) \\
+Eqs.~(14)--(15) & \tagexact{} & $\sigma_m^{+1}$-scaled Gouy analyzer $\braket{\phi_{l,R}^{(m)}}{\psi_{p,l}(z_m)}$ & Exact within paraxial Fresnel evolution & Change of variables $\mathbf{r} = \sigma_m\mathbf{r}'$; Siegman~Ch.~16 \\
+Eqs.~(16)--(18) & \tagexact{} & Tikhonov $S_{w,\alpha_{\mathrm{reg}}}^{-1}$, AM--GM peak, Parseval $\mathrm{Bias}^2+\mathrm{Var}$ & $\alpha_{\mathrm{reg}} \in (0,1)$, bandlimited white noise & Tikhonov \& Arsenin~(1977); Engl et al.~(1996) \\
+Eqs.~(19)--(20), (25)--(26) & \tagexact{} & Finite $(p+1)$-term closed-form $c_{l,p}(R)$ & All $p \in \mathbb{N}_0$, $l \in \mathbb{Z}$, $R,w,w_0 > 0$ & GR~6.631.1; Kummer DLMF~(13.2.39); Laguerre DLMF~(18.5.12) \\
+Eqs.~(21)--(22) & \tagexact{} & Washout $\mathcal{F}(p,l,w/w_0)$ and $p=0$ exact root $w_{\mathrm{crit}}$ & All $w,w_0 > 0$, $p=0$ exact & Cauchy--Schwarz + Gamma integral $\int_0^\infty u^n e^{-\lambda u}\dd u$ \\
+Eq.~(23) & \tagasymp{} & WKB arcsine washout $w_{\mathrm{crit}} \approx 0.573 w_0/\sqrt{2p+\abs{l}+1}$ & $p \gg 1$ (already $<1\%$ for $p \ge 5$) & Semiclassical WKB / Gawronski~(1993); Szeg\H{o}~Ch.~8 \\
+Eq.~(24) & \tagasymp{} + \tagexact{} & Annular Toeplitz $T_{nm} = q^{(n-m)^2}$ and $\kappa(T_N) < \vartheta_3/\vartheta_4$ & $R_{\min} \gg w, \abs{l}w/2$; bound exact for $T_N$ & Grenander \& Szeg\H{o}~(1958)~Ch.~5; Jacobi DLMF~\S20.5(i) \\
+\end{longtable}
+\end{center}
+
+% ==============================================================================
+\section{JOSA A Section 2: PVB Definition, Norm, Peak Shift, and Optical $2f$ Bridge}
+\label{sec:v2_s2}
+
+\subsection{Dimensions, Frame-vs.-State Normalization, and Exact $L^2$ Norm --- \josa{1}--\josa{2}}
+
+\begin{targeteq}{JOSA A Eqs.~(1) and (2) (p.~2)}
+\[
+  \Phi_{l,R}(r,\phi) = C_0 e^{il\phi}\exp\!\left(-\frac{r^2+R^2}{w^2}\right) I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right), \quad C_0 = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}, \qquad
+  \norm{\Phi_{l,R}}_{L^2}^2 = \frac{1}{w^2} e^{-R^2/w^2} I_{\abs{l}}\!\left(\frac{R^2}{w^2}\right) < \frac{1}{w^2}.
+\]
+\end{targeteq}
+
+\begin{approxbox}{Weber's Second Exponential Integral and Analytic Continuation}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} --- zero approximations anywhere in Eqs.~(1)--(2).
+  \item \textbf{Where it comes from:} \emph{NIST DLMF Eq.~(10.22.67)}, \emph{Gradshteyn \& Ryzhik} (8th ed., \S6.633.2), and \emph{G.\ N.\ Watson}, \emph{A Treatise on the Theory of Bessel Functions} (\S13.31):
+  \begin{equation}
+    \int_0^\infty x\,e^{-p x^2} J_\nu(\alpha x) J_\nu(\beta x)\,\dd x = \frac{1}{2p}\exp\!\left(-\frac{\alpha^2+\beta^2}{4p}\right) I_\nu\!\left(\frac{\alpha\beta}{2p}\right), \qquad \operatorname{Re}(p) > 0,\;\operatorname{Re}(\nu) > -1.
+    \label{eq:v2_weber_J}
+  \end{equation}
+  \item \textbf{Mini-derivation from scratch (for integer $\nu = n \ge 0$):} You do \emph{not} need to memorize Eq.~\eqref{eq:v2_weber_J} as a black box! Start from the elementary 2D Gaussian Fourier integral $\int_{\mathbb{R}^2} e^{-p\abs{\mathbf{x}}^2 + i(\boldsymbol{\alpha}-\boldsymbol{\beta})\cdot\mathbf{x}}\,\dd^2\mathbf{x} = \frac{\pi}{p}\exp\!\bigl(-\frac{\abs{\boldsymbol{\alpha}-\boldsymbol{\beta}}^2}{4p}\bigr)$ with $\abs{\boldsymbol{\alpha}} = \alpha$, $\abs{\boldsymbol{\beta}} = \beta$, and angle $\psi = \theta_\alpha - \theta_\beta$. Expand $\abs{\boldsymbol{\alpha}-\boldsymbol{\beta}}^2 = \alpha^2 + \beta^2 - 2\alpha\beta\cos\psi$ on the RHS, and use the Fourier series $e^{z\cos\psi} = \sum_{n=-\infty}^\infty I_n(z) e^{in\psi}$ (DLMF~\S10.35):
+  \[
+    \text{RHS} = \frac{\pi}{p}\exp\!\left(-\frac{\alpha^2+\beta^2}{4p}\right)\sum_{n=-\infty}^\infty I_n\!\left(\frac{\alpha\beta}{2p}\right) e^{in(\theta_\alpha - \theta_\beta)}.
+  \]
+  On the LHS, write $\mathbf{x} = (x,\varphi)$ and expand both $e^{i\alpha x\cos(\varphi-\theta_\alpha)}$ and $e^{-i\beta x\cos(\varphi-\theta_\beta)}$ via Jacobi--Anger (DLMF~\S10.12); integrating over $\varphi \in [0,2\pi)$ kills cross-terms ($n \neq m$) and leaves
+  \[
+    \text{LHS} = 2\pi \sum_{n=-\infty}^\infty e^{in(\theta_\alpha-\theta_\beta)} \int_0^\infty x\,e^{-px^2} J_n(\alpha x) J_n(\beta x)\,\dd x.
+  \]
+  Equating the Fourier coefficient of $e^{in(\theta_\alpha - \theta_\beta)}$ on both sides and dividing by $2\pi$ yields Eq.~\eqref{eq:v2_weber_J} identically!
+  \item \textbf{Justification of analytic continuation ($\alpha \to ia$, $\beta \to ib$):} Because $z^{-\nu} J_\nu(z) = \sum_{k=0}^\infty \frac{(-z^2/4)^k}{k!\,\Gamma(\nu+k+1)}$ is an \emph{entire} function of $z \in \mathbb{C}$ (Watson~\S3.1), both sides of Eq.~\eqref{eq:v2_weber_J} are analytic in $(\alpha,\beta) \in \mathbb{C}^2$ whenever $\operatorname{Re}(p) > 0$ (the Gaussian $e^{-px^2}$ beats the exponential growth $e^{(a+b)x}$ of $I_\nu(ax)I_\nu(bx)$). By the identity theorem of complex analysis, substituting $\alpha = ia, \beta = ib$ and $J_\nu(iz) = i^\nu I_\nu(z)$ is exact!
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 1: Complete dimensional bookkeeping.}
+Let $\ell_0$ denote the unit of length. Since $[r] = [R] = [w] = \ell_0$, the exponents $(r^2+R^2)/w^2$ and Bessel argument $2Rr/w^2$ are dimensionless, so $[\Phi_{l,R}] = [C_0] = \ell_0^{-2}$. For any unit-$L^2$-normalized wavefield $\psi$ ($\int_{\mathbb{R}^2}\abs{\psi}^2\dd^2\mathbf{r} = 1$, $[\dd^2\mathbf{r}] = \ell_0^2$), $[\psi] = \ell_0^{-1}$, so the frame coefficient $(T\psi)(l,R) = \braket{\Phi_{l,R}}{\psi}$ has dimension $\ell_0^{-2}\cdot\ell_0^{-1}\cdot\ell_0^2 = \ell_0^{-1}$. Integrating $\abs{(T\psi)(l,R)}^2$ against $\dd\mu = R\,\dd R$ ($[\dd\mu] = \ell_0^2$) returns a dimensionless energy $\norm{T\psi}^2$, matching $\norm{\psi}_{L^2}^2$. Meanwhile, $[\norm{\Phi_{l,R}}_{L^2}] = (\ell_0^{-4}\ell_0^2)^{1/2} = \ell_0^{-1}$, so the unit-normalized physical beam $\psi_{l,R} \equiv \Phi_{l,R}/\norm{\Phi_{l,R}}_{L^2}$ has the proper wavefield dimension $\ell_0^{-1}$.
+
+\paragraph*{Step 2: Analytic continuation of Weber's integral.}
+Insert $\alpha = ia$, $\beta = ib$ ($a,b>0$), $\nu = \abs{l} \in \mathbb{N}_0$, $J_{\abs{l}}(iy) = i^{\abs{l}} I_{\abs{l}}(y)$, and $I_{\abs{l}}(-y) = (-1)^{\abs{l}} I_{\abs{l}}(y)$ into Eq.~\eqref{eq:v2_weber_J}:
+\begin{align}
+  (-1)^{\abs{l}}\int_0^\infty x\,e^{-px^2} I_{\abs{l}}(ax) I_{\abs{l}}(bx)\,\dd x
+  &= \frac{1}{2p}\exp\!\left(\frac{a^2+b^2}{4p}\right)(-1)^{\abs{l}} I_{\abs{l}}\!\left(\frac{ab}{2p}\right) \nonumber \\
+  \implies \int_0^\infty x\,e^{-px^2} I_{\abs{l}}(ax) I_{\abs{l}}(bx)\,\dd x
+  &= \frac{1}{2p}\exp\!\left(\frac{a^2+b^2}{4p}\right) I_{\abs{l}}\!\left(\frac{ab}{2p}\right).
+  \label{eq:v2_weber_I}
+\end{align}
+
+\paragraph*{Step 3: Exact squared norm \josa{2} and strict upper bound.}
+Integrate $\abs{\Phi_{l,R}}^2$ over $\phi \in [0,2\pi)$ (yielding $2\pi$) and apply Eq.~\eqref{eq:v2_weber_I} with $p = 2/w^2$, $a = b = 2R/w^2$ (so $\frac{1}{2p} = \frac{w^2}{4}$, $\frac{a^2+b^2}{4p} = \frac{R^2}{w^2}$, $\frac{ab}{2p} = \frac{R^2}{w^2}$, and $2\pi C_0^2 = \frac{4}{w^4}$):
+\begin{equation}
+  \norm{\Phi_{l,R}}_{L^2}^2 = \frac{4}{w^4} e^{-2R^2/w^2}\cdot\frac{w^2}{4} e^{+R^2/w^2} I_{\abs{l}}\!\left(\frac{R^2}{w^2}\right) = \frac{1}{w^2} e^{-R^2/w^2} I_{\abs{l}}\!\left(\frac{R^2}{w^2}\right).
+\end{equation}
+To prove the strict upper bound $< w^{-2}$ for all $R > 0$, use Schl\"afli's integral representation for integer $n = \abs{l}$ (DLMF~10.32.3, obtained directly by taking the $n$-th Fourier cosine coefficient of $e^{x\cos\theta}$):
+\begin{equation}
+  e^{-x} I_n(x) = \frac{1}{\pi}\int_0^\pi e^{-x(1-\cos\theta)}\cos(n\theta)\,\dd\theta \le \frac{1}{\pi}\int_0^\pi e^{-x(1-\cos\theta)}\,\dd\theta < \frac{1}{\pi}\int_0^\pi 1\,\dd\theta = 1\qquad (x = R^2/w^2 > 0),
+\end{equation}
+where strict inequality holds because $1 - \cos\theta > 0$ on $(0,\pi)$.
+
+\begin{pencheck}[Calculator Check of Eq.~(2) at $R = 2\ell_0$, $w = 0.5\ell_0$, $l = 1$]
+$x = R^2/w^2 = 4/0.25 = 16$, $w^{-2} = 4\,\ell_0^{-2}$. Using $e^{-16} I_1(16) = 0.097350$ (note the Hankel estimate $(2\pi\cdot 16)^{-1/2}(1 - 3/128) = 0.099736\times 0.97656 = 0.09740$, accurate to $0.05\%$!), we get $\norm{\Phi_{1,2\ell_0}}_{L^2}^2 = 4 \times 0.097350 = \mathbf{0.3894\,\ell_0^{-2}} < 4\,\ell_0^{-2}$.
+\end{pencheck}
+
+\subsection{Thin-Ring Asymptotics and Self-Consistent Differential Peak Shift --- \josa{3}}
+
+\begin{targeteq}{JOSA A Eq.~(3) and Inline Thin-Ring Limit (pp.~2--3)}
+\[
+  \Phi_{l,R}(r,\phi) \approx \frac{e^{il\phi}}{w\sqrt{2\pi^2 Rr}}\exp\!\left[-\frac{(r-R)^2}{w^2}\right], \qquad
+  \Delta r_{\mathrm{peak}}(l) \equiv r_{\mathrm{peak}}(l) - r_{\mathrm{peak}}(0) \approx \frac{l^2}{8}\left(\frac{w}{R}\right)^4 R.
+\]
+\end{targeteq}
+
+\begin{approxbox}{Hankel Large-Argument Asymptotic Expansion of $I_\nu(x)$ + Self-Consistent Perturbation}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagasymp{} --- asymptotic (divergent if summed to $\infty$, optimally accurate when truncated at $k \ll x$).
+  \item \textbf{Validity regime \& neglected error:} Valid for $x = 2Rr/w^2 \gg \abs{4l^2 - 1}/8$ (in the peak-shift problem, $\delta \equiv (w/R)^2 \ll 1$ and $l^2\delta \ll 1$). The thin-ring field neglects $\mathcal{O}(\mu/(8x)) = \mathcal{O}((4l^2-1)w^2/(16 R^2))$; the peak-shift formula neglects $\mathcal{O}((w/R)^6 R)$.
+  \item \textbf{Where it comes from:} \emph{NIST DLMF Eq.~(10.40.1)}, \emph{Abramowitz \& Stegun}~\S9.7.1, \emph{Watson}~\S7.23:
+  \begin{equation}
+    I_\nu(x) \sim \frac{e^x}{\sqrt{2\pi x}}\sum_{k=0}^\infty (-1)^k \frac{a_k(\nu)}{x^k}, \qquad a_0(\nu) = 1, \quad a_k(\nu) = \frac{(4\nu^2 - 1^2)(4\nu^2 - 3^2)\cdots(4\nu^2 - (2k-1)^2)}{k!\,8^k}.
+    \label{eq:v2_hankel}
+  \end{equation}
+  \item \textbf{Mini-derivation from scratch (from the modified Bessel ODE!):} You can derive EVERY coefficient $a_k(\nu)$ in 4 lines of algebra without complex contours! Start from the modified Bessel ODE $x^2 y'' + x y' - (x^2 + \nu^2)y = 0$. Peel off the dominant behavior $y(x) = e^x x^{-1/2} u(x)$:
+  \[
+    y' = e^x x^{-1/2}\!\left(u' + u - \frac{u}{2x}\right), \qquad
+    y'' = e^x x^{-1/2}\!\left(u'' + 2u' + u - \frac{u'}{x} - \frac{u}{x} + \frac{3u}{4x^2}\right).
+  \]
+  Substituting into $x^2 y'' + x y' - (x^2+\nu^2)y = 0$ cancels $x^2 u$, $xu$, and $x u'$ cleanly, leaving
+  \[
+    x^2 u'' + 2x^2 u' - \left(\nu^2 - \frac{1}{4}\right) u = 0.
+  \]
+  Insert the formal power series $u(x) = \sum_{k=0}^\infty c_k x^{-k}$ (so $x^2 u'' = \sum k(k+1) c_k x^{-k}$ and $2x^2 u' = \sum (-2k) c_k x^{-(k-1)} = \sum (-2)(k+1) c_{k+1} x^{-k}$). Setting the coefficient of $x^{-k}$ to zero gives
+  \[
+    2(k+1) c_{k+1} = \left[k(k+1) - \left(\nu^2 - \frac{1}{4}\right)\right] c_k = -\frac{4\nu^2 - (2k+1)^2}{4}\,c_k \implies c_{k+1} = -\frac{4\nu^2 - (2k+1)^2}{8(k+1)}\,c_k!
+  \]
+  Setting $c_k = (-1)^k a_k(\nu)$ reproduces DLMF~(10.40.1) term for term ($a_1 = \mu/8$, $a_2 = \mu(\mu-8)/128$ where $\mu \equiv 4\nu^2 - 1$)! The overall constant $(2\pi)^{-1/2}$ comes from Laplace's method on $I_0(x) = \frac{1}{\pi}\int_0^\pi e^{x\cos\theta}\,\dd\theta \approx \frac{e^x}{\pi}\int_0^\infty e^{-x\theta^2/2}\,\dd\theta = \frac{e^x}{\sqrt{2\pi x}}$.
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 1: Thin-ring limit \tagasymp{}.}
+Keep only $k = 0$ in Eq.~\eqref{eq:v2_hankel}: $I_{\abs{l}}(2Rr/w^2) \approx e^{2Rr/w^2}/\sqrt{4\pi Rr/w^2}$. Combining exponents gives $-(r^2+R^2)/w^2 + 2Rr/w^2 = -(r-R)^2/w^2$, and $C_0 w/\sqrt{4\pi Rr} = [w\sqrt{2\pi^2 Rr}]^{-1}$.
+
+\paragraph*{Step 2: Exact transcendental peak condition \tagexact{}.}
+Taking $\frac{\dd}{\dd r}\ln\abs{\Phi_{l,R}(r)}^2 = 0$ yields the \emph{exact} equation
+\begin{equation}
+  -\frac{4r}{w^2} + 2\cdot\frac{2R}{w^2}\,\frac{I'_{\abs{l}}(x)}{I_{\abs{l}}(x)} = 0 \iff \frac{r_{\mathrm{peak}}(l)}{R} = \frac{I'_{\abs{l}}(x_{\mathrm{peak}})}{I_{\abs{l}}(x_{\mathrm{peak}})}, \qquad x_{\mathrm{peak}} \equiv \frac{2R\,r_{\mathrm{peak}}(l)}{w^2}.
+  \label{eq:v2_exact_peak}
+\end{equation}
+
+\paragraph*{Step 3: Self-consistent perturbation expansion to $\mathcal{O}(\delta^2)$ \tagasymp{}.}
+Take $\ln I_{\abs{l}}(x)$ using Eq.~\eqref{eq:v2_hankel} and $\ln(1 - \varepsilon) = -\varepsilon - \frac{1}{2}\varepsilon^2 + \mathcal{O}(\varepsilon^3)$ (valid for $\abs{\varepsilon} < 1$):
+\begin{align}
+  \ln I_{\abs{l}}(x) &= x - \frac{1}{2}\ln(2\pi x) + \ln\!\left(1 - \frac{\mu}{8x} + \frac{\mu(\mu-8)}{128 x^2} + \mathcal{O}(x^{-3})\right) \nonumber \\
+  &= x - \frac{1}{2}\ln(2\pi x) - \frac{\mu}{8x} - \frac{\mu}{16 x^2} + \mathcal{O}(x^{-3}) \qquad\left(\text{notice }\frac{\mu(\mu-8)}{128} - \frac{\mu^2}{128} = -\frac{\mu}{16}!\right), \\
+  \frac{I'_{\abs{l}}(x)}{I_{\abs{l}}(x)} &= \frac{\dd}{\dd x}\ln I_{\abs{l}}(x) = 1 - \frac{1}{2x} + \frac{\mu}{8x^2} + \frac{\mu}{8x^3} + \mathcal{O}(x^{-4}).
+\end{align}
+Now set $\delta \equiv (w/R)^2 \ll 1$ and write the ansatz $r_{\mathrm{peak}}/R = 1 + c_1\delta + c_2\delta^2 + \mathcal{O}(\delta^3)$. Because $x_{\mathrm{peak}}$ itself depends on $r_{\mathrm{peak}}$, we must invert $r_{\mathrm{peak}}/R$ self-consistently via the geometric series $(1+u)^{-1} = 1 - u + u^2 - \cdots$:
+\begin{equation}
+  \frac{1}{x_{\mathrm{peak}}} = \frac{\delta}{2(r_{\mathrm{peak}}/R)} = \frac{\delta}{2}\left(1 - c_1\delta + \mathcal{O}(\delta^2)\right) = \frac{\delta}{2} - \frac{c_1}{2}\delta^2 + \mathcal{O}(\delta^3), \qquad \frac{1}{x_{\mathrm{peak}}^2} = \frac{\delta^2}{4} + \mathcal{O}(\delta^3).
+\end{equation}
+Insert both into Eq.~\eqref{eq:v2_exact_peak}:
+\begin{equation}
+  1 + c_1\delta + c_2\delta^2 = 1 - \frac{1}{2}\left(\frac{\delta}{2} - \frac{c_1}{2}\delta^2\right) + \frac{\mu}{8}\left(\frac{\delta^2}{4}\right) + \mathcal{O}(\delta^3) = 1 - \frac{1}{4}\delta + \left(\frac{c_1}{4} + \frac{\mu}{32}\right)\delta^2 + \mathcal{O}(\delta^3).
+\end{equation}
+Matching powers of $\delta$ gives $c_1 = -\frac{1}{4}$ and $c_2 = \frac{-1/4}{4} + \frac{4l^2-1}{32} = \frac{4l^2 - 3}{32}$. Subtracting $l = 0$ ($c_2(0) = -\frac{3}{32}$) cancels both $c_1$ and $-\frac{3}{32}$, leaving \josa{3}:
+\begin{equation}
+  \Delta r_{\mathrm{peak}}(l) = r_{\mathrm{peak}}(l) - r_{\mathrm{peak}}(0) = \frac{4l^2}{32}\delta^2 R + \mathcal{O}(\delta^3 R) = \frac{l^2}{8}\left(\frac{w}{R}\right)^4 R + \mathcal{O}\!\left(\frac{w^6}{R^5}\right).
+\end{equation}
+
+\begin{learnbox}[Why Self-Consistency Matters Here (Common Pitfall!)]
+If you mistakenly freeze $x_{\mathrm{peak}} \approx 2R^2/w^2 = 2/\delta$ instead of expanding $r_{\mathrm{peak}}/R = 1 - \delta/4 + \cdots$ inside $1/x_{\mathrm{peak}}$, you miss the $+c_1\delta^2/4 = -\delta^2/16$ feedback term and get the wrong $r_{\mathrm{peak}}(l)$ coefficient $(4l^2-1)/32$ instead of $(4l^2-3)/32$! Remarkably, because that feedback is $l$-independent, it cancels in the \emph{difference} $\Delta r_{\mathrm{peak}}(l)$---yet getting $r_{\mathrm{peak}}(l)$ right individually requires the self-consistent expansion. Also note why the thin-ring approximation fails near $r \to 0$: $I_{\abs{l}}(x) \sim (x/2)^{\abs{l}}/\abs{l}!$ vanishes as $r^{\abs{l}}$, whereas the Hankel formula assumes $x \gg 1$ and blows up as $r^{-1/2}$.
+\end{learnbox}
+
+\subsection{Optical $2f$ Fourier Transform Bridge --- \josa{4}}
+
+\begin{targeteq}{JOSA A Eq.~(4) (p.~3)}
+\[
+  R = \frac{k_r f}{k_0}, \qquad w = \frac{2f}{k_0 w_g}, \qquad E_0 = \frac{1}{w w_g}\sqrt{\frac{2}{\pi}} = \frac{k_0}{f\sqrt{2\pi}}.
+\]
+\end{targeteq}
+
+\begin{approxbox}{Thin-Lens $2f$ Fourier Optics Approximation \& Jacobi--Anger Expansion}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagmodel{} for the $2f$ optical transform integral; \tagexact{} for the evaluation of that integral to Eq.~(4).
+  \item \textbf{Physical approximations inside the $2f$ integral:} (1) Scalar paraxial Fresnel diffraction ($\mathrm{NA} = k_{\max}/k_0 \ll 1$, neglecting $\mathcal{O}(\mathrm{NA}^2/4)$ non-paraxial aberrations); (2) ideal thin spherical lens imparting pure quadratic phase $t_{\mathrm{lens}}(\rho) = \exp[-i k_0 \rho^2/(2f)]$ (neglecting lens thickness and spherical aberration); (3) infinite lens aperture (valid when lens radius $a_{\mathrm{lens}} \gg w_g$, clipping $< e^{-2a_{\mathrm{lens}}^2/w_g^2}$).
+  \item \textbf{Where it comes from:} \emph{J.\ W.\ Goodman}, \emph{Introduction to Fourier Optics} (4th ed., \S5.2.2, ``Object Placed in Front of the Lens'' at $d_o = f$); \emph{Vaity \& Rusch}, \emph{Opt.\ Lett.} \textbf{40}, 597 (2015); Jacobi--Anger generating function \emph{NIST DLMF Eq.~(10.12.1)}: $\exp[\frac{1}{2}z(t - t^{-1})] = \sum_{n=-\infty}^\infty t^n J_n(z)$ with $t = \mp i e^{i\psi}$ giving $e^{\mp i z\cos\psi} = \sum_{n=-\infty}^\infty (\mp i)^n J_n(z) e^{in\psi}$.
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 1: Azimuthal integral via Jacobi--Anger \tagexact{}.}
+Placing $E_{\mathrm{BG}}(\rho,\theta) = E_0 J_l(k_r\rho)e^{-\rho^2/w_g^2}e^{il\theta}$ at $d_{\mathrm{in}} = f$ produces at the back focal plane
+\begin{equation}
+  E_{\mathrm{out}}(r,\phi) = \frac{e^{2ik_0 f}}{i\lambda f}\int_0^\infty \rho\,\dd\rho\,E_0 J_l(k_r\rho)e^{-\rho^2/w_g^2}\int_0^{2\pi}\dd\theta\,e^{il\theta}\exp\!\left[-\frac{ik_0}{f}r\rho\cos(\theta-\phi)\right].
+\end{equation}
+Setting $\psi = \theta - \phi$ and inserting $e^{-i\alpha\cos\psi} = \sum_{n=-\infty}^\infty (-i)^n J_n(\alpha) e^{in\psi}$ ($\alpha = k_0 r\rho/f$) picks out $n = -l$, giving $2\pi(-i)^{-l} J_{-l}(\alpha) e^{il\phi} = 2\pi(-i)^{\abs{l}} J_{\abs{l}}(\alpha) e^{il\phi}$ for \emph{all} $l \in \mathbb{Z}$ (check $l = +m \ge 0$: $(-i)^{-m}(-1)^m = (-i)^m$; check $l = -m < 0$: $(-i)^{+m} J_m$). Accounting for $J_{-m}(k_r\rho) = (-1)^m J_m(k_r\rho)$ merges the overall phase to $(-i)^{l+1} e^{2ik_0 f}$ (since $\frac{2\pi}{i\lambda f} = \frac{-i k_0}{f}$).
+
+\paragraph*{Step 2: Radial integral via Weber's formula \tagexact{}.}
+Apply Eq.~\eqref{eq:v2_weber_J} with $p = 1/w_g^2$, $\alpha = k_r$, $\beta = k_0 r/f$, $\nu = \abs{l}$:
+\begin{equation}
+  E_{\mathrm{out}}(r,\phi) = (-i)^{l+1} e^{2ik_0 f}\left(\frac{k_0 E_0 w_g^2}{2f}\right) e^{il\phi}\exp\!\left[-\frac{w_g^2 k_r^2}{4} - \frac{w_g^2 k_0^2}{4f^2}r^2\right] I_{\abs{l}}\!\left(\frac{w_g^2 k_r k_0}{2f}r\right).
+\end{equation}
+Equating exponents to $-(r^2+R^2)/w^2$ and $2Rr/w^2$ fixes $w = 2f/(k_0 w_g)$ and $R = k_r f/k_0$, and equating the amplitude $\frac{k_0 E_0 w_g^2}{2f} = E_0 \frac{w_g}{w}$ to $C_0 = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}$ yields $E_0 = \frac{1}{w w_g}\sqrt{\frac{2}{\pi}} = \frac{k_0}{f\sqrt{2\pi}}$, proving \josa{4}.
+
+\begin{approxbox}{Two-Zone Ray-Optics Self-Healing vs.\ Wave-Optics Diffraction Estimates}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagasymp{} / \tagmodel{} (geometric-optics shadow cone before the lens vs.\ Gaussian-ring diffraction after the lens).
+  \item \textbf{Derivation \& provenance:} Before the lens, the Bessel--Gauss cone half-angle obeys $\sin\gamma = k_r/k_0 \approx \tan\gamma$ (paraxial small-angle approximation $\gamma \ll 1$, error $\mathcal{O}(\gamma^2/2)$). By right-triangle geometry (Gori et al.~1987; McGloin \& Dholakia, \emph{Contemp.\ Phys.} 2005), an opaque on-axis disk of radius $a_{\mathrm{obs}}$ casts a shadow of length $z_{\mathrm{heal}} = a_{\mathrm{obs}}/\tan\gamma \approx k_0 a_{\mathrm{obs}}/k_r$, and the illuminating Gaussian waist $w_g$ limits the non-diffracting Bessel zone to $z_{\max} \approx k_0 w_g/k_r$. After the $2f$ focus, the ring spreads on the exact wave scale $z_R^{\mathrm{ring}} = k_0 w^2/2$ (proved exactly in Sec.~\ref{sec:v2_s4}).
+\end{itemize}
+\end{approxbox}
+
+% ==============================================================================
+\section{JOSA A Section 3: Continuous Frame Operator and Sharp Paley--Wiener Bounds}
+\label{sec:v2_s3}
+
+\subsection{Azimuthal--Radial Overlap and Universal $l$-Independent Limit --- \josa{5}--\josa{6}}
+
+\begin{targeteq}{JOSA A Eqs.~(5) and (6) (pp.~3--4)}
+\[
+  \braket{\Phi_{l,R}}{\Phi_{l',R'}} = \delta_{l,l'}\frac{1}{w^2}e^{-(R^2+R'^2)/(2w^2)} I_{\abs{l}}\!\left(\frac{RR'}{w^2}\right), \qquad
+  \gamma_l(R,R') = \frac{I_{\abs{l}}(RR'/w^2)}{\sqrt{I_{\abs{l}}(R^2/w^2)\,I_{\abs{l}}(R'^2/w^2)}}.
+\]
+\end{targeteq}
+
+\paragraph*{Step 1: Exact overlap \josa{5}--\josa{6} \tagexact{}.}
+The azimuthal integral $\int_0^{2\pi} e^{i(l'-l)\phi}\,\dd\phi = 2\pi\delta_{l,l'}$ decouples OAM sectors identically. Applying Eq.~\eqref{eq:v2_weber_I} with $p = 2/w^2$, $a = 2R/w^2$, $b = 2R'/w^2$ produces \josa{5} ($\frac{4}{w^4}\cdot\frac{w^2}{4} = \frac{1}{w^2}$ and $-\frac{R^2+R'^2}{w^2} + \frac{R^2+R'^2}{2w^2} = -\frac{R^2+R'^2}{2w^2}$). Dividing by $\norm{\Phi_{l,R}}_{L^2}\norm{\Phi_{l,R'}}_{L^2}$ cancels $w^{-2} e^{-(R^2+R'^2)/(2w^2)}$ identically, yielding \josa{6}.
+
+\begin{approxbox}{Universal $l$-Independent Gaussian Overlap Limit of Eq.~(6)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagasymp{} --- leading term is independent of $l$; first $l$-dependence appears at $\mathcal{O}\bigl(\frac{l^2 w^2 (R-R')^2}{R^2 R'^2}\bigr)$.
+  \item \textbf{Validity regime:} $R^2/w^2 \gg \abs{l^2 - \frac{1}{4}}$ and $R'^2/w^2 \gg \abs{l^2 - \frac{1}{4}}$.
+  \item \textbf{Where it comes from:} DLMF~(10.40.1) inserted into numerator and denominator of Eq.~(6), combined with the binomial Taylor series $(1 - \varepsilon)^{-1/2} = 1 + \frac{1}{2}\varepsilon + \mathcal{O}(\varepsilon^2)$:
+\end{itemize}
+\vspace{-4pt}
+\begin{align*}
+  \gamma_l(R,R') &= \frac{\frac{e^{RR'/w^2}}{\sqrt{RR'}}\bigl(1 - \frac{\mu w^2}{8RR'}\bigr)}{\left[\frac{e^{R^2/w^2}}{\sqrt{R^2}}\bigl(1 - \frac{\mu w^2}{8R^2}\bigr)\right]^{1/2}\left[\frac{e^{R'^2/w^2}}{\sqrt{R'^2}}\bigl(1 - \frac{\mu w^2}{8R'^2}\bigr)\right]^{1/2}}\bigl(1 + \mathcal{O}(w^4)\bigr) \\
+  &= \exp\!\left[-\frac{(R-R')^2}{2w^2}\right]\left[1 + \frac{\mu w^2}{16}\left(\frac{1}{R^2} - \frac{2}{RR'} + \frac{1}{R'^2}\right) + \mathcal{O}(w^4)\right] \\
+  &= e^{-(R-R')^2/(2w^2)}\left[1 + \frac{(4l^2-1)w^2(R-R')^2}{16 R^2 R'^2} + \mathcal{O}(w^4)\right].
+\end{align*}
+Notice the exact square completion $\frac{1}{R^2} - \frac{2}{RR'} + \frac{1}{R'^2} = \frac{(R-R')^2}{R^2 R'^2} \ge 0$! This proves that for $l \ge 1$, the first finite-curvature correction is strictly \emph{positive} (slightly increasing overlap above the pure Gaussian), and vanishes quadratically as $R' \to R$.
+\end{approxbox}
+
+\subsection{2D Fourier Transform, Hankel Isometry, and Convolution Operator --- \josa{7}--\josa{9}}
+
+\begin{targeteq}{JOSA A Eqs.~(7), (8), and (9) (p.~4)}
+\begin{align*}
+  \widetilde{\Phi}_{l,R}(\mathbf{k}) &= \sqrt{2\pi}\,(-i)^{\abs{l}} e^{il\phi_k} e^{-w^2 k_\perp^2/4} J_{\abs{l}}(Rk_\perp), \\
+  \norm{T\psi}_{L^2(\Omega,\mu)}^2 &= \int_{\mathbb{R}^2} e^{-w^2 k_\perp^2/2}\abs{\widetilde{\psi}(\mathbf{k})}^2\frac{\dd^2\mathbf{k}}{(2\pi)^2} \le \norm{\psi}_{L^2}^2, \qquad (S_w\psi)(\mathbf{r}) = (G_w * \psi)(\mathbf{r}).
+\end{align*}
+\end{targeteq}
+
+\begin{approxbox}{Continuous Frame Theory, Hankel Isometry, and Plancherel Normalization}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} --- holds for every $\psi \in L^2(\mathbb{R}^2)$ with zero approximation!
+  \item \textbf{Where each ingredient comes from:}
+    (1) \textbf{Continuous frame definition:} \emph{S.\ T.\ Ali, J.-P.\ Antoine \& J.-P.\ Gazeau}, \emph{Ann.\ Phys.\ (N.Y.)} \textbf{222}, 1 (1993); \emph{O.\ Christensen}, \emph{An Introduction to Frames and Riesz Bases} (2nd ed., Ch.~5). A family $\{\Phi_\omega\}_{\omega\in\Omega}$ is a continuous Bessel family with bound $B$ if $\int_\Omega \abs{\braket{\Phi_\omega}{\psi}}^2\dd\mu(\omega) \le B\norm{\psi}^2$, and a continuous frame if also $A\norm{\psi}^2 \le \int_\Omega\abs{\braket{\Phi_\omega}{\psi}}^2\dd\mu(\omega)$ for some $A > 0$.
+    (2) \textbf{Hankel completeness / isometry:} \emph{Watson}~\S14.3--14.4; \emph{Goodman}~Ch.~2: $\int_0^\infty R\,J_n(Rk) J_n(Rk')\,\dd R = k^{-1}\delta(k-k')$, which makes $(\mathrm{H}_n f)(R) \equiv \int_0^\infty k\,f(k) J_n(Rk)\,\dd k$ unitary on $L^2(\mathbb{R}_+, r\,\dd r)$ (indeed $\mathrm{H}_n$ is just the radial part of the unitary 2D Fourier transform on angular sector $l = \pm n$!).
+    (3) \textbf{Polarization identity:} For any linear operator $T$ on a complex Hilbert space, $\braket{T\phi}{T\psi} = \frac{1}{4}\sum_{m=0}^3 i^m\norm{T(\psi + i^m\phi)}^2$ (standard functional analysis; Reed \& Simon Vol.~1, Ch.~II).
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 1: Exact 2D Fourier transform \josa{7} \tagexact{}.}
+Using the non-unitary physics Fourier convention $\widetilde{f}(\mathbf{k}) = \int_{\mathbb{R}^2} f(\mathbf{r}) e^{-i\mathbf{k}\cdot\mathbf{r}}\,\dd^2\mathbf{r}$ (whose inverse carries $\frac{\dd^2\mathbf{k}}{(2\pi)^2}$ and Plancherel theorem reads $\braket{f}{g} = \int \widetilde{f}^*(\mathbf{k})\widetilde{g}(\mathbf{k})\frac{\dd^2\mathbf{k}}{(2\pi)^2}$), evaluate the azimuthal integral via Jacobi--Anger:
+\begin{equation}
+  \widetilde{\Phi}_{l,R}(k_\perp,\phi_k) = 2\pi C_0(-i)^{\abs{l}} e^{il\phi_k} e^{-R^2/w^2}\int_0^\infty r\,e^{-r^2/w^2} I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right) J_{\abs{l}}(k_\perp r)\,\dd r.
+\end{equation}
+Apply Eq.~\eqref{eq:v2_weber_I} with $p = 1/w^2$, $a = 2R/w^2$, and analytically continue $b \to -i k_\perp$ (using $I_{\abs{l}}(-iz) = (-i)^{\abs{l}} J_{\abs{l}}(z)$ on both sides, cancelling $(-i)^{\abs{l}}$!). Then $\frac{a^2+b^2}{4p} = \frac{4R^2/w^4 - k_\perp^2}{4/w^2} = \frac{R^2}{w^2} - \frac{w^2 k_\perp^2}{4}$ cancels $e^{-R^2/w^2}$, $\frac{ab}{2p} = -i R k_\perp$, and $2\pi C_0 (w^2/2) = \sqrt{2\pi}$, giving \josa{7}.
+
+\paragraph*{Step 2: Hankel isometry \josa{8} and Gaussian convolution \josa{9} \tagexact{}.}
+Expand $\widetilde{\psi}(k_\perp,\phi_k) = \sum_{l'\in\mathbb{Z}}\widetilde{\psi}_{l'}(k_\perp) e^{il'\phi_k}$. Plancherel's identity yields
+\begin{equation}
+  (T\psi)(l,R) = \frac{1}{(2\pi)^2}\cdot 2\pi\sqrt{2\pi}\,i^{\abs{l}}\int_0^\infty k_\perp\,\dd k_\perp\,e^{-w^2 k_\perp^2/4}\widetilde{\psi}_l(k_\perp) J_{\abs{l}}(Rk_\perp) = \frac{i^{\abs{l}}}{\sqrt{2\pi}}\,\mathrm{H}_{\abs{l}}\!\left[e^{-w^2 k_\perp^2/4}\widetilde{\psi}_l\right](R).
+\end{equation}
+By unitarity of $\mathrm{H}_{\abs{l}}$, summing $\int_0^\infty R\,\dd R\,\abs{(T\psi)(l,R)}^2$ over all $l \in \mathbb{Z}$ gives
+\begin{equation}
+  \norm{T\psi}_{L^2(\Omega,\mu)}^2 = \frac{1}{2\pi}\sum_{l\in\mathbb{Z}}\int_0^\infty k_\perp\,\dd k_\perp\,e^{-w^2 k_\perp^2/2}\abs{\widetilde{\psi}_l(k_\perp)}^2 = \int_{\mathbb{R}^2} e^{-w^2 k_\perp^2/2}\abs{\widetilde{\psi}(\mathbf{k})}^2\frac{\dd^2\mathbf{k}}{(2\pi)^2} \le \norm{\psi}_{L^2}^2,
+\end{equation}
+proving \josa{8} with exact Bessel bound $B = 1$. Polarizing gives $\widetilde{(S_w\psi)}(\mathbf{k}) = e^{-w^2 k_\perp^2/2}\widetilde{\psi}(\mathbf{k})$. Completing the square in each 1D inverse Fourier integral $\int_{-\infty}^\infty e^{-\frac{w^2}{2}k_x^2 + ik_x x}\frac{\dd k_x}{2\pi} = \frac{1}{\sqrt{2\pi w^2}}e^{-x^2/(2w^2)}$ gives $G_w(\mathbf{r}) = \frac{1}{2\pi w^2}e^{-r^2/(2w^2)}$, proving \josa{9}.
+
+\subsection{Sharp Paley--Wiener Bounds --- \josa{10}}
+
+\begin{targeteq}{JOSA A Eq.~(10) and Table~1 (pp.~4--5)}
+\[
+  A(w,k_{\max}) = \exp\!\left(-\frac{w^2 k_{\max}^2}{2}\right), \qquad B = 1, \qquad \kappa(S_{w,k_{\max}}) = \exp\!\left(\frac{w^2 k_{\max}^2}{2}\right).
+\]
+\end{targeteq}
+
+\begin{approxbox}{Why No Lower Frame Bound Exists on $L^2(\mathbb{R}^2)$ vs.\ Exact Sharpness on $\mathcal{H}_{k_{\max}}$}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} on $\mathcal{H}_{k_{\max}}$; \tagmodel{} physically when modeling a finite-NA optical aperture as a hard circular pupil $k_\perp \le k_{\max} = k_0\mathrm{NA}$ (Goodman~\S6.3).
+  \item \textbf{Mathematical provenance:} On all of $L^2(\mathbb{R}^2)$, $S_w$ is unitarily equivalent via $\mathcal{F}$ to multiplication by $m(k_\perp) = e^{-w^2 k_\perp^2/2}$. By the spectral theorem for multiplication operators (Reed \& Simon Vol.~1, Thm.~VII.3), $\sigma(S_w) = \overline{\operatorname{ran}(m)} = [0,1]$, so $0 \in \sigma(S_w)$ and $S_w$ is NOT bounded below (no $A > 0$ exists on $L^2(\mathbb{R}^2)$!). Restricting to the Paley--Wiener space $\mathcal{H}_{k_{\max}} = \{\psi : \operatorname{supp}\widetilde{\psi} \subseteq \{k_\perp \le k_{\max}\}\}$ restricts the multiplier range to $[e^{-w^2 k_{\max}^2/2}, 1]$, which immediately fixes $A = \min m = e^{-w^2 k_{\max}^2/2}$ and $B = \max m = 1$!
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Explicit constructive proof of sharpness \tagexact{}.}
+Using the unit-norm annulus wavefield $\widetilde{\psi}_\epsilon^{(-)}(\mathbf{k}) = 2\pi[\pi\epsilon(2k_{\max}-\epsilon)]^{-1/2}\allowbreak\mathbf{1}_{\{k_{\max}-\epsilon \le k_\perp \le k_{\max}\}}$ and substituting $t = w^2 k_\perp^2/2$ ($\dd t = w^2 k_\perp\,\dd k_\perp$):
+\begin{equation}
+  \braket{\psi_\epsilon^{(-)}}{S_w\psi_\epsilon^{(-)}} = \frac{2\left[e^{-w^2(k_{\max}-\epsilon)^2/2} - e^{-w^2 k_{\max}^2/2}\right]}{w^2\epsilon(2k_{\max}-\epsilon)} \xrightarrow[\text{L'H\^opital}]{\epsilon\to 0^+} \frac{2 w^2 k_{\max} e^{-w^2 k_{\max}^2/2}}{2 w^2 k_{\max}} = e^{-w^2 k_{\max}^2/2} = A(w, k_{\max}),
+\end{equation}
+and analogously $\braket{\psi_\epsilon^{(+)}}{S_w\psi_\epsilon^{(+)}} = \frac{2}{w^2\epsilon^2}(1 - e^{-w^2\epsilon^2/2}) \to 1 = B$.
+
+\begin{learnbox}[Why $S_w$ Is Non-Compact on $L^2(\mathbb{R}^2)$ (Subtle Functional-Analysis Distinction)]
+A common misconception is to think "Gaussian kernel $\implies$ compact operator." A Hilbert--Schmidt kernel $K(\mathbf{r},\mathbf{r}')$ is compact only if $\iint \abs{K(\mathbf{r},\mathbf{r}')}^2\,\dd^2\mathbf{r}\,\dd^2\mathbf{r}' < \infty$. Because $G_w(\mathbf{r}-\mathbf{r}')$ is \emph{translation-invariant} over infinite $\mathbb{R}^2$, that double integral diverges! Its spectrum $[0,1]$ is purely continuous (zero eigenvalues), whereas every compact self-adjoint operator has at most countable discrete eigenvalues accumulating only at $0$.
+\end{learnbox}
+
+% ==============================================================================
+\section{JOSA A Section 4: Paraxial Fresnel Propagation Invariance}
+\label{sec:v2_s4}
+
+\subsection{Complex-Waist Closed-Form Propagated PVB --- \josa{11}--\josa{12}}
+
+\begin{targeteq}{JOSA A Eqs.~(11) and (12) (p.~5)}
+\[
+  w_c^2(z) = w^2\!\left(1 + i\frac{z}{z_R^{\mathrm{ring}}}\right), \quad z_R^{\mathrm{ring}} = \frac{k_0 w^2}{2}, \qquad
+  \Phi_{l,R}^{(z)}(r,\phi) = \frac{1}{w_c^2(z)}\sqrt{\frac{2}{\pi}}\,e^{il\phi}\exp\!\left(-\frac{r^2+R^2}{w_c^2(z)}\right) I_{\abs{l}}\!\left(\frac{2Rr}{w_c^2(z)}\right).
+\]
+\end{targeteq}
+
+\begin{approxbox}{Scalar Paraxial Helmholtz Approximation (Fresnel Propagator)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagmodel{} for the Fresnel propagator $e^{-iz k_\perp^2/(2k_0)}$; \tagexact{} for solving it to obtain Eqs.~(11)--(15)!
+  \item \textbf{Where the approximation comes from (exact Helmholtz $\to$ Fresnel):} Start from the exact monochromatic scalar Helmholtz equation $(\nabla_\perp^2 + \partial_z^2 + k_0^2) E = 0$ (Goodman~\S3.6; Siegman~\S16.1). In angular-spectrum (Fourier) space, forward-propagating waves obey the \emph{exact} dispersion relation $k_z = \sqrt{k_0^2 - k_\perp^2}$. Expand via the binomial series $\sqrt{1 - u} = 1 - \frac{1}{2}u - \frac{1}{8}u^2 - \cdots$ with small parameter $u = (k_\perp/k_0)^2 \le \mathrm{NA}^2$:
+  \[
+    k_z = k_0\sqrt{1 - \frac{k_\perp^2}{k_0^2}} = k_0 - \frac{k_\perp^2}{2k_0} - \frac{k_\perp^4}{8k_0^3} - \cdots.
+  \]
+  Factoring out the carrier wave $e^{+ik_0 z}$ and truncating at $\mathcal{O}(k_\perp^2)$ yields the Fresnel transfer function $\exp(-iz k_\perp^2/(2k_0))$.
+  \item \textbf{Quantitative validity condition:} The neglected non-paraxial phase error over distance $z$ is $\Delta\phi_{\mathrm{np}} \approx \frac{z k_{\max}^4}{8 k_0^3} = \frac{1}{8} k_0 z\,\mathrm{NA}^4$. For typical fiber/free-space optics ($\mathrm{NA} = 0.20$), $\mathrm{NA}^2/4 = 0.01$ ($1\%$ slope correction), and the Fresnel propagator is accurate whenever $k_0 z\,\mathrm{NA}^4 \ll 8$.
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Exact derivation of \josa{11}--\josa{12} \tagexact{}.}
+Multiplying Eq.~\josa{7} by $e^{-iz k_\perp^2/(2k_0)}$ combines the Gaussian exponent identically into $-\frac{1}{4}\bigl(w^2 + \frac{2iz}{k_0}\bigr)k_\perp^2 = -\frac{1}{4} w_c^2(z) k_\perp^2$ with $z_R^{\mathrm{ring}} = k_0 w^2/2$ \josa{11}. Inverting the 2D Fourier transform using the azimuthal integral $\int_0^{2\pi} e^{il\phi_k + i k_\perp r\cos(\phi_k-\phi)}\,\dd\phi_k = 2\pi\,i^{\abs{l}} e^{il\phi} J_{\abs{l}}(r k_\perp)$ (cancelling $(-i)^{\abs{l}} i^{\abs{l}} = 1$) leaves
+\begin{equation}
+  \Phi_{l,R}^{(z)}(r,\phi) = \frac{e^{il\phi}}{\sqrt{2\pi}}\int_0^\infty k_\perp\,e^{-w_c^2(z)k_\perp^2/4} J_{\abs{l}}(R k_\perp) J_{\abs{l}}(r k_\perp)\,\dd k_\perp.
+\end{equation}
+Because $\operatorname{Re}[w_c^2(z)/4] = w^2/4 > 0$ strictly for \emph{every} $z \in (-\infty,\infty)$, Weber's integral Eq.~\eqref{eq:v2_weber_J} holds unconditionally with complex $p = w_c^2(z)/4$, $\alpha = R$, $\beta = r$, immediately yielding \josa{12}! Rationalizing $1/w_c^2(z)$ separates the expanding Gaussian ring width $w^2(z) = w^2[1+(z/z_R^{\mathrm{ring}})^2]$ from the spherical phase curvature $R_c^{\mathrm{ring}}(z) = z[1+(z_R^{\mathrm{ring}}/z)^2]$:
+\begin{equation}
+  \frac{1}{w_c^2(z)} = \frac{1 - iz/z_R^{\mathrm{ring}}}{w^2\bigl[1 + (z/z_R^{\mathrm{ring}})^2\bigr]} = \frac{1}{w^2(z)} - \frac{i k_0}{2 R_c^{\mathrm{ring}}(z)}.
+\end{equation}
+
+\subsection{Commutation $[S_w, \mathcal{U}_z] = 0$ and $\sigma_m^{+1}$ Gouy Analyzer --- \josa{13}--\josa{15}}
+
+\begin{targeteq}{JOSA A Eqs.~(13), (14), and (15) (pp.~5--6)}
+\[
+  [S_w, \mathcal{U}_z] = 0, \quad [P_{k_{\max}}, \mathcal{U}_z] = 0 \implies S_w^{(z)} = S_w, \qquad
+  \phi_{l,R}^{(m)}(r,\phi) = \sigma_m e^{+ik_0 r^2/[2R_c(z_m)]}\Phi_{l,\sigma_m R}(r,\phi;\,\sigma_m w).
+\]
+\end{targeteq}
+
+\begin{approxbox}{Why All Three Operators Commute \& Why $\sigma_m^{+1}$ (Not $\sigma_m^{-1}$) Is Mandatory}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} within paraxial Fresnel optics (in fact, $[S_w, \mathcal{U}_z] = 0$ and $[P_{k_{\max}}, \mathcal{U}_z] = 0$ remain \emph{exact even for the non-paraxial angular-spectrum propagator} $e^{iz\sqrt{k_0^2 - k_\perp^2}}$ on propagating waves $k_\perp \le k_0$, because all three operators are pure radial Fourier multipliers!).
+  \item \textbf{Where it comes from:} Any two Fourier multiplication operators $(M_f\psi)\,\widetilde{}\; = f(\mathbf{k})\widetilde{\psi}$ and $(M_g\psi)\,\widetilde{}\; = g(\mathbf{k})\widetilde{\psi}$ commute identically ($f(\mathbf{k})g(\mathbf{k}) = g(\mathbf{k})f(\mathbf{k})$). Since $\abs{e^{-iz k_\perp^2/(2k_0)}} = 1$, $\mathcal{U}_z$ is unitary ($\mathcal{U}_z\mathcal{U}_z^\dagger = \mathbb{I}$), so $S_w^{(z)} = \mathcal{U}_z S_w \mathcal{U}_z^\dagger = S_w \mathcal{U}_z \mathcal{U}_z^\dagger = S_w$.
+  \item \textbf{Pitfall alert ($\sigma_m^{+1}$ vs.\ $\sigma_m^{-1}$):} Under $\mathrm{LG}_{p,l}$ Fresnel propagation (Siegman~\S16.4), $\psi_{p,l}(r,\phi,z_m) = \sigma_m^{-1}\psi_{p,l}(r/\sigma_m,\phi,0)\exp[+ik_0 r^2/(2R_c(z_m)) - i(2p+\abs{l}+1)\vartheta_m]$. Meanwhile, because $[\Phi_{l,R}] = \ell_0^{-2}$ carries $1/w^2$ (quadratic in length!), scaling $(R,w) \mapsto (\sigma_m R, \sigma_m w)$ gives $\Phi_{l,\sigma_m R}(r,\phi;\,\sigma_m w) = \sigma_m^{-2}\Phi_{l,R}(r/\sigma_m,\phi;\,w)$. Multiplying by $\sigma_m^{+1}$ brings the prefactor to $\sigma_m^{-1}$, so that under $\mathbf{r} = \sigma_m\mathbf{r}'$ ($\dd^2\mathbf{r} = \sigma_m^2\,\dd^2\mathbf{r}'$), $\sigma_m^{-1}\cdot\sigma_m^{-1}\cdot\sigma_m^2 = 1$ cancels identically, proving \josa{15}! (Using $\sigma_m^{-1}$ would give a spurious $\sigma_m^{-2}$ decay with $z_m$!)
+\end{itemize}
+\end{approxbox}
+
+% ==============================================================================
+\section{JOSA A Section 5: Tikhonov Regularized Dual and Parseval MSE}
+\label{sec:v2_s5}
+
+\begin{targeteq}{JOSA A Eqs.~(16), (17), and (18) (pp.~6--7)}
+\begin{align*}
+  S_{w,\alpha_{\mathrm{reg}}}^{-1} &= (S_w^2 + \alpha_{\mathrm{reg}}\mathbb{I})^{-1}S_w, \qquad
+  \widetilde{H}_{\max} = \frac{1}{2\sqrt{\alpha_{\mathrm{reg}}}}\text{ at } k_{\mathrm{peak}} = \frac{1}{w}\sqrt{\ln\!\left(\frac{1}{\alpha_{\mathrm{reg}}}\right)}, \\
+  \mathrm{Var}(\alpha_{\mathrm{reg}}) &= \frac{P_\varepsilon}{(wk_{\max})^2}\left[\frac{1}{e^{-w^2 k_{\max}^2}+\alpha_{\mathrm{reg}}} - \frac{1}{1+\alpha_{\mathrm{reg}}}\right].
+\end{align*}
+\end{targeteq}
+
+\begin{approxbox}{Tikhonov Regularization, AM--GM Noise Bound, and Bandlimited White-Noise Model}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} for Eqs.~(16)--(18) under the \tagmodel{} assumption of zero-mean spatially uncorrelated (white) additive noise bandlimited to $k_\perp \le k_{\max}$ with constant PSD $\sigma_\varepsilon^2 = 4\pi P_\varepsilon/k_{\max}^2$.
+  \item \textbf{Where it comes from:} \emph{A.\ N.\ Tikhonov \& V.\ Y.\ Arsenin}, \emph{Solutions of Ill-Posed Problems} (Wiley, 1977); \emph{H.\ W.\ Engl, M.\ Hanke \& A.\ Neubauer}, \emph{Regularization of Inverse Problems} (Kluwer, 1996, Ch.~5). Note that for an ill-posed Gaussian deconvolution ($e^{-w^2 k_\perp^2/2}$ decays exponentially), direct inversion $S_w^{-1}$ multiplies noise by $e^{+w^2 k_\perp^2/2}$, blowing up as $e^{(wk_{\max})^2}$ in variance! Tikhonov replaces $1/g$ by $g/(g^2 + \alpha_{\mathrm{reg}})$.
+  \item \textbf{Why AM--GM gives Eq.~(17) in 1 line:} For any $g > 0$ and $\alpha_{\mathrm{reg}} > 0$, by the Arithmetic--Geometric Mean inequality $g + \frac{\alpha_{\mathrm{reg}}}{g} \ge 2\sqrt{g\cdot\frac{\alpha_{\mathrm{reg}}}{g}} = 2\sqrt{\alpha_{\mathrm{reg}}}$, with equality iff $g = \sqrt{\alpha_{\mathrm{reg}}}$! Taking reciprocals gives $\widetilde{H}_{w,\alpha_{\mathrm{reg}}}(g) = (g + \alpha_{\mathrm{reg}}/g)^{-1} \le (2\sqrt{\alpha_{\mathrm{reg}}})^{-1}$ immediately!
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Step 1: Fr\'echet variation \josa{16} \tagexact{}.}
+Perturbing $\psi \to \psi + \epsilon\eta$ in $J[\psi] = \norm{S_w\psi - \psi_{\mathrm{meas}}}_{L^2}^2 + \alpha_{\mathrm{reg}}\norm{\psi}_{L^2}^2$ and using $S_w^\dagger = S_w$ gives
+\begin{equation}
+  J[\psi + \epsilon\eta] = J[\psi] + 2\epsilon\operatorname{Re}\braket{\eta}{(S_w^2 + \alpha_{\mathrm{reg}}\mathbb{I})\psi - S_w\psi_{\mathrm{meas}}} + \epsilon^2\bigl(\norm{S_w\eta}^2 + \alpha_{\mathrm{reg}}\norm{\eta}^2\bigr).
+\end{equation}
+The strictly positive $\epsilon^2$ term guarantees a unique global minimizer satisfying $(S_w^2 + \alpha_{\mathrm{reg}}\mathbb{I})\hat{\psi}_{\alpha_{\mathrm{reg}}} = S_w\psi_{\mathrm{meas}}$, proving \josa{16}. Solving $e^{-w^2 k_{\mathrm{peak}}^2/2} = \sqrt{\alpha_{\mathrm{reg}}}$ gives $k_{\mathrm{peak}} = w^{-1}\sqrt{\ln(1/\alpha_{\mathrm{reg}})}$ \josa{17}.
+
+\paragraph*{Step 2: Exact closed-form Parseval variance \josa{18} \tagexact{}.}
+Writing $\hat{\psi}_{\alpha_{\mathrm{reg}}} - \psi_{2,1} = (S_{w,\alpha_{\mathrm{reg}}}^{-1}S_w - \mathbb{I})\psi_{2,1} + S_{w,\alpha_{\mathrm{reg}}}^{-1}\varepsilon$ and taking expectation ($\mathbb{E}[\varepsilon] = 0$) decouples $\mathrm{MSE} = \mathrm{Bias}^2 + \mathrm{Var}$. With $\sigma_\varepsilon^2 = 4\pi P_\varepsilon/k_{\max}^2$ (check: $\int_{k_\perp \le k_{\max}} \sigma_\varepsilon^2 \frac{\dd^2\mathbf{k}}{(2\pi)^2} = \frac{\sigma_\varepsilon^2}{4\pi^2}(\pi k_{\max}^2) = P_\varepsilon$) and substituting $y = e^{-w^2 k_\perp^2}$ ($\dd y = -2w^2 k_\perp e^{-w^2 k_\perp^2}\,\dd k_\perp$):
+\begin{equation}
+  \mathrm{Var}(\alpha_{\mathrm{reg}}) = \frac{4\pi P_\varepsilon}{k_{\max}^2}\cdot\frac{2\pi}{4\pi^2}\cdot\frac{1}{2w^2}\int_{e^{-w^2 k_{\max}^2}}^{1}\frac{\dd y}{(y+\alpha_{\mathrm{reg}})^2}
+  = \frac{P_\varepsilon}{(w k_{\max})^2}\left[\frac{1}{e^{-w^2 k_{\max}^2}+\alpha_{\mathrm{reg}}} - \frac{1}{1+\alpha_{\mathrm{reg}}}\right].
+\end{equation}
+
+\begin{pencheck}[Hand Check of Unregularized Blow-Up vs.\ Optimal Tikhonov ($w k_{\max} = 3.0$, $P_\varepsilon = 0.01$)]
+Unregularized ($\alpha_{\mathrm{reg}} = 0$): $e^{-9} = 1.2341\times 10^{-4}$, so $\mathrm{MSE}(0) = \mathrm{Var}(0) = \frac{0.01}{9}(e^9 - 1) = \frac{0.01}{9}(8102.084) = \mathbf{9.00232}$ ($900\%$ relative error!). Optimal Tikhonov ($\alpha_{\mathrm{reg}}^{\mathrm{opt}} = 0.049025$): $\mathrm{Var} = \frac{0.01}{9}\bigl(\frac{1}{0.0491484} - \frac{1}{1.049025}\bigr) = 0.021548$, $\mathrm{Bias}^2 = 0.013257$, $\mathrm{MSE}_{\min} = \mathbf{0.034805}$ (reduction factor $9.00232/0.034805 = \mathbf{258.65\times} = \mathbf{24.13\,\mathrm{dB}}$).
+\end{pencheck}
+
+% ==============================================================================
+\section{JOSA A Section 6 \& Appendix A: $\mathrm{LG}_{p,l}$ Expansion, Washout, and Gram Spectrum}
+\label{sec:v2_s6}
+
+\subsection{Exact $(p+1)$-Term Expansion $c_{l,p}(R)$ --- \josa{19}--\josa{20} \& \josa{25}--\josa{26}}
+
+\begin{targeteq}{JOSA A Eqs.~(19), (20), (25), and (26) (pp.~8, 10)}
+\[
+  c_{l,p}(R) = \mathcal{A}_{p,l}(R)\sum_{m=0}^p (-1)^m\binom{p+\abs{l}}{p-m}\xi^m L_m^{\abs{l}}(-\zeta_R), \qquad
+  \xi = \frac{2w^2}{w_0^2+w^2}, \qquad \zeta_R = \frac{R^2 w_0^2}{w^2(w_0^2+w^2)}.
+\]
+\end{targeteq}
+
+\begin{approxbox}{Three Exact Special-Function Identities (GR 6.631.1, Kummer DLMF 13.2.39, Laguerre DLMF 18.5.12)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagexact{} --- zero approximations! Valid for ALL $p \ge 0$, $l \in \mathbb{Z}$, $R, w, w_0 > 0$.
+  \item \textbf{Ingredient 1 (Hankel's ${}_1F_1$ integral --- GR~6.631.1 / Watson~\S13.3):} Expand $I_\nu(b_R r) = \sum_{k=0}^\infty \frac{(b_R r/2)^{\nu+2k}}{k!\,\Gamma(\nu+k+1)}$ term by term and integrate against $r^{\nu+2m+1} e^{-a_0 r^2}$ using $\int_0^\infty r^{2s+1} e^{-a_0 r^2}\,\dd r = \frac{\Gamma(s+1)}{2 a_0^{s+1}}$ ($s = \nu + m + k$):
+  \begin{align*}
+    \int_0^\infty r^{\nu+2m+1} e^{-a_0 r^2} I_\nu(b_R r)\,\dd r
+    &= \sum_{k=0}^\infty \frac{(b_R/2)^{\nu+2k}}{k!\,\Gamma(\nu+k+1)}\frac{\Gamma(\nu+m+k+1)}{2 a_0^{\nu+m+k+1}} \\
+    &= \frac{b_R^\nu\,\Gamma(\nu+m+1)}{2^{\nu+1} a_0^{\nu+m+1}\Gamma(\nu+1)}\sum_{k=0}^\infty \frac{(\nu+m+1)_k}{(\nu+1)_k}\frac{(b_R^2/(4a_0))^k}{k!}.
+  \end{align*}
+  That last sum is literally the definition of ${}_1F_1(\nu+m+1;\,\nu+1;\,\zeta_R)$ with $\zeta_R = b_R^2/(4a_0)$! You just derived GR~6.631.1 / Eq.~\josa{26} from scratch in 2 lines!
+  \item \textbf{Ingredient 2 (Kummer's first transformation --- DLMF Eq.~(13.2.39)):} ${}_1F_1(a; b; z) = e^z\,{}_1F_1(b-a; b; -z)$. \emph{3-line proof from Euler's integral} (valid for $\operatorname{Re} b > \operatorname{Re} a > 0$, then extended by analytic continuation):
+  \begin{align*}
+    {}_1F_1(a;b;z) &= \frac{\Gamma(b)}{\Gamma(a)\Gamma(b-a)}\int_0^1 e^{zt} t^{a-1}(1-t)^{b-a-1}\,\dd t \\
+    &\overset{t=1-s}{=} e^z\,\frac{\Gamma(b)}{\Gamma(b-a)\Gamma(a)}\int_0^1 e^{-zs} s^{(b-a)-1}(1-s)^{a-1}\,\dd s = e^z\,{}_1F_1(b-a; b; -z)!
+  \end{align*}
+  \item \textbf{Ingredient 3 (Laguerre hypergeometric representation --- DLMF Eq.~(18.5.12)):} Because $(-m)_k = (-1)^k \frac{m!}{(m-k)!}$ terminates at $k = m$,
+  \[
+    \frac{\Gamma(\abs{l}+m+1)}{\Gamma(\abs{l}+1)}\,{}_1F_1(-m;\,\abs{l}+1;\,y)
+    = m!\sum_{k=0}^m \binom{m+\abs{l}}{m-k}\frac{(-y)^k}{k!} = m!\,L_m^{\abs{l}}(y).
+  \]
+\end{itemize}
+\end{approxbox}
+
+\paragraph*{Assembly of Eqs.~\josa{19}--\josa{20} \tagexact{}.}
+Set $a_0 = \frac{1}{w^2} + \frac{1}{w_0^2} = \frac{w_0^2+w^2}{w^2 w_0^2}$ and $b_R = \frac{2R}{w^2}$, check $\zeta_R = \frac{b_R^2}{4a_0} = \frac{R^2 w_0^2}{w^2(w_0^2+w^2)}$ and $-\frac{R^2}{w^2} + \zeta_R = -\frac{R^2}{w_0^2+w^2}$, expand $L_p^{\abs{l}}(2r^2/w_0^2) = \sum_{m=0}^p \frac{(-1)^m}{m!}\binom{p+\abs{l}}{p-m}(2/w_0^2)^m r^{2m}$, apply Ingredients 1--3 so $m!$ cancels $1/m!$ and $(2/w_0^2)^m a_0^{-m} = [2w^2/(w_0^2+w^2)]^m = \xi^m$, and gather all $m$-independent factors into
+\begin{equation}
+  \mathcal{A}_{p,l}(R) = 2^{\abs{l}/2+1}\sqrt{\frac{p!}{(p+\abs{l})!}}\,\frac{R^{\abs{l}} w_0^{\abs{l}+1}}{(w_0^2+w^2)^{\abs{l}+1}}\exp\!\left(-\frac{R^2}{w_0^2+w^2}\right).
+\end{equation}
+
+\begin{pencheck}[Hand Check of $c_{1,p}(1)$ at $R = 1, w_0 = 1, w = 0.25$ ($p = 0, 1, 2$)]
+Parameters: $w_0^2+w^2 = 17/16$, $\xi = 2/17 = 0.117647$, $\zeta_R = 256/17 = 15.058824$, $e^{-16/17} = 0.390169$; $L_0^1(-\zeta) = 1$, $L_1^1(-\zeta) = 2+\zeta = 17.058824$, $L_2^1(-\zeta) = 3 + 3\zeta + \zeta^2/2 = 161.560554$.
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=1pt]
+  \item $p=0$: $\mathcal{A}_{0,1} = 2^{3/2}(16/17)^2 e^{-16/17} = \mathbf{0.977551} = c_{1,0}(1)$.
+  \item $p=1$: $\mathcal{A}_{1,1} = 0.977551/\sqrt{2} = 0.691233$; sum $= 2 - (2/17)(17.058824) = -0.0069204 \implies c_{1,1}(1) = \mathbf{-0.0047836}$.
+  \item $p=2$: $\mathcal{A}_{2,1} = 0.977551/\sqrt{3} = 0.564390$; sum $= 3 - 3(2.006920) + 2.236132 = -0.784629 \implies c_{1,2}(1) = \mathbf{-0.442836}$ (matches 50-digit quadrature to $10^{-49}$!).
+\end{itemize}
+\end{pencheck}
+
+\subsection{Radial Nodal Washout, Exact $p=0$ Inversion, and WKB Arcsine Law --- \josa{21}--\josa{23}}
+
+\begin{targeteq}{JOSA A Eqs.~(21), (22), and (23) (pp.~8--9)}
+\[
+  \mathcal{F}(p,l,w/w_0) = \frac{\bigl(\int_0^\infty e^{-au}\rho_{p,l}(u)\,\dd u\bigr)^2}{\int_0^\infty e^{-2au}\rho_{p,l}(u)\,\dd u}, \quad
+  w_{\mathrm{crit}}(0,l) = w_0\left[(1 - \sqrt{1-q_l})^{-1}-1\right]^{1/2}, \quad
+  w_{\mathrm{crit}}(p,l) \approx \frac{0.573\,w_0}{\sqrt{2p+\abs{l}+1}}.
+\]
+\end{targeteq}
+
+\paragraph*{Step 1: Exact $p = 0$ inversion \josa{22} and exact rational hand checks at $w = w_0$ \tagexact{}.}
+Since $\psi_{p,l}$ is a Fourier eigenfunction (up to phase $(-i)^{2p+\abs{l}}$), its dimensionless momentum density is $\rho_{p,l}(u) = \frac{p!}{(p+\abs{l})!} u^{\abs{l}} e^{-u}[L_p^{\abs{l}}(u)]^2$ ($u = w_0^2 k_\perp^2/2$, $a = w^2/w_0^2$). For $p = 0$, $\int_0^\infty e^{-\beta u}\rho_{0,l}(u)\,\dd u = (1+\beta)^{-(\abs{l}+1)}$, yielding $\mathcal{F}(0,l) = [1 - a^2/(1+a)^2]^{\abs{l}+1}$. Setting $\mathcal{F} = 0.95$ with $q_l = 0.95^{1/(\abs{l}+1)}$ gives $a/(1+a) = \sqrt{1-q_l} \implies a = (1-\sqrt{1-q_l})^{-1} - 1 \implies w_{\mathrm{crit}} = w_0\sqrt{a}$ \josa{22}. At $w = w_0$ ($a=1$), $l=1$: $p=0$ gives $J_1 = 1/4, J_2 = 1/9 \implies \mathcal{F} = \mathbf{9/16 = 0.56250}$; $p=1$ gives $J_1 = 3/16, J_2 = 1/9 \implies \mathcal{F} = \mathbf{81/256 = 0.31641}$.
+
+\begin{approxbox}{Semiclassical WKB Arcsine Law for Large-$p$ Radial Washout (Eq.~(23))}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} \tagasymp{} --- exact in the semiclassical limit $N_p \equiv p + (\abs{l}+1)/2 \to \infty$ with $c \equiv 2N_p a$ fixed; error is already $< 1\%$ for $p \ge 5$!
+  \item \textbf{Where it comes from:} \emph{G.\ Szeg\H{o}}, \emph{Orthogonal Polynomials} (Ch.~8, Plancherel--Rotach asymptotics of Laguerre polynomials); \emph{W.\ Gawronski}, \emph{J.\ Approx.\ Theory} \textbf{73}, 288 (1993) (Marchenko--Pastur / arcsine zero distribution of $L_p^{(\alpha)}$).
+  \item \textbf{Mini-derivation from scratch (quantum radial harmonic oscillator!):} Because $\widetilde{\psi}_{p,l}(k_\perp)$ is an eigenstate of the 2D isotropic quantum harmonic oscillator with energy $E = 2p + \abs{l} + 1 = 2N_p$ in dimensionless units ($k = \sqrt{2u}$), the radial classical turning points for small angular momentum ($l^2 \ll N_p^2$) satisfy $V(k) = \frac{1}{2}k^2 = u \le 2E = 4N_p$, so $u \in (0, 4N_p)$ and radial momentum is $p_k(u) = \sqrt{2E - k^2} = \sqrt{4N_p - 2u}$. By the WKB correspondence principle, the locally averaged probability density is inversely proportional to classical velocity $v_k = p_k$:
+  \[
+    \rho_{\mathrm{WKB}}(u)\,\dd u \propto \frac{\dd k}{p_k} = \frac{\dd u/\sqrt{2u}}{\sqrt{4N_p - 2u}} \propto \frac{\dd u}{\sqrt{u(4N_p - u)}}.
+  \]
+  Normalizing via $u = 2N_p(1 - \cos\theta)$ ($\theta \in [0,\pi]$, $\dd u/\sqrt{u(4N_p-u)} = \dd\theta$) fixes the constant to $1/\pi$, yielding $\rho_{\mathrm{WKB}}(u) = [\pi\sqrt{u(4N_p-u)}]^{-1}$! Its exact Laplace transform is then
+  \[
+    \int_0^{4N_p} e^{-au}\rho_{\mathrm{WKB}}(u)\,\dd u = \frac{1}{\pi}\int_0^\pi e^{-2N_p a(1-\cos\theta)}\,\dd\theta = e^{-2N_p a} I_0(2N_p a) \qquad (\text{DLMF~10.32.3}).
+  \]
+  Setting $c = 2N_p a = (2p+\abs{l}+1)(w/w_0)^2$ cancels $e^{-2c}$ cleanly in $\mathcal{F}_{\mathrm{WKB}}(c) = I_0(c)^2/I_0(2c) = 0.95 \implies c_* = 0.327687 \implies \sqrt{c_*} = \mathbf{0.572440}$, proving \josa{23}!
+\end{itemize}
+\end{approxbox}
+
+\subsection{Discrete Sampling and Szeg\H{o} Jacobi-Theta Toeplitz Bound --- \josa{24}}
+
+\begin{targeteq}{JOSA A Eq.~(24) and Table~2(b) (p.~9)}
+\[
+  \kappa(T_N) < \kappa(T_\infty) = \frac{\vartheta_3(0,q)}{\vartheta_4(0,q)}, \qquad q = e^{-\Delta R^2/(2w^2)}, \qquad N_{\max} \approx \left\lfloor \frac{R_{\max}-R_{\min}}{2w} \right\rfloor + 1.
+\]
+\end{targeteq}
+
+\begin{approxbox}{Annular Toeplitz Approximation + Exact Szeg\H{o}--Jacobi Spectral Bound}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt,topsep=1pt]
+  \item \textbf{Status:} Two distinct steps! (1) Approximating the exact Bessel Gram matrix $\gamma_{nm} = \gamma_l(R_n,R_m)$ by the symmetric Gaussian Toeplitz matrix $[T_N]_{nm} = q^{(n-m)^2}$ is \tagasymp{}, valid for $R_{\min} \gg w, \abs{l}w/2$ with error $\mathcal{O}\bigl(\frac{(4l^2-1)w^2\Delta R^2}{16 R_{\min}^4}\bigr)$. (2) Once $T_N$ is formed, the strict upper bound $\kappa(T_N) < \vartheta_3(0,q)/\vartheta_4(0,q)$ for EVERY $N \ge 1$ is \tagexact{}!
+  \item \textbf{Where both theorems come from:}
+    (1) \textbf{Szeg\H{o} Toeplitz eigenvalue bounds:} \emph{U.\ Grenander \& G.\ Szeg\H{o}}, \emph{Toeplitz Forms and Their Applications} (Univ.\ California Press, 1958, Ch.~5); \emph{R.\ M.\ Gray}, \emph{Found.\ Trends Commun.\ Inf.\ Theory} \textbf{2}, 155 (2006). For any $N\times N$ Hermitian Toeplitz matrix $T_{nm} = t_{n-m}$ generated by real symbol $f(\theta) = \sum_{k=-\infty}^\infty t_k e^{ik\theta}$, the Rayleigh quotient satisfies
+    \[
+      \frac{\mathbf{v}^\dagger T_N\mathbf{v}}{\norm{\mathbf{v}}_2^2} = \frac{\frac{1}{2\pi}\int_{-\pi}^\pi f(\theta)\abs{V(\theta)}^2\,\dd\theta}{\frac{1}{2\pi}\int_{-\pi}^\pi \abs{V(\theta)}^2\,\dd\theta}, \qquad V(\theta) = \sum_{n=1}^N v_n e^{-in\theta}.
+    \]
+    Because $\abs{V(\theta)}^2 \ge 0$ is a non-trivial trigonometric polynomial, every eigenvalue strictly obeys $\min_\theta f(\theta) < \lambda_j(T_N) < \max_\theta f(\theta)$!
+    (2) \textbf{Jacobi's triple product identity (\emph{NIST DLMF~\S20.5(i)}; Whittaker \& Watson~\S21.3):}
+    \[
+      f(\theta) = \sum_{k=-\infty}^\infty q^{k^2} e^{ik\theta} = \vartheta_3\!\left(\frac{\theta}{2}, q\right) = \prod_{m=1}^\infty (1 - q^{2m})\bigl(1 + 2q^{2m-1}\cos\theta + q^{4m-2}\bigr).
+    \]
+    Look at the factor $(1 + 2q^{2m-1}\cos\theta + q^{4m-2})$ for $q \in (0,1)$: every single factor is strictly positive (since $(1 - q^{2m-1})^2 > 0$), simultaneously \emph{maximized} at $\cos\theta = +1$ ($\theta = 0 \implies \vartheta_3(0,q)$), and simultaneously \emph{minimized} at $\cos\theta = -1$ ($\theta = \pi \implies \vartheta_4(0,q)$)! That proves $\kappa(T_N) < \vartheta_3(0,q)/\vartheta_4(0,q)$ without a single gap!
+\end{itemize}
+\end{approxbox}
+
+\begin{pencheck}[Hand Arithmetic at $\Delta R = 2.0\,w$ ($q = e^{-2} = 0.135335$)]
+Truncating the rapidly converging theta series at $k = 2$ ($q^4 = 3.355\times 10^{-4}$, $q^9 = 1.5\times 10^{-8}$):
+$\vartheta_3(0,e^{-2}) = 1 + 2(0.135335) + 2(0.0003355) = 1.271341$, $\vartheta_4(0,e^{-2}) = 1 - 2(0.135335) + 2(0.0003355) = 0.729999$, so $\kappa(T_\infty) = 1.271341/0.729999 = \mathbf{1.74157}$ (bounding exact Bessel $\kappa(\gamma) = 1.6449$ at $N=6$). Adjacent power isolation: $-20\log_{10}(0.135528) = \mathbf{17.36\,\mathrm{dB}}$.
+\end{pencheck}
+
+% ==============================================================================
+\section*{Annotated Study Guide \& Reading Map (Paper 1)}
+\addcontentsline{toc}{section}{Annotated Study Guide \& Reading Map (Paper 1)}
+\begin{itemize}[leftmargin=1.4em,itemsep=2pt]
+  \item \textbf{Special Functions (Free Online):} NIST Digital Library of Mathematical Functions (\url{https://dlmf.nist.gov}): \S10.12 (Jacobi--Anger), \S10.22 (Weber integrals), \S10.32--10.40 ($I_\nu$ integral \& Hankel asymptotics), \S13.2 (Kummer), \S18.5 (Laguerre), \S20.5 (Jacobi triple product). Also \emph{Gradshteyn \& Ryzhik} (8th ed., \S6.631.1, \S6.633.2) and \emph{Watson}, \emph{Theory of Bessel Functions}.
+  \item \textbf{Fourier Optics \& Paraxial Beams:} \emph{J.\ W.\ Goodman}, \emph{Introduction to Fourier Optics} (4th ed., Chs.~2--6); \emph{A.\ E.\ Siegman}, \emph{Lasers} (Ch.~16).
+  \item \textbf{Continuous Frames, Regularization \& Toeplitz Theory:} \emph{O.\ Christensen}, \emph{An Introduction to Frames and Riesz Bases} (2nd ed., Ch.~5); \emph{Engl, Hanke \& Neubauer}, \emph{Regularization of Inverse Problems} (Ch.~5); \emph{Grenander \& Szeg\H{o}}, \emph{Toeplitz Forms and Their Applications} (Ch.~5).
+  \item \textbf{Local Open-Access arXiv PDFs in \texttt{Paper 1/References/}:} Pinnell \emph{et al.} (\texttt{1908.04428}, peak shift), Villalba \emph{et al.} (\texttt{2308.11354}, PVB--RCF), Plick \& Krenn (\texttt{1306.6517}) and Karimi \emph{et al.} (\texttt{1401.4985}, radial LG index), Gazeau (\texttt{1810.06473}, coherent-state frames), Bownik \& Jasper (\texttt{2603.10423}, discretization of continuous frames).
+\end{itemize}
+
+\end{document}

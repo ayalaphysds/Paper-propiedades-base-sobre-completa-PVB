@@ -1,0 +1,202 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Allen1992}
+L.~Allen, M.~W. Beijersbergen, R.~J.~C. Spreeuw, and J.~P. Woerdman,
+  \enquote{Orbital angular momentum of light and the transformation of
+  {Laguerre-Gaussian} laser modes,} {\protect\JournalTitle{Phys. Rev. A}}
+  \textbf{45}, 8185--8189 (1992).
+
+\bibitem{Erhard2018}
+M.~Erhard, R.~Fickler, M.~Krenn, and A.~Zeilinger, \enquote{Twisted photons:
+  new quantum perspectives in high dimensions,} {\protect\JournalTitle{Light
+  Sci. Appl.}} \textbf{7}, 17146 (2018).
+
+\bibitem{Bozinovic2013}
+N.~Bozinovic, Y.~Yue, Y.~Ren, \emph{et~al.}, \enquote{Terabit-scale orbital
+  angular momentum mode division multiplexing in fibers,}
+  {\protect\JournalTitle{Science}} \textbf{340}, 1545--1548 (2013).
+
+\bibitem{Willner2015}
+A.~E. Willner, H.~Huang, Y.~Yan, \emph{et~al.}, \enquote{Optical communications
+  using orbital angular momentum beams,} {\protect\JournalTitle{Adv. Opt.
+  Photonics}} \textbf{7}, 66--106 (2015).
+
+\bibitem{Mirhosseini2015}
+M.~Mirhosseini, O.~S. Maga{\~n}a-Loaiza, M.~N. O'Sullivan, \emph{et~al.},
+  \enquote{High-dimensional quantum cryptography with twisted light,}
+  {\protect\JournalTitle{New J. Phys.}} \textbf{17}, 033033 (2015).
+
+\bibitem{Walborn2010}
+S.~P. Walborn, C.~H. Monken, S.~P{\'a}dua, and P.~H.~S. Ribeiro,
+  \enquote{Spatial correlations in parametric down-conversion,}
+  {\protect\JournalTitle{Phys. Rep.}} \textbf{495}, 87--139 (2010).
+
+\bibitem{Ramachandran2009}
+S.~Ramachandran, P.~Kristensen, and M.~F. Yan, \enquote{Generation and
+  propagation of radially polarized beams in optical fibers,}
+  {\protect\JournalTitle{Opt. Lett.}} \textbf{34}, 2525--2527 (2009).
+
+\bibitem{Zhang2018GRIN}
+J.~Zhang, G.~Zhu, J.~Liu, \emph{et~al.}, \enquote{Orbital-angular-momentum
+  mode-group multiplexed transmission over a graded-index ring-core fiber based
+  on receive diversity and maximal ratio combining,}
+  {\protect\JournalTitle{Opt. Express}} \textbf{26}, 4243--4257 (2018).
+
+\bibitem{RojasRojas2021}
+S.~Rojas-Rojas, G.~Ca{\~n}as, G.~Saavedra, \emph{et~al.}, \enquote{Optimal
+  conditions for multiplexing information into ring-core optical fibers,}
+  {\protect\JournalTitle{Opt. Express}} \textbf{29}, 23381--23392 (2021).
+
+\bibitem{Canas2021}
+G.~Ca{\~n}as, S.~Rojas-Rojas, E.~S. G{\'o}mez, \emph{et~al.},
+  \enquote{Engineering entangled photons for transmission in ring-core optical
+  fibers,} {\protect\JournalTitle{Phys. Rev. A}} \textbf{104}, 062614 (2021).
+
+\bibitem{Asgharzadeh2026}
+H.~Asgharzadeh \emph{et~al.}, \enquote{Stability of orbital angular momentum
+  modes in conventional and ring-core optical fibers,} arXiv:2608.10683 (2026).
+
+\bibitem{Paterson2005}
+C.~Paterson, \enquote{Atmospheric turbulence and orbital angular momentum of
+  single photons for optical communication,} {\protect\JournalTitle{Phys. Rev.
+  Lett.}} \textbf{94}, 153901 (2005).
+
+\bibitem{TylerBoyd2009}
+G.~A. Tyler and R.~W. Boyd, \enquote{Influence of atmospheric turbulence on the
+  propagation of quantum states of light carrying orbital angular momentum,}
+  {\protect\JournalTitle{Opt. Lett.}} \textbf{34}, 142--144 (2009).
+
+\bibitem{Roux2011}
+F.~S. Roux, \enquote{Infinitesimal-propagation equation for decoherence of an
+  orbital-angular-momentum-entangled biphoton state in atmospheric turbulence,}
+  {\protect\JournalTitle{Phys. Rev. A}} \textbf{83}, 053822 (2011).
+
+\bibitem{Ibrahim2013}
+A.~H. Ibrahim, F.~S. Roux, M.~McLaren, \emph{et~al.},
+  \enquote{Orbital-angular-momentum entanglement in turbulence,}
+  {\protect\JournalTitle{Phys. Rev. A}} \textbf{88}, 012312 (2013).
+
+\bibitem{Ostrovsky2013}
+A.~S. Ostrovsky, C.~Rickenstorff-Parrao, and V.~Arriz{\'o}n,
+  \enquote{Generation of the ``perfect'' optical vortex using a liquid-crystal
+  spatial light modulator,} {\protect\JournalTitle{Opt. Lett.}} \textbf{38},
+  534--536 (2013).
+
+\bibitem{Vaity2015}
+P.~Vaity and L.~Rusch, \enquote{Perfect vortex beam: {Fourier} transformation
+  of a {Bessel} beam,} {\protect\JournalTitle{Opt. Lett.}} \textbf{40},
+  597--600 (2015).
+
+\bibitem{Reddy2016}
+S.~G. Reddy, {Chithrabhanu P.}, P.~Vaity, \emph{et~al.},
+  \enquote{Non-diffracting speckles of a perfect vortex beam,}
+  {\protect\JournalTitle{J. Opt.}} \textbf{18}, 055602 (2016).
+
+\bibitem{Villalba2023}
+N.~Villalba, G.~Ca{\~n}as, S.~Ayala, \emph{et~al.}, \enquote{Transmission of
+  optical communication signals through ring core fiber using perfect vortex
+  beams,} {\protect\JournalTitle{Opt. Express}} \textbf{31}, 40113--40125
+  (2023).
+
+\bibitem{Ferreira2026}
+T.~Ferreira, G.~Santos, S.~Ayala, \emph{et~al.}, \enquote{Second-order moment
+  equivalence of twisted {Gaussian Schell} model beams and orbital angular
+  momentum eigenmodes,} {\protect\JournalTitle{J. Opt.}} \textbf{28}, 095601
+  (2026).
+
+\bibitem{AyalaV15Paper1}
+S.~Ayala, \enquote{Continuous {Hilbert} frame theory, paraxial propagation
+  invariance, and exact {Laguerre--Gaussian} expansion of finite-width perfect
+  optical vortex beams,}  (2026). Preprint (to be updated with arXiv identifier
+  upon posting).
+
+\bibitem{Fontaine2019}
+N.~K. Fontaine, R.~Ryf, H.~Chen, \emph{et~al.}, \enquote{{Laguerre-Gaussian}
+  mode sorter,} {\protect\JournalTitle{Nat. Commun.}} \textbf{10}, 1865 (2019).
+
+\bibitem{Fu2018}
+D.~Fu, Y.~Zhou, R.~Qi, \emph{et~al.}, \enquote{Realization of a scalable
+  {Laguerre-Gaussian} mode sorter based on a robust radial mode sorter,}
+  {\protect\JournalTitle{Opt. Express}} \textbf{26}, 33057--33065 (2018).
+
+\bibitem{Berkhout2010}
+G.~C.~G. Berkhout, M.~P.~J. Lavery, J.~Courtial, \emph{et~al.},
+  \enquote{Efficient sorting of orbital angular momentum states of light,}
+  {\protect\JournalTitle{Phys. Rev. Lett.}} \textbf{105}, 153601 (2010).
+
+\bibitem{Proakis2008}
+J.~G. Proakis and M.~Salehi, \emph{Digital Communications} (McGraw-Hill, New
+  York, 2008), 5th ed.
+
+\bibitem{Lane1992}
+R.~G. Lane, A.~Glindemann, and J.~C. Dainty, \enquote{Simulation of a
+  {Kolmogorov} phase screen,} {\protect\JournalTitle{Waves Random Media}}
+  \textbf{2}, 209--224 (1992).
+
+\bibitem{AndrewsPhillips2005}
+L.~C. Andrews and R.~L. Phillips, \emph{Laser Beam Propagation through Random
+  Media} (SPIE Press, Bellingham, WA, 2005), 2nd ed.
+
+\bibitem{Gu2018}
+X.~Gu, M.~Krenn, M.~Erhard, and A.~Zeilinger, \enquote{{Gouy} phase radial mode
+  sorter for light: Concepts and experiments,} {\protect\JournalTitle{Phys.
+  Rev. Lett.}} \textbf{120}, 103601 (2018).
+
+\bibitem{Zhou2017}
+Y.~Zhou, M.~Mirhosseini, D.~Fu, \emph{et~al.}, \enquote{Sorting photons by
+  radial quantum number,} {\protect\JournalTitle{Phys. Rev. Lett.}}
+  \textbf{119}, 263602 (2017).
+
+\bibitem{Zhou2019}
+Y.~Zhou, M.~Mirhosseini, S.~Oliver, \emph{et~al.}, \enquote{Using all
+  transverse degrees of freedom in quantum communications based on a generic
+  mode sorter,} {\protect\JournalTitle{Opt. Express}} \textbf{27}, 10383--10394
+  (2019).
+
+\bibitem{Choudhary2018}
+S.~Choudhary, R.~Sampson, Y.~Miyamoto, \emph{et~al.}, \enquote{Measurement of
+  the radial mode spectrum of photons through a phase-retrieval method,}
+  {\protect\JournalTitle{Opt. Lett.}} \textbf{43}, 6101--6104 (2018).
+
+\bibitem{Renes2004}
+J.~M. Renes, R.~Blume-Kohout, A.~J. Scott, and C.~M. Caves, \enquote{Symmetric
+  informationally complete quantum measurements,} {\protect\JournalTitle{J.
+  Math. Phys.}} \textbf{45}, 2171--2180 (2004).
+
+\bibitem{Lvovsky2004}
+A.~I. Lvovsky, \enquote{Iterative maximum-likelihood reconstruction in quantum
+  homodyne tomography,} {\protect\JournalTitle{J. Opt. B: Quantum Semiclass.
+  Opt.}} \textbf{6}, S556--S559 (2004).
+
+\bibitem{Clauser1969}
+J.~F. Clauser, M.~A. Horne, A.~Shimony, and R.~A. Holt, \enquote{Proposed
+  experiment to test local hidden-variable theories,}
+  {\protect\JournalTitle{Phys. Rev. Lett.}} \textbf{23}, 880--884 (1969).
+
+\bibitem{LawEberly2004}
+C.~K. Law and J.~H. Eberly, \enquote{Analysis and interpretation of high
+  transverse entanglement in optical parametric down conversion,}
+  {\protect\JournalTitle{Phys. Rev. Lett.}} \textbf{92}, 127903 (2004).
+
+\bibitem{Eberhard1993}
+P.~H. Eberhard, \enquote{Background level and counter efficiencies required for
+  a loophole-free {Einstein-Podolsky-Rosen} experiment,}
+  {\protect\JournalTitle{Phys. Rev. A}} \textbf{47}, R747--R750 (1993).
+
+\bibitem{Vertesi2010}
+T.~V{\'e}rtesi, S.~Pironio, and N.~Brunner, \enquote{Closing the detection
+  loophole in {Bell} experiments using qudits,} {\protect\JournalTitle{Phys.
+  Rev. Lett.}} \textbf{104}, 060401 (2010).
+
+\bibitem{WoottersFields1989}
+W.~K. Wootters and B.~D. Fields, \enquote{Optimal state-determination by
+  mutually unbiased measurements,} {\protect\JournalTitle{Ann. Phys. (N.Y.)}}
+  \textbf{191}, 363--381 (1989).
+
+\bibitem{AyalaCodeV15}
+S.~Ayala, \enquote{Verification and figure-generation code for continuous frame
+  theory and photonic protocols of physical perfect vortex beams,} GitHub /
+  Zenodo (2026).
+
+\end{thebibliography}

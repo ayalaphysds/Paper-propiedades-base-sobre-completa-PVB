@@ -1,0 +1,14 @@
+\contentsline {section}{\numberline {1}Chapter 1: The Two Ingredients Imported From Paper 1}{1}{section.1}%
+\contentsline {section}{\numberline {2}Chapter 2: Protocol 1 --- Ring-Core Optical Fibers and Multi-Ring Communications}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Step 2.1: From Maxwell's Wave Equation to a 1D Schr\"odinger Well}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Step 2.2: Why a Parabolic GRIN Ring Guides Fewer OAM Modes ($l = 0\text {--}6$ vs.\ $0\text {--}8$)}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Step 2.3: Sending $N$ Parallel Data Streams on Overlapping Rings (Equalization \& BER)}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Chapter 3: Protocol 2 --- Filtering Out Atmospheric Turbulence}{3}{section.3}%
+\contentsline {section}{\numberline {4}Chapter 4: Protocol 3 --- Quantum State Tomography With Multi-Plane Gouy PVBs}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Step 4.1: Why One Focal Plane Can Never Reconstruct a Radial Qudit (Rank-7 Proof!)}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Step 4.2: Breaking the Rank-7 Barrier Passively With Gouy Phases}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Step 4.3: Benchmarking Accuracy Against Optimal Mutually Unbiased Bases (MUBs)}{5}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Chapter 5: Protocol 4 --- Protecting Entangled Photons Through Circular Irises}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Step 5.1: What a Circular Iris Does to LG vs.\ PVB Modes}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Step 5.2: From Unbalanced Survival to the Sixth-Order CHSH Bound and $82.84\%$ Loophole}{6}{subsection.5.2}%
+\contentsline {section}{Summary Map: Where Every JOSA B Equation Was Built From Scratch}{6}{section*.2}%

@@ -1,0 +1,20 @@
+\contentsline {section}{Master Cross-Reference Map}{2}{section*.2}%
+\contentsline {section}{\numberline {1}Physical PVB Definition, Dimensions, Exact Norm, and Differential Radial Peak Shift}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Dimensional Homogeneity and Frame-versus-State Convention}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Exact $L^2(\mathbb {R}^2)$ Norm via Weber's Second Exponential Integral}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Thin-Ring Asymptotics and Self-Consistent Differential Radial Peak Shift}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}2$f$ Optical Fourier Transform Bridge from Bessel--Gaussian Beams}{4}{section.2}%
+\contentsline {section}{\numberline {3}Continuous Hilbert Frame Operator and Sharp Paley--Wiener Bounds}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Azimuthal--Radial Decoupling and Mutual Overlap}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Exact 2D Fourier Transform, Hankel Unitarity, and Convolution Kernel}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Sharpness of Paley--Wiener Bounds via Fourier-Annulus Test Families}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}NEW V15 Theorem: Paraxial Fresnel Propagation Invariance and Gouy Scaling Audit}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Exact Closed-Form Complex-Waist Fresnel Propagation}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Unitary Frame Invariance ($[S_w, \mathcal {U}_z] = 0$)}{8}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Tikhonov-Regularized Canonical Dual and Worked Noisy $\mathrm {LG}_{2,1}$ Deconvolution}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Fr\'echet Derivative and Noise-Gain Maximum}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Exact Parseval Bias--Variance Decomposition and $\mathrm {LG}_{2,1}$ Benchmark}{9}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Exact $(p+1)$-Term Closed-Form $\mathrm {LG}_{p,l}$ Expansion $c_{l,p}(R)$ ($p \ge 0$)}{9}{section.6}%
+\contentsline {section}{\numberline {7}Radial Nodal Washout, WKB Arcsine Law, and Jacobi-Theta Toeplitz Conditioning}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Exact $p = 0$ Threshold and WKB Arcsine Limit for $p \gg \lvert l \rvert $}{10}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Szeg\H {o} Toeplitz Spectrum and Jacobi-Theta Conditioning Bound}{11}{subsection.7.2}%

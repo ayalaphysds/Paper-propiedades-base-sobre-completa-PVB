@@ -1,0 +1,524 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.85in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\usepackage{bm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!65!black,citecolor=blue!65!black,urlcolor=blue!65!black]{hyperref}
+
+\definecolor{navy}{HTML}{1B4F72}
+\definecolor{crimson}{HTML}{922B21}
+\definecolor{forest}{HTML}{145A32}
+\definecolor{slate}{HTML}{34495E}
+\definecolor{softblue}{HTML}{EBF5FB}
+\definecolor{softgreen}{HTML}{EAFAF1}
+\definecolor{softamber}{HTML}{FEF9E7}
+\definecolor{amberborder}{HTML}{B7950B}
+
+\newtcolorbox{targeteq}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softblue,colframe=navy,fonttitle=\bfseries\small,
+  title={Target Result for V15 Paper 1: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt,after skip=8pt
+}
+
+\newtcolorbox{pencheck}[1][Pen-and-Paper Sanity Check]{
+  breakable,enhanced,lines before break=2,
+  colback=softgreen,colframe=forest,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt,after skip=8pt
+}
+
+\newtcolorbox{auditbox}[1][Symbolic \& Dimensional Audit]{
+  breakable,enhanced,lines before break=2,
+  colback=softamber,colframe=amberborder,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt,after skip=8pt
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{slate}\textit{V15 Paper 1 --- Complete Pen-and-Paper Mathematical Walkthrough}}
+\fancyhead[R]{\footnotesize\color{slate}\textit{S. Ayala}}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dd}{\mathrm{d}}
+
+\numberwithin{equation}{section}
+
+\title{\vspace{-1.0cm}\textbf{\Large Complete Pen-and-Paper Mathematical Walkthrough of V15 Paper 1}\\[0.35em]
+\large\textit{Zero-Skipped-Steps Derivations of Every Theorem, Asymptotic Expansion, Propagation Identity,\\
+Tikhonov Deconvolution Bound, and Laguerre--Gaussian Expansion}}
+\author{Sebasti\'an Ayala\thanks{\texttt{ayala.phys.ds@gmail.com}; ORCID: \href{https://orcid.org/0009-0003-7348-3883}{0009-0003-7348-3883}}}
+\date{Version 15 Pre-Drafting Derivation Manual --- November 24, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+\noindent This companion manual provides a complete, line-by-line, pen-and-paper derivation of \emph{every mathematical identity and benchmark} planned for standalone V15 Paper~1 (\emph{Continuous Hilbert Frame Theory, Paraxial Propagation Invariance, and Exact Laguerre--Gaussian Expansion of Finite-Width Perfect Optical Vortex Beams}). No change of variables, special-function continuation, Fourier normalization constant, dimensional check, Fr\'echet derivative, or asymptotic expansion step is omitted. Every symbolic relation and numerical benchmark is independently verified in \texttt{verify\_paper1\_v15.py} (SymPy, 40--50-digit \texttt{mpmath}, and $512\times 512$ 2D-FFT checks; 7/7 suites passed, logged in \texttt{verify\_paper1\_v15\_results.json}).
+\end{abstract}
+
+\tableofcontents
+\vspace{0.5em}
+
+\section*{Master Cross-Reference Map}
+\addcontentsline{toc}{section}{Master Cross-Reference Map}
+
+\begin{table}[h]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Walkthrough Section} & \textbf{Planned V15 Paper 1 Results Covered} & \textbf{Verification Suite} \\
+\midrule
+Sec.~\ref{sec:p1_def} & Physical PVB field $\Phi_{l,R}$, dimensions, $L^2$ norm, thin-ring limit, $(l^2/8)(w/R)^4$ peak shift & SymPy + Suite 2 \\
+Sec.~\ref{sec:p1_2f} & $2f$ Fourier transform of Bessel--Gaussian beam, $R, w, E_0$ bridge, two-zone propagation & Weber 6.633.4 \\
+Sec.~\ref{sec:p1_frame} & Sector decoupling, overlap $\gamma_l(R,R')$, 2D FT $\widetilde{\Phi}_{l,R}$, $B=1$, $S_w = G_w * \cdot$, Paley--Wiener bounds & SymPy + Lemma 1 \\
+Sec.~\ref{sec:p1_fresnel} & \textbf{NEW V15:} Exact Fresnel field $\Phi_{l,R}^{(z)}$, $[S_w,\mathcal{U}_z]=0$, Gouy $\sigma_m^{+1}$ audit fix & Suite 3 ($4.7\times 10^{-16}$) \\
+Sec.~\ref{sec:p1_tikhonov} & \textbf{INTEGRATED:} Tikhonov dual $S_{w,\alpha_{\mathrm{reg}}}^{-1}$, noise peak, Parseval $\mathrm{LG}_{2,1}$ deconvolution & SymPy + Suite 7 \\
+Sec.~\ref{sec:p1_clp} & Exact $(p+1)$-term closed-form expansion $c_{l,p}(R)$ via GR 6.631.1 and Kummer identity & SymPy + Suite 4 \\
+Sec.~\ref{sec:p1_rayleigh} & Nodal washout fidelity $\mathcal{F}$, exact $p=0$ root, WKB arcsine limit $0.5724$, Toeplitz $\vartheta_3/\vartheta_4$ & SymPy + Suites 5--6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ==============================================================================
+\section{Physical PVB Definition, Dimensions, Exact Norm, and Differential Radial Peak Shift}
+\label{sec:p1_def}
+
+\begin{targeteq}{PVB Frame Mode, Norm, and Differential Radial Shift}
+\begin{align*}
+  \Phi_{l,R}(r,\phi) &= C_0 e^{il\phi} \exp\!\left(-\frac{r^2+R^2}{w^2}\right) I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right), \qquad C_0 = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}, \\
+  \norm{\Phi_{l,R}}_{L^2}^2 &= \frac{1}{w^2} e^{-R^2/w^2} I_{\abs{l}}\!\left(\frac{R^2}{w^2}\right), \qquad
+  \Delta r_{\mathrm{peak}}(l) \equiv r_{\mathrm{peak}}(l) - r_{\mathrm{peak}}(0) \approx \frac{l^2}{8}\left(\frac{w}{R}\right)^4 R.
+\end{align*}
+\end{targeteq}
+
+\subsection{Dimensional Homogeneity and Frame-versus-State Convention}
+Let $\ell_0$ denote a physical length unit ($[r] = [R] = [w] = \ell_0$, $[\dd^2\mathbf{r}] = [r\,\dd r\,\dd\phi] = \ell_0^2$). Any unit-normalized transverse wavefield $\psi \in L^2(\mathbb{R}^2)$ satisfies
+\begin{equation}
+  \norm{\psi}_{L^2}^2 = \int_{\mathbb{R}^2} \abs{\psi(\mathbf{r})}^2\,\dd^2\mathbf{r} = 1 \implies [\psi] = \ell_0^{-1}.
+\end{equation}
+For the continuous frame element $\Phi_{l,R}$ with $C_0 = w^{-2}\sqrt{2/\pi}$, every exponential and Bessel argument ($r^2/w^2$, $R^2/w^2$, $2Rr/w^2$) is dimensionless, so $[\Phi_{l,R}] = [C_0] = \ell_0^{-2}$. Consequently, the analysis coefficient $c(l,R) = \braket{\Phi_{l,R}}{\psi}$ has dimension
+\begin{equation}
+  [\braket{\Phi_{l,R}}{\psi}] = [\Phi_{l,R}^*]\,[\psi]\,[\dd^2\mathbf{r}] = \ell_0^{-2} \cdot \ell_0^{-1} \cdot \ell_0^2 = \ell_0^{-1}.
+\end{equation}
+Integrating over the polar radial measure $\dd\mu(l,R) = R\,\dd R$ ($[\dd\mu] = \ell_0^2$) yields
+\begin{equation}
+  \left[\sum_{l\in\mathbb{Z}} \int_0^\infty R\,\dd R\,\abs{\braket{\Phi_{l,R}}{\psi}}^2\right] = \ell_0^2 \cdot \ell_0^{-2} = 1,
+\end{equation}
+so the frame operator $S_w$ and frame bounds $A, B$ are strictly dimensionless. By contrast, unit-$L^2$-normalized physical states $\psi_{l,R} = \Phi_{l,R}/\norm{\Phi_{l,R}}_{L^2}$ carry dimension $[\psi_{l,R}] = \ell_0^{-2}/\ell_0^{-1} = \ell_0^{-1}$, matching $\psi$.
+
+\subsection{Exact $L^2(\mathbb{R}^2)$ Norm via Weber's Second Exponential Integral}
+Compute the squared norm directly in polar coordinates:
+\begin{equation}
+  \norm{\Phi_{l,R}}_{L^2}^2 = \int_0^{2\pi} \dd\phi \int_0^\infty r\,\dd r\,\abs{\Phi_{l,R}(r,\phi)}^2
+  = 2\pi C_0^2 e^{-2R^2/w^2} \int_0^\infty r\,\dd r\, e^{-2r^2/w^2} \left[I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right)\right]^2.
+\end{equation}
+We invoke Weber's second exponential integral (Gradshteyn--Ryzhik 6.633.2), valid for $\operatorname{Re}(p) > 0$ and $\operatorname{Re}(\nu) > -1$:
+\begin{equation}
+  \int_0^\infty x\,e^{-p x^2} J_\nu(\alpha x) J_\nu(\beta x)\,\dd x = \frac{1}{2p}\exp\!\left(-\frac{\alpha^2+\beta^2}{4p}\right) I_\nu\!\left(\frac{\alpha\beta}{2p}\right).
+\end{equation}
+Analytically continuing to modified Bessel functions via $J_\nu(i z) = i^\nu I_\nu(z)$ with $\alpha = i a$ and $\beta = i b$:
+\begin{align}
+  \text{LHS} &= \int_0^\infty x\,e^{-p x^2} i^{2\nu} I_\nu(ax) I_\nu(bx)\,\dd x = (-1)^\nu \int_0^\infty x\,e^{-p x^2} I_\nu(ax) I_\nu(bx)\,\dd x, \\
+  \text{RHS} &= \frac{1}{2p}\exp\!\left(+\frac{a^2+b^2}{4p}\right) I_\nu\!\left(-\frac{ab}{2p}\right) = (-1)^\nu \frac{1}{2p}\exp\!\left(\frac{a^2+b^2}{4p}\right) I_\nu\!\left(\frac{ab}{2p}\right),
+\end{align}
+where we used $I_\nu(-y) = (-1)^\nu I_\nu(y)$ for integer $\nu = \abs{l} \ge 0$. Canceling $(-1)^\nu$ gives the modified Weber identity:
+\begin{equation}
+  \int_0^\infty x\,e^{-p x^2} I_{\abs{l}}(ax) I_{\abs{l}}(bx)\,\dd x = \frac{1}{2p}\exp\!\left(\frac{a^2+b^2}{4p}\right) I_{\abs{l}}\!\left(\frac{ab}{2p}\right).
+  \label{eq:walk_weber_mod}
+\end{equation}
+Setting $p = 2/w^2$ and $a = b = 2R/w^2$ gives:
+\begin{equation}
+  \frac{1}{2p} = \frac{w^2}{4}, \qquad \frac{a^2+b^2}{4p} = \frac{2(4R^2/w^4)}{8/w^2} = \frac{R^2}{w^2}, \qquad \frac{ab}{2p} = \frac{4R^2/w^4}{4/w^2} = \frac{R^2}{w^2}.
+\end{equation}
+Substituting $2\pi C_0^2 = 2\pi \cdot \frac{2}{\pi w^4} = \frac{4}{w^4}$ yields:
+\begin{equation}
+  \norm{\Phi_{l,R}}_{L^2}^2 = \frac{4}{w^4} e^{-2R^2/w^2} \cdot \frac{w^2}{4} e^{+R^2/w^2} I_{\abs{l}}\!\left(\frac{R^2}{w^2}\right) = \frac{1}{w^2} e^{-R^2/w^2} I_{\abs{l}}\!\left(\frac{R^2}{w^2}\right).
+  \label{eq:walk_norm}
+\end{equation}
+Since $e^{-x} I_n(x) < 1$ for all $x > 0$ and $n \ge 0$ (equality $1$ holds only at $x = 0, n = 0$), every physical PVB satisfies $\norm{\Phi_{l,R}}_{L^2}^2 < w^{-2}$.
+
+\subsection{Thin-Ring Asymptotics and Self-Consistent Differential Radial Peak Shift}
+For $x = 2Rr/w^2 \gg 1$ and $\abs{l} \ll \sqrt{x}$, Hankel's large-argument asymptotic series is
+\begin{equation}
+  I_{\abs{l}}(x) = \frac{e^x}{\sqrt{2\pi x}}\left[1 - \frac{4l^2 - 1}{8x} + \frac{(4l^2-1)(4l^2-9)}{128 x^2} + \mathcal{O}(x^{-3})\right].
+  \label{eq:walk_hankel}
+\end{equation}
+Substituting the leading term into $\Phi_{l,R}$ combines the exponents as $-(r^2+R^2)/w^2 + 2Rr/w^2 = -(r-R)^2/w^2$ and simplifies the prefactor:
+\begin{equation}
+  C_0 \frac{1}{\sqrt{2\pi (2Rr/w^2)}} = \frac{1}{w^2}\sqrt{\frac{2}{\pi}} \cdot \frac{w}{2\sqrt{\pi Rr}} = \frac{1}{w\sqrt{2\pi^2 Rr}},
+\end{equation}
+giving the thin-ring approximation $\Phi_{l,R}(r,\phi) \approx \frac{e^{il\phi}}{w\sqrt{2\pi^2 Rr}} \exp[-(r-R)^2/w^2]$.
+
+To find the exact intensity peak radius $r_{\mathrm{peak}}(l)$, differentiate $\ln\abs{\Phi_{l,R}(r)}^2 = \text{const} - 2r^2/w^2 + 2\ln I_{\abs{l}}(2Rr/w^2)$ with respect to $r$ and set to zero:
+\begin{equation}
+  -\frac{4r}{w^2} + 2\cdot\frac{2R}{w^2}\frac{I'_{\abs{l}}(x)}{I_{\abs{l}}(x)} = 0 \iff r_{\mathrm{peak}}(l) = R\,\frac{I'_{\abs{l}}(x_{\mathrm{peak}})}{I_{\abs{l}}(x_{\mathrm{peak}})}, \qquad x_{\mathrm{peak}} = \frac{2R\,r_{\mathrm{peak}}(l)}{w^2}.
+  \label{eq:walk_transc}
+\end{equation}
+From Eq.~\eqref{eq:walk_hankel}, taking the logarithmic derivative $\frac{\dd}{\dd x}\ln I_{\abs{l}}(x) = 1 - \frac{1}{2x} + \frac{\dd}{\dd x}\ln\!\left[1 - \frac{4l^2-1}{8x} + \mathcal{O}(x^{-2})\right]$ gives
+\begin{equation}
+  \frac{I'_{\abs{l}}(x)}{I_{\abs{l}}(x)} = 1 - \frac{1}{2x} + \frac{4l^2 - 1}{8x^2} + \mathcal{O}(x^{-3}).
+  \label{eq:walk_logderiv}
+\end{equation}
+Define the small parameter $\delta \equiv (w/R)^2 \ll 1$ and expand $r_{\mathrm{peak}}(l)/R = 1 + c_1\delta + c_2\delta^2 + \mathcal{O}(\delta^3)$. Then
+\begin{align}
+  x_{\mathrm{peak}}^{-1} &= \frac{w^2}{2R^2}\left(\frac{r_{\mathrm{peak}}}{R}\right)^{-1} = \frac{\delta}{2}\left(1 + c_1\delta + \mathcal{O}(\delta^2)\right)^{-1} = \frac{\delta}{2} - \frac{c_1}{2}\delta^2 + \mathcal{O}(\delta^3), \\
+  x_{\mathrm{peak}}^{-2} &= \frac{\delta^2}{4} + \mathcal{O}(\delta^3).
+\end{align}
+Substitute into Eq.~\eqref{eq:walk_logderiv}:
+\begin{align}
+  1 + c_1\delta + c_2\delta^2 &= 1 - \frac{1}{2}\left(\frac{\delta}{2} - \frac{c_1}{2}\delta^2\right) + \frac{4l^2 - 1}{8}\left(\frac{\delta^2}{4}\right) + \mathcal{O}(\delta^3) \nonumber \\
+  &= 1 - \frac{1}{4}\delta + \left(\frac{c_1}{4} + \frac{4l^2 - 1}{32}\right)\delta^2 + \mathcal{O}(\delta^3).
+\end{align}
+Matching powers of $\delta$:
+\begin{align}
+  \mathcal{O}(\delta^1): &\quad c_1 = -\frac{1}{4}, \\
+  \mathcal{O}(\delta^2): &\quad c_2 = \frac{-1/4}{4} + \frac{4l^2 - 1}{32} = -\frac{2}{32} + \frac{4l^2 - 1}{32} = \frac{4l^2 - 3}{32}.
+\end{align}
+Hence $r_{\mathrm{peak}}(l) - R = -\frac{w^2}{4R} + \frac{4l^2-3}{32}\frac{w^4}{R^3} + \mathcal{O}(w^6/R^5)$. Subtracting the $l=0$ inward curvature shift $r_{\mathrm{peak}}(0) - R = -\frac{w^2}{4R} - \frac{3}{32}\frac{w^4}{R^3}$ cancels both the $\mathcal{O}(\delta)$ term and $-3/32$, isolating the topological differential peak shift:
+\begin{equation}
+  \Delta r_{\mathrm{peak}}(l) \equiv r_{\mathrm{peak}}(l) - r_{\mathrm{peak}}(0) = \frac{4l^2}{32}\frac{w^4}{R^3} + \mathcal{O}\!\left(\frac{w^6}{R^5}\right) = \frac{l^2}{8}\left(\frac{w}{R}\right)^4 R.
+  \label{eq:walk_diffshift}
+\end{equation}
+
+\begin{pencheck}[SymPy \& Numerical Check of Differential Peak Shift]
+For $w/R = 0.10$ and $l = 4$, Eq.~\eqref{eq:walk_diffshift} predicts $\Delta r_{\mathrm{peak}}/R = (16/8)(10^{-4}) = 2.000\times 10^{-4}$; exact root-finding of Eq.~\eqref{eq:walk_transc} gives $2.024\times 10^{-4}$ ($1.20\%$ relative difference, verified in \texttt{verify\_paper1\_v15.py} Suite~2). At $l=6$, exact $= 4.552\times 10^{-4}$ vs.\ asymptotic $= 4.500\times 10^{-4}$ ($1.14\%$).
+\end{pencheck}
+
+% ==============================================================================
+\section{2$f$ Optical Fourier Transform Bridge from Bessel--Gaussian Beams}
+\label{sec:p1_2f}
+
+\begin{targeteq}{Exact $2f$ Fourier Transform of $E_{\mathrm{BG}}(\rho,\theta)$}
+\[
+  R = \frac{k_r f}{k_0}, \qquad w = \frac{2f}{k_0 w_g}, \qquad E_0 = \frac{1}{w w_g}\sqrt{\frac{2}{\pi}} = \frac{k_0}{f\sqrt{2\pi}}.
+\]
+\end{targeteq}
+
+Consider an input Bessel--Gaussian wavefield at the front focal plane ($d_{\mathrm{in}} = f$) of a thin spherical lens of focal length $f$:
+\begin{equation}
+  E_{\mathrm{BG}}(\rho,\theta) = E_0 J_l(k_r\rho)\exp\!\left(-\frac{\rho^2}{w_g^2}\right) e^{il\theta}.
+\end{equation}
+By the standard $2f$ Fraunhofer/Fourier transform kernel (eliminating the quadratic Fresnel factor because $d_{\mathrm{in}} = f$), the output complex field at the back focal plane $z = 0$ is
+\begin{equation}
+  E_{\mathrm{out}}(r,\phi) = \frac{e^{2ik_0 f}}{i\lambda f} \int_0^\infty \rho\,\dd\rho \int_0^{2\pi} \dd\theta\, E_{\mathrm{BG}}(\rho,\theta)\,\exp\!\left[-\frac{ik_0}{f} r\rho\cos(\theta-\phi)\right].
+\end{equation}
+First evaluate the azimuthal integral using the Jacobi--Anger identity $e^{-i\alpha\cos\psi} = \sum_{n=-\infty}^\infty (-i)^n J_n(\alpha) e^{in\psi}$ with $\alpha = k_0 r\rho/f$ and $\psi = \theta - \phi$:
+\begin{equation}
+  \int_0^{2\pi} e^{il\theta} e^{-i\alpha\cos(\theta-\phi)}\,\dd\theta = e^{il\phi}\sum_{n=-\infty}^\infty (-i)^n J_n(\alpha)\int_0^{2\pi} e^{i(l+n)\psi}\,\dd\psi = 2\pi (-i)^{-l} J_{-l}(\alpha) e^{il\phi}.
+\end{equation}
+Now apply the parity identity $J_{-n}(\alpha) = (-1)^n J_n(\alpha)$ and $(-i)^{-n} = i^n = (-1)^n(-i)^n$:
+\begin{equation}
+  (-i)^{-l} J_{-l}(\alpha) = (-i)^l J_l(\alpha) = (-i)^{\abs{l}} J_{\abs{l}}(\alpha)\quad\text{for all }l \in \mathbb{Z}!
+\end{equation}
+(Check $l = -n < 0$: $(-i)^n J_n(\alpha) = (-i)^{\abs{l}} J_{\abs{l}}(\alpha)$; check $l = +n \ge 0$: $(-i)^{-n} J_{-n}(\alpha) = i^n (-1)^n J_n(\alpha) = (-i)^n J_n(\alpha) = (-i)^{\abs{l}} J_{\abs{l}}(\alpha)$.)
+Since $\frac{1}{i\lambda f} = \frac{-i k_0}{2\pi f}$, the prefactor $2\pi$ cancels cleanly:
+\begin{equation}
+  E_{\mathrm{out}}(r,\phi) = \frac{k_0}{f} (-i)^{l+1} e^{2ik_0 f} E_0 e^{il\phi} \int_0^\infty \rho\,e^{-\rho^2/w_g^2} J_l(k_r\rho) J_l\!\left(\frac{k_0 r}{f}\rho\right)\dd\rho.
+\end{equation}
+(Note: for signed $J_l(k_r\rho)$ in the input, $J_{-n} = (-1)^n J_n$ yields global phase $(-i)^{l+1} e^{2ik_0 f}$ because $J_l(k_r\rho)J_l(\alpha) = J_{\abs{l}}(k_r\rho)J_{\abs{l}}(\alpha)$ while $(-i)^{-l} J_{-l}(\alpha) J_l(k_r\rho) = (-i)^l J_l(\alpha) J_l(k_r\rho)$.)
+Applying Weber's second exponential integral (GR 6.633.2) with $p = 1/w_g^2$, $\alpha = k_r$, $\beta = k_0 r / f$, and $\nu = \abs{l}$:
+\begin{align}
+  \int_0^\infty \rho\,e^{-\rho^2/w_g^2} J_{\abs{l}}(k_r\rho) J_{\abs{l}}\!\left(\frac{k_0 r}{f}\rho\right)\dd\rho
+  &= \frac{w_g^2}{2}\exp\!\left[-\frac{w_g^2}{4}\left(k_r^2 + \frac{k_0^2 r^2}{f^2}\right)\right] I_{\abs{l}}\!\left(\frac{w_g^2 k_r k_0 r}{2f}\right).
+\end{align}
+Define $R \equiv k_r f / k_0$ and $w \equiv 2f / (k_0 w_g)$ (so $w_g = 2f/(k_0 w)$). Substituting $w_g$:
+\begin{equation}
+  \frac{w_g^2}{4}\frac{k_0^2 r^2}{f^2} = \frac{r^2}{w^2}, \qquad \frac{w_g^2}{4}k_r^2 = \frac{f^2 k_r^2}{k_0^2 w^2} = \frac{R^2}{w^2}, \qquad \frac{w_g^2 k_r k_0 r}{2f} = \frac{2 f k_r r}{k_0 w^2} = \frac{2Rr}{w^2}.
+\end{equation}
+The scalar amplitude outside the exponential is $\frac{k_0}{f} E_0 \frac{w_g^2}{2} = E_0 \frac{w_g}{w}$. Equating this to $C_0 = w^{-2}\sqrt{2/\pi}$ determines $E_0$:
+\begin{equation}
+  E_0 \frac{w_g}{w} = \frac{1}{w^2}\sqrt{\frac{2}{\pi}} \implies E_0 = \frac{1}{w w_g}\sqrt{\frac{2}{\pi}} = \frac{k_0}{2f}\sqrt{\frac{2}{\pi}} = \frac{k_0}{f\sqrt{2\pi}}.
+\end{equation}
+
+% ==============================================================================
+\section{Continuous Hilbert Frame Operator and Sharp Paley--Wiener Bounds}
+\label{sec:p1_frame}
+
+\begin{targeteq}{Exact 2D FT, Bessel Bound $B=1$, Convolution Kernel $S_w = G_w * \cdot$, and Sharp Bounds}
+\begin{align*}
+  \widetilde{\Phi}_{l,R}(\mathbf{k}) &= \sqrt{2\pi}\,(-i)^{\abs{l}} e^{il\phi_k} e^{-w^2 k_\perp^2/4} J_{\abs{l}}(Rk_\perp), \\
+  (S_w\psi)(\mathbf{r}) &= (G_w * \psi)(\mathbf{r}), \qquad G_w(\mathbf{r}) = \frac{1}{2\pi w^2}e^{-\abs{\mathbf{r}}^2/(2w^2)}, \qquad \widetilde{G}_w(k_\perp) = e^{-w^2 k_\perp^2/2}, \\
+  A(w,k_{\max}) &= \exp\!\left(-\frac{w^2 k_{\max}^2}{2}\right), \qquad B = 1 \quad\text{on }\mathcal{H}_{k_{\max}}.
+\end{align*}
+\end{targeteq}
+
+\subsection{Azimuthal--Radial Decoupling and Mutual Overlap}
+Using $\int_0^{2\pi} e^{i(l'-l)\phi}\,\dd\phi = 2\pi\delta_{l,l'}$ and the modified Weber integral~\eqref{eq:walk_weber_mod} with $p = 2/w^2$, $a = 2R/w^2$, $b = 2R'/w^2$:
+\begin{align}
+  \braket{\Phi_{l,R}}{\Phi_{l',R'}} &= 2\pi\delta_{l,l'} C_0^2 e^{-(R^2+R'^2)/w^2} \cdot \frac{w^2}{4}\exp\!\left(\frac{R^2+R'^2}{2w^2}\right) I_{\abs{l}}\!\left(\frac{RR'}{w^2}\right) \nonumber \\
+  &= \delta_{l,l'}\,\frac{1}{w^2}\exp\!\left(-\frac{R^2+R'^2}{2w^2}\right) I_{\abs{l}}\!\left(\frac{RR'}{w^2}\right).
+\end{align}
+Dividing by $\norm{\Phi_{l,R}}_{L^2}\norm{\Phi_{l,R'}}_{L^2} = w^{-2} e^{-(R^2+R'^2)/(2w^2)}\sqrt{I_{\abs{l}}(R^2/w^2)I_{\abs{l}}(R'^2/w^2)}$ cancels the Gaussian and $w^{-2}$ prefactors identically, leaving
+\begin{equation}
+  \gamma_l(R,R') = \braket{\psi_{l,R}}{\psi_{l,R'}} = \frac{I_{\abs{l}}(RR'/w^2)}{\sqrt{I_{\abs{l}}(R^2/w^2)\,I_{\abs{l}}(R'^2/w^2)}}.
+\end{equation}
+Substituting Hankel's expansion~\eqref{eq:walk_hankel} with $\mu \equiv 4l^2 - 1$ for $RR' \gg w^2$:
+\begin{align}
+  \gamma_l(R,R') &= \exp\!\left[\frac{RR'}{w^2} - \frac{R^2 + R'^2}{2w^2}\right] \frac{\sqrt{R}\sqrt{R'}}{\sqrt{RR'}}\,\frac{1 - \frac{\mu w^2}{8RR'} + \mathcal{O}(w^4)}{\left(1 - \frac{\mu w^2}{8R^2}\right)^{1/2}\left(1 - \frac{\mu w^2}{8R'^2}\right)^{1/2}} \nonumber \\
+  &= \exp\!\left(-\frac{(R-R')^2}{2w^2}\right)\left[1 + \frac{\mu w^2}{16}\left(\frac{1}{R^2} + \frac{1}{R'^2} - \frac{2}{RR'}\right) + \mathcal{O}(w^4)\right] \nonumber \\
+  &= \exp\!\left(-\frac{(R-R')^2}{2w^2}\right)\left[1 + \frac{(4l^2 - 1)w^2(R-R')^2}{16 R^2 R'^2} + \mathcal{O}(w^4)\right],
+\end{align}
+proving that the leading Gaussian radial overlap is strictly $l$-independent.
+
+\subsection{Exact 2D Fourier Transform, Hankel Unitarity, and Convolution Kernel}
+Under the non-unitary 2D Fourier convention $\widetilde{\psi}(\mathbf{k}) = \int_{\mathbb{R}^2}\psi(\mathbf{r})e^{-i\mathbf{k}\cdot\mathbf{r}}\,\dd^2\mathbf{r}$ and the corresponding Plancherel identity $\braket{\phi}{\psi}_{L^2} = (2\pi)^{-2}\allowbreak\int_{\mathbb{R}^2}\widetilde{\phi}^*(\mathbf{k})\widetilde{\psi}(\mathbf{k})\,\dd^2\mathbf{k}$, we compute $\widetilde{\Phi}_{l,R}(k_\perp,\phi_k)$:
+\begin{align}
+  \widetilde{\Phi}_{l,R}(k_\perp,\phi_k) &= C_0 e^{-R^2/w^2} \int_0^\infty r\,\dd r\, e^{-r^2/w^2} I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right) \int_0^{2\pi} \dd\phi\, e^{il\phi - i k_\perp r\cos(\phi-\phi_k)} \nonumber \\
+  &= 2\pi C_0 (-i)^{\abs{l}} e^{il\phi_k} e^{-R^2/w^2} \int_0^\infty r\, e^{-r^2/w^2} I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right) J_{\abs{l}}(k_\perp r)\,\dd r.
+\end{align}
+Set $p = 1/w^2$, $a = 2R/w^2$, and analytically continue $b \to -i k_\perp$ in Eq.~\eqref{eq:walk_weber_mod} using $I_{\abs{l}}(-i z) = (-i)^{\abs{l}} J_{\abs{l}}(z)$ on both sides (canceling $(-i)^{\abs{l}}$):
+\begin{equation}
+  \int_0^\infty r\,e^{-r^2/w^2} I_{\abs{l}}\!\left(\frac{2Rr}{w^2}\right) J_{\abs{l}}(k_\perp r)\,\dd r = \frac{w^2}{2}\exp\!\left(\frac{R^2}{w^2} - \frac{w^2 k_\perp^2}{4}\right) J_{\abs{l}}(R k_\perp).
+\end{equation}
+The $e^{-R^2/w^2}$ and $e^{+R^2/w^2}$ factors cancel exactly, and $2\pi C_0 (w^2/2) = \pi w^2 \cdot w^{-2}\sqrt{2/\pi} = \sqrt{2\pi}$, giving
+\begin{equation}
+  \widetilde{\Phi}_{l,R}(\mathbf{k}) = \sqrt{2\pi}\,(-i)^{\abs{l}} e^{il\phi_k} \exp\!\left(-\frac{w^2 k_\perp^2}{4}\right) J_{\abs{l}}(R k_\perp).
+  \label{eq:walk_ft_phi}
+\end{equation}
+Now expand any $\psi \in L^2(\mathbb{R}^2)$ in angular Fourier harmonics $\widetilde{\psi}(k_\perp,\phi_k) = \sum_{l'\in\mathbb{Z}} \widetilde{\psi}_{l'}(k_\perp) e^{il'\phi_k}$. By Plancherel's theorem and $\int_0^{2\pi} e^{i(l'-l)\phi_k}\,\dd\phi_k = 2\pi\delta_{l,l'}$:
+\begin{align}
+  (T\psi)(l,R) = \braket{\Phi_{l,R}}{\psi} &= \frac{1}{(2\pi)^2} \int_0^\infty k_\perp\,\dd k_\perp \int_0^{2\pi} \dd\phi_k\, \widetilde{\Phi}_{l,R}^*(k_\perp,\phi_k)\,\widetilde{\psi}(k_\perp,\phi_k) \nonumber \\
+  &= \frac{i^{\abs{l}}}{\sqrt{2\pi}} \int_0^\infty k_\perp\,\dd k_\perp\, e^{-w^2 k_\perp^2/4} \widetilde{\psi}_l(k_\perp) J_{\abs{l}}(R k_\perp) = \frac{i^{\abs{l}}}{\sqrt{2\pi}}\,\mathrm{H}_{\abs{l}}\!\left[e^{-w^2 k_\perp^2/4}\widetilde{\psi}_l\right](R).
+\end{align}
+Because the order-$\abs{l}$ Hankel transform $\mathrm{H}_{\abs{l}}$ is unitary from $L^2((0,\infty), k_\perp\,\dd k_\perp)$ onto $L^2((0,\infty), R\,\dd R)$ (via the Hankel completeness relation $\int_0^\infty R\,J_{\abs{l}}(Rk) J_{\abs{l}}(Rk')\,\dd R = k^{-1}\delta(k-k')$), integrating over $R\,\dd R$ and summing over $l \in \mathbb{Z}$ gives
+\begin{equation}
+  \norm{T\psi}_{L^2(\Omega,\mu)}^2 = \frac{1}{2\pi}\sum_{l\in\mathbb{Z}} \int_0^\infty k_\perp\,\dd k_\perp\, e^{-w^2 k_\perp^2/2}\abs{\widetilde{\psi}_l(k_\perp)}^2 = \int_{\mathbb{R}^2} e^{-w^2 k_\perp^2/2}\abs{\widetilde{\psi}(\mathbf{k})}^2 \frac{\dd^2\mathbf{k}}{(2\pi)^2} \le \norm{\psi}_{L^2}^2.
+  \label{eq:walk_bessel}
+\end{equation}
+By the polarization identity $\braket{\phi}{S_w\psi} = \frac{1}{4}\sum_{m=0}^3 i^m \norm{T(\psi + i^m\phi)}^2 = \braket{T\phi}{T\psi}$, we obtain
+\begin{equation}
+  \braket{\phi}{S_w\psi} = \int_{\mathbb{R}^2} \widetilde{\phi}^*(\mathbf{k}) \left[e^{-w^2 k_\perp^2/2}\widetilde{\psi}(\mathbf{k})\right]\frac{\dd^2\mathbf{k}}{(2\pi)^2} = \braket{\phi}{G_w * \psi},
+\end{equation}
+where the inverse 2D Fourier transform of $\widetilde{G}_w(k_\perp) = e^{-w^2 k_\perp^2/2}$ factors into two 1D Gaussians:
+\begin{align}
+  G_w(x,y) &= \left(\int_{-\infty}^\infty e^{-w^2 k_x^2/2 + ik_x x}\frac{\dd k_x}{2\pi}\right)\left(\int_{-\infty}^\infty e^{-w^2 k_y^2/2 + ik_y y}\frac{\dd k_y}{2\pi}\right) \nonumber \\
+  &= \frac{1}{\sqrt{2\pi w^2}}e^{-x^2/(2w^2)} \cdot \frac{1}{\sqrt{2\pi w^2}}e^{-y^2/(2w^2)} = \frac{1}{2\pi w^2}e^{-\abs{\mathbf{r}}^2/(2w^2)}.
+\end{align}
+
+\subsection{Sharpness of Paley--Wiener Bounds via Fourier-Annulus Test Families}
+For $\psi \in \mathcal{H}_{k_{\max}}$ ($\operatorname{supp}(\widetilde{\psi}) \subseteq \{k_\perp \le k_{\max}\}$), $e^{-w^2 k_{\max}^2/2} \le e^{-w^2 k_\perp^2/2} \le 1$ immediately implies $A \ge e^{-w^2 k_{\max}^2/2}$ and $B \le 1$. To prove sharpness explicitly, take $\widetilde{\psi}_\epsilon^{(+)}(\mathbf{k}) = \frac{2\pi}{\sqrt{\pi\epsilon^2}}\mathbf{1}_{\{0 < k_\perp \le \epsilon\}}$ and $\widetilde{\psi}_\epsilon^{(-)}(\mathbf{k}) = \frac{2\pi}{\sqrt{\pi\epsilon(2k_{\max}-\epsilon)}}\mathbf{1}_{\{k_{\max}-\epsilon \le k_\perp \le k_{\max}\}}$:
+\begin{align}
+  \norm{\psi_\epsilon^{(-)}}_{L^2}^2 &= \frac{1}{(2\pi)^2} \cdot \frac{4\pi^2}{\pi\epsilon(2k_{\max}-\epsilon)} \cdot \pi\bigl(k_{\max}^2 - (k_{\max}-\epsilon)^2\bigr) = 1, \\
+  \braket{\psi_\epsilon^{(-)}}{S_w\psi_\epsilon^{(-)}} &= \frac{2}{\epsilon(2k_{\max}-\epsilon)}\int_{k_{\max}-\epsilon}^{k_{\max}} k_\perp e^{-w^2 k_\perp^2/2}\,\dd k_\perp = \frac{2\left[e^{-w^2(k_{\max}-\epsilon)^2/2} - e^{-w^2 k_{\max}^2/2}\right]}{w^2\epsilon(2k_{\max}-\epsilon)}.
+\end{align}
+Applying L'H\^opital's rule as $\epsilon \to 0^+$:
+\begin{equation}
+  \lim_{\epsilon\to 0^+} \frac{2\cdot w^2(k_{\max}-\epsilon) e^{-w^2(k_{\max}-\epsilon)^2/2}}{w^2(2k_{\max} - 2\epsilon)} = e^{-w^2 k_{\max}^2/2} = A(w,k_{\max}).
+\end{equation}
+Identically, $\braket{\psi_\epsilon^{(+)}}{S_w\psi_\epsilon^{(+)}} = \frac{2(1 - e^{-w^2\epsilon^2/2})}{w^2\epsilon^2} \to 1 = B$.
+
+% ==============================================================================
+\section{NEW V15 Theorem: Paraxial Fresnel Propagation Invariance and Gouy Scaling Audit}
+\label{sec:p1_fresnel}
+
+\begin{targeteq}{Exact Closed-Form Propagated PVB, Frame Invariance $[S_w,\mathcal{U}_z]=0$, and Corrected Gouy Analyzer}
+\begin{align*}
+  \Phi_{l,R}^{(z)}(r,\phi) &\equiv (\mathcal{U}_z \Phi_{l,R})(r,\phi) = \frac{1}{w_c^2(z)}\sqrt{\frac{2}{\pi}}\,e^{il\phi}\exp\!\left(-\frac{r^2+R^2}{w_c^2(z)}\right) I_{\abs{l}}\!\left(\frac{2Rr}{w_c^2(z)}\right), \quad w_c^2(z) = w^2\!\left(1 + i\frac{z}{z_R^{\mathrm{ring}}}\right), \\
+  [S_w, \mathcal{U}_z] &= 0 \implies S_w^{(z)} = \mathcal{U}_z S_w \mathcal{U}_z^\dagger = S_w, \qquad \braket{\Phi_{l,R}^{(z)}}{\psi_{p,l}(z)} = c_{l,p}(R), \\
+  \phi_{m,k}(r,\phi) &= \mathbf{\sigma_m}\,e^{+ik_0 r^2/[2R_c(z_m)]}\,\Phi_{l,\sigma_m R_k}(r,\phi;\,\sigma_m w) \implies \braket{\phi_{m,k}}{\psi_{p,l}(z_m)} = e^{-i(2p+\abs{l}+1)\vartheta_m} c_{l,p}(R_k).
+\end{align*}
+\end{targeteq}
+
+\subsection{Exact Closed-Form Complex-Waist Fresnel Propagation}
+In the paraxial approximation (dropping the global carrier $e^{ik_0 z}$), a monochromatic transverse wavefield obeys the paraxial Helmholtz equation
+\begin{equation}
+  2ik_0\frac{\partial\psi}{\partial z} + \nabla_\perp^2\psi = 0 \implies \frac{\partial\widetilde{\psi}}{\partial z} = -\frac{i k_\perp^2}{2k_0}\widetilde{\psi} \implies \widetilde{\psi}(\mathbf{k}, z) = e^{-i z k_\perp^2/(2k_0)}\widetilde{\psi}(\mathbf{k}, 0).
+  \label{eq:walk_fresnel_prop}
+\end{equation}
+Define the unitary Fresnel propagator $(\mathcal{U}_z\psi)(\mathbf{r}) \equiv \mathcal{F}^{-1}\{e^{-iz k_\perp^2/(2k_0)}\widetilde{\psi}\}(\mathbf{r})$. Multiplying Eq.~\eqref{eq:walk_ft_phi} by $e^{-iz k_\perp^2/(2k_0)}$ combines the quadratic $k_\perp^2$ exponents into the complex ring-waist squared:
+\begin{equation}
+  \frac{w^2}{4} + \frac{iz}{2k_0} = \frac{w^2}{4}\left(1 + i\frac{2z}{k_0 w^2}\right) = \frac{w^2}{4}\left(1 + i\frac{z}{z_R^{\mathrm{ring}}}\right) \equiv \frac{w_c^2(z)}{4}, \qquad z_R^{\mathrm{ring}} \equiv \frac{k_0 w^2}{2}.
+\end{equation}
+Now compute the inverse 2D Fourier transform of $\widetilde{\Phi}_{l,R}^{(z)}(\mathbf{k}) = \sqrt{2\pi}(-i)^{\abs{l}} e^{il\phi_k} e^{-w_c^2(z) k_\perp^2/4} J_{\abs{l}}(Rk_\perp)$:
+\begin{align}
+  \Phi_{l,R}^{(z)}(r,\phi) &= \frac{1}{(2\pi)^2}\int_0^\infty k_\perp\,\dd k_\perp \int_0^{2\pi} \dd\phi_k\, \sqrt{2\pi}(-i)^{\abs{l}} e^{il\phi_k + i k_\perp r\cos(\phi_k-\phi)} e^{-w_c^2(z)k_\perp^2/4} J_{\abs{l}}(R k_\perp).
+\end{align}
+Using $\int_0^{2\pi} e^{il\phi_k + ik_\perp r\cos(\phi_k-\phi)}\,\dd\phi_k = 2\pi\,i^{\abs{l}} e^{il\phi} J_{\abs{l}}(r k_\perp)$ and $(-i)^{\abs{l}} i^{\abs{l}} = 1$:
+\begin{equation}
+  \Phi_{l,R}^{(z)}(r,\phi) = \frac{e^{il\phi}}{\sqrt{2\pi}} \int_0^\infty k_\perp\, e^{-w_c^2(z) k_\perp^2/4} J_{\abs{l}}(R k_\perp) J_{\abs{l}}(r k_\perp)\,\dd k_\perp.
+\end{equation}
+Because $\operatorname{Re}[w_c^2(z)/4] = w^2/4 > 0$ strictly for \emph{all} $z \in (-\infty,\infty)$, Weber's second exponential integral (GR 6.633.2) applies directly with complex $p = w_c^2(z)/4$:
+\begin{equation}
+  \Phi_{l,R}^{(z)}(r,\phi) = \frac{e^{il\phi}}{\sqrt{2\pi}} \cdot \frac{2}{w_c^2(z)} \exp\!\left(-\frac{r^2+R^2}{w_c^2(z)}\right) I_{\abs{l}}\!\left(\frac{2Rr}{w_c^2(z)}\right) = \frac{1}{w_c^2(z)}\sqrt{\frac{2}{\pi}}\,e^{il\phi}\exp\!\left(-\frac{r^2+R^2}{w_c^2(z)}\right) I_{\abs{l}}\!\left(\frac{2Rr}{w_c^2(z)}\right).
+  \label{eq:walk_phi_z}
+\end{equation}
+Decomposing $1/w_c^2(z)$ explicitly into real and imaginary parts gives
+\begin{equation}
+  \frac{1}{w_c^2(z)} = \frac{1 - i z/z_R^{\mathrm{ring}}}{w^2\bigl[1 + (z/z_R^{\mathrm{ring}})^2\bigr]} = \frac{1}{w^2(z)} - \frac{i k_0}{2 R_c^{\mathrm{ring}}(z)},
+\end{equation}
+with expanding annular half-width $w(z) = w\sqrt{1+(z/z_R^{\mathrm{ring}})^2}$ and ring wavefront curvature $R_c^{\mathrm{ring}}(z) = z[1 + (z_R^{\mathrm{ring}}/z)^2]$.
+
+\subsection{Unitary Frame Invariance ($[S_w, \mathcal{U}_z] = 0$)}
+Since $S_w$ acts in Fourier space as multiplication by $\widetilde{G}_w(k_\perp) = e^{-w^2 k_\perp^2/2}$, $\mathcal{U}_z$ acts as multiplication by $e^{-iz k_\perp^2/(2k_0)}$, and $P_{k_{\max}}$ acts as multiplication by $\mathbf{1}_{\{k_\perp \le k_{\max}\}}$, all three radial Fourier multipliers commute pairwise:
+\begin{equation}
+  [S_w, \mathcal{U}_z] = 0, \qquad [P_{k_{\max}}, \mathcal{U}_z] = 0, \qquad \mathcal{U}_z^\dagger \mathcal{U}_z = \mathbb{I}.
+\end{equation}
+Consequently, the frame operator of the propagated family $\{\Phi_{l,R}^{(z)}\}_{l\in\mathbb{Z},\,R>0}$ is identically $z$-independent:
+\begin{equation}
+  S_w^{(z)}\psi = \sum_{l\in\mathbb{Z}}\int_0^\infty R\,\dd R\,\braket{\mathcal{U}_z\Phi_{l,R}}{\psi}\,\mathcal{U}_z\Phi_{l,R} = \mathcal{U}_z S_w \mathcal{U}_z^\dagger\psi = S_w\psi.
+\end{equation}
+Hence the sharp Paley--Wiener frame bounds $A(w,k_{\max}) = e^{-w^2 k_{\max}^2/2}$ and $B = 1$ hold at \emph{every} plane $z \in \mathbb{R}$, and by unitarity of $\mathcal{U}_z$, $\braket{\Phi_{l,R}^{(z)}}{\psi_{p,l}(z)} = \braket{\mathcal{U}_z\Phi_{l,R}}{\mathcal{U}_z\psi_{p,l}(0)} = c_{l,p}(R)$ is strictly invariant under propagation!
+
+\begin{auditbox}[Critical Dimensional-Scaling Fix (Correcting V14 Part II Line 184)]
+Under Fresnel propagation~\eqref{eq:walk_fresnel_prop}, a unit-norm $\mathrm{LG}_{p,l}$ beam of waist $w_0$ and Rayleigh range $z_R = k_0 w_0^2/2$ evolves to
+\begin{equation}
+  \psi_{p,l}(r,\phi,z_m) = \frac{1}{\sigma_m}\psi_{p,l}\!\left(\frac{r}{\sigma_m},\phi,0\right)\exp\!\left[+i\frac{k_0 r^2}{2 R_c(z_m)} - i(2p+\abs{l}+1)\vartheta_m\right],
+\end{equation}
+where $\sigma_m = \sqrt{1+(z_m/z_R)^2}$, $R_c(z_m) = z_m[1+(z_R/z_m)^2]$, and $\vartheta_m = \arctan(z_m/z_R)$. Now consider rescaling the PVB frame element $(R_k, w) \mapsto (\sigma_m R_k, \sigma_m w)$. Because $C_0 = w^{-2}\sqrt{2/\pi}$ carries $[\mathrm{length}^{-2}]$:
+\begin{equation}
+  \Phi_{l,\sigma_m R_k}(r,\phi;\,\sigma_m w) = \frac{\sqrt{2/\pi}}{(\sigma_m w)^2} e^{il\phi}\exp\!\left(-\frac{(r/\sigma_m)^2 + R_k^2}{w^2}\right) I_{\abs{l}}\!\left(\frac{2R_k (r/\sigma_m)}{w^2}\right) = \mathbf{\sigma_m^{-2}}\,\Phi_{l,R_k}\!\left(\frac{r}{\sigma_m},\phi;\,w\right).
+\end{equation}
+Define the wavefront-compensated analyzer $\phi_{m,k}(r,\phi) \equiv \mathbf{\sigma_m}\,e^{+ik_0 r^2/[2R_c(z_m)]}\,\Phi_{l,\sigma_m R_k}(r,\phi;\,\sigma_m w) = \sigma_m^{-1} e^{+ik_0 r^2/[2R_c(z_m)]}\,\Phi_{l,R_k}(r/\sigma_m,\phi;\,w)$. Evaluating $\braket{\phi_{m,k}}{\psi_{p,l}(z_m)}$ with substitution $\mathbf{r} = \sigma_m\mathbf{r}'$ ($\dd^2\mathbf{r} = \sigma_m^2\,\dd^2\mathbf{r}'$):
+\begin{equation}
+  \braket{\phi_{m,k}}{\psi_{p,l}(z_m)} = \int_{\mathbb{R}^2} \left(\sigma_m^{-1}\Phi_{l,R_k}^*(\mathbf{r}';w)\right)\left(\sigma_m^{-1}\psi_{p,l}(\mathbf{r}',0) e^{-i(2p+\abs{l}+1)\vartheta_m}\right) \sigma_m^2\,\dd^2\mathbf{r}' = e^{-i(2p+\abs{l}+1)\vartheta_m} c_{l,p}(R_k).
+\end{equation}
+\textbf{Bug caught in V14:} V14 Part~II wrote $\sigma_m^{-1}\Phi_{l,\sigma_m R_k}(r;\sigma_m w)$, which is off by $\sigma_m^{-2}$ (producing a $32.9\%$ discrepancy at $z/z_R = 0.7$). With the exact $\mathbf{\sigma_m^{+1}}$ prefactor above, \texttt{verify\_paper1\_v15.py} confirms 2D-FFT agreement to $5.78\times 10^{-16}$!
+\end{auditbox}
+
+% ==============================================================================
+\section{Tikhonov-Regularized Canonical Dual and Worked Noisy $\mathrm{LG}_{2,1}$ Deconvolution}
+\label{sec:p1_tikhonov}
+
+\begin{targeteq}{Tikhonov Dual Operator, AM--GM Noise Peak, and Closed-Form Parseval MSE}
+\begin{align*}
+  S_{w,\alpha_{\mathrm{reg}}}^{-1} &= (S_w^2 + \alpha_{\mathrm{reg}}\mathbb{I})^{-1}S_w, \qquad \widetilde{H}_{\max} = \frac{1}{2\sqrt{\alpha_{\mathrm{reg}}}} \quad\text{at }k_{\mathrm{peak}} = \frac{1}{w}\sqrt{\ln\!\left(\frac{1}{\alpha_{\mathrm{reg}}}\right)}, \\
+  \mathrm{Bias}^2(\alpha_{\mathrm{reg}}) &= \int_0^\infty \left[\frac{\alpha_{\mathrm{reg}}}{e^{-2au}+\alpha_{\mathrm{reg}}}\right]^2 \rho_{p,l}(u)\,\dd u, \qquad \mathrm{Var}(\alpha_{\mathrm{reg}}) = \frac{P_\varepsilon}{(wk_{\max})^2}\left[\frac{1}{e^{-w^2 k_{\max}^2}+\alpha_{\mathrm{reg}}} - \frac{1}{1+\alpha_{\mathrm{reg}}}\right].
+\end{align*}
+\end{targeteq}
+
+\subsection{Fr\'echet Derivative and Noise-Gain Maximum}
+Consider $J[\psi] = \norm{S_w\psi - \psi_{\mathrm{meas}}}_{L^2}^2 + \alpha_{\mathrm{reg}}\norm{\psi}_{L^2}^2$ with real perturbation $\psi \mapsto \psi + \epsilon\eta$. Since $S_w = S_w^\dagger$:
+\begin{equation}
+  \left.\frac{\dd}{\dd\epsilon}J[\psi + \epsilon\eta]\right|_{\epsilon=0} = 2\operatorname{Re}\braket{\eta}{(S_w^2 + \alpha_{\mathrm{reg}}\mathbb{I})\psi - S_w\psi_{\mathrm{meas}}} = 0 \quad\forall\eta \iff \hat{\psi}_{\alpha_{\mathrm{reg}}} = (S_w^2 + \alpha_{\mathrm{reg}}\mathbb{I})^{-1}S_w\psi_{\mathrm{meas}}.
+\end{equation}
+In Fourier space, setting $g(k_\perp) \equiv \widetilde{G}_w(k_\perp) = e^{-w^2 k_\perp^2/2} \in (0,1]$ yields signal transfer $T_{\alpha_{\mathrm{reg}}} = g^2/(g^2+\alpha_{\mathrm{reg}})$ and noise multiplier $\widetilde{H}_{w,\alpha_{\mathrm{reg}}} = g/(g^2+\alpha_{\mathrm{reg}}) = (g + \alpha_{\mathrm{reg}}/g)^{-1}$. By the AM--GM inequality, $g + \alpha_{\mathrm{reg}}/g \ge 2\sqrt{g \cdot \alpha_{\mathrm{reg}}/g} = 2\sqrt{\alpha_{\mathrm{reg}}}$, saturated uniquely at $g = \sqrt{\alpha_{\mathrm{reg}}}$:
+\begin{equation}
+  e^{-w^2 k_{\mathrm{peak}}^2/2} = \sqrt{\alpha_{\mathrm{reg}}} \iff \frac{w^2 k_{\mathrm{peak}}^2}{2} = \frac{1}{2}\ln\!\left(\frac{1}{\alpha_{\mathrm{reg}}}\right) \iff k_{\mathrm{peak}} = \frac{1}{w}\sqrt{\ln\!\left(\frac{1}{\alpha_{\mathrm{reg}}}\right)}.
+\end{equation}
+
+\subsection{Exact Parseval Bias--Variance Decomposition and $\mathrm{LG}_{2,1}$ Benchmark}
+For $\psi_{\mathrm{meas}} = S_w\psi_{p,l} + \varepsilon$ with zero-mean bandlimited white noise $\mathbb{E}[\widetilde{\varepsilon}^*(\mathbf{k})\widetilde{\varepsilon}(\mathbf{k}')] = (2\pi)^2\sigma_\varepsilon^2\mathbf{1}_{\{k_\perp \le k_{\max}\}}\delta^{(2)}(\mathbf{k}-\mathbf{k}')$ of total passband power $P_\varepsilon = \frac{\sigma_\varepsilon^2}{(2\pi)^2}(\pi k_{\max}^2) = \frac{\sigma_\varepsilon^2 k_{\max}^2}{4\pi}$ ($\implies \sigma_\varepsilon^2 = 4\pi P_\varepsilon/k_{\max}^2$), Parseval's identity splits $\mathrm{MSE} = \mathbb{E}[\norm{\hat{\psi}_{\alpha_{\mathrm{reg}}} - \psi_{p,l}}_{L^2}^2] = \mathrm{Bias}^2 + \mathrm{Var}$:
+\begin{align}
+  \mathrm{Bias}^2(\alpha_{\mathrm{reg}}) &= \int_{\mathbb{R}^2} \abs{T_{\alpha_{\mathrm{reg}}}(k_\perp) - 1}^2 \abs{\widetilde{\psi}_{p,l}(\mathbf{k})}^2\frac{\dd^2\mathbf{k}}{(2\pi)^2} = \int_0^\infty \left[\frac{\alpha_{\mathrm{reg}}}{e^{-2au} + \alpha_{\mathrm{reg}}}\right]^2 \rho_{p,l}(u)\,\dd u, \\
+  \mathrm{Var}(\alpha_{\mathrm{reg}}) &= \frac{\sigma_\varepsilon^2}{(2\pi)^2}\int_{k_\perp \le k_{\max}} \frac{e^{-w^2 k_\perp^2}}{\bigl(e^{-w^2 k_\perp^2} + \alpha_{\mathrm{reg}}\bigr)^2}\,2\pi k_\perp\,\dd k_\perp.
+\end{align}
+Substitute $y = e^{-w^2 k_\perp^2}$ ($\dd y = -2w^2 k_\perp e^{-w^2 k_\perp^2}\,\dd k_\perp \implies k_\perp e^{-w^2 k_\perp^2}\,\dd k_\perp = -\dd y/(2w^2)$):
+\begin{align}
+  \mathrm{Var}(\alpha_{\mathrm{reg}}) &= \frac{4\pi P_\varepsilon}{k_{\max}^2}\cdot\frac{2\pi}{4\pi^2}\cdot\frac{1}{2w^2}\int_{e^{-w^2 k_{\max}^2}}^{1}\frac{\dd y}{(y + \alpha_{\mathrm{reg}})^2} \nonumber \\
+  &= \frac{P_\varepsilon}{(w k_{\max})^2}\left[-\frac{1}{y+\alpha_{\mathrm{reg}}}\right]_{e^{-w^2 k_{\max}^2}}^{1}
+  = \frac{P_\varepsilon}{(w k_{\max})^2}\left[\frac{1}{e^{-w^2 k_{\max}^2} + \alpha_{\mathrm{reg}}} - \frac{1}{1+\alpha_{\mathrm{reg}}}\right].
+\end{align}
+\begin{pencheck}[Worked $\mathrm{LG}_{2,1}$ Numerical Substitution ($w/w_0=0.25, w k_{\max}=3.0, P_\varepsilon=0.01$)]
+At $\alpha_{\mathrm{reg}} = 0$: $\mathrm{MSE}(0) = \frac{0.01}{9}(e^9 - 1) = \frac{0.01}{9}(8103.0839 - 1) = 9.00232$. Minimizing $\mathrm{Bias}^2 + \mathrm{Var}$ gives $\alpha_{\mathrm{reg}}^{\mathrm{opt}} = 0.049025$, $\mathrm{Bias}^2 = 0.013257$, $\mathrm{Var} = 0.021548$, $\mathrm{MSE}_{\min} = 0.034805$, yielding suppression ratio $9.00232 / 0.034805 = \mathbf{258.65\times}$ ($\mathbf{24.13\,\mathrm{dB}}$), confirmed by 40-trial $256\times 256$ 2D-FFT Monte Carlo ($0.03488 \pm 0.00013$).
+\end{pencheck}
+
+% ==============================================================================
+\section{Exact $(p+1)$-Term Closed-Form $\mathrm{LG}_{p,l}$ Expansion $c_{l,p}(R)$ ($p \ge 0$)}
+\label{sec:p1_clp}
+
+\begin{targeteq}{Exact Closed-Form $\mathrm{LG}_{p,l}$ Frame Expansion}
+\begin{align*}
+  c_{l,p}(R) &= \mathcal{A}_{p,l}(R) \sum_{m=0}^p (-1)^m \binom{p+\abs{l}}{p-m} \xi^m L_m^{\abs{l}}(-\zeta_R), \qquad
+  \xi = \frac{2w^2}{w_0^2+w^2}, \qquad \zeta_R = \frac{R^2 w_0^2}{w^2(w_0^2+w^2)}, \\
+  \mathcal{A}_{p,l}(R) &= 2^{\abs{l}/2 + 1}\sqrt{\frac{p!}{(p+\abs{l})!}}\,\frac{R^{\abs{l}} w_0^{\abs{l}+1}}{(w_0^2+w^2)^{\abs{l}+1}}\exp\!\left(-\frac{R^2}{w_0^2+w^2}\right).
+\end{align*}
+\end{targeteq}
+
+Insert $\psi_{p,l}(r,\phi) = N_{p,l}(\sqrt{2}r/w_0)^{\abs{l}} L_p^{\abs{l}}(2r^2/w_0^2) e^{-r^2/w_0^2 + il\phi}$ with $N_{p,l} = \sqrt{2p!/[\pi(p+\abs{l})!]}/w_0$ into $c_{l,p}(R) = \braket{\Phi_{l,R}}{\psi_{p,l}}$. Integrating over $\phi \in [0,2\pi)$ gives $2\pi$:
+\begin{equation}
+  c_{l,p}(R) = 2\pi C_0 N_{p,l} e^{-R^2/w^2}\left(\frac{\sqrt{2}}{w_0}\right)^{\abs{l}} \int_0^\infty r^{\abs{l}+1} e^{-a_0 r^2} I_{\abs{l}}(b_R r) L_p^{\abs{l}}\!\left(\frac{2r^2}{w_0^2}\right)\dd r,
+\end{equation}
+where $a_0 \equiv \frac{1}{w^2} + \frac{1}{w_0^2} = \frac{w_0^2+w^2}{w^2 w_0^2}$ and $b_R \equiv \frac{2R}{w^2}$. Note the key algebraic simplifications:
+\begin{equation}
+  \frac{b_R^2}{4a_0} = \frac{4R^2/w^4}{4(w_0^2+w^2)/(w^2 w_0^2)} = \frac{R^2 w_0^2}{w^2(w_0^2+w^2)} = \zeta_R, \qquad
+  -\frac{R^2}{w^2} + \zeta_R = -\frac{R^2(w_0^2+w^2) - R^2 w_0^2}{w^2(w_0^2+w^2)} = -\frac{R^2}{w_0^2+w^2}.
+\end{equation}
+Expand the associated Laguerre polynomial explicitly:
+\begin{equation}
+  L_p^{\abs{l}}\!\left(\frac{2r^2}{w_0^2}\right) = \sum_{m=0}^p \frac{(-1)^m}{m!}\binom{p+\abs{l}}{p-m}\left(\frac{2}{w_0^2}\right)^m r^{2m}.
+\end{equation}
+For each $m \in \{0,\dots,p\}$, evaluate the radial integral via Gradshteyn--Ryzhik 6.631.1 (analytically continued via $J_\nu(i b_R r) = i^\nu I_\nu(b_R r)$) with $\nu = \abs{l}$ and $\mu - 1 = \abs{l} + 2m + 1 \implies \frac{\mu+\nu}{2} = \abs{l} + m + 1$:
+\begin{equation}
+  \int_0^\infty r^{\abs{l}+2m+1} e^{-a_0 r^2} I_{\abs{l}}(b_R r)\,\dd r = \frac{b_R^{\abs{l}}\,\Gamma(\abs{l}+m+1)}{2^{\abs{l}+1} a_0^{\abs{l}+m+1}\Gamma(\abs{l}+1)}\,{}_1F_1\!\left(\abs{l}+m+1;\,\abs{l}+1;\,\zeta_R\right).
+\end{equation}
+Apply Kummer's first transformation ${}_1F_1(\alpha;\,\beta;\,z) = e^z\,{}_1F_1(\beta-\alpha;\,\beta;\,-z)$ with $\alpha = \abs{l}+m+1$, $\beta = \abs{l}+1$, so $\beta - \alpha = -m$:
+\begin{equation}
+  {}_1F_1(\abs{l}+m+1;\,\abs{l}+1;\,\zeta_R) = e^{\zeta_R}\,{}_1F_1(-m;\,\abs{l}+1;\,-\zeta_R) = e^{\zeta_R}\,\frac{m!\,\Gamma(\abs{l}+1)}{\Gamma(\abs{l}+m+1)}\,L_m^{\abs{l}}(-\zeta_R).
+\end{equation}
+Observe the miraculous cancellation: $\Gamma(\abs{l}+m+1)/\Gamma(\abs{l}+1)$ cancels its reciprocal identically, and $m!$ cancels the $1/m!$ in the Laguerre expansion! Collecting the $m$-dependent powers gives
+\begin{equation}
+  \left(\frac{2}{w_0^2}\right)^m a_0^{-m} = \left(\frac{2}{w_0^2}\cdot\frac{w^2 w_0^2}{w_0^2+w^2}\right)^m = \left(\frac{2w^2}{w_0^2+w^2}\right)^m = \xi^m.
+\end{equation}
+Finally, simplify the $m$-independent prefactor $\mathcal{A}_{p,l}(R)$:
+\begin{align}
+  2\pi C_0 N_{p,l}\left(\frac{\sqrt{2}}{w_0}\right)^{\abs{l}} \frac{b_R^{\abs{l}}}{2^{\abs{l}+1} a_0^{\abs{l}+1}}
+  &= 2\pi\left(\frac{1}{w^2}\sqrt{\frac{2}{\pi}}\right)\left(\frac{1}{w_0}\sqrt{\frac{2p!}{\pi(p+\abs{l})!}}\right) \frac{2^{\abs{l}/2}}{w_0^{\abs{l}}} \frac{2^{\abs{l}} R^{\abs{l}}}{w^{2\abs{l}}} \frac{w^{2\abs{l}+2} w_0^{2\abs{l}+2}}{2^{\abs{l}+1}(w_0^2+w^2)^{\abs{l}+1}} \nonumber \\
+  &= 2^{\abs{l}/2 + 1}\sqrt{\frac{p!}{(p+\abs{l})!}}\,\frac{R^{\abs{l}} w_0^{\abs{l}+1}}{(w_0^2+w^2)^{\abs{l}+1}},
+\end{align}
+and multiplying by $e^{-R^2/w^2} e^{+\zeta_R} = e^{-R^2/(w_0^2+w^2)}$ completes the exact proof of $c_{l,p}(R)$!
+
+% ==============================================================================
+\section{Radial Nodal Washout, WKB Arcsine Law, and Jacobi-Theta Toeplitz Conditioning}
+\label{sec:p1_rayleigh}
+
+\begin{targeteq}{Washout Fidelity, WKB Arcsine Constant, and Jacobi-Theta Gram Limit}
+\[
+  \mathcal{F}(p,l,w/w_0) = \frac{\bigl(\int_0^\infty e^{-au}\rho_{p,l}(u)\,\dd u\bigr)^2}{\int_0^\infty e^{-2au}\rho_{p,l}(u)\,\dd u}, \qquad
+  \lim_{p\to\infty} \frac{w_{\mathrm{crit}}\sqrt{2p+\abs{l}+1}}{w_0} = \sqrt{c_*} = 0.572440, \qquad
+  \kappa(T_\infty) = \frac{\vartheta_3(0,q)}{\vartheta_4(0,q)}.
+\]
+\end{targeteq}
+
+\subsection{Exact $p = 0$ Threshold and WKB Arcsine Limit for $p \gg \abs{l}$}
+Since $\mathrm{LG}_{p,l}$ modes are eigenfunctions of the 2D Fourier transform up to scaling ($u \equiv w_0^2 k_\perp^2/2$, $a \equiv w^2/w_0^2$), $\abs{\widetilde{\psi}_{p,l}(\mathbf{k})}^2 \frac{\dd^2\mathbf{k}}{(2\pi)^2} = \rho_{p,l}(u)\,\dd u$ with $\rho_{p,l}(u) = \frac{p!}{(p+\abs{l})!} u^{\abs{l}} e^{-u} [L_p^{\abs{l}}(u)]^2$. By Plancherel, $\braket{\psi_{p,l}}{S_w\psi_{p,l}} = \int_0^\infty e^{-au}\rho_{p,l}(u)\,\dd u$ and $\norm{S_w\psi_{p,l}}_{L^2}^2 = \int_0^\infty e^{-2au}\rho_{p,l}(u)\,\dd u$.
+
+\paragraph*{Case $p = 0$:} $L_0^{\abs{l}} \equiv 1$, so $\int_0^\infty e^{-\beta u} u^{\abs{l}} e^{-u}\,\dd u = \Gamma(\abs{l}+1)/(1+\beta)^{\abs{l}+1}$. Thus
+\begin{equation}
+  \mathcal{F}(0,l,w/w_0) = \frac{(1+a)^{-2(\abs{l}+1)}}{(1+2a)^{-(\abs{l}+1)}} = \left[\frac{1+2a}{(1+a)^2}\right]^{\abs{l}+1} = \left[1 - \left(\frac{a}{1+a}\right)^2\right]^{\abs{l}+1}.
+\end{equation}
+Setting $\mathcal{F} = 0.95$ with $q_l \equiv 0.95^{1/(\abs{l}+1)}$ gives $a/(1+a) = \sqrt{1-q_l} \implies 1 + a = (1 - \sqrt{1-q_l})^{-1} \implies w_{\mathrm{crit}}(0,l) = w_0[(1-\sqrt{1-q_l})^{-1} - 1]^{1/2}$. At $a = 1$ ($w=w_0$) and $l = 1$, $\mathcal{F}(0,1,1) = (3/4)^2 = 9/16$.
+
+\paragraph*{WKB Arcsine Law ($p \gg \abs{l}$):} By classical WKB / Plancherel--Rotach asymptotics of Laguerre polynomials on their oscillatory interval $u \in (0, 4N_p)$ with $2N_p \equiv 2p + \abs{l} + 1$, the locally averaged spectral density converges weakly to the arcsine probability measure $\rho_{\mathrm{WKB}}(u) = [\pi\sqrt{u(4N_p - u)}]^{-1}$. Changing variables $u = 2N_p(1 - \cos\theta)$ ($\theta \in [0,\pi]$, $\dd u = 2N_p\sin\theta\,\dd\theta$, $\sqrt{u(4N_p-u)} = 2N_p\sin\theta$) evaluates the Laplace transform in closed form:
+\begin{equation}
+  \int_0^{4N_p} e^{-a u}\rho_{\mathrm{WKB}}(u)\,\dd u = \frac{1}{\pi}\int_0^\pi e^{-2N_p a(1 - \cos\theta)}\,\dd\theta = e^{-2N_p a} I_0(2N_p a).
+\end{equation}
+Defining $c \equiv 2N_p a = (2p+\abs{l}+1)(w/w_0)^2$, the exponential prefactors cancel identically in $\mathcal{F}$:
+\begin{equation}
+  \mathcal{F}_{\mathrm{WKB}}(c) = \frac{\bigl[e^{-c} I_0(c)\bigr]^2}{e^{-2c} I_0(2c)} = \frac{I_0(c)^2}{I_0(2c)} = 0.95 \implies c_* = 0.327687 \implies \sqrt{c_*} = 0.572440.
+\end{equation}
+
+\subsection{Szeg\H{o} Toeplitz Spectrum and Jacobi-Theta Conditioning Bound}
+In the annular regime $R_{\min} \gg w, \abs{l}w/2$, uniformly spaced rings $R_n = R_{\min} + (n-1)\Delta R$ yield the symmetric Toeplitz Gram matrix $T_{n-m} = q^{(n-m)^2}$ with $q \equiv e^{-\Delta R^2/(2w^2)} \in (0,1)$. By Szeg\H{o}'s Toeplitz eigenvalue theorem, the eigenvalues of every finite $N\times N$ principal section $T_N$ lie strictly inside the essential range $[\min_\theta f(\theta), \max_\theta f(\theta)]$ of the generating symbol
+\begin{equation}
+  f(\theta) = \sum_{k=-\infty}^{\infty} q^{k^2} e^{ik\theta} = 1 + 2\sum_{k=1}^\infty q^{k^2}\cos(k\theta) = \vartheta_3\!\left(\frac{\theta}{2}, q\right).
+\end{equation}
+By Jacobi's triple product identity, $\vartheta_3(\theta/2, q) > 0$ everywhere, attaining its global maximum at $\theta = 0$ where $\cos(k\theta) = +1$, i.e.\ $f_{\max} = \vartheta_3(0,q)$, and its global minimum at $\theta = \pi$ where $\cos(k\pi) = (-1)^k$, i.e.\ $f_{\min} = 1 + 2\sum_{k=1}^\infty (-1)^k q^{k^2} = \vartheta_4(0,q)$. Therefore, for every finite ring count $N \ge 1$:
+\begin{equation}
+  \kappa(T_N) < \kappa(T_\infty) = \frac{\vartheta_3(0,q)}{\vartheta_4(0,q)}.
+\end{equation}
+At $\Delta R = 2.0\,w$, $q = e^{-2} = 0.135335$, giving $\vartheta_3(0,e^{-2}) = 1.27134$, $\vartheta_4(0,e^{-2}) = 0.72999$, and $\kappa(T_\infty) = \mathbf{1.7416}$ (bounding $\kappa(\gamma) = 1.6449$ at $N=6$ cleanly from above, verified in \texttt{verify\_paper1\_v15.py} Suite~6).
+
+\end{document}

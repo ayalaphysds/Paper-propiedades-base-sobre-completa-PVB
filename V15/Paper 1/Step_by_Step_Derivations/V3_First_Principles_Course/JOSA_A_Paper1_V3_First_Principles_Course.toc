@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Chapter 1: From Maxwell's Equations to Paraxial Light Beams \textcolor {tealborder}{\textbf {[Background]}}{}}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Step 1.1: Maxwell's Equations $\to $ Scalar Helmholtz Equation}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Step 1.2: Slowly Varying Envelope $\to $ Paraxial Wave Equation}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Step 1.3: Solving Eq.~\eqref {eq:c1_paraxial} Instantly via 2D Fourier Transform}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Chapter 2: Essential Pencil-and-Paper Math Toolkit (Derived From Zero!) \textcolor {tealborder}{\textbf {[Background]}}{}}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Step 2.1: The 1D Gaussian Integral and Completing the Square}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Step 2.2: Polar Coordinates $\to $ Bessel Functions $J_n(z)$ and Modified Bessel Functions $I_n(z)$}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Step 2.3: Deriving Weber's Master Integral From Scratch!}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Step 2.4: Deriving the Large-$x$ Behavior of $I_n(x)$ (Hankel Expansion) From Scratch!}{4}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Chapter 3: Building a Physical Perfect Vortex Beam From a Lens}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Step 3.1: From an Ideal Delta Ring to a $2f$ Fourier Lens}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Step 3.2: Total Optical Power (Exact $L^2$ Norm)}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Step 3.3: Is the Ring Radius Truly Independent of $l$?}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Chapter 4: From a 3-Vector Toy Frame to the Continuous PVB Frame Operator}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Step 4.1: Overlap of Two Physical PVBs}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Step 4.2: Building the Continuous PVB Frame Operator $S_w$}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Step 4.3: Why Finite Aperture ($\mathrm {NA}$) Turns a Bessel Family Into a Sharp Frame}{7}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Chapter 5: Propagating the PVB Frame Through Free Space}{8}{section.5}%
+\contentsline {section}{\numberline {6}Chapter 6: Inverting the Gaussian Blur in the Presence of Noise}{8}{section.6}%
+\contentsline {section}{\numberline {7}Chapter 7: Connecting PVBs to Standard $\mathrm {LG}_{p,l}$ Modes and Finite Rings}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Step 7.1: Exact $(p+1)$-Term Expansion $c_{l,p}(R) = \langle \Phi _{l,R} | \psi _{p,l} \rangle $}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Step 7.2: Radial Nodal Washout and the $0.573$ WKB Law}{9}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Step 7.3: Discretizing to $N$ Concentric Rings (Szeg\H {o} Toeplitz Bound)}{10}{subsection.7.3}%
+\contentsline {section}{Summary Map: Where Every JOSA A Equation Was Built From Scratch}{10}{section*.2}%

@@ -1,0 +1,19 @@
+\contentsline {section}{Exact 1-to-1 Cross-Reference Map to main\_paper1\_josaa.pdf}{2}{section*.2}%
+\contentsline {section}{\numberline {1}JOSA A Section 2: Conventions, Exact Norm, Peak Shift, and $2f$ Bridge}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Dimensions, Frame-vs.-State Scaling, and Exact $L^2(\mathbb {R}^2)$ Norm --- \textbf {[JOSA~A Eq.~(1)]}--\textbf {[JOSA~A Eq.~(2)]}}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Thin-Ring Asymptotics and Self-Consistent Differential Peak Shift --- \textbf {[JOSA~A Eq.~(3)]}}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Optical $2f$ Fourier Transform Bridge --- \textbf {[JOSA~A Eq.~(4)]}}{4}{subsection.1.3}%
+\contentsline {section}{\numberline {2}JOSA A Section 3: Continuous Frame Operator and Sharp Paley--Wiener Bounds}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Azimuthal--Radial Decoupling and Universal Radial Overlap --- \textbf {[JOSA~A Eq.~(5)]}--\textbf {[JOSA~A Eq.~(6)]}}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}2D Fourier Transform, Hankel Unitarity, and Convolution Kernel --- \textbf {[JOSA~A Eq.~(7)]}--\textbf {[JOSA~A Eq.~(9)]}}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Sharp Paley--Wiener Bounds and Fourier-Annulus Limits --- \textbf {[JOSA~A Eq.~(10)]}}{7}{subsection.2.3}%
+\contentsline {section}{\numberline {3}JOSA A Section 4: Exact Paraxial Fresnel Propagation Invariance}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Complex-Waist Closed-Form Propagated PVB --- \textbf {[JOSA~A Eq.~(11)]}--\textbf {[JOSA~A Eq.~(12)]}}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Commutation $[S_w,\mathcal {U}_z] = 0$ and Corrected Gouy Analyzer --- \textbf {[JOSA~A Eq.~(13)]}--\textbf {[JOSA~A Eq.~(15)]}}{9}{subsection.3.2}%
+\contentsline {section}{\numberline {4}JOSA A Section 5: Tikhonov Dual and Worked Noisy $\mathrm {LG}_{2,1}$ Deconvolution}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Fr\'echet Derivative and AM--GM Noise-Gain Peak --- \textbf {[JOSA~A Eq.~(16)]}--\textbf {[JOSA~A Eq.~(17)]}}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Parseval Bias--Variance Decomposition and $\mathrm {LG}_{2,1}$ Benchmark --- \textbf {[JOSA~A Eq.~(18)]}}{10}{subsection.4.2}%
+\contentsline {section}{\numberline {5}JOSA A Section 6 \& Appendix A: $\mathrm {LG}_{p,l}$ Expansion, Washout, and Gram Spectrum}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Exact $(p+1)$-Term Closed-Form Expansion $c_{l,p}(R)$ --- \textbf {[JOSA~A Eq.~(19)]}--\textbf {[JOSA~A Eq.~(20)]} \& \textbf {[JOSA~A Eq.~(25)]}--\textbf {[JOSA~A Eq.~(26)]}}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Radial Nodal Washout, Exact Rationals, and WKB Arcsine Constant --- \textbf {[JOSA~A Eq.~(21)]}--\textbf {[JOSA~A Eq.~(23)]}}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Discrete Radial Sampling and Szeg\H {o} Jacobi-Theta Toeplitz Bound --- \textbf {[JOSA~A Eq.~(24)]}}{14}{subsection.5.3}%

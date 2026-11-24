@@ -1,0 +1,292 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.85in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\usepackage{bm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!65!black,citecolor=blue!65!black,urlcolor=blue!65!black]{hyperref}
+
+\definecolor{navy}{HTML}{1B4F72}
+\definecolor{crimson}{HTML}{922B21}
+\definecolor{forest}{HTML}{145A32}
+\definecolor{slate}{HTML}{34495E}
+\definecolor{softblue}{HTML}{EBF5FB}
+\definecolor{softgreen}{HTML}{EAFAF1}
+\definecolor{softamber}{HTML}{FEF9E7}
+\definecolor{amberborder}{HTML}{B7950B}
+
+\newtcolorbox{targeteq}[1]{
+  breakable,enhanced,lines before break=2,
+  colback=softblue,colframe=navy,fonttitle=\bfseries\small,
+  title={Target Result for V15 Paper 2: #1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt,after skip=8pt
+}
+
+\newtcolorbox{pencheck}[1][Pen-and-Paper Sanity Check]{
+  breakable,enhanced,lines before break=2,
+  colback=softgreen,colframe=forest,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt,after skip=8pt
+}
+
+\newtcolorbox{auditbox}[1][Referee-Proofing Physical Audit]{
+  breakable,enhanced,lines before break=2,
+  colback=softamber,colframe=amberborder,fonttitle=\bfseries\small,
+  title={#1},
+  left=8pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt,after skip=8pt
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{slate}\textit{V15 Paper 2 --- Complete Pen-and-Paper Mathematical Walkthrough}}
+\fancyhead[R]{\footnotesize\color{slate}\textit{S. Ayala}}
+\fancyfoot[C]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dd}{\mathrm{d}}
+
+\numberwithin{equation}{section}
+
+\title{\vspace{-1.0cm}\textbf{\Large Complete Pen-and-Paper Mathematical Walkthrough of V15 Paper 2}\\[0.35em]
+\large\textit{Zero-Skipped-Steps Derivations of All Four Photonic Protocols:\\
+Step-Index/GRIN RCF Coupling \& SDM, Kolmogorov Turbulence Projection, Gouy IC-POVM Tomography,\\
+and Circular-Iris Bell--CHSH Entanglement \& Detection-Loophole Thresholds}}
+\author{Sebasti\'an Ayala\thanks{\texttt{ayala.phys.ds@gmail.com}; ORCID: \href{https://orcid.org/0009-0003-7348-3883}{0009-0003-7348-3883}}}
+\date{Version 15 Pre-Drafting Derivation Manual --- November 24, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+\noindent This companion manual provides a complete, line-by-line, pen-and-paper derivation of \emph{every mathematical equation, eigenvalue reduction, projector identity, Fisher matrix bound, asymptotic series, and loophole threshold} planned for standalone V15 Paper~2 (\emph{Classical and Quantum Photonic Protocols Based on Physical Perfect Vortex Beam Frames}). Every calculation is audited independently in \texttt{verify\_paper2\_v15.py} (4/4 full suites passed, archived in \texttt{verify\_paper2\_v15\_results.json}).
+\end{abstract}
+
+\tableofcontents
+\vspace{0.5em}
+
+\section*{Master Cross-Reference Map}
+\addcontentsline{toc}{section}{Master Cross-Reference Map}
+
+\begin{table}[h]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Walkthrough Section} & \textbf{Planned V15 Paper 2 Protocol \& Upgrades} & \textbf{Verification Suite} \\
+\midrule
+Sec.~\ref{sec:p2_rcf} & Step-index \& \textbf{parabolic GRIN} Sturm--Liouville RCF solver, $\delta R/\delta w/\delta x$ tolerances, $N=6$ SDM ZF & Suite 1 \\
+Sec.~\ref{sec:p2_turb} & Kolmogorov PSD, Lane subharmonics, $P_{\mathrm{PVB},l_0}$ vs.\ \textbf{matched $N=5$ $\mathrm{LG}_{p,l_0}$}, \textbf{5-screen split-step} & Suite 2 \\
+Sec.~\ref{sec:p2_povm} & $M=1$ rank-7 algebraic proof, corrected $\sigma_m^{+1}$ IC-POVM, Fisher/MUB bound, \textbf{pure/Haar states \& $\delta z_m$} & Suite 3 \\
+Sec.~\ref{sec:p2_chsh} & LG incomplete gamma, PVB Hankel $(w/R_0)^3$/$(w/R_0)^6$ CHSH bound, \textbf{82.84\% detection-loophole threshold} & Suite 4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ==============================================================================
+\section{Protocol 1: Step-Index and Parabolic GRIN RCF Eigenmodes, Tolerances, and Multi-Ring SDM}
+\label{sec:p2_rcf}
+
+\begin{targeteq}{Liouville-Transformed RCF Hamiltonian, GRIN Cutoff, and Zero-Forcing Penalties}
+\begin{align*}
+  -\chi''_l(r) + \left[\frac{l^2 - \frac{1}{4}}{r^2} - k_0^2 n^2(r)\right]\chi_l(r) &= -\beta_l^2\chi_l(r), \qquad u_l(r) = \frac{\chi_l(r)}{\sqrt{r}}, \\
+  \mathcal{P}_{\mathrm{corr}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-1}), &\qquad \mathcal{P}_{\mathrm{AWGN}} = \frac{1}{N}\operatorname{Tr}(\gamma^{-2}), \qquad \mathrm{BER} = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{\eta_l (E_b/N_0)}{2\mathcal{P}}}\right).
+\end{align*}
+\end{targeteq}
+
+\subsection{Sturm--Liouville Reduction and Liouville Symmetrization}
+Under the weakly guiding scalar Helmholtz equation $(\nabla_\perp^2 + k_0^2 n^2(r))\psi_{\mathrm{RCF},l} = \beta_l^2\psi_{\mathrm{RCF},l}$ with ansatz $\psi_{\mathrm{RCF},l}(r,\phi) = (2\pi)^{-1/2} u_l(r) e^{il\phi}$ ($\int_0^\infty \abs{u_l(r)}^2 r\,\dd r = 1$), substituting $\nabla_\perp^2 = \frac{1}{r}\frac{\partial}{\partial r}(r\frac{\partial}{\partial r}) + \frac{1}{r^2}\frac{\partial^2}{\partial\phi^2}$ yields
+\begin{equation}
+  -\frac{1}{r}\frac{\dd}{\dd r}\!\left(r\frac{\dd u_l}{\dd r}\right) + \left[\frac{l^2}{r^2} - k_0^2 n^2(r)\right] u_l(r) = -\beta_l^2 u_l(r).
+\end{equation}
+To obtain a symmetric (self-adjoint in unweighted $L^2(\dd r)$) tridiagonal discretization without first derivatives, apply the Liouville substitution $u_l(r) = r^{-1/2}\chi_l(r)$ (so $\int_0^\infty \abs{\chi_l(r)}^2\dd r = \int_0^\infty \abs{u_l(r)}^2 r\,\dd r = 1$). Compute each derivative explicitly:
+\begin{align}
+  u'_l &= r^{-1/2}\chi'_l - \frac{1}{2}r^{-3/2}\chi_l, \qquad r u'_l = r^{1/2}\chi'_l - \frac{1}{2}r^{-1/2}\chi_l, \\
+  \frac{\dd}{\dd r}(r u'_l) &= r^{1/2}\chi''_l + \frac{1}{2}r^{-1/2}\chi'_l - \frac{1}{2}r^{-1/2}\chi'_l + \frac{1}{4}r^{-3/2}\chi_l = r^{1/2}\left(\chi''_l + \frac{1}{4r^2}\chi_l\right).
+\end{align}
+Dividing by $r^{1/2}$ converts $-\frac{1}{r}(r u'_l)' + \frac{l^2}{r^2}u_l$ exactly to $-\chi''_l + \frac{l^2 - 1/4}{r^2}\chi_l$:
+\begin{equation}
+  -\frac{\dd^2\chi_l}{\dd r^2} + \left[\frac{l^2 - \frac{1}{4}}{r^2} - k_0^2 n^2(r)\right]\chi_l(r) = -\beta_l^2 \chi_l(r).
+  \label{eq:walk_rcf_sym}
+\end{equation}
+On a uniform grid $r_j = r_{\min} + j h$ ($j = 0,\dots,N_r-1$), replacing $-\chi''_l(r_j) \approx (-\chi_{j-1} + 2\chi_j - \chi_{j+1})/h^2$ produces a real symmetric tridiagonal matrix whose lowest eigenvalue $\lambda_0 = -\beta_l^2$ yields $n_{\mathrm{eff}}(l) = \sqrt{-\lambda_0}/k_0$.
+
+\subsection{Step-Index vs.\ Parabolic Graded-Index (GRIN) RCF Profiles}
+We benchmark two profiles sharing identical ring geometry $r_1 = 6.0\,\mu\mathrm{m}$, $r_2 = 9.0\,\mu\mathrm{m}$ ($r_{\mathrm{mid}} = 7.5\,\mu\mathrm{m}$, $a_{\mathrm{ring}} = 1.5\,\mu\mathrm{m}$), $n_{\mathrm{clad}} = 1.444$, peak $\Delta n = 0.033$ ($n_{\mathrm{core}} = 1.477$), and $\lambda = 1550\,\mathrm{nm}$:
+\begin{align}
+  n_{\mathrm{step}}(r) &= \begin{cases} n_{\mathrm{core}}, & r \in [r_1, r_2], \\ n_{\mathrm{clad}}, & \text{otherwise}, \end{cases} \\
+  n_{\mathrm{GRIN}}^2(r) &= n_{\mathrm{clad}}^2 + \bigl(n_{\mathrm{core}}^2 - n_{\mathrm{clad}}^2\bigr)\max\!\left[0,\; 1 - \left(\frac{r - r_{\mathrm{mid}}}{a_{\mathrm{ring}}}\right)^2\right].
+\end{align}
+The integrated index-volume of the parabolic ring satisfies $\int_{r_1}^{r_2} (1 - u^2)\,\dd u = \frac{2}{3}\int_{r_1}^{r_2} 1\,\dd u$, reducing effective V-number by $\sqrt{2/3} \approx 0.816$. Consequently, whereas step-index supports $l = 0\text{--}8$ ($n_{\mathrm{eff}}(8) = 1.44443 > n_{\mathrm{clad}}$), the parabolic GRIN RCF reaches cladding cutoff precisely past $l = 6$: $n_{\mathrm{eff}}^{\mathrm{GRIN}}(6) = 1.44760 > 1.444$, while $n_{\mathrm{eff}}^{\mathrm{GRIN}}(7) = 1.44295 < 1.444$ --- explaining from first principles the $l = 1\text{--}6$ guided window observed experimentally in Villalba \emph{et al.}!
+
+\subsection{Launch Coupling Efficiency, Tolerances, and $N\times N$ Zero-Forcing Penalties}
+With unit-norm radial PVB $f_l(r)$ and guided mode $u_l(r)$, the coaxial coupling efficiency is $\eta_l = \abs{\int_0^\infty r\,u_l(r) f_l(r)\,\dd r}^2$. Under lateral decentering $\delta x$, cylindrical symmetry breaks and the exact 2D overlap is
+\begin{equation}
+  \eta_l(\delta x) = \left|\iint_{\mathbb{R}^2} \psi_{\mathrm{RCF},l}^*(x,y)\,\psi_{l,R}(x-\delta x, y)\,\dd x\,\dd y\right|^2.
+\end{equation}
+\begin{pencheck}[Verified Step-Index, GRIN, and Misalignment Numbers (Suite 1)]
+Step-index ($w=1.72\,\mu\mathrm{m}$): mean $\eta_{\mathrm{PVB}} = 98.52\%$ ($l=0\text{--}8$), $+6.90\,\mathrm{dB}$ vs.\ fixed-collimator $\mathrm{LG}_{0,4}$ ($w_0=3.22\,\mu\mathrm{m}$). Parabolic GRIN ($w_{\mathrm{opt}} = 1.959\,\mu\mathrm{m}$): strictly guided $l=0\text{--}6$ mean $\eta_{\mathrm{PVB}} = \mathbf{99.11\%}$, $\eta_{\mathrm{PVB}}(4) = 99.18\%$ ($+6.97\,\mathrm{dB}$ vs.\ LG). At $l=4$, $\eta_{\mathrm{PVB}}^{\mathrm{GRIN}}$ stays $>92.3\%$ for $\abs{\delta x}\le 0.5\,\mu\mathrm{m}$, $>91.5\%$ for $\abs{\delta R}\le 0.5\,\mu\mathrm{m}$, and $>95.7\%$ for $\abs{\delta w/w}\le 30\%$.
+\end{pencheck}
+
+For $N$ concentric radial PVB channels $\{\psi_{l,R_n}\}_{n=1}^N$ carrying data symbols $\mathbf{s} = (s_1,\dots,s_N)^{\mathsf{T}}$ ($\mathbb{E}[\mathbf{s}\mathbf{s}^\dagger] = P_s\mathbb{I}_N$), matched-filter projection onto $\{\psi_{l,R_m}\}$ yields the noisy vector $\mathbf{y} = \gamma\mathbf{s} + \boldsymbol{\varepsilon}$, where $[\gamma]_{mn} = \braket{\psi_{l,R_m}}{\psi_{l,R_n}}$. Applying the linear zero-forcing (ZF) equalizer $\hat{\mathbf{s}} = \gamma^{-1}\mathbf{y} = \mathbf{s} + \gamma^{-1}\boldsymbol{\varepsilon}$ produces post-equalization noise covariance $\Sigma_{\mathrm{ZF}} = \gamma^{-1}\mathbb{E}[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^\dagger]\gamma^{-1}$ (since $\gamma = \gamma^\dagger$):
+\begin{align}
+  \text{Correlated optical noise }\mathbb{E}[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^\dagger] = \sigma^2\gamma: &\quad \Sigma_{\mathrm{ZF}} = \sigma^2\gamma^{-1} \implies \mathcal{P}_{\mathrm{corr}} = \frac{\operatorname{Tr}(\Sigma_{\mathrm{ZF}})}{N\sigma^2} = \frac{1}{N}\operatorname{Tr}(\gamma^{-1}), \\
+  \text{Uncorrelated receiver AWGN }\mathbb{E}[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^\dagger] = \sigma^2\mathbb{I}_N: &\quad \Sigma_{\mathrm{ZF}} = \sigma^2\gamma^{-2} \implies \mathcal{P}_{\mathrm{AWGN}} = \frac{\operatorname{Tr}(\Sigma_{\mathrm{ZF}})}{N\sigma^2} = \frac{1}{N}\operatorname{Tr}(\gamma^{-2}).
+\end{align}
+For $N=6$ at $\Delta R = 2.0\,w$, $\mathcal{P}_{\mathrm{corr}} = 1.0321$ ($0.14\,\mathrm{dB}$) and $\mathcal{P}_{\mathrm{AWGN}} = 1.0994$ ($0.41\,\mathrm{dB}$). For antipodal/OOK detection with effective symbol SNR $\eta_l (E_b/N_0)/\mathcal{P}$, standard Gaussian tail integration gives $\mathrm{BER} = Q\!\bigl(\sqrt{\eta_l(E_b/N_0)/\mathcal{P}}\bigr) = \frac{1}{2}\operatorname{erfc}\!\bigl(\sqrt{\eta_l(E_b/N_0)/(2\mathcal{P})}\bigr)$.
+
+% ==============================================================================
+\section{Protocol 2: Kolmogorov Turbulence Projection vs.\ Matched $N=5$ LG and Split-Step Propagation}
+\label{sec:p2_turb}
+
+\begin{targeteq}{Exact Biorthogonal Dual-Frame Projector and Multi-Screen Split-Step Scaling}
+\[
+  P_{\mathrm{PVB},l_0}\psi_{\mathrm{turb}} = \sum_{n,m=1}^N (\gamma^{-1})_{nm}\braket{\psi_{l_0,R_m}^{(\mathrm{prop})}}{\psi_{\mathrm{turb}}}\psi_{l_0,R_n}^{(\mathrm{prop})}, \qquad r_{0,\mathrm{scr}} = r_{0,\mathrm{tot}}\,N_{\mathrm{scr}}^{3/5}.
+\]
+\end{targeteq}
+
+\subsection{Orthogonal Subspace Projection via the Inverse Gram Matrix}
+Let $\mathcal{V}_N = \operatorname{span}\{v_n\}_{n=1}^N \subset \mathcal{H}_{l_0}$ be any $N$-dimensional linearly independent subspace (either the propagated discrete PVB states $v_n = \mathcal{U}_z\psi_{l_0,R_n}$ or the matched-dimension orthonormal $\mathrm{LG}_{p,l_0}$ modes $v_n = \mathcal{U}_z\psi_{n-1,l_0}$). Note that because $\mathcal{U}_z$ is unitary, the propagated Gram matrix is identical to the waist Gram matrix: $[\gamma]_{mn} = \braket{\mathcal{U}_z\psi_{l_0,R_m}}{\mathcal{U}_z\psi_{l_0,R_n}} = \braket{\psi_{l_0,R_m}}{\psi_{l_0,R_n}}$.
+
+We seek the unique element $\hat{\psi} = \sum_{n=1}^N c_n v_n \in \mathcal{V}_N$ minimizing $\norm{\psi_{\mathrm{turb}} - \hat{\psi}}_{L^2}^2$. By the Hilbert projection theorem, the residual $\psi_{\mathrm{turb}} - \hat{\psi}$ must be orthogonal to every $v_m$:
+\begin{equation}
+  \braket{v_m}{\psi_{\mathrm{turb}} - \sum_{n=1}^N c_n v_n} = 0 \iff \sum_{n=1}^N \gamma_{mn} c_n = \braket{v_m}{\psi_{\mathrm{turb}}} \iff c_n = \sum_{m=1}^N (\gamma^{-1})_{nm}\braket{v_m}{\psi_{\mathrm{turb}}}.
+\end{equation}
+Substituting $c_n$ gives $P_{\mathcal{V}_N}\psi_{\mathrm{turb}} = \sum_{n,m=1}^N (\gamma^{-1})_{nm}\braket{v_m}{\psi_{\mathrm{turb}}}v_n$. Checking idempotence and self-adjointness explicitly:
+\begin{align}
+  P_{\mathcal{V}_N}^2\psi &= \sum_{n,m,j,k} (\gamma^{-1})_{nm}(\gamma^{-1})_{jk}\braket{v_m}{v_j}\braket{v_k}{\psi} v_n = \sum_{n,k} \Bigl(\sum_{m,j} (\gamma^{-1})_{nm}\gamma_{mj}(\gamma^{-1})_{jk}\Bigr)\braket{v_k}{\psi}v_n = P_{\mathcal{V}_N}\psi, \\
+  \braket{\phi}{P_{\mathcal{V}_N}\psi} &= \sum_{n,m} (\gamma^{-1})_{nm}\braket{\phi}{v_n}\braket{v_m}{\psi} = \sum_{n,m} \bigl[(\gamma^{-1})_{mn}\braket{v_n}{\phi}\bigr]^*\braket{v_m}{\psi} = \braket{P_{\mathcal{V}_N}\phi}{\psi},
+\end{align}
+since $\gamma^{-1}$ is Hermitian. Because every basis vector $v_n$ carries pure azimuthal dependence $e^{il_0\phi}$, $P_{\mathrm{PVB},l_0}$ annihilates every $l \neq l_0$ azimuthal crosstalk component identically!
+
+\subsection{Kolmogorov Phase Screen and Multi-Screen $N_{\mathrm{scr}}^{3/5}$ Fried Parameter Scaling}
+A thin Kolmogorov turbulent layer with Fried coherence diameter $r_0$ obeys the phase structure function $D_\phi(\rho) = 6.88\,(\rho/r_0)^{5/3}$ and 2D spatial-frequency power spectral density $\Phi_\phi(f) = 0.023\,r_0^{-5/3} f^{-11/3}$ ($f = \sqrt{f_x^2+f_y^2}$). To model extended volume turbulence across propagation distance $z$ via $N_{\mathrm{scr}}$ independent statistically identical screens spaced by $\Delta z = z/N_{\mathrm{scr}}$, the cumulative phase variance adds linearly across independent screens:
+\begin{equation}
+  D_\phi^{\mathrm{tot}}(\rho) = \sum_{s=1}^{N_{\mathrm{scr}}} 6.88\left(\frac{\rho}{r_{0,\mathrm{scr}}}\right)^{5/3} = 6.88\,N_{\mathrm{scr}}\left(\frac{\rho}{r_{0,\mathrm{scr}}}\right)^{5/3} \overset{!}{=} 6.88\left(\frac{\rho}{r_{0,\mathrm{tot}}}\right)^{5/3} \implies r_{0,\mathrm{scr}} = r_{0,\mathrm{tot}}\,N_{\mathrm{scr}}^{3/5}.
+\end{equation}
+
+\begin{auditbox}[Head-to-Head Verification Against Optimally Waist-Tuned $N=5$ $\mathrm{LG}_{p,1}$ Projector (Suite 2)]
+To make the baseline indisputably fair, we optimized the waist $w_0$ of the 5-mode orthonormal $\mathrm{LG}_{p,1}$ ($p=0\text{--}4$) projector to maximize clean signal capture $\sum_{p=0}^4\abs{\braket{\psi_{p,1}}{\psi_{\mathrm{clean}}}}^2$, obtaining $w_0^{\mathrm{opt}} = 0.405\,\mathrm{mm}$ ($99.74\%$ signal capture). Across 30 independent subharmonic Kolmogorov screens:
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+  \item At $D/r_0 = 0.5$: Raw $= 0.0363$, optimal $\mathrm{LG}_5 = 0.0043$, PVB$_5 = \mathbf{0.0015}$ ($24.9\times$ over raw, $2.97\times$ over $\mathrm{LG}_5$).
+  \item At $D/r_0 = 3.0$ (raw OAM purity $57.2\%$): Raw $= 0.5272$, optimal $\mathrm{LG}_5 = 0.0988$, PVB$_5 = \mathbf{0.0914}$ ($5.77\times$ over raw, $1.08\times$ over $\mathrm{LG}_5$).
+  \item Under \textbf{5-screen split-step volume turbulence} ($D/r_{0,\mathrm{eff}} = 1.5, 2.0, 3.0$): PVB$_5$ suppresses MSE by $7.70\times, 6.23\times, 3.82\times$ over raw and beats $\mathrm{LG}_5$ at every strength ($1.20\times, 1.19\times, 1.04\times$).
+\end{itemize}
+\end{auditbox}
+
+% ==============================================================================
+\section{Protocol 3: Passive Gouy-Diverse Radial-Qudit IC-POVM Tomography}
+\label{sec:p2_povm}
+
+\begin{targeteq}{Single-Plane Rank Ceiling, Multi-Plane IC-POVM Elements, Fisher Matrix, and MUB Benchmark}
+\begin{align*}
+  \operatorname{rank}\!\bigl(\mathcal{S}_{\mathrm{POVM}}^{(M=1)}\bigr) &\le 2d - 1 = 7 < d^2 = 16, \qquad
+  \Pi_{m,k} = \frac{R_k\Delta R}{M}\ket{\phi_{m,k}}\bra{\phi_{m,k}}, \quad \Pi_{\mathrm{res}} = \mathbb{I}_d - \sum_{m,k}\Pi_{m,k} \ge 0, \\
+  F_{jk} &= \sum_\alpha \frac{\operatorname{Tr}(\Pi_\alpha B_j)\operatorname{Tr}(\Pi_\alpha B_k)}{\operatorname{Tr}(\Pi_\alpha)/d}, \qquad
+  \operatorname{Tr}\!\left(\mathbf{F}_{\mathrm{MUB}}^{-1}\right) = \frac{(d^2-1)(d+1)}{d} = \frac{75}{4} = 18.75.
+\end{align*}
+\end{targeteq}
+
+\subsection{Algebraic Proof of the Single-Plane Rank-$(2d-1)$ Ceiling}
+On $\mathcal{H}_d^{(l)} = \operatorname{span}\{\ket{\psi_{p,l}}\}_{p=0}^{d-1}$, any Hermitian operator $\rho$ has $d^2$ real parameters: $d$ real diagonals, $d(d-1)/2$ real-symmetric off-diagonals, and $d(d-1)/2$ imaginary-antisymmetric off-diagonals. At a single waist plane ($z=0$), the PVB projection coefficients $c_{l,p}(R) = \braket{\Phi_{l,R}}{\psi_{p,l}} \in \mathbb{R}$ are strictly real. Hence every matrix element $[\ket{\Phi_{l,R}}\bra{\Phi_{l,R}}]_{pp'} = c_{l,p}(R) c_{l,p'}(R)$ is real and symmetric, annihilating all $d(d-1)/2$ antisymmetric imaginary coherences identically.
+
+Even within the $d(d+1)/2$-dimensional real-symmetric subspace, recall from V15 Paper~1 that $c_{l,p}(R) = \mathcal{A}_{0,l}(R) Q_p(\zeta_R)$ where $\mathcal{A}_{0,l}(R)$ is a $p$-independent envelope and $Q_p(\zeta_R)$ is a polynomial of exact degree $p$ in $\zeta_R = R^2 w_0^2/[w^2(w_0^2+w^2)]$. Therefore every product
+\begin{equation}
+  c_{l,p}(R) c_{l,p'}(R) = \bigl[\mathcal{A}_{0,l}(R)\bigr]^2 Q_p(\zeta_R) Q_{p'}(\zeta_R)
+\end{equation}
+is $\mathcal{A}_{0,l}^2(R)$ times a polynomial in $\zeta_R$ of degree $p + p' \le 2(d-1) = 2d - 2$. Since the space of polynomials of degree $\le 2d-2$ has dimension $(2d-2) + 1 = 2d - 1$, the single-plane POVM elements span \emph{at most} $2d-1$ linearly independent operators! At $d = 4$, $2d - 1 = \mathbf{7}$ (matching numerical SVD rank $7/16$, strictly below $d(d+1)/2 = 10$).
+
+\subsection{Passive Gouy Phase Lifting, POVM Completion, and Closed-Form MUB Bound}
+Splitting the photon passively across $M \ge d+1$ propagation planes $z_m$ with wavefront-compensated rescaled analyzers $\phi_{m,k}(r,\phi) = \mathbf{\sigma_m} e^{+ik_0 r^2/[2R_c(z_m)]}\Phi_{l,\sigma_m R_k}(r,\phi;\,\sigma_m w)$ (using the exact $\sigma_m^{+1}$ scaling proven in Sec.~4 of the V15 Paper~1 Walkthrough!) introduces the differential Gouy phase factor:
+\begin{equation}
+  [\Pi_{m,k}]_{p,p'} = \frac{R_k\Delta R}{M}\,e^{-i 2(p - p')\vartheta_m}\,c_{l,p}(R_k) c_{l,p'}(R_k).
+\end{equation}
+The distinct Fourier harmonics $e^{-i 2(p-p')\vartheta_m}$ decouple all off-diagonal pairs $(p,p')$ with $p \neq p'$ and restore imaginary coherences cleanly for $M \ge d+1$, lifting rank from $7/16$ to full IC rank $\mathbf{16/16}$. Because the Riemann bin sum approximates $\frac{1}{M}\sum_{m=1}^M P_{\mathcal{H}_d} S_w(z_m) P_{\mathcal{H}_d} \le \mathbb{I}_d$ (by Paper~1's Bessel upper bound $B = 1$), $\lambda_{\max}(\sum_{m,k}\Pi_{m,k}) = 0.90498 < 1$, guaranteeing positive semidefiniteness of $\Pi_{\mathrm{res}} = \mathbb{I}_d - \sum_{m,k}\Pi_{m,k} \ge 0$.
+
+Parameterizing $\rho(\boldsymbol{\theta}) = \mathbb{I}_d/d + \sum_{j=1}^{d^2-1}\theta_j B_j$ in an orthonormal traceless Gell-Mann basis ($\operatorname{Tr}(B_j B_k) = \delta_{jk}$), the outcome probability is $p_\alpha(\boldsymbol{\theta}) = \operatorname{Tr}(\rho\Pi_\alpha) = \frac{1}{d}\operatorname{Tr}(\Pi_\alpha) + \sum_j \theta_j \operatorname{Tr}(\Pi_\alpha B_j)$, so $\partial_{\theta_j} p_\alpha = \operatorname{Tr}(\Pi_\alpha B_j)$. The classical Fisher information matrix at $\boldsymbol{\theta} = \mathbf{0}$ is
+\begin{equation}
+  F_{jk} = \sum_\alpha \frac{(\partial_{\theta_j} p_\alpha)(\partial_{\theta_k} p_\alpha)}{p_\alpha(\mathbf{0})} = \sum_\alpha \frac{\operatorname{Tr}(\Pi_\alpha B_j)\operatorname{Tr}(\Pi_\alpha B_k)}{\operatorname{Tr}(\Pi_\alpha)/d}.
+\end{equation}
+For $d+1$ mutually unbiased bases (MUBs) $\{\ket{e_{b,r}}\}_{r=1}^d$ ($b=1,\dots,d+1$) with uniform POVM $\Pi_{b,r} = \frac{1}{d+1}\ket{e_{b,r}}\bra{e_{b,r}}$, we have $p_{b,r}(\mathbf{0}) = \frac{1}{d(d+1)}$. Choosing $\{B_j\}$ aligned with the $d+1$ mutually orthogonal $(d-1)$-dimensional traceless diagonal blocks of each MUB yields $\sum_{r=1}^d \bra{e_{b,r}}B_j\ket{e_{b,r}}\bra{e_{b,r}}B_k\ket{e_{b,r}} = \operatorname{Tr}(B_j B_k) = \delta_{jk}$ when $B_j, B_k$ belong to block $b$ (and $0$ otherwise because MUB off-diagonals are unbiased). Hence
+\begin{equation}
+  [\mathbf{F}_{\mathrm{MUB}}]_{jk} = \frac{1/(d+1)^2}{1/[d(d+1)]}\delta_{jk} = \frac{d}{d+1}\delta_{jk} \implies \operatorname{Tr}\!\left(\mathbf{F}_{\mathrm{MUB}}^{-1}\right) = (d^2 - 1)\frac{d+1}{d}.
+\end{equation}
+At $d=4$, $\operatorname{Tr}(\mathbf{F}_{\mathrm{MUB}}^{-1}) = 15\times 5/4 = 18.75$, compared to $\operatorname{Tr}(\mathbf{F}_{\mathrm{PVB}}^{-1}) = 41.80$ ($2.23\times$ factor).
+
+\begin{pencheck}[Verified Extended IC-POVM Results: Pure, Haar, and Axial Misalignment (Suite 3)]
+For coherent superposition $\ket{\psi_{\mathrm{coh}}} = (\ket{0,1}+i\ket{3,1})/\sqrt{2}$, $R\hat{\rho}R$ MLE achieves $F = 0.9398$ ($300$ photons), $0.9738$ ($3{,}000$), $\mathbf{0.9823}$ ($10{,}000$), and $0.9870$ ($30{,}000$). Across 20 Haar-random pure states at $N_{\mathrm{phot}} = 10{,}000$, mean fidelity is $\mathbf{0.9922}$ (minimum $0.9833$). Under uncalibrated axial plane positioning jitter $\delta z_{\mathrm{rms}}/z_R \in \{1\%, 3\%, 5\%\}$ (shifting Gouy phases by $\delta\vartheta_m \approx \frac{\delta z_m/z_R}{1 + (z_m/z_R)^2}$), $\mathrm{CRB}$ drifts only from $41.80$ to $42.46$ and fidelity stays $\ge \mathbf{0.9721}$!
+\end{pencheck}
+
+% ==============================================================================
+\section{Protocol 4: Circular-Iris Bell--CHSH Asymptotics and Detection-Loophole Threshold}
+\label{sec:p2_chsh}
+
+\begin{targeteq}{Incomplete Gamma Law, Sixth-Order Tsirelson Bound, and Loophole-Free Iris Radius}
+\begin{align*}
+  t_l^{\mathrm{LG}}(R_{\mathrm{iris}}) &= P\!\left(\abs{l}+1, \frac{2R_{\mathrm{iris}}^2}{w_0^2}\right), \qquad
+  t_l^{\mathrm{PVB}}(R_0) = \frac{1}{2} + c_0\frac{w}{R_0} - \frac{4l^2 - 1}{16\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3 + \mathcal{O}\!\left(\frac{w^5}{R_0^5}\right), \\
+  2\sqrt{2} - S_{\mathrm{PVB}}^{(2)}(R_0) &\approx 2\sqrt{2}\,\delta_{14}^2 = \mathcal{O}\!\left((l_1^2-l_2^2)^2\left(\frac{w}{R_0}\right)^6\right), \qquad \eta_{\mathrm{crit}}^{\mathrm{CHSH}} = \frac{2}{1+\sqrt{2}} = 82.8427\%.
+\end{align*}
+\end{targeteq}
+
+\subsection{Exact $\mathrm{LG}_{0,l}$ Iris Transmission}
+For $\psi_{0,l}(r,\phi) = \sqrt{\frac{2}{\pi\abs{l}!}}\frac{1}{w_0}(\frac{\sqrt{2}r}{w_0})^{\abs{l}} e^{-r^2/w_0^2 + il\phi}$, integrating $\abs{\psi_{0,l}}^2$ over $r \in [0, R_{\mathrm{iris}}]$ with $u = 2r^2/w_0^2$ ($\dd u = 4r\,\dd r/w_0^2 \implies 2\pi r\,\dd r = \frac{\pi w_0^2}{2}\dd u$):
+\begin{equation}
+  t_l^{\mathrm{LG}}(R_{\mathrm{iris}}) = \frac{2}{\pi\abs{l}! w_0^2}\cdot\frac{\pi w_0^2}{2}\int_0^{2R_{\mathrm{iris}}^2/w_0^2} u^{\abs{l}} e^{-u}\,\dd u = \frac{\gamma(\abs{l}+1, 2R_{\mathrm{iris}}^2/w_0^2)}{\Gamma(\abs{l}+1)} = P\!\left(\abs{l}+1,\;\frac{2R_{\mathrm{iris}}^2}{w_0^2}\right).
+\end{equation}
+
+\subsection{Step-by-Step Hankel Expansion of $t_l^{\mathrm{PVB}}(R_0)$ to Order $(w/R_0)^3$}
+Set $\epsilon \equiv w/R_0 \ll 1$, $\mu \equiv 4l^2 - 1$, and shift to the dimensionless ring coordinate $r = R_0(1 + \epsilon u)$ ($r\,\dd r = R_0^2\epsilon(1+\epsilon u)\dd u$). Inside the iris integral, the unnormalized intensity density is proportional to $r e^{-2u^2} [e^{-2R_0 r/w^2} I_{\abs{l}}(2R_0 r/w^2)]^2$. Using $x = \frac{2R_0 r}{w^2} = \frac{2}{\epsilon^2}(1+\epsilon u)$ and Hankel's large-argument expansion $e^{-x} I_{\abs{l}}(x) = (2\pi x)^{-1/2}[1 - \mu/(8x) + \mathcal{O}(x^{-2})]$:
+\begin{equation}
+  r\,\bigl[e^{-x} I_{\abs{l}}(x)\bigr]^2 \propto \frac{r}{x}\left(1 - \frac{\mu}{8x} + \mathcal{O}(\epsilon^4)\right)^2 \propto \frac{1+\epsilon u}{1+\epsilon u}\left[1 - \frac{\mu\epsilon^2}{8(1+\epsilon u)} + \mathcal{O}(\epsilon^4)\right] = 1 - \frac{\mu\epsilon^2}{8} + \frac{\mu\epsilon^3}{8} u + \mathcal{O}(\epsilon^4).
+\end{equation}
+Observe the two crucial cancellations! First, $r$ in the polar Jacobian cancels $1/r$ from $1/x$ \emph{identically}---leaving a pure even Gaussian weight $e^{-2u^2}$ at $\mathcal{O}(\epsilon^0)$ and $\mathcal{O}(\epsilon^2)$! Second, the constant shift $-\mu\epsilon^2/8$ cancels completely between the numerator $\int_{-\infty}^0$ and denominator $\int_{-\infty}^\infty$, leaving the first $l$-dependent contribution strictly at $\mathcal{O}(\epsilon^3)$ via the odd moment $\int_{-\infty}^0 u\,e^{-2u^2}\,\dd u$! Compute the two Gaussian moments explicitly:
+\begin{equation}
+  \int_{-\infty}^\infty e^{-2u^2}\,\dd u = \sqrt{\frac{\pi}{2}}, \qquad
+  \int_{-\infty}^0 u\,e^{-2u^2}\,\dd u = \left[-\frac{1}{4}e^{-2u^2}\right]_{-\infty}^0 = -\frac{1}{4}.
+\end{equation}
+Therefore, the $l$-dependent term in $t_l^{\mathrm{PVB}}(R_0) = \frac{\int_{-\infty}^0 e^{-2u^2}(1 + \frac{\mu\epsilon^3}{8}u + \dots)\dd u}{\int_{-\infty}^\infty e^{-2u^2}(1 + \dots)\dd u}$ is
+\begin{equation}
+  \Delta t_l^{(3)} = \frac{\mu\epsilon^3}{8}\cdot\frac{-1/4}{\sqrt{\pi/2}} = -\frac{\mu\epsilon^3}{32}\sqrt{\frac{2}{\pi}} = -\frac{4l^2 - 1}{16\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3!
+  \label{eq:walk_t_pvb_3}
+\end{equation}
+For $l_1 = 1$ ($\mu_1 = 3$) and $l_2 = 4$ ($\mu_2 = 63$), $\mu_2 - \mu_1 = 60$, giving the relative transmission imbalance
+\begin{equation}
+  \delta_{14} \equiv \frac{t_1 - t_4}{t_1 + t_4} \approx \frac{t_1 - t_4}{1} = \frac{60}{16\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3 = \frac{15}{4\sqrt{2\pi}}\left(\frac{w}{R_0}\right)^3 = 1.4960\times 10^{-3}\quad\text{at }w/R_0 = 0.1
+\end{equation}
+(matching exact quadrature $1.510\times 10^{-3}$ to $0.9\%$).
+
+\subsection{Horodecki CHSH Maximum and Symmetric Detection-Loophole Threshold}
+Behind single-arm or symmetric two-arm circular irises, the post-selected pure entangled state is $\ket{\Psi_{\mathrm{ps}}} = \frac{\sqrt{p_1}\ket{00} + \sqrt{p_2}\ket{11}}{\sqrt{p_1+p_2}}$ ($p_l = t_l$ one-arm, $p_l = t_l^2$ two-arm). Computing its Pauli correlation matrix $T_{ij} = \bra{\Psi_{\mathrm{ps}}}\sigma_i\otimes\sigma_j\ket{\Psi_{\mathrm{ps}}}$ gives $T = \operatorname{diag}(\mathcal{V}, -\mathcal{V}, 1)$ with visibility $\mathcal{V} = \frac{2\sqrt{p_1 p_2}}{p_1+p_2}$. By the Horodecki theorem, $S_{\max} = 2\sqrt{\lambda_1(T^{\mathsf{T}}T) + \lambda_2(T^{\mathsf{T}}T)} = 2\sqrt{1 + \mathcal{V}^2}$. Writing $t_1/t_4 = (1+\delta_{14})/(1-\delta_{14})$:
+\begin{align}
+  \text{One-arm: } &\quad \mathcal{V}^{(1)} = \sqrt{1 - \delta_{14}^2} \implies S^{(1)} = 2\sqrt{2 - \delta_{14}^2} = 2\sqrt{2}\left(1 - \frac{\delta_{14}^2}{4} + \mathcal{O}(\delta_{14}^4)\right) \implies 2\sqrt{2} - S^{(1)} \approx \frac{\delta_{14}^2}{\sqrt{2}} = 1.58\times 10^{-6}, \\
+  \text{Two-arm: } &\quad \mathcal{V}^{(2)} = \frac{1 - \delta_{14}^2}{1 + \delta_{14}^2} \approx 1 - 2\delta_{14}^2 \implies 2\sqrt{2} - S^{(2)} \approx 2\sqrt{2}\,\delta_{14}^2 = 6.33\times 10^{-6}.
+\end{align}
+Finally, to test local realism \emph{without} the fair-sampling post-selection assumption using a maximally entangled two-qubit state and symmetric single-arm efficiency $\eta$, assigning undetected events to outcome $+1$ bounds the unconditional CHSH correlation by $S_{\mathrm{uncond}}(\eta) = \eta^2(2\sqrt{2}) + 2(1-\eta)^2$ (equivalently via Clauser--Horne, $\eta S_{\mathrm{Bell}} - 2(1-\eta) > 0$). Requiring $S_{\mathrm{uncond}}(\eta) > 2$:
+\begin{equation}
+  2\sqrt{2}\,\eta^2 + 2(1 - 2\eta + \eta^2) > 2 \iff (2\sqrt{2} + 2)\eta^2 - 4\eta > 0 \iff \eta > \frac{2}{1+\sqrt{2}} = 2(\sqrt{2}-1) = 0.828427.
+\end{equation}
+
+\begin{pencheck}[Verified High-Transmission Loophole-Free Operating Point (Suite 4)]
+At $w/R_0 = 0.1$, PVB clears $\min(t_1, t_4) \ge 82.8427\%$ at $R_{\mathrm{iris}} = \mathbf{1.0476\,R_0}$. At $R_{\mathrm{iris}} = R_0 + 2w = 1.20\,R_0$, single-photon PVB transmission hits $t_1 = t_4 = \mathbf{99.9968\%}$ ($99.994\%$ two-photon coincidence survival, $2\sqrt{2}-S_{\mathrm{PVB}}^{(2)} = 1.28\times 10^{-13}$!). By contrast, even $l=4$-matched LG ($w_0 = R_0/\sqrt{2}$) requires $R_{\mathrm{iris}} = 1.3243\,R_0$ ($1.60\times$ larger pupil area), geometric-mean LG ($w_0 = R_0$) requires $1.8729\,R_0$ ($3.20\times$ area), and $l=1$-matched LG ($w_0 = \sqrt{2}R_0$) requires $2.6487\,R_0$ ($6.39\times$ area).
+\end{pencheck}
+
+\end{document}

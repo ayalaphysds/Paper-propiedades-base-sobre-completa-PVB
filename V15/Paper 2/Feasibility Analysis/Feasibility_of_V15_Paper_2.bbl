@@ -1,0 +1,151 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Villalba et~al.(2023)Villalba, Ca{\~n}as, Ayala, Guzm{\'a}n-Silva,
+  G{\'o}mez, Lima, and Walborn]{Villalba2023}
+N.~Villalba, G.~Ca{\~n}as, S.~Ayala, D.~Guzm{\'a}n-Silva, E.~S. G{\'o}mez,
+  G.~Lima, and S.~P. Walborn.
+\newblock Transmission of optical communication signals through ring core fiber
+  using perfect vortex beams.
+\newblock \emph{Opt. Express}, 31\penalty0 (24):\penalty0 40113--40125, 2023.
+\newblock \doi{10.1364/OE.500553}.
+
+\bibitem[Rojas-Rojas et~al.(2021)Rojas-Rojas, Ca{\~n}as, Saavedra, G{\'o}mez,
+  Walborn, and Lima]{RojasRojas2021}
+S.~Rojas-Rojas, G.~Ca{\~n}as, G.~Saavedra, E.~S. G{\'o}mez, S.~P. Walborn, and
+  G.~Lima.
+\newblock Optimal conditions for multiplexing information into ring-core
+  optical fibers.
+\newblock \emph{Opt. Express}, 29\penalty0 (15):\penalty0 23381--23392, 2021.
+\newblock \doi{10.1364/OE.425419}.
+
+\bibitem[Zhang et~al.(2018)Zhang, Zhu, Liu, Wu, Zhu, Du, Luo, Chen, and
+  Yu]{Zhang2018GRIN}
+J.~Zhang, G.~Zhu, J.~Liu, X.~Wu, J.~Zhu, C.~Du, W.~Luo, Y.~Chen, and S.~Yu.
+\newblock Orbital-angular-momentum mode-group multiplexed transmission over a
+  graded-index ring-core fiber based on receive diversity and maximal ratio
+  combining.
+\newblock \emph{Opt. Express}, 26\penalty0 (4):\penalty0 4243--4257, 2018.
+\newblock \doi{10.1364/OE.26.004243}.
+
+\bibitem[Asgharzadeh et~al.(2026)]{Asgharzadeh2026}
+H.~Asgharzadeh et~al.
+\newblock Stability of orbital angular momentum modes in conventional and
+  ring-core optical fibers, 2026.
+
+\bibitem[Fontaine et~al.(2019)Fontaine, Ryf, Chen, Neilson, Kim, and
+  Carpenter]{Fontaine2019}
+N.~K. Fontaine, R.~Ryf, H.~Chen, D.~T. Neilson, K.~Kim, and J.~Carpenter.
+\newblock {Laguerre-Gaussian} mode sorter.
+\newblock \emph{Nat. Commun.}, 10:\penalty0 1865, 2019.
+\newblock \doi{10.1038/s41467-019-09840-4}.
+
+\bibitem[Fu et~al.(2018)Fu, Zhou, Qi, Oliver, Wang, Rafsanjani, Zhao,
+  Mirhosseini, Shi, Zhang, and Boyd]{Fu2018}
+D.~Fu, Y.~Zhou, R.~Qi, S.~Oliver, Y.~Wang, S.~M.~Hashemi Rafsanjani, J.~Zhao,
+  M.~Mirhosseini, Z.~Shi, P.~Zhang, and R.~W. Boyd.
+\newblock Realization of a scalable {Laguerre-Gaussian} mode sorter based on a
+  robust radial mode sorter.
+\newblock \emph{Opt. Express}, 26\penalty0 (25):\penalty0 33057--33065, 2018.
+\newblock \doi{10.1364/OE.26.033057}.
+
+\bibitem[Roux(2011)]{Roux2011}
+F.~S. Roux.
+\newblock Infinitesimal-propagation equation for decoherence of an
+  orbital-angular-momentum-entangled biphoton state in atmospheric turbulence.
+\newblock \emph{Phys. Rev. A}, 83\penalty0 (5):\penalty0 053822, 2011.
+\newblock \doi{10.1103/PhysRevA.83.053822}.
+
+\bibitem[Ibrahim et~al.(2013)Ibrahim, Roux, McLaren, Konrad, and
+  Forbes]{Ibrahim2013}
+A.~Hamadou Ibrahim, F.~S. Roux, M.~McLaren, T.~Konrad, and A.~Forbes.
+\newblock Orbital-angular-momentum entanglement in turbulence.
+\newblock \emph{Phys. Rev. A}, 88\penalty0 (1):\penalty0 012312, 2013.
+\newblock \doi{10.1103/PhysRevA.88.012312}.
+
+\bibitem[Gu et~al.(2018)Gu, Krenn, Erhard, and Zeilinger]{Gu2018}
+X.~Gu, M.~Krenn, M.~Erhard, and A.~Zeilinger.
+\newblock {Gouy} phase radial mode sorter for light: Concepts and experiments.
+\newblock \emph{Phys. Rev. Lett.}, 120\penalty0 (10):\penalty0 103601, 2018.
+\newblock \doi{10.1103/PhysRevLett.120.103601}.
+
+\bibitem[Zhou et~al.(2017)Zhou, Mirhosseini, Fu, Zhao, Rafsanjani, Willner, and
+  Boyd]{Zhou2017}
+Y.~Zhou, M.~Mirhosseini, D.~Fu, J.~Zhao, S.~M.~Hashemi Rafsanjani, A.~E.
+  Willner, and R.~W. Boyd.
+\newblock Sorting photons by radial quantum number.
+\newblock \emph{Phys. Rev. Lett.}, 119\penalty0 (26):\penalty0 263602, 2017.
+\newblock \doi{10.1103/PhysRevLett.119.263602}.
+
+\bibitem[Zhou et~al.(2019)Zhou, Mirhosseini, Oliver, Zhao, Rafsanjani, Lavery,
+  Willner, and Boyd]{Zhou2019}
+Y.~Zhou, M.~Mirhosseini, S.~Oliver, J.~Zhao, S.~M.~Hashemi Rafsanjani, M.~P.~J.
+  Lavery, A.~E. Willner, and R.~W. Boyd.
+\newblock Using all transverse degrees of freedom in quantum communications
+  based on a generic mode sorter.
+\newblock \emph{Opt. Express}, 27\penalty0 (7):\penalty0 10383--10394, 2019.
+\newblock \doi{10.1364/OE.27.010383}.
+
+\bibitem[Choudhary et~al.(2018)Choudhary, Sampson, Miyamoto, Maga{\~n}a-Loaiza,
+  Rafsanjani, Mirhosseini, and Boyd]{Choudhary2018}
+S.~Choudhary, R.~Sampson, Y.~Miyamoto, O.~S. Maga{\~n}a-Loaiza, S.~M.~Hashemi
+  Rafsanjani, M.~Mirhosseini, and R.~W. Boyd.
+\newblock Measurement of the radial mode spectrum of photons through a
+  phase-retrieval method.
+\newblock \emph{Opt. Lett.}, 43\penalty0 (24):\penalty0 6101--6104, 2018.
+\newblock \doi{10.1364/OL.43.006101}.
+
+\bibitem[Renes et~al.(2004)Renes, Blume-Kohout, Scott, and Caves]{Renes2004}
+J.~M. Renes, R.~Blume-Kohout, A.~J. Scott, and C.~M. Caves.
+\newblock Symmetric informationally complete quantum measurements.
+\newblock \emph{J. Math. Phys.}, 45\penalty0 (6):\penalty0 2171--2180, 2004.
+\newblock \doi{10.1063/1.1737053}.
+
+\bibitem[Lvovsky(2004)]{Lvovsky2004}
+A.~I. Lvovsky.
+\newblock Iterative maximum-likelihood reconstruction in quantum homodyne
+  tomography.
+\newblock \emph{J. Opt. B: Quantum Semiclass. Opt.}, 6\penalty0 (6):\penalty0
+  S556--S559, 2004.
+\newblock \doi{10.1088/1464-4266/6/6/014}.
+
+\bibitem[Walborn et~al.(2010)Walborn, Monken, P{\'a}dua, and
+  Ribeiro]{Walborn2010}
+S.~P. Walborn, C.~H. Monken, S.~P{\'a}dua, and P.~H.~Souto Ribeiro.
+\newblock Spatial correlations in parametric down-conversion.
+\newblock \emph{Phys. Rep.}, 495\penalty0 (4--5):\penalty0 87--139, 2010.
+\newblock \doi{10.1016/j.physrep.2010.06.003}.
+
+\bibitem[Ca{\~n}as et~al.(2021)Ca{\~n}as, Rojas-Rojas, G{\'o}mez, Lima, and
+  Walborn]{Canas2021}
+G.~Ca{\~n}as, S.~Rojas-Rojas, E.~S. G{\'o}mez, G.~Lima, and S.~P. Walborn.
+\newblock Engineering entangled photons for transmission in ring-core optical
+  fibers.
+\newblock \emph{Phys. Rev. A}, 104:\penalty0 062614, 2021.
+
+\bibitem[V{\'e}rtesi et~al.(2010)V{\'e}rtesi, Pironio, and
+  Brunner]{Vertesi2010}
+T.~V{\'e}rtesi, S.~Pironio, and N.~Brunner.
+\newblock Closing the detection loophole in {Bell} experiments using qudits.
+\newblock \emph{Phys. Rev. Lett.}, 104\penalty0 (6):\penalty0 060401, 2010.
+\newblock \doi{10.1103/PhysRevLett.104.060401}.
+
+\bibitem[Eberhard(1993)]{Eberhard1993}
+P.~H. Eberhard.
+\newblock Background level and counter efficiencies required for a
+  loophole-free {Einstein-Podolsky-Rosen} experiment.
+\newblock \emph{Phys. Rev. A}, 47\penalty0 (2):\penalty0 R747--R750, 1993.
+\newblock \doi{10.1103/PhysRevA.47.R747}.
+
+\bibitem[Ayala(2026)]{AyalaV15Paper1}
+S.~Ayala.
+\newblock Continuous {Hilbert} frame theory, paraxial propagation invariance,
+  and exact {Laguerre--Gaussian} expansion of finite-width perfect optical
+  vortex beams, 2026.
+\newblock Preprint (to be updated with arXiv identifier upon posting).
+
+\end{thebibliography}
